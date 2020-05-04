@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Files-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ReadingDeskViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,13 +17,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="iI8-mY-iod"/>
+                    <tabBarItem key="tabBarItem" title="Files" id="iI8-mY-iod"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-196" y="-747"/>
+            <point key="canvasLocation" x="-30" y="1142"/>
         </scene>
-        <!--Item 2-->
+        <!--Excercies-->
         <scene sceneID="9CR-ZL-49B">
             <objects>
                 <viewController id="sRn-XZ-clf" customClass="FilesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,13 +33,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Nka-rj-jfu"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="JvT-Ll-Th3"/>
+                    <tabBarItem key="tabBarItem" title="Excercies" id="JvT-Ll-Th3"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GDv-wy-Hwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197" y="893"/>
+            <point key="canvasLocation" x="-29" y="317"/>
         </scene>
-        <!--Item 1-->
+        <!--Desk-->
         <scene sceneID="WdV-IS-4CQ">
             <objects>
                 <viewController id="S23-bu-ZB5" customClass="ExcerciesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -49,11 +49,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="P8M-lz-NYF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="qUr-0x-obq"/>
+                    <tabBarItem key="tabBarItem" title="Desk" id="qUr-0x-obq"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9X6-gT-4Jg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-197" y="151"/>
+            <point key="canvasLocation" x="-30" y="-404"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2te-Je-e4O">
