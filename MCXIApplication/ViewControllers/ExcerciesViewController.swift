@@ -42,7 +42,7 @@ extension ExcerciesViewController: UICollectionViewDataSource {
         let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Type2CollectionViewCell", for: indexPath) as! Type2CollectionViewCell
         customCell.titleLabel.text = "Nome dell'esercizio"
         customCell.subtitleLabel.text = "Descrizione"
-        customCell.backgroundImage.image = UIImage(named: "type2-bg-bottom")
+        customCell.backgroundImage.image = UIImage(named: "pioggia")
         cell = customCell
         return cell
     }
@@ -70,7 +70,7 @@ extension ExcerciesViewController: UICollectionViewDelegate {
         viewController.transitioningDelegate = transition
         viewController.titleLabe = "Nome dell'esercizio"
         viewController.subtitle = "Descrizione"
-        viewController.background = UIImage(named: "type2-bg-bottom")
+        viewController.background = UIImage(named: "pioggia")
         
         // If `modalPresentationStyle` is not `.fullScreen`, this should be set to true to make status bar depends on presented vc.
         //viewController.modalPresentationCapturesStatusBarAppearance = true

@@ -26,7 +26,6 @@
         <!--Excercies-->
         <scene sceneID="9CR-ZL-49B">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GDv-wy-Hwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="sRn-XZ-clf" customClass="ExcerciesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7E-l5-EZd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -57,6 +56,7 @@
                         <outlet property="collectionView" destination="xR5-yg-VFH" id="56w-sS-BHy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GDv-wy-Hwr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-30" y="339"/>
         </scene>
@@ -109,7 +109,7 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPY-DT-l3o">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-Yc-fNw">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Voe-Yc-fNw">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="420"/>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qf4-qV-eBl">
