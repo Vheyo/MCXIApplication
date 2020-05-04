@@ -10,6 +10,7 @@ import UIKit
 import AppstoreTransition
 
 class Type2ViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -18,6 +19,7 @@ class Type2ViewController: UIViewController {
     
     var subtitle: String? = nil
     var background: UIImage? = nil
+    var titleLabe : String? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,9 @@ class Type2ViewController: UIViewController {
         }
         if let background = background {
             backgroundImage.image = background
+        }
+        if let titleLabe = titleLabe {
+            titleLabel.text = titleLabe
         }
         
         heightConstraint.constant = UIScreen.main.bounds.width * 1.272 - 16.0
