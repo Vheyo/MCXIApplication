@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,8 @@
 		7509E2EF2460B38B0021CA4F /* ExcerciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2EE2460B38B0021CA4F /* ExcerciesViewController.swift */; };
 		7509E2F12460B39F0021CA4F /* FilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2F02460B39F0021CA4F /* FilesViewController.swift */; };
 		7509E2F42460B7640021CA4F /* Type2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2F32460B7630021CA4F /* Type2ViewController.swift */; };
+		7509E2F82460BA3C0021CA4F /* Type2CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */; };
+		7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */; };
 		F322504D17C1F14A83F48635 /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		7509E2EE2460B38B0021CA4F /* ExcerciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcerciesViewController.swift; sourceTree = "<group>"; };
 		7509E2F02460B39F0021CA4F /* FilesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesViewController.swift; sourceTree = "<group>"; };
 		7509E2F32460B7630021CA4F /* Type2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type2ViewController.swift; sourceTree = "<group>"; };
+		7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Type2CollectionViewCell.xib; sourceTree = "<group>"; };
+		7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type2CollectionViewCell.swift; sourceTree = "<group>"; };
 		AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCXIApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00ABD8E286FBDDF04895ED0 /* Pods-MCXIApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.release.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.release.xcconfig"; sourceTree = "<group>"; };
 		B2FE5F6EEA4F112CBBE706E5 /* Pods-MCXIApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.debug.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -83,8 +87,9 @@
 				7509E2ED2460B3600021CA4F /* ViewControllers */,
 				7509E2E02460B2A70021CA4F /* Assets.xcassets */,
 				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
-				7509E2F32460B7630021CA4F /* Type2ViewController.swift */,
 				7509E2E52460B2A70021CA4F /* Info.plist */,
+				7509E2F32460B7630021CA4F /* Type2ViewController.swift */,
+				7509E2FA2460BA650021CA4F /* TransitionXib */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -99,13 +104,21 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		7509E2FA2460BA650021CA4F /* TransitionXib */ = {
+			isa = PBXGroup;
+			children = (
+				7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */,
+				7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */,
+			);
+			path = TransitionXib;
+			sourceTree = "<group>";
+		};
 		A78A620A51083812C7515410 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				B2FE5F6EEA4F112CBBE706E5 /* Pods-MCXIApplication.debug.xcconfig */,
 				B00ABD8E286FBDDF04895ED0 /* Pods-MCXIApplication.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -172,6 +185,7 @@
 				7509E2E42460B2A70021CA4F /* LaunchScreen.storyboard in Resources */,
 				7509E2E12460B2A70021CA4F /* Assets.xcassets in Resources */,
 				7509E2DF2460B2A60021CA4F /* Main.storyboard in Resources */,
+				7509E2F82460BA3C0021CA4F /* Type2CollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,6 +243,7 @@
 				7509E2EC2460B3530021CA4F /* ReadingDeskViewController.swift in Sources */,
 				7509E2F42460B7640021CA4F /* Type2ViewController.swift in Sources */,
 				7509E2F12460B39F0021CA4F /* FilesViewController.swift in Sources */,
+				7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
