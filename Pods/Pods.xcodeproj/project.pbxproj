@@ -1,0 +1,640 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0474C82547C23231C653770AEA0C8F83 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070F7E82879E8AA9358A6057A6FC317F /* CardCollectionViewCell.swift */; };
+		12FC4B98FD934F70465E89443BE0B382 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		2BB2E96BCD79F2998A8CBA823FAA08A7 /* appstore-card-transition-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 81C1DC9D21AF217B5CB8F952971C72B1 /* appstore-card-transition-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3C14D441C52052F8D9511109DE12F4E5 /* appstore-card-transition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C48299E7FA45297A535CCF29332187F0 /* appstore-card-transition-dummy.m */; };
+		418AD15A5D8A8F8BF8465AF8BCA4C211 /* CardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE47A76C85FCDF950EEFA2173595F46D /* CardDetailViewController.swift */; };
+		46464DD5A2A4CEE72D88FAA166331605 /* Pods-MCXIApplication-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FA3D13E89A3BF6269140F7392DF028E /* Pods-MCXIApplication-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A3E06C8C94B73097D29F31C2D6B10EB /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129FB34D8291BEA45475BF2BFEB7054A /* UIView+Extension.swift */; };
+		6DFAF00D142FCE961BCB0AE2B30189A5 /* CardTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BF9707D88BDAF6573D4B87D2AEFE43 /* CardTransition.swift */; };
+		7B2B2CC82340122DF5F6C9D164B3294A /* Pods-MCXIApplication-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F32D8DCCF24C4CFF7AC19ACC1B4DBA5D /* Pods-MCXIApplication-dummy.m */; };
+		8852042D957BACB4F9961ACA64434B21 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973FCB2AF9D3F6C90B7840B67A822B50 /* UIViewController+Extension.swift */; };
+		A8867900F7C2C1B50736695F68DC89B0 /* DismissCardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FFED2153BA6F61E8AAFD83D20C49DE /* DismissCardAnimator.swift */; };
+		CC63CD1757E15CBD0814C56BC45A0B92 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		D18E153459FDD5E6140F04942425758C /* CardPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4DF994157FE80171084100748DF6CA /* CardPresentationController.swift */; };
+		D63BE267BE8E808E3F98922D9192793A /* PresentCardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2ECF5572CC5538E69E94FE0ACB6815 /* PresentCardAnimator.swift */; };
+		E61C6F88D3860AD33135EA1B483CDE5D /* AppstoreTransition.h in Headers */ = {isa = PBXBuildFile; fileRef = 7227FAF78E20B4249C6647F665931D46 /* AppstoreTransition.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A0B9081A9389F62EBA6BE1D3BD046C1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8333080E4416539C89F976BCECB41319;
+			remoteInfo = "appstore-card-transition";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		055591E00CF7A27EA14B37A26D266CC7 /* appstore-card-transition.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "appstore-card-transition.debug.xcconfig"; sourceTree = "<group>"; };
+		070F7E82879E8AA9358A6057A6FC317F /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardCollectionViewCell.swift; path = Sources/AppstoreTransition/CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		0C453E323974757B16AFD4DDEE9089D5 /* Pods-MCXIApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCXIApplication.release.xcconfig"; sourceTree = "<group>"; };
+		129FB34D8291BEA45475BF2BFEB7054A /* UIView+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIView+Extension.swift"; path = "Sources/AppstoreTransition/UIView+Extension.swift"; sourceTree = "<group>"; };
+		241673B8FA6C91318E5255461995427B /* Pods-MCXIApplication-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MCXIApplication-frameworks.sh"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3373E73A0A5DBD319B2C684F7F784AC7 /* Pods-MCXIApplication-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCXIApplication-Info.plist"; sourceTree = "<group>"; };
+		4C1EC4CB54642DA5488E5509A9EB00D7 /* appstore-card-transition.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "appstore-card-transition.release.xcconfig"; sourceTree = "<group>"; };
+		51E553E9F984F60D374D0B84A127B4B0 /* appstore-card-transition.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "appstore-card-transition.modulemap"; sourceTree = "<group>"; };
+		59167F19383EB9ED41AE41A9134E0017 /* Pods_MCXIApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MCXIApplication.framework; path = "Pods-MCXIApplication.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5DC88C8F955B67844A235A451F9FD10A /* appstore-card-transition-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "appstore-card-transition-prefix.pch"; sourceTree = "<group>"; };
+		6C4DF994157FE80171084100748DF6CA /* CardPresentationController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardPresentationController.swift; path = Sources/AppstoreTransition/CardPresentationController.swift; sourceTree = "<group>"; };
+		71488752C539B94044C72FABE40CB07F /* appstore-card-transition-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "appstore-card-transition-Info.plist"; sourceTree = "<group>"; };
+		7227FAF78E20B4249C6647F665931D46 /* AppstoreTransition.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AppstoreTransition.h; path = Sources/AppstoreTransition/AppstoreTransition.h; sourceTree = "<group>"; };
+		79FE67ECC85E36DBE42B5955483A8D21 /* AppstoreTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AppstoreTransition.framework; path = "appstore-card-transition.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7ABEB7E9B43E88353DA6C673901D048E /* Pods-MCXIApplication-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-MCXIApplication-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7FA3D13E89A3BF6269140F7392DF028E /* Pods-MCXIApplication-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MCXIApplication-umbrella.h"; sourceTree = "<group>"; };
+		81C1DC9D21AF217B5CB8F952971C72B1 /* appstore-card-transition-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "appstore-card-transition-umbrella.h"; sourceTree = "<group>"; };
+		92A1FD37FF8E5AE974CF275D7C07E78E /* Pods-MCXIApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MCXIApplication.debug.xcconfig"; sourceTree = "<group>"; };
+		973FCB2AF9D3F6C90B7840B67A822B50 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+Extension.swift"; path = "Sources/AppstoreTransition/UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AB2ECF5572CC5538E69E94FE0ACB6815 /* PresentCardAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PresentCardAnimator.swift; path = Sources/AppstoreTransition/PresentCardAnimator.swift; sourceTree = "<group>"; };
+		B0FFED2153BA6F61E8AAFD83D20C49DE /* DismissCardAnimator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DismissCardAnimator.swift; path = Sources/AppstoreTransition/DismissCardAnimator.swift; sourceTree = "<group>"; };
+		B58E13F162B215D22201C93978BE3306 /* Pods-MCXIApplication-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MCXIApplication-acknowledgements.plist"; sourceTree = "<group>"; };
+		B7BF9707D88BDAF6573D4B87D2AEFE43 /* CardTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardTransition.swift; path = Sources/AppstoreTransition/CardTransition.swift; sourceTree = "<group>"; };
+		C3D684D59F09CCE9D932EB8967FC4077 /* Pods-MCXIApplication.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-MCXIApplication.modulemap"; sourceTree = "<group>"; };
+		C48299E7FA45297A535CCF29332187F0 /* appstore-card-transition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "appstore-card-transition-dummy.m"; sourceTree = "<group>"; };
+		EE47A76C85FCDF950EEFA2173595F46D /* CardDetailViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CardDetailViewController.swift; path = Sources/AppstoreTransition/CardDetailViewController.swift; sourceTree = "<group>"; };
+		F32D8DCCF24C4CFF7AC19ACC1B4DBA5D /* Pods-MCXIApplication-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MCXIApplication-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		58F440B266214E9984738089CFE97E2D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12FC4B98FD934F70465E89443BE0B382 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C2AC1E6FF20D065E254384F9F3172BB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC63CD1757E15CBD0814C56BC45A0B92 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		003E521A72182EE8C76013AD85C36DDD /* Pods-MCXIApplication */ = {
+			isa = PBXGroup;
+			children = (
+				C3D684D59F09CCE9D932EB8967FC4077 /* Pods-MCXIApplication.modulemap */,
+				7ABEB7E9B43E88353DA6C673901D048E /* Pods-MCXIApplication-acknowledgements.markdown */,
+				B58E13F162B215D22201C93978BE3306 /* Pods-MCXIApplication-acknowledgements.plist */,
+				F32D8DCCF24C4CFF7AC19ACC1B4DBA5D /* Pods-MCXIApplication-dummy.m */,
+				241673B8FA6C91318E5255461995427B /* Pods-MCXIApplication-frameworks.sh */,
+				3373E73A0A5DBD319B2C684F7F784AC7 /* Pods-MCXIApplication-Info.plist */,
+				7FA3D13E89A3BF6269140F7392DF028E /* Pods-MCXIApplication-umbrella.h */,
+				92A1FD37FF8E5AE974CF275D7C07E78E /* Pods-MCXIApplication.debug.xcconfig */,
+				0C453E323974757B16AFD4DDEE9089D5 /* Pods-MCXIApplication.release.xcconfig */,
+			);
+			name = "Pods-MCXIApplication";
+			path = "Target Support Files/Pods-MCXIApplication";
+			sourceTree = "<group>";
+		};
+		02E3685E83587EA43C78CF32E7EF8FCC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				51E553E9F984F60D374D0B84A127B4B0 /* appstore-card-transition.modulemap */,
+				C48299E7FA45297A535CCF29332187F0 /* appstore-card-transition-dummy.m */,
+				71488752C539B94044C72FABE40CB07F /* appstore-card-transition-Info.plist */,
+				5DC88C8F955B67844A235A451F9FD10A /* appstore-card-transition-prefix.pch */,
+				81C1DC9D21AF217B5CB8F952971C72B1 /* appstore-card-transition-umbrella.h */,
+				055591E00CF7A27EA14B37A26D266CC7 /* appstore-card-transition.debug.xcconfig */,
+				4C1EC4CB54642DA5488E5509A9EB00D7 /* appstore-card-transition.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/appstore-card-transition";
+			sourceTree = "<group>";
+		};
+		3CBA92033FD5971DB825007D33D9F28D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79FE67ECC85E36DBE42B5955483A8D21 /* AppstoreTransition.framework */,
+				59167F19383EB9ED41AE41A9134E0017 /* Pods_MCXIApplication.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6B39C1B97A42F182BE701EB0DF9AABE3 /* appstore-card-transition */ = {
+			isa = PBXGroup;
+			children = (
+				7227FAF78E20B4249C6647F665931D46 /* AppstoreTransition.h */,
+				070F7E82879E8AA9358A6057A6FC317F /* CardCollectionViewCell.swift */,
+				EE47A76C85FCDF950EEFA2173595F46D /* CardDetailViewController.swift */,
+				6C4DF994157FE80171084100748DF6CA /* CardPresentationController.swift */,
+				B7BF9707D88BDAF6573D4B87D2AEFE43 /* CardTransition.swift */,
+				B0FFED2153BA6F61E8AAFD83D20C49DE /* DismissCardAnimator.swift */,
+				AB2ECF5572CC5538E69E94FE0ACB6815 /* PresentCardAnimator.swift */,
+				129FB34D8291BEA45475BF2BFEB7054A /* UIView+Extension.swift */,
+				973FCB2AF9D3F6C90B7840B67A822B50 /* UIViewController+Extension.swift */,
+				02E3685E83587EA43C78CF32E7EF8FCC /* Support Files */,
+			);
+			name = "appstore-card-transition";
+			path = "appstore-card-transition";
+			sourceTree = "<group>";
+		};
+		838158BCD0630AE432E1F3D5C19AAB94 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				003E521A72182EE8C76013AD85C36DDD /* Pods-MCXIApplication */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				D90DD23F66084CADDDD4CAF7D82579A3 /* Pods */,
+				3CBA92033FD5971DB825007D33D9F28D /* Products */,
+				838158BCD0630AE432E1F3D5C19AAB94 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D90DD23F66084CADDDD4CAF7D82579A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B39C1B97A42F182BE701EB0DF9AABE3 /* appstore-card-transition */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A2CC11652EF032819513C11550E1E7B2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46464DD5A2A4CEE72D88FAA166331605 /* Pods-MCXIApplication-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFB414BBC039654954F97D6AF183F296 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2BB2E96BCD79F2998A8CBA823FAA08A7 /* appstore-card-transition-umbrella.h in Headers */,
+				E61C6F88D3860AD33135EA1B483CDE5D /* AppstoreTransition.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3BAB566AD976F04685727CAAD5C9EC22 /* Pods-MCXIApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC13476BB05293848FD9B4E2F2407EC7 /* Build configuration list for PBXNativeTarget "Pods-MCXIApplication" */;
+			buildPhases = (
+				A2CC11652EF032819513C11550E1E7B2 /* Headers */,
+				0120FFB6676D2B4D8EAB6C718E76BD0B /* Sources */,
+				C2AC1E6FF20D065E254384F9F3172BB2 /* Frameworks */,
+				A773AF283DF758E61A242D98290161D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D6CAF77DDB359B867BD51259347B88F2 /* PBXTargetDependency */,
+			);
+			name = "Pods-MCXIApplication";
+			productName = "Pods-MCXIApplication";
+			productReference = 59167F19383EB9ED41AE41A9134E0017 /* Pods_MCXIApplication.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8333080E4416539C89F976BCECB41319 /* appstore-card-transition */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C9B0DFB4B7D6EE2B9A6C2B66148DAE32 /* Build configuration list for PBXNativeTarget "appstore-card-transition" */;
+			buildPhases = (
+				AFB414BBC039654954F97D6AF183F296 /* Headers */,
+				9AFD1A4F9093D088769CC27FF07C1A29 /* Sources */,
+				58F440B266214E9984738089CFE97E2D /* Frameworks */,
+				91612010B60BD24244FEDA0B2A082402 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "appstore-card-transition";
+			productName = "appstore-card-transition";
+			productReference = 79FE67ECC85E36DBE42B5955483A8D21 /* AppstoreTransition.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 3CBA92033FD5971DB825007D33D9F28D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8333080E4416539C89F976BCECB41319 /* appstore-card-transition */,
+				3BAB566AD976F04685727CAAD5C9EC22 /* Pods-MCXIApplication */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		91612010B60BD24244FEDA0B2A082402 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A773AF283DF758E61A242D98290161D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0120FFB6676D2B4D8EAB6C718E76BD0B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7B2B2CC82340122DF5F6C9D164B3294A /* Pods-MCXIApplication-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AFD1A4F9093D088769CC27FF07C1A29 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C14D441C52052F8D9511109DE12F4E5 /* appstore-card-transition-dummy.m in Sources */,
+				0474C82547C23231C653770AEA0C8F83 /* CardCollectionViewCell.swift in Sources */,
+				418AD15A5D8A8F8BF8465AF8BCA4C211 /* CardDetailViewController.swift in Sources */,
+				D18E153459FDD5E6140F04942425758C /* CardPresentationController.swift in Sources */,
+				6DFAF00D142FCE961BCB0AE2B30189A5 /* CardTransition.swift in Sources */,
+				A8867900F7C2C1B50736695F68DC89B0 /* DismissCardAnimator.swift in Sources */,
+				D63BE267BE8E808E3F98922D9192793A /* PresentCardAnimator.swift in Sources */,
+				5A3E06C8C94B73097D29F31C2D6B10EB /* UIView+Extension.swift in Sources */,
+				8852042D957BACB4F9961ACA64434B21 /* UIViewController+Extension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D6CAF77DDB359B867BD51259347B88F2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "appstore-card-transition";
+			target = 8333080E4416539C89F976BCECB41319 /* appstore-card-transition */;
+			targetProxy = 7A0B9081A9389F62EBA6BE1D3BD046C1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		52E143285700B39F0E55B8A5A19B696D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 055591E00CF7A27EA14B37A26D266CC7 /* appstore-card-transition.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/appstore-card-transition/appstore-card-transition-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/appstore-card-transition/appstore-card-transition-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/appstore-card-transition/appstore-card-transition.modulemap";
+				PRODUCT_MODULE_NAME = AppstoreTransition;
+				PRODUCT_NAME = AppstoreTransition;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		6E4859E258D82D933B3D29B3E8547CCF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0C453E323974757B16AFD4DDEE9089D5 /* Pods-MCXIApplication.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		782D8BC06DD756AD49666DF1B595C057 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92A1FD37FF8E5AE974CF275D7C07E78E /* Pods-MCXIApplication.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		B766BFE5A025D81B5950612CC2DB4C3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4C1EC4CB54642DA5488E5509A9EB00D7 /* appstore-card-transition.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/appstore-card-transition/appstore-card-transition-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/appstore-card-transition/appstore-card-transition-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/appstore-card-transition/appstore-card-transition.modulemap";
+				PRODUCT_MODULE_NAME = AppstoreTransition;
+				PRODUCT_NAME = AppstoreTransition;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		ECB437504DF805BD96CAABF97400B526 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				939F1A8F6BCEB7F9F64D9EEE50CAE014 /* Debug */,
+				ECB437504DF805BD96CAABF97400B526 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C9B0DFB4B7D6EE2B9A6C2B66148DAE32 /* Build configuration list for PBXNativeTarget "appstore-card-transition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52E143285700B39F0E55B8A5A19B696D /* Debug */,
+				B766BFE5A025D81B5950612CC2DB4C3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DC13476BB05293848FD9B4E2F2407EC7 /* Build configuration list for PBXNativeTarget "Pods-MCXIApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				782D8BC06DD756AD49666DF1B595C057 /* Debug */,
+				6E4859E258D82D933B3D29B3E8547CCF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

@@ -1,0 +1,16 @@
+PODS:
+  - appstore-card-transition (1.0.4)
+
+DEPENDENCIES:
+  - appstore-card-transition
+
+SPEC REPOS:
+  trunk:
+    - appstore-card-transition
+
+SPEC CHECKSUMS:
+  appstore-card-transition: 660c136cb8a0f0004b2e99e99f1305bfa041f05c
+
+PODFILE CHECKSUM: 234b64d7da04088d284b7142013e5500e57a0e0c
+
+COCOAPODS: 1.9.1
