@@ -37,6 +37,7 @@ class FilesViewController : UIViewController{
         cardCollection.delegate = self
         cardCollection.dataSource = self
         cardCollection.register(AnimationFileTableViewCell.self, forCellWithReuseIdentifier: "NoRecentFile")
+        cardCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "RecentFile")
         setUpConstraints()
     }
     
@@ -63,10 +64,20 @@ class FilesViewController : UIViewController{
     
     @objc func addFileRecent(_ sender : Any){
         noFile = false
-        nameFile.append("ciao")
-        cardCollection.reloadData()
+        if nameFile.count < 15 {
+            print(nameFile.count)
+            self.nameFile.append("ciao")
+        }
+        else {
+            self.nameFile.remove(at: nameFile.count-1)
+            self.nameFile.append("ciao")
+        }
+        DispatchQueue.main.async {
+            self.cardCollection.performBatchUpdates({
+                self.cardCollection.insertItems(at: [[0, 0]])
+            }, completion: {( true )in ()})
+        }
     }
-    
     
 }
 
@@ -92,7 +103,8 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoRecentFile", for: indexPath) as! AnimationFileTableViewCell
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoRecentFile", for: indexPath) as! AnimationFileTableViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecentFile", for: indexPath)
+            cell.backgroundColor = .gray
             return cell
         }
         
@@ -102,7 +114,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         if noFile {
             return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         } else {
-            return CGSize(width: 300, height: 300)
+            return CGSize(width: 150, height: 150)
         }
     }
     
@@ -115,10 +127,6 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         }
         
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
-    
+
 }
 
