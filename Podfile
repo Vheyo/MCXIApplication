@@ -7,6 +7,7 @@ target 'MCXIApplication' do
 
   # Pods for MCXIApplication
   pod 'appstore-card-transition'
+  pod 'lottie-ios'
 
 
 end

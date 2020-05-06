@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38AD56452462C56200622D31 /* NoFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 38AD56442462C56200622D31 /* NoFile.json */; };
+		38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */; };
 		7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D72460B2A60021CA4F /* AppDelegate.swift */; };
 		7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D92460B2A60021CA4F /* SceneDelegate.swift */; };
 		7509E2DF2460B2A60021CA4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7509E2DD2460B2A60021CA4F /* Main.storyboard */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38AD56442462C56200622D31 /* NoFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NoFile.json; sourceTree = "<group>"; };
+		38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFileTableViewCell.swift; sourceTree = "<group>"; };
 		7509E2D42460B2A60021CA4F /* MCXIApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCXIApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509E2D72460B2A60021CA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7509E2D92460B2A60021CA4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +96,8 @@
 				7509E2E52460B2A70021CA4F /* Info.plist */,
 				7509E2F32460B7630021CA4F /* Type2ViewController.swift */,
 				7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */,
+				38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */,
+				38AD56442462C56200622D31 /* NoFile.json */,
 				7509E2FA2460BA650021CA4F /* TransitionXib */,
 			);
 			path = MCXIApplication;
@@ -185,6 +191,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38AD56452462C56200622D31 /* NoFile.json in Resources */,
 				7509E2E42460B2A70021CA4F /* LaunchScreen.storyboard in Resources */,
 				7509E2E12460B2A70021CA4F /* Assets.xcassets in Resources */,
 				7509E2DF2460B2A60021CA4F /* Main.storyboard in Resources */,
@@ -247,6 +254,7 @@
 				7509E2F42460B7640021CA4F /* Type2ViewController.swift in Sources */,
 				7509E2F12460B39F0021CA4F /* FilesViewController.swift in Sources */,
 				7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */,
+				38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */,
 				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
 			);

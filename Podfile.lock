@@ -1,16 +1,20 @@
 PODS:
   - appstore-card-transition (1.0.4)
+  - lottie-ios (3.1.6)
 
 DEPENDENCIES:
   - appstore-card-transition
+  - lottie-ios
 
 SPEC REPOS:
   trunk:
     - appstore-card-transition
+    - lottie-ios
 
 SPEC CHECKSUMS:
   appstore-card-transition: 660c136cb8a0f0004b2e99e99f1305bfa041f05c
+  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
 
-PODFILE CHECKSUM: 234b64d7da04088d284b7142013e5500e57a0e0c
+PODFILE CHECKSUM: 1b38894c507462daea62eee4c5e9f6ed72a200b7
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.8.4
