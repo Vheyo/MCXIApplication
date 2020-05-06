@@ -18,6 +18,7 @@
 		7509E2F42460B7640021CA4F /* Type2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2F32460B7630021CA4F /* Type2ViewController.swift */; };
 		7509E2F82460BA3C0021CA4F /* Type2CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */; };
 		7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */; };
+		7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */; };
 		F322504D17C1F14A83F48635 /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		7509E2F32460B7630021CA4F /* Type2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type2ViewController.swift; sourceTree = "<group>"; };
 		7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Type2CollectionViewCell.xib; sourceTree = "<group>"; };
 		7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type2CollectionViewCell.swift; sourceTree = "<group>"; };
+		7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomboExcerciesViewController.swift; sourceTree = "<group>"; };
 		AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCXIApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00ABD8E286FBDDF04895ED0 /* Pods-MCXIApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.release.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.release.xcconfig"; sourceTree = "<group>"; };
 		B2FE5F6EEA4F112CBBE706E5 /* Pods-MCXIApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.debug.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
 				7509E2E52460B2A70021CA4F /* Info.plist */,
 				7509E2F32460B7630021CA4F /* Type2ViewController.swift */,
+				7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */,
 				7509E2FA2460BA650021CA4F /* TransitionXib */,
 			);
 			path = MCXIApplication;
@@ -244,6 +247,7 @@
 				7509E2F42460B7640021CA4F /* Type2ViewController.swift in Sources */,
 				7509E2F12460B39F0021CA4F /* FilesViewController.swift in Sources */,
 				7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */,
+				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
