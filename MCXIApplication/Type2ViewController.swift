@@ -34,6 +34,18 @@ class Type2ViewController: UIViewController {
         return buttonPlay
     }()
     
+    
+    private var cardCollection : UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cardCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
+        layout.scrollDirection = .vertical
+        cardCollection.showsVerticalScrollIndicator = false
+        cardCollection.isScrollEnabled = false
+        cardCollection.translatesAutoresizingMaskIntoConstraints = false
+        cardCollection.backgroundColor = .clear
+        return cardCollection
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -59,24 +71,47 @@ class Type2ViewController: UIViewController {
             descriptionExercise.text = descrip
         }
         
-        setUpConstraints()
-        setUpLayoutButtonPlay()
+        if tagButton == 2 {
+            setUpConstraintsForThirdExcercise()
+        }   else {
+            setUpConstraintsForFirstSecondExcercise()
+            setUpLayoutButtonPlay()
+        }
+            
         heightConstraint.constant = UIScreen.main.bounds.width * 1.272 - 16.0
     }
     
-    func setUpConstraints(){
+    func setUpConstraintsForFirstSecondExcercise(){
         contentView.addSubview(buttonPlay)
         
         NSLayoutConstraint.activate([
             descriptionExercise.heightAnchor.constraint(equalToConstant: 200),
             
             
-            buttonPlay.topAnchor.constraint(equalTo: descriptionExercise.bottomAnchor, constant: 30),
+            buttonPlay.topAnchor.constraint(equalTo: descriptionExercise.bottomAnchor, constant: 20),
             buttonPlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             buttonPlay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             buttonPlay.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
             buttonPlay.heightAnchor.constraint(equalToConstant: 80)
             
+        ])
+    }
+    
+    func setUpConstraintsForThirdExcercise(){
+        cardCollection.delegate = self
+        cardCollection.dataSource = self
+        cardCollection.register(TextToAnswerCollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
+        contentView.addSubview(cardCollection)
+        
+        NSLayoutConstraint.activate([
+            descriptionExercise.heightAnchor.constraint(equalToConstant: 200),
+            
+            
+            cardCollection.topAnchor.constraint(equalTo: descriptionExercise.bottomAnchor, constant: 30),
+            cardCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            cardCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            cardCollection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            cardCollection.heightAnchor.constraint(equalToConstant: 3*80+3*10)
         ])
     }
     
@@ -129,3 +164,43 @@ extension Type2ViewController: CardDetailViewController {
     }
 
 }
+
+extension Type2ViewController : UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt
+        indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! TextToAnswerCollectionViewCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 340, height: 80)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 2, bottom: 3, right: 2)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let vc = ExerciseWithFormViewController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.view.backgroundColor = .white
+            self.present(vc, animated: false)
+        default:
+            print("Altri casi poi li farò")
+        }
+    }
+    
+}
+

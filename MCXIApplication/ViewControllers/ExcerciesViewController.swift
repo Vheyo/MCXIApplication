@@ -52,7 +52,7 @@ extension ExcerciesViewController: UICollectionViewDataSource {
 extension ExcerciesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        showType4(indexPath: indexPath, bottomDismiss: true)
+        showType4(indexPath: indexPath, bottomDismiss: false)
     }
     
     
