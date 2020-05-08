@@ -131,10 +131,12 @@ class CopriScopriViewController: UIViewController {
                 if userAnswer.text == newWordLabel.text{
                     // Inserisci un popUp che scrive corretto
                     addPopUp(text: "Risposta Corretta")
+                    self.userAnswer.isHidden = true
                     generateWordOk = false
                 }else {
                     // Inserisci un popUp che scrive corretto
                     addPopUp(text: "Risposta Sbagliata")
+                    self.userAnswer.isHidden = true
                     generateWordOk = false
                 }
             }
