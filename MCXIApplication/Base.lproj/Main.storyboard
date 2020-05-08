@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -104,6 +104,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9X6-gT-4Jg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-30" y="-404"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="iTX-SZ-NA1">
+            <objects>
+                <viewController id="YeC-jD-Fzu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rpo-0G-9Ne">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="732-cm-Hnv"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47B-I4-Fsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1175" y="-605"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2te-Je-e4O">
@@ -236,6 +251,7 @@
                         <outlet property="titleLabel" destination="TW2-6H-tW0" id="JHM-3m-WI8"/>
                         <segue destination="zCI-qJ-pYI" kind="modal" identifier="Rombo" modalPresentationStyle="fullScreen" id="kRh-6Z-ZQe"/>
                         <segue destination="dH5-TQ-k8O" kind="modal" identifier="CopriEScopri" modalPresentationStyle="fullScreen" id="L64-Cv-jNe"/>
+                        <segue destination="YeC-jD-Fzu" kind="modal" modalPresentationStyle="fullScreen" id="47i-cv-YSj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pkf-cR-qug" userLabel="First Responder" sceneMemberID="firstResponder"/>
