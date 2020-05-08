@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -132,7 +132,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kox-vP-Jd1">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kox-vP-Jd1">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dPY-DT-l3o">
@@ -184,10 +184,10 @@
                                             <constraint firstAttribute="trailing" secondItem="Voe-Yc-fNw" secondAttribute="trailing" id="wXu-5I-p9x"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-gC-9U2">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-gC-9U2">
                                         <rect key="frame" x="0.0" y="420" width="414" height="512"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="klO-gh-e34">
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="klO-gh-e34">
                                                 <rect key="frame" x="16" y="16" width="382" height="496"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -198,8 +198,6 @@
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="klO-gh-e34" firstAttribute="top" secondItem="1rp-gC-9U2" secondAttribute="top" constant="16" id="CCP-NY-3tn"/>
-                                            <constraint firstAttribute="height" constant="512" id="bkc-xL-QN1"/>
-                                            <constraint firstAttribute="bottom" secondItem="klO-gh-e34" secondAttribute="bottom" id="df4-UL-obp"/>
                                             <constraint firstAttribute="trailing" secondItem="klO-gh-e34" secondAttribute="trailing" constant="16" id="nUV-Ib-VWp"/>
                                             <constraint firstItem="klO-gh-e34" firstAttribute="leading" secondItem="1rp-gC-9U2" secondAttribute="leading" constant="16" id="u7a-nH-j3v"/>
                                         </constraints>
@@ -230,6 +228,8 @@
                     <connections>
                         <outlet property="backgroundImage" destination="Voe-Yc-fNw" id="IK0-yo-BUn"/>
                         <outlet property="contentScrollView" destination="kox-vP-Jd1" id="utc-oK-FSM"/>
+                        <outlet property="contentView" destination="1rp-gC-9U2" id="EM5-t4-YZD"/>
+                        <outlet property="descriptionExercise" destination="klO-gh-e34" id="8gR-Ax-dEE"/>
                         <outlet property="headerView" destination="dPY-DT-l3o" id="uwZ-T3-bIX"/>
                         <outlet property="heightConstraint" destination="Gon-7w-qAZ" id="IG3-W6-iJH"/>
                         <outlet property="subtitleLabel" destination="zFI-GM-2hF" id="1wf-PH-ws0"/>

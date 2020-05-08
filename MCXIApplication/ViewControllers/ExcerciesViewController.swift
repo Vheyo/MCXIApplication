@@ -71,6 +71,7 @@ extension ExcerciesViewController: UICollectionViewDelegate {
         viewController.titleLabe = "Nome dell'esercizio"
         viewController.subtitle = "Descrizione"
         viewController.background = UIImage(named: "pioggia")
+        viewController.tagButton = indexPath.row
         
         // If `modalPresentationStyle` is not `.fullScreen`, this should be set to true to make status bar depends on presented vc.
         //viewController.modalPresentationCapturesStatusBarAppearance = true
@@ -83,5 +84,27 @@ extension ExcerciesViewController: UICollectionViewDelegate {
 
 extension ExcerciesViewController: CardsViewController {
     
+}
+
+extension UIView {
+
+    func addShadowView(isShadowPathEnabled: Bool = true, shadowColor: UIColor = .black, shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.1, shadowOffset: CGSize = CGSize(width: 0.3, height: 0.3)) -> ShadowView {
+        let shadowView = ShadowView()
+        shadowView.translatesAutoresizingMaskIntoConstraints = false
+        shadowView.isShadowPathEnabled = isShadowPathEnabled
+        shadowView.shadowColor = shadowColor
+        shadowView.shadowRadius = shadowRadius
+        shadowView.shadowOpacity = shadowOpacity
+        shadowView.shadowOffset = shadowOffset
+        shadowView.layer.cornerRadius = layer.cornerRadius
+        superview?.insertSubview(shadowView, belowSubview: self)
+        
+        shadowView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+        shadowView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
+        shadowView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 10).isActive = true
+        shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 6).isActive = true
+        
+        return shadowView
+    }
 }
 
