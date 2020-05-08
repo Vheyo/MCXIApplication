@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		385C741D24654905009EB1A2 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C741C24654905009EB1A2 /* ShadowView.swift */; };
+		385C741F24655A64009EB1A2 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C741E24655A64009EB1A2 /* CheckBox.swift */; };
+		385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */; };
+		385C742324655A77009EB1A2 /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C742224655A77009EB1A2 /* PopUpViewController.swift */; };
+		385C742524655AC9009EB1A2 /* FormCopriScopriViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */; };
 		38AD56452462C56200622D31 /* NoFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 38AD56442462C56200622D31 /* NoFile.json */; };
 		38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */; };
 		7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D72460B2A60021CA4F /* AppDelegate.swift */; };
@@ -28,6 +32,10 @@
 
 /* Begin PBXFileReference section */
 		385C741C24654905009EB1A2 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		385C741E24655A64009EB1A2 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
+		385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopriScopriViewController.swift; sourceTree = "<group>"; };
+		385C742224655A77009EB1A2 /* PopUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCopriScopriViewController.swift; sourceTree = "<group>"; };
 		38AD56442462C56200622D31 /* NoFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NoFile.json; sourceTree = "<group>"; };
 		38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFileTableViewCell.swift; sourceTree = "<group>"; };
 		7509E2D42460B2A60021CA4F /* MCXIApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCXIApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,10 +109,14 @@
 				7509E2E52460B2A70021CA4F /* Info.plist */,
 				7509E2F32460B7630021CA4F /* Type2ViewController.swift */,
 				385C741C24654905009EB1A2 /* ShadowView.swift */,
+				385C741E24655A64009EB1A2 /* CheckBox.swift */,
+				385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */,
+				385C742224655A77009EB1A2 /* PopUpViewController.swift */,
 				7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */,
 				38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */,
 				38AD56442462C56200622D31 /* NoFile.json */,
 				7509E2FA2460BA650021CA4F /* TransitionXib */,
+				385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -262,8 +274,12 @@
 				385C741D24654905009EB1A2 /* ShadowView.swift in Sources */,
 				7509E2F12460B39F0021CA4F /* FilesViewController.swift in Sources */,
 				7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */,
+				385C741F24655A64009EB1A2 /* CheckBox.swift in Sources */,
+				385C742524655AC9009EB1A2 /* FormCopriScopriViewController.swift in Sources */,
+				385C742324655A77009EB1A2 /* PopUpViewController.swift in Sources */,
 				38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */,
 				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
+				385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
