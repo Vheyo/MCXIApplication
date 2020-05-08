@@ -27,16 +27,15 @@ class RomboExcerciesViewController : UIViewController{
                 timer.invalidate()
             }
         })
-        DispatchQueue.main.asyncAfter(deadline: .now()+5.0, execute: {
-            Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.showText), userInfo: nil, repeats: true)
-        })
+        let tapNextGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showText))
+        view.addGestureRecognizer(tapNextGestureRecognizer);
     }
     override func viewWillAppear(_ animated: Bool) {
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
     }
     
-    @objc func showText(timer : Timer){
+    @objc func showText(){
         let start = textSplitted.index(textSplitted.startIndex, offsetBy: indexWord)
         let end = textSplitted.index(textSplitted.endIndex, offsetBy: -(textSplitted.endIndex-indexWord*2-1))
         var range = 0..<1
@@ -66,7 +65,7 @@ class RomboExcerciesViewController : UIViewController{
         }
         
         if indexWord > textSplitted.count {
-            timer.invalidate()
+            return
         }
         
     }

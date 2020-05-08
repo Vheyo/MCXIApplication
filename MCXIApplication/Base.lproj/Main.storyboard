@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,6 +44,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="MmJ-4b-zZH"/>
                     </view>
+                    <navigationItem key="navigationItem" id="ivl-RD-mHe"/>
                     <connections>
                         <outlet property="textView" destination="yV9-bk-dyw" id="JuX-Zb-tff"/>
                     </connections>
@@ -234,6 +235,7 @@
                         <outlet property="heightConstraint" destination="Gon-7w-qAZ" id="IG3-W6-iJH"/>
                         <outlet property="subtitleLabel" destination="zFI-GM-2hF" id="1wf-PH-ws0"/>
                         <outlet property="titleLabel" destination="TW2-6H-tW0" id="JHM-3m-WI8"/>
+                        <segue destination="zCI-qJ-pYI" kind="modal" identifier="Rombo" modalPresentationStyle="fullScreen" id="kRh-6Z-ZQe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pkf-cR-qug" userLabel="First Responder" sceneMemberID="firstResponder"/>

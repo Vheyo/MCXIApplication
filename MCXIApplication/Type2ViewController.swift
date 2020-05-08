@@ -89,8 +89,19 @@ class Type2ViewController: UIViewController {
     
     @objc func showExcercise(_ sender : UIButton){
         print(sender.tag)
+        switch sender.tag{
+        case 0:
+            performSegue(withIdentifier: "CopriEScopri", sender: self);
+        case 1:
+            performSegue(withIdentifier: "Rombo", sender: self);
+        case 2:
+            performSegue(withIdentifier: "Comprensione", sender: self)
+        default :
+            print("Fatal error");
     }
+    
 
+    }
 }
 
 extension Type2ViewController: UIScrollViewDelegate {
