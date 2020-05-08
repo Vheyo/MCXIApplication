@@ -30,6 +30,7 @@
 		7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */; };
 		7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */; };
 		7518939F2465541700C5B695 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518939E2465541700C5B695 /* AppUtility.swift */; };
+		751893A12465FD5600C5B695 /* TestiEsercizi.json in Resources */ = {isa = PBXBuildFile; fileRef = 751893A02465FD5600C5B695 /* TestiEsercizi.json */; };
 		F322504D17C1F14A83F48635 /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type2CollectionViewCell.swift; sourceTree = "<group>"; };
 		7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomboExcerciesViewController.swift; sourceTree = "<group>"; };
 		7518939E2465541700C5B695 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
+		751893A02465FD5600C5B695 /* TestiEsercizi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestiEsercizi.json; sourceTree = "<group>"; };
 		AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCXIApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00ABD8E286FBDDF04895ED0 /* Pods-MCXIApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.release.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.release.xcconfig"; sourceTree = "<group>"; };
 		B2FE5F6EEA4F112CBBE706E5 /* Pods-MCXIApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.debug.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				383C97E22465DEA200812FDF /* TextToAnswerCollectionViewCell.swift */,
 				383C97E82465EA3C00812FDF /* RadioButton.swift */,
 				383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */,
+				751893A02465FD5600C5B695 /* TestiEsercizi.json */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				38AD56452462C56200622D31 /* NoFile.json in Resources */,
 				7509E2E42460B2A70021CA4F /* LaunchScreen.storyboard in Resources */,
 				7509E2E12460B2A70021CA4F /* Assets.xcassets in Resources */,
+				751893A12465FD5600C5B695 /* TestiEsercizi.json in Resources */,
 				7509E2DF2460B2A60021CA4F /* Main.storyboard in Resources */,
 				7509E2F82460BA3C0021CA4F /* Type2CollectionViewCell.xib in Resources */,
 			);

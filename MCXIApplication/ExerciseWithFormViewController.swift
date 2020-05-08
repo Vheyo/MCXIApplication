@@ -11,7 +11,12 @@ import UIKit
 class ExerciseWithFormViewController: UIViewController {
     
     var numberCount : Int = 0
-
+    var numText : Int = 0
+    var domande_Array = [String]()
+    var risposteEsatte_Array = [String]()
+    var risposte_Array = [String]()
+    var questionIndex : Int = 0
+    var answerIndex : Int = 4
     private var formQA : UIView = {
         let formQA = UIView()
         formQA.translatesAutoresizingMaskIntoConstraints = false
@@ -107,8 +112,59 @@ class ExerciseWithFormViewController: UIViewController {
         super.viewDidLoad()
         setUpAlternateButton()
         setUpTextToRead()
-//        setUpConstraints()
+        //        setUpConstraints()
         // Do any additional setup after loading the view.
+        let jsonResult = ExerciseWithFormViewController.readJSONFromFile(fileName: "TestiEsercizi") as AnyObject
+        
+        do{
+            let testo_Array : NSArray = (jsonResult["TestiEsercizi"] as? NSArray)!
+            let testo : NSDictionary = testo_Array[numText] as! NSDictionary
+            let textToShow = testo["Testo"] as! NSString
+            textToRead.text = textToShow as String
+            let domande_NSArray = (testo["Domande"] as? NSArray)!
+            for element in domande_NSArray{
+                let tmpString = (element as! NSString) as String
+                domande_Array.append(tmpString)
+            }
+            questionLabel.text = domande_Array[0]
+            let risposte_NSArray : NSArray = (testo["Risposte"] as? NSArray)!
+            for element in risposte_NSArray{
+                let tmpString = (element as! NSString) as String
+                risposte_Array.append(tmpString)
+            }
+            
+            firstAnswer.text = risposte_Array[0]
+            secondAnswer.text = risposte_Array[1]
+            thirdAnswer.text = risposte_Array[2]
+            fourthAnswer.text = risposte_Array[3]
+            
+            let risposteEsatte_NSArray : NSArray = (testo["RisposteEsatte"] as? NSArray)!
+            for elements in risposteEsatte_NSArray{
+                let tmpString = (elements as! NSString) as String
+                risposteEsatte_Array.append(tmpString);
+            }
+            
+        }
+        catch {
+            print("json reading failed");
+        }
+        
+    }
+    
+    static func readJSONFromFile(fileName: String) -> Any? {
+        var json: Any?
+        if let path = Bundle.main.path(forResource: fileName, ofType: "json") {
+            do {
+                let fileUrl = URL(fileURLWithPath: path)
+                // Getting data from JSON file using the file URL
+                let data = try Data(contentsOf: fileUrl, options: .mappedIfSafe)
+                json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+            } catch {
+                // Handle error here
+                print("FATAL ERROR")
+            }
+        }
+        return json
     }
     
     func setUpAlternateButton(){
@@ -149,8 +205,8 @@ class ExerciseWithFormViewController: UIViewController {
         formQA.addSubview(radioButtonFourth)
         
         NSLayoutConstraint.activate([
-        
-        
+            
+            
             formQA.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             formQA.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             formQA.heightAnchor.constraint(equalToConstant: 400),
@@ -180,7 +236,7 @@ class ExerciseWithFormViewController: UIViewController {
             radioButtonFourth.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 10),
             radioButtonFourth.heightAnchor.constraint(equalToConstant: 40),
             radioButtonFourth.widthAnchor.constraint(equalToConstant: 40),
-        
+            
             firstAnswer.centerYAnchor.constraint(equalTo: radioButtonFirst.centerYAnchor),
             firstAnswer.leadingAnchor.constraint(equalTo: radioButtonFirst.trailingAnchor,constant:  10),
             firstAnswer.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
@@ -196,21 +252,72 @@ class ExerciseWithFormViewController: UIViewController {
             fourthAnswer.centerYAnchor.constraint(equalTo: radioButtonFourth.centerYAnchor),
             fourthAnswer.leadingAnchor.constraint(equalTo: radioButtonFourth.trailingAnchor,constant:  10),
             fourthAnswer.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
-        
+            
         ])
     }
     
+    /* TITO SCUSAMI PER QUESTO CODICE IGNOBILE */
+    
+    func checkAnswer() -> Bool{
+        if radioButtonFirst.isSelected == true{
+            if firstAnswer.text == risposteEsatte_Array[questionIndex]{
+                questionIndex += 1;
+                return true;
+            }
+        }
+        if radioButtonSecond.isSelected == true{
+            if secondAnswer.text == risposteEsatte_Array[questionIndex]{
+                questionIndex += 1;
+                return true;
+            }
+        }
+        if radioButtonThird.isSelected == true{
+            if thirdAnswer.text == risposteEsatte_Array[questionIndex]{
+                questionIndex += 1;
+                return true;
+            }
+        }
+        if radioButtonFourth.isSelected == true{
+            if fourthAnswer.text == risposteEsatte_Array[questionIndex]{
+                questionIndex += 1;
+                return true;
+            }
+        }
+        return false
+    }
+    
+    func chargeNextQuestion(){
+        if questionIndex < domande_Array.count{
+           
+            questionLabel.text = domande_Array[questionIndex]
+            firstAnswer.text = risposte_Array[answerIndex]
+            secondAnswer.text = risposte_Array[answerIndex+1];
+            thirdAnswer.text = risposte_Array[answerIndex+2];
+            fourthAnswer.text = risposte_Array[answerIndex+3];
+            answerIndex += 4
+        }
+    }
     
     @objc func playMode(_ sender : UIButton){
         if numberCount == 0 {
             buttonPlay.setTitle("FineToRead", for: .normal)
             numberCount = 1
-        } else if numberCount == 1 {
+        }
+        else if numberCount == 1 {
             textToRead.removeFromSuperview()
             buttonPlay.setTitle("Rispondi", for: .normal)
             setUpConstraints()
+            numberCount = 2
+        }
+        else if numberCount == 2 {
+            if(checkAnswer() == true){
+                chargeNextQuestion()
+                numberCount = 1;
+            }
+            
         }
         
     }
+    
 
 }

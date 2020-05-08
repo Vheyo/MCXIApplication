@@ -196,7 +196,9 @@ extension Type2ViewController : UICollectionViewDataSource, UICollectionViewDele
             let vc = ExerciseWithFormViewController()
             vc.modalPresentationStyle = .fullScreen
             vc.view.backgroundColor = .white
+            vc.numText = indexPath.row
             self.present(vc, animated: false)
+            
         default:
             print("Altri casi poi li farò")
         }

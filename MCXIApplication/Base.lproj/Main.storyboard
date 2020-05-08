@@ -105,10 +105,10 @@
             </objects>
             <point key="canvasLocation" x="-30" y="-404"/>
         </scene>
-        <!--View Controller-->
+        <!--Exercise With Form View Controller-->
         <scene sceneID="iTX-SZ-NA1">
             <objects>
-                <viewController id="YeC-jD-Fzu" sceneMemberID="viewController">
+                <viewController id="YeC-jD-Fzu" customClass="ExerciseWithFormViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rpo-0G-9Ne">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
