@@ -18,13 +18,15 @@ class RomboExcerciesViewController : UIViewController{
  """
     var textSplitted = [String.SubSequence]()
     override func viewDidLoad() {
+        AppUtility.lockOrientation(.landscape)
         var initialTimer = 5
         textSplitted = textToShow.split(separator: " ")
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
             self.textView.text = "\(initialTimer)"
             initialTimer -= 1
-            if initialTimer == 0 {
+            if initialTimer == -1 {
                 timer.invalidate()
+                self.showText()
             }
         })
         let tapNextGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showText))
@@ -33,6 +35,9 @@ class RomboExcerciesViewController : UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         let value = UIInterfaceOrientation.landscapeRight.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        AppUtility.lockOrientation(.all)
     }
     
     @objc func showText(){
