@@ -169,11 +169,22 @@ class CopriScopriViewController: UIViewController {
 
 extension UIViewController {
     func addPopUp(text : String){
-        let popOverVC = PopUpViewController()
-        self.addChild(popOverVC)
-        popOverVC.view.frame = self.view.frame
-        self.view.addSubview(popOverVC.view)
-        popOverVC.suggestLabel.text = text
-        popOverVC.didMove(toParent: self)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+            let popOverVC = PopUpViewController()
+            popOverVC.suggestLabel.text = text
+            self.view.addSubview(popOverVC)
+        }
+        
     }
 }
+
+//extension UIViewController {
+//    func addPopUp(text : String){
+//        let popOverVC = PopUpViewController()
+//        self.addChild(popOverVC)
+//        popOverVC.view.frame = self.view.frame
+//        self.view.addSubview(popOverVC.view)
+//        popOverVC.suggestLabel.text = text
+//        popOverVC.didMove(toParent: self)
+//    }
+//}

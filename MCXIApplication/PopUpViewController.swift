@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopUpViewController: UIViewController {
+class PopUpViewController: UIView{
     
     let popUpView : UIView = {
         let popUpView = UIView()
@@ -29,22 +29,27 @@ class PopUpViewController: UIViewController {
         return suggestLabel
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override init(frame: CGRect) {
+        super.init(frame : frame)
+        self.frame = UIScreen.main.bounds
         setUpConstraints()
-        showAnimate()
-        self.view.backgroundColor = UIColor.black.withAlphaComponent(0.4)
-        
-        
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateOut)))
+        animateIn()
+        self.backgroundColor = UIColor.black.withAlphaComponent(0.4)
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
     func setUpConstraints(){
-        view.addSubview(popUpView)
+        addSubview(popUpView)
         popUpView.addSubview(suggestLabel)
         NSLayoutConstraint.activate([
             
-            popUpView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            popUpView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            popUpView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            popUpView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             popUpView.heightAnchor.constraint(equalToConstant: 100),
             popUpView.widthAnchor.constraint(equalToConstant: 200),
             
@@ -55,23 +60,25 @@ class PopUpViewController: UIViewController {
             
         ])
     }
-    
-    func showAnimate(){
-        self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-        self.view.alpha = 0;
-        UIView.animate(withDuration: 0.70, animations: {
-            self.view.alpha = 1.0
-            self.view.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }) { (_) in
-            UIView.animate(withDuration: 0.70, animations: {
-                self.view.alpha = 0;
-                self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
-            }) { (finished) in
-                if finished {
-                    self.view.removeFromSuperview()
-                }
+        
+    @objc func animateOut() {
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            self.popUpView.transform = CGAffineTransform(translationX: 0, y: -self.frame.height)
+        }) { (complete) in
+            if complete {
+                self.removeFromSuperview()
             }
         }
+    }
+    
+    func animateIn(){
+        self.popUpView.transform = CGAffineTransform(translationX: 0, y: -self.frame.height)
+        self.alpha = 0
+        UIView.animate(withDuration: 0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: .curveEaseIn, animations: {
+            self.popUpView.transform = .identity
+            self.alpha = 1
+        })
+        
     }
     
     
