@@ -13,7 +13,7 @@ class ExerciseWithFormViewController: UIViewController {
     var numberCount : Int = 0
     var numText : Int = 0
     var domande_Array = [String]()
-    var risposteEsatte_Array = [String]()
+    var risposteEsatte_Array = [Int]()
     var risposte_Array = [String]()
     var questionIndex : Int = 0
     var answerIndex : Int = 4
@@ -144,8 +144,8 @@ class ExerciseWithFormViewController: UIViewController {
             
             let risposteEsatte_NSArray : NSArray = (testo["RisposteEsatte"] as? NSArray)!
             for elements in risposteEsatte_NSArray{
-                let tmpString = (elements as! NSString) as String
-                risposteEsatte_Array.append(tmpString);
+                let tmpInt = ((elements as! NSInteger) as Int)
+                risposteEsatte_Array.append(tmpInt);
             }
             
         }
@@ -277,38 +277,25 @@ class ExerciseWithFormViewController: UIViewController {
             print("uno è selezionato ")
             //        cosicontrolli il bottone premuto
             print(radioButtonFirst.oneSelected().1.tag)
-        }
-
+            if radioButtonFirst.oneSelected().1.tag == risposteEsatte_Array[questionIndex]{
+                questionIndex += 1;
+                 radioButtonFirst.oneSelected().1.isSelected = false
+                return true
+               
+            }
+            questionIndex += 1
+             radioButtonFirst.oneSelected().1.isSelected = false
+        return false
         
-        
-        if radioButtonFirst.isSelected == true{
-            if firstAnswer.text == risposteEsatte_Array[questionIndex]{
-                questionIndex += 1;
-                return true;
-            }
         }
-        if radioButtonSecond.isSelected == true{
-            if secondAnswer.text == risposteEsatte_Array[questionIndex]{
-                questionIndex += 1;
-                return true;
-            }
-        }
-        if radioButtonThird.isSelected == true{
-            if thirdAnswer.text == risposteEsatte_Array[questionIndex]{
-                questionIndex += 1;
-                return true;
-            }
-        }
-        if radioButtonFourth.isSelected == true{
-            if fourthAnswer.text == risposteEsatte_Array[questionIndex]{
-                questionIndex += 1;
-                return true;
-            }
-        }
+        questionIndex += 1
+         radioButtonFirst.oneSelected().1.isSelected = false
         return false
     }
+        
+       
     
-    func chargeNextQuestion(){
+    func chargeNextQuestion() -> Int{
         if questionIndex < domande_Array.count{
            
             questionLabel.text = domande_Array[questionIndex]
@@ -316,8 +303,23 @@ class ExerciseWithFormViewController: UIViewController {
             secondAnswer.text = risposte_Array[answerIndex+1];
             thirdAnswer.text = risposte_Array[answerIndex+2];
             fourthAnswer.text = risposte_Array[answerIndex+3];
+        
             answerIndex += 4
+            return questionIndex
         }
+        else {
+            questionLabel.text = "HAI FINITO L'ESERCIZIO"
+            firstAnswer.isHidden = true
+            secondAnswer.isHidden = true
+            thirdAnswer.isHidden = true
+            fourthAnswer.isHidden = true
+            radioButtonFirst.isHidden = true
+            radioButtonSecond.isHidden = true
+            radioButtonThird.isHidden = true
+            radioButtonFourth.isHidden = true
+            return questionIndex
+        }
+        
     }
     
     @objc func playMode(_ sender : UIButton){
@@ -333,9 +335,12 @@ class ExerciseWithFormViewController: UIViewController {
         }
         else if numberCount == 2 {
             if(checkAnswer() == true){
-                chargeNextQuestion()
-                numberCount = 1;
+               /*INCREMENTO DI UNA VARIABILE PER TENER TRACCIA DI QUANTE RISPOSTE ESATTE*/
             }
+            if chargeNextQuestion() >= domande_Array.count{
+                buttonPlay.isHidden = true
+            }
+            
             
         }
         

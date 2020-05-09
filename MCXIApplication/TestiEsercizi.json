@@ -4,7 +4,7 @@
             "Testo": "Marta: Ciao Silvia, da quanto tempo non ci vediamo! Come stai? Silvia: Bene grazie. Che piacere vederti! Sono appena tornata da Londra. Sono stata lì tre mesi per studiare inglese. Marta: E come è andata? Silvia: È stata un’esperienza molto interessante. Ho migliorato il mio inglese e ho conosciuto tante persone. A proposito ti presento Beth. Ci siamo conosciute in Inghilterra. Beth è qui per studiare l’italiano. Marta: Piacere di conoscerti Beth. Benvenuta in Italia. Silvia: Domani sera pensiamo di andare al cinema. Vuoi venire anche tu? Marta: Mi piacerebbe, ma domani sera c’è la festa di compleanno di Marco. Perché non venite anche voi? Silvia: non so, non siamo state invitate. Marta: Sicuramente a Marco farà piacere rivederti e conoscere la tua amica. Silvia: Come devo vestirmi? Non so cosa mettermi. È una festa elegante? Marta: No! È una festa tra amici! Io metterò una gonna corta nera con un pullover rosso e gli stivali alti. Se fa freddo metterò il piumino, altrimenti la giacca grigia con la sciarpa. Silvia: Che dici se metto il vestito verde che abbiamo comprato insieme e le scarpe con il tacco? Beth: Io non ho portato molti vestiti. Può andare bene un pantalone nero e la camicia bianca? Ho anche una collana e gli orecchini. Marta: Sarete bellissime! Allora a domani.",
             "Risposte":  ["A New York", "A Parigi", "A Roma", "A Londra","Per andare dal Fidanzato", "Per lavorare", "Per un viaggio", "Per studiare l'inglese"],
             
-            "RisposteEsatte" : ["A Londra","Per studiare l'inglese"],
+            "RisposteEsatte" : [3,3],
             "Domande": ["Silvia è stata:", "Perchè Silvia è andata in inghilterra?"]
         },
         
