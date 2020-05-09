@@ -83,6 +83,7 @@ class ExerciseWithFormViewController: UIViewController {
     private var radioButtonFirst : RadioButton = {
         let radioButtonFirst = RadioButton()
         radioButtonFirst.isSelected = false
+        radioButtonFirst.tag = 0
         radioButtonFirst.translatesAutoresizingMaskIntoConstraints = false
         return radioButtonFirst
     }()
@@ -90,6 +91,7 @@ class ExerciseWithFormViewController: UIViewController {
     private var radioButtonSecond : RadioButton = {
         let radioButtonSecond = RadioButton()
         radioButtonSecond.isSelected = false
+        radioButtonSecond.tag = 1
         radioButtonSecond.translatesAutoresizingMaskIntoConstraints = false
         return radioButtonSecond
     }()
@@ -97,6 +99,7 @@ class ExerciseWithFormViewController: UIViewController {
     private var radioButtonThird : RadioButton = {
         let radioButtonThird  = RadioButton()
         radioButtonThird.isSelected = false
+        radioButtonThird.tag = 2
         radioButtonThird .translatesAutoresizingMaskIntoConstraints = false
         return radioButtonThird
     }()
@@ -104,6 +107,7 @@ class ExerciseWithFormViewController: UIViewController {
     private var radioButtonFourth : RadioButton = {
         let radioButtonFourth = RadioButton()
         radioButtonFourth.isSelected = false
+        radioButtonFourth.tag = 3
         radioButtonFourth.translatesAutoresizingMaskIntoConstraints = false
         return radioButtonFourth
     }()
@@ -259,6 +263,24 @@ class ExerciseWithFormViewController: UIViewController {
     /* TITO SCUSAMI PER QUESTO CODICE IGNOBILE */
     
     func checkAnswer() -> Bool{
+/*
+        La funzione commentata sotto ti permette di vedere
+         se almeno u bottone è selezionato, se uno è selzionato ti restituisce true.
+         Di quello che tu hai fatto quasi tutto è sbagliato, uno secondo me è impostato male il file json. Perchè dico questo, per come hai fatto tu, cioè che vai avanti solo se rispondi bene, se l'utente è coglione dici sempre la setessa risposta oppure si scorda le precedenti può sempre sbagliare e quindi poi questa riga risposteEsatte_Array[questionIndex] da problemi perchè tu incrementi sempre question Index.
+         Due quindi se vuoi la tua logica che va avanti solo se la domanda è giusta devi cambiare il json probabilemnte.
+         Ma dato che i testi sono statici e dato che non vogliamo che lui ha un coefficiente CR = 100, direi di andare avanti anche se sbaglia, in questo caso non devi cambiare il json, no anzi si io direi non di mettere nel json la risposta esatta, ma anzi dire di mettere la poszione della risposta esatta, cioè 0 1 2 3 . Cosi in base al bottone premuto vedi se la risposta è corretta.
+         PEr questo ti ho datto la funzione sotto che oltre a restituirti che bottono è stato premuto ti dice anche il bottone premuto il cui tag confronterai con l'indice della risposta esatta. Cosi eviti anche di fare operazioni sulle stringhe. Inoltre la funzione ti restituisce false e Un riferimento ad un altro se non è stato premuto niente. Quindi utilizza più false come parametro di ritorno ahhah se ti serve, non so perchè non mi faceva restituire nil
+         INoltre ogni volta che passi alla domanda dopo risetta il bottone in questione isSelected = false
+         */
+        // cosi controlli se uno è stato premuto
+        if radioButtonFirst.oneSelected().0 {
+            print("uno è selezionato ")
+            //        cosicontrolli il bottone premuto
+            print(radioButtonFirst.oneSelected().1.tag)
+        }
+
+        
+        
         if radioButtonFirst.isSelected == true{
             if firstAnswer.text == risposteEsatte_Array[questionIndex]{
                 questionIndex += 1;

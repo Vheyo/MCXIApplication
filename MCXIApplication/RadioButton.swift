@@ -53,3 +53,19 @@ class RadioButton: UIButton {
         }
     }
 }
+
+extension RadioButton {
+    func oneSelected () -> (Bool,RadioButton) {
+        if self.isSelected == true {
+            return (true,self)
+        }
+        
+        for aButton:RadioButton in alternateButton! {
+            if aButton.isSelected == true {
+                return (true,aButton)
+            }
+        }
+        
+        return (false,RadioButton())
+    }
+}
