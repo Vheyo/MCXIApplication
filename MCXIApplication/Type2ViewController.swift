@@ -8,7 +8,7 @@
 
 import UIKit
 import AppstoreTransition
-
+var numeroText = Int()
 class Type2ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
@@ -129,8 +129,6 @@ class Type2ViewController: UIViewController {
             performSegue(withIdentifier: "CopriEScopri", sender: self);
         case 1:
             performSegue(withIdentifier: "Rombo", sender: self);
-        case 2:
-            performSegue(withIdentifier: "Comprensione", sender: self)
         default :
             print("Fatal error");
     }
@@ -193,16 +191,37 @@ extension Type2ViewController : UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
+            numeroText = indexPath.row
+            print(numeroText)
             let vc = ExerciseWithFormViewController()
             vc.modalPresentationStyle = .fullScreen
             vc.view.backgroundColor = .white
-            vc.numText = indexPath.row
+            
+            self.present(vc, animated: false)
+        case 1:
+            numeroText = indexPath.row
+            print(numeroText)
+            let vc = ExerciseWithFormViewController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.view.backgroundColor = .white
+            
+            self.present(vc, animated: false)
+        case 2:
+             numeroText = indexPath.row
+            print(numeroText)
+            let vc = ExerciseWithFormViewController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.view.backgroundColor = .white
+           
+            
             self.present(vc, animated: false)
             
         default:
             print("Altri casi poi li farò")
         }
     }
+    
+   
     
 }
 

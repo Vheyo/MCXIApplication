@@ -11,7 +11,7 @@ import UIKit
 class ExerciseWithFormViewController: UIViewController {
     
     var numberCount : Int = 0
-    var numText : Int = 0
+    var numText : Int = numeroText
     var domande_Array = [String]()
     var risposteEsatte_Array = [Int]()
     var risposte_Array = [String]()
@@ -119,10 +119,11 @@ class ExerciseWithFormViewController: UIViewController {
         //        setUpConstraints()
         // Do any additional setup after loading the view.
         let jsonResult = ExerciseWithFormViewController.readJSONFromFile(fileName: "TestiEsercizi") as AnyObject
-        
+        numText = numeroText
         do{
             let testo_Array : NSArray = (jsonResult["TestiEsercizi"] as? NSArray)!
             let testo : NSDictionary = testo_Array[numText] as! NSDictionary
+            print("num text è \(numText)")
             let textToShow = testo["Testo"] as! NSString
             textToRead.text = textToShow as String
             let domande_NSArray = (testo["Domande"] as? NSArray)!
