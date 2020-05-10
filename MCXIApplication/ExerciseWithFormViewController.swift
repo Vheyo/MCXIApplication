@@ -9,12 +9,18 @@
 import UIKit
 
 class ExerciseWithFormViewController: UIViewController {
-    
+    private var start : CFAbsoluteTime!
+    private var diff : CFAbsoluteTime!
     var numberCount : Int = 0
     var numText : Int = numeroText
+//    domande Array sono le stringhe delle domande
     var domande_Array = [String]()
+// posizione risposte esatte
     var risposteEsatte_Array = [Int]()
+// risposte array per ogni domanda
     var risposte_Array = [String]()
+// numero di risposte esatte fatte dall'utente
+    var numberOfAnswerTrue : Int = 0
     var questionIndex : Int = 0
     var answerIndex : Int = 4
     private var formQA : UIView = {
@@ -260,20 +266,7 @@ class ExerciseWithFormViewController: UIViewController {
             
         ])
     }
-    
-    /* TITO SCUSAMI PER QUESTO CODICE IGNOBILE */
-    
     func checkAnswer() -> Bool{
-/*
-        La funzione commentata sotto ti permette di vedere
-         se almeno u bottone è selezionato, se uno è selzionato ti restituisce true.
-         Di quello che tu hai fatto quasi tutto è sbagliato, uno secondo me è impostato male il file json. Perchè dico questo, per come hai fatto tu, cioè che vai avanti solo se rispondi bene, se l'utente è coglione dici sempre la setessa risposta oppure si scorda le precedenti può sempre sbagliare e quindi poi questa riga risposteEsatte_Array[questionIndex] da problemi perchè tu incrementi sempre question Index.
-         Due quindi se vuoi la tua logica che va avanti solo se la domanda è giusta devi cambiare il json probabilemnte.
-         Ma dato che i testi sono statici e dato che non vogliamo che lui ha un coefficiente CR = 100, direi di andare avanti anche se sbaglia, in questo caso non devi cambiare il json, no anzi si io direi non di mettere nel json la risposta esatta, ma anzi dire di mettere la poszione della risposta esatta, cioè 0 1 2 3 . Cosi in base al bottone premuto vedi se la risposta è corretta.
-         PEr questo ti ho datto la funzione sotto che oltre a restituirti che bottono è stato premuto ti dice anche il bottone premuto il cui tag confronterai con l'indice della risposta esatta. Cosi eviti anche di fare operazioni sulle stringhe. Inoltre la funzione ti restituisce false e Un riferimento ad un altro se non è stato premuto niente. Quindi utilizza più false come parametro di ritorno ahhah se ti serve, non so perchè non mi faceva restituire nil
-         INoltre ogni volta che passi alla domanda dopo risetta il bottone in questione isSelected = false
-         */
-        // cosi controlli se uno è stato premuto
         if radioButtonFirst.oneSelected().0 {
             print("uno è selezionato ")
             //        cosicontrolli il bottone premuto
@@ -325,10 +318,12 @@ class ExerciseWithFormViewController: UIViewController {
     
     @objc func playMode(_ sender : UIButton){
         if numberCount == 0 {
+            start = CFAbsoluteTimeGetCurrent()
             buttonPlay.setTitle("FineToRead", for: .normal)
             numberCount = 1
         }
         else if numberCount == 1 {
+            diff = CFAbsoluteTimeGetCurrent() - start
             textToRead.removeFromSuperview()
             buttonPlay.setTitle("Rispondi", for: .normal)
             setUpConstraints()
@@ -336,10 +331,29 @@ class ExerciseWithFormViewController: UIViewController {
         }
         else if numberCount == 2 {
             if(checkAnswer() == true){
+                numberOfAnswerTrue+=1
                /*INCREMENTO DI UNA VARIABILE PER TENER TRACCIA DI QUANTE RISPOSTE ESATTE*/
             }
             if chargeNextQuestion() >= domande_Array.count{
                 buttonPlay.isHidden = true
+//                il pam si calcola come numero di parole del testo moltiplicate per 60 / diff
+//                c a massimo è 100 quindi 100/risposteEsatteArray.count * numberOfQuestion
+//                rendimento PAM*C/100
+//                nel calcolo di pam sta il valore 1000 al posto di quello si deve mettere il numero di parole del testo
+                let pam = ( 1000 * 60 )/diff
+                let comprensione : Double = Double((100*numberOfAnswerTrue)/risposteEsatte_Array.count)
+                let rendimento = (pam*comprensione)/100
+//                QUello sotto poi non sara più utile era per vedere la stampa dei valori
+                firstAnswer.isHidden = false
+                secondAnswer.isHidden = false
+                thirdAnswer.isHidden = false
+                fourthAnswer.isHidden = false
+                firstAnswer.text = ("\(diff)")
+                secondAnswer.text = ("\(pam)")
+                thirdAnswer.text = ("\(comprensione)")
+                fourthAnswer.text = ("\(rendimento)")
+
+                
             }
             
             

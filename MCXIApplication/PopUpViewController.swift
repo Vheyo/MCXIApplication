@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopUpViewController: UIView{
+class PopUpViewController: UIView {
     
     let popUpView : UIView = {
         let popUpView = UIView()
