@@ -63,6 +63,7 @@ class ReadingDeskViewController: UIViewController {
         super.viewDidLoad()
         setUpNavigationBar()
         setUpConstraints()
+        timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
     }
     
     func setUpNavigationBar(){
@@ -108,6 +109,21 @@ class ReadingDeskViewController: UIViewController {
     
     @objc func addFile(){
         print("ciao bella io ti conosco tu fumi cannella")
+    }
+    
+    
+    @objc func timerAnimation(){
+        let actionSheet = UIAlertController(title: "Seleziona il tempo dell'esercizio \n\n\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
+//        editRadiusAlert.setValue(vc, forKey: "contentViewController")
+        let view = timerPickerView(frame: CGRect(x: 8.0, y: 8.0, width: actionSheet.view.bounds.size.width - 8.0 * 4.5, height: 200.0))
+        actionSheet.view.addSubview(view)
+        
+        actionSheet.addAction(UIAlertAction(title: "Done", style: .default, handler: { (ACTION :UIAlertAction!)in
+            self.someTextLabel.text = "\(view.hour)"+" ore "+"\(view.minutes)"+" min "+"\(view.seconds)"
+        }))
+    
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(actionSheet, animated: true, completion: nil)
     }
     
 

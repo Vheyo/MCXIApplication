@@ -10,6 +10,7 @@
 		383C97E32465DEA200812FDF /* TextToAnswerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383C97E22465DEA200812FDF /* TextToAnswerCollectionViewCell.swift */; };
 		383C97E92465EA3C00812FDF /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383C97E82465EA3C00812FDF /* RadioButton.swift */; };
 		383C97EB2465EB3B00812FDF /* ExerciseWithFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */; };
+		384225DD246B3AFF009BE84D /* timerPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 384225DC246B3AFF009BE84D /* timerPickerView.swift */; };
 		385C741D24654905009EB1A2 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C741C24654905009EB1A2 /* ShadowView.swift */; };
 		385C741F24655A64009EB1A2 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C741E24655A64009EB1A2 /* CheckBox.swift */; };
 		385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */; };
@@ -39,6 +40,7 @@
 		383C97E22465DEA200812FDF /* TextToAnswerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToAnswerCollectionViewCell.swift; sourceTree = "<group>"; };
 		383C97E82465EA3C00812FDF /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseWithFormViewController.swift; sourceTree = "<group>"; };
+		384225DC246B3AFF009BE84D /* timerPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerPickerView.swift; sourceTree = "<group>"; };
 		385C741C24654905009EB1A2 /* ShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		385C741E24655A64009EB1A2 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopriScopriViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				383C97E82465EA3C00812FDF /* RadioButton.swift */,
 				383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */,
 				751893A02465FD5600C5B695 /* TestiEsercizi.json */,
+				384225DC246B3AFF009BE84D /* timerPickerView.swift */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
 				385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */,
 				383C97E32465DEA200812FDF /* TextToAnswerCollectionViewCell.swift in Sources */,
+				384225DD246B3AFF009BE84D /* timerPickerView.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
