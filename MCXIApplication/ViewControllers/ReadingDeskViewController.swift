@@ -8,6 +8,8 @@
 
 import Foundation
 import  UIKit
+import MobileCoreServices
+import PDFKit
 
 class ReadingDeskViewController: UIViewController {
     
@@ -107,8 +109,36 @@ class ReadingDeskViewController: UIViewController {
     }
     
     
-    @objc func addFile(){
-        print("ciao bella io ti conosco tu fumi cannella")
+    @objc func addFile(_ sender : Any){
+       let alert = UIAlertController(title: "Add File", message: "Please Select an Option", preferredStyle: .actionSheet)
+
+           alert.addAction(UIAlertAction(title: "Ocr", style: .default , handler:{ (UIAlertAction)in
+               print("User click Approve button")
+           }))
+
+           alert.addAction(UIAlertAction(title: "Pdf", style: .default , handler:{ (UIAlertAction)in
+            self.importPdf()
+              
+           }))
+
+          
+
+           alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+               print("User click Dismiss button")
+           }))
+        alert.addChild(SaveAndEditViewController())
+
+           self.present(alert, animated: true, completion: {
+               print("completion block")
+           })
+       
+    }
+    
+    func importPdf(){
+        let documentPicker = UIDocumentPickerViewController(documentTypes: [(kUTTypePDF as String)], in: .import)
+        documentPicker.delegate = self
+        documentPicker.allowsMultipleSelection = false
+        present(documentPicker, animated: true)
     }
     
     
@@ -127,4 +157,42 @@ class ReadingDeskViewController: UIViewController {
     }
     
 
+}
+
+
+extension ReadingDeskViewController : UIDocumentPickerDelegate {
+    
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard let selectedFileURL = urls.first else {
+            return
+        }
+        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let sandboxFileURL = dir.appendingPathComponent(selectedFileURL.lastPathComponent)
+        
+       
+        if FileManager.default.fileExists(atPath: sandboxFileURL.path){
+            print("Esiste il File e non lo copiamo")
+        }
+        else {
+            do {
+                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
+                if let pdf = PDFDocument(url: selectedFileURL) {
+                    let pageCount = pdf.pageCount
+                    let documentContent = NSMutableAttributedString()
+
+                    for i in 1 ..< pageCount {
+                        guard let page = pdf.page(at: i) else { continue }
+                        guard let pageContent = page.attributedString else { continue }
+                        documentContent.append(pageContent)
+                    }
+                    print(documentContent.mutableString)
+                }
+                
+            }
+            catch{
+                print("Errore nel copiare il file")
+            }
+        }
+    }
+    
 }
