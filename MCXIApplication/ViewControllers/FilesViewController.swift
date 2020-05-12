@@ -39,6 +39,7 @@ class FilesViewController : UIViewController{
         cardCollection.register(AnimationFileTableViewCell.self, forCellWithReuseIdentifier: "NoRecentFile")
         cardCollection.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "RecentFile")
         setUpConstraints()
+        loadFile()
     }
     
     func setUpConstraints(){
@@ -61,8 +62,24 @@ class FilesViewController : UIViewController{
         
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadFile()
+    }
+    /// -MARK : TITO SE PUOI GUARDA
+    /* Funzione che prende i file dalla directory e li aggiunge a nameFile, viene chiamata ad ogni tap sulla tab bar così da avere un refresh continuo*/
+    
+    func loadFile(){
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+               let url = NSURL(fileURLWithPath: path)
+               let filePath = url.path
+               let fileManager = FileManager.default
+        nameFile.append(contentsOf: try! fileManager.contentsOfDirectory(atPath: filePath!))
+    }
+
     
     @objc func addFileRecent(_ sender : Any){
+        
         noFile = false
         if nameFile.count < 15 {
             print(nameFile.count)
