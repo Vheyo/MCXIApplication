@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -89,7 +89,7 @@
             </objects>
             <point key="canvasLocation" x="-30" y="339"/>
         </scene>
-        <!--Desk-->
+        <!--Reading Desk View Controller-->
         <scene sceneID="WdV-IS-4CQ">
             <objects>
                 <viewController id="S23-bu-ZB5" customClass="ReadingDeskViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,11 +99,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="P8M-lz-NYF"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Desk" id="qUr-0x-obq"/>
+                    <navigationItem key="navigationItem" id="IsV-JT-XHA"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9X6-gT-4Jg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30.434782608695656" y="-404.46428571428572"/>
+            <point key="canvasLocation" x="879.71014492753625" y="-404.46428571428572"/>
         </scene>
         <!--Exercise With Form View Controller-->
         <scene sceneID="iTX-SZ-NA1">
@@ -118,7 +118,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47B-I4-Fsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1848" y="-367"/>
+            <point key="canvasLocation" x="2757.971014492754" y="-367.63392857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2te-Je-e4O">
@@ -130,7 +130,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="S23-bu-ZB5" kind="relationship" relationship="viewControllers" id="TjC-GA-zeD"/>
+                        <segue destination="hbo-9u-GVg" kind="relationship" relationship="viewControllers" id="TjC-GA-zeD"/>
                         <segue destination="sRn-XZ-clf" kind="relationship" relationship="viewControllers" id="SYa-JX-FfP"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="hnq-ha-ToN"/>
                     </connections>
@@ -352,6 +352,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s0k-xA-n5b" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-30.434782608695656" y="-1185.2678571428571"/>
+        </scene>
+        <!--Desk-->
+        <scene sceneID="r2K-uz-jGG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hbo-9u-GVg" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Desk" id="qUr-0x-obq"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ki-Gz-g90">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="S23-bu-ZB5" kind="relationship" relationship="rootViewController" id="AGb-oy-jFo"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AXR-IW-3KR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30.434782608695656" y="-404.46428571428572"/>
         </scene>
     </scenes>
 </document>
