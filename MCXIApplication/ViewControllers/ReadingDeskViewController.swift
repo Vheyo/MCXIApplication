@@ -121,8 +121,6 @@ class ReadingDeskViewController: UIViewController {
               
            }))
 
-          
-
            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
                print("User click Dismiss button")
            }))
