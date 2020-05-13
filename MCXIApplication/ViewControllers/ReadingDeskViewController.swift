@@ -66,6 +66,7 @@ class ReadingDeskViewController: UIViewController {
         setUpNavigationBar()
         setUpConstraints()
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
     }
     
     func setUpNavigationBar(){
@@ -132,6 +133,13 @@ class ReadingDeskViewController: UIViewController {
        
     }
     
+    @objc func playMode(){
+        let vc = PresentatiotionTextToReadViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.view.backgroundColor = .white
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     func importPdf(){
         let documentPicker = UIDocumentPickerViewController(documentTypes: [(kUTTypePDF as String)], in: .import)
         documentPicker.delegate = self
@@ -142,7 +150,6 @@ class ReadingDeskViewController: UIViewController {
     
     @objc func timerAnimation(){
         let actionSheet = UIAlertController(title: "Seleziona il tempo dell'esercizio \n\n\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
-//        editRadiusAlert.setValue(vc, forKey: "contentViewController")
         let view = timerPickerView(frame: CGRect(x: 8.0, y: 8.0, width: actionSheet.view.bounds.size.width - 8.0 * 4.5, height: 200.0))
         actionSheet.view.addSubview(view)
         

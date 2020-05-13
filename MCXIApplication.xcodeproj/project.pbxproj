@@ -18,6 +18,10 @@
 		385C742524655AC9009EB1A2 /* FormCopriScopriViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */; };
 		38876592246C713600328D23 /* FileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38876591246C713600328D23 /* FileCell.swift */; };
 		38876594246C713F00328D23 /* UPCarouselFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38876593246C713F00328D23 /* UPCarouselFlowLayout.swift */; };
+		3888437C246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888437B246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift */; };
+		3888437E246C9A990064712A /* DropUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888437D246C9A990064712A /* DropUpButton.swift */; };
+		38884380246C9ACD0064712A /* DropUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888437F246C9ACD0064712A /* DropUpView.swift */; };
+		38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */; };
 		38AD56452462C56200622D31 /* NoFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 38AD56442462C56200622D31 /* NoFile.json */; };
 		38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */; };
 		7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D72460B2A60021CA4F /* AppDelegate.swift */; };
@@ -50,6 +54,10 @@
 		385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormCopriScopriViewController.swift; sourceTree = "<group>"; };
 		38876591246C713600328D23 /* FileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCell.swift; sourceTree = "<group>"; };
 		38876593246C713F00328D23 /* UPCarouselFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UPCarouselFlowLayout.swift; sourceTree = "<group>"; };
+		3888437B246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentatiotionTextToReadViewController.swift; sourceTree = "<group>"; };
+		3888437D246C9A990064712A /* DropUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpButton.swift; sourceTree = "<group>"; };
+		3888437F246C9ACD0064712A /* DropUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpView.swift; sourceTree = "<group>"; };
+		38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		38AD56442462C56200622D31 /* NoFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NoFile.json; sourceTree = "<group>"; };
 		38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFileTableViewCell.swift; sourceTree = "<group>"; };
 		7509E2D42460B2A60021CA4F /* MCXIApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCXIApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -128,6 +136,7 @@
 				385C741C24654905009EB1A2 /* ShadowView.swift */,
 				38876593246C713F00328D23 /* UPCarouselFlowLayout.swift */,
 				385C741E24655A64009EB1A2 /* CheckBox.swift */,
+				3888437B246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift */,
 				38876591246C713600328D23 /* FileCell.swift */,
 				385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */,
 				385C742224655A77009EB1A2 /* PopUpViewController.swift */,
@@ -141,6 +150,9 @@
 				383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */,
 				751893A02465FD5600C5B695 /* TestiEsercizi.json */,
 				384225DC246B3AFF009BE84D /* timerPickerView.swift */,
+				3888437D246C9A990064712A /* DropUpButton.swift */,
+				3888437F246C9ACD0064712A /* DropUpView.swift */,
+				38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -292,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7509E2EF2460B38B0021CA4F /* ExcerciesViewController.swift in Sources */,
+				38884380246C9ACD0064712A /* DropUpView.swift in Sources */,
 				7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */,
 				7509E2EC2460B3530021CA4F /* ReadingDeskViewController.swift in Sources */,
 				7518939F2465541700C5B695 /* AppUtility.swift in Sources */,
@@ -309,8 +322,11 @@
 				38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */,
 				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
 				385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */,
+				38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */,
 				38876594246C713F00328D23 /* UPCarouselFlowLayout.swift in Sources */,
+				3888437E246C9A990064712A /* DropUpButton.swift in Sources */,
 				383C97E32465DEA200812FDF /* TextToAnswerCollectionViewCell.swift in Sources */,
+				3888437C246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift in Sources */,
 				384225DD246B3AFF009BE84D /* timerPickerView.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
 			);
