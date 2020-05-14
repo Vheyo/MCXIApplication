@@ -63,10 +63,19 @@ class ReadingDeskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppUtility.lockOrientation(.portrait)
         setUpNavigationBar()
         setUpConstraints()
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        AppUtility.lockOrientation(.all)
     }
     
     func setUpNavigationBar(){
@@ -103,8 +112,6 @@ class ReadingDeskViewController: UIViewController {
             timeTextRead.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 16),
             timeTextRead.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             timeTextRead.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-            
-            
             
         ])
     }

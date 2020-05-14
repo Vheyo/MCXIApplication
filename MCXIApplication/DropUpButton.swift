@@ -36,9 +36,11 @@ class DropUpButton: UIButton, dropUpProtocol{
     }
     
     override func didMoveToSuperview() {
-        self.superview?.addSubview(dropView)
-        self.superview?.bringSubviewToFront(dropView)
-        setUpConstraints()
+        if let superview = self.superview {
+            superview.addSubview(dropView)
+            superview.bringSubviewToFront(dropView)
+            setUpConstraints()
+        }
     }
     
     func setUpConstraints(){

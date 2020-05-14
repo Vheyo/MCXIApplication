@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PresentatiotionTextToReadViewController: UIViewController {
+class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecognizerDelegate {
     
     private var textTitle : UILabel = {
         let textTitle = UILabel()
@@ -108,7 +108,6 @@ class PresentatiotionTextToReadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         AppUtility.lockOrientation(.landscape)
-        setUpConstraintsText()
         setUpGesture()
         setUpConstraintsButton()
         
@@ -121,10 +120,12 @@ class PresentatiotionTextToReadViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         AppUtility.lockOrientation(.all)
     }
-//    Mettere la fottuta gesture del cazzo di merda
+
     func setUpGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startToRead))
-//        self.view.addGestureRecognizer(tapGesture)
+        tapGesture.delegate = self
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     @objc func startToRead(){
@@ -132,10 +133,18 @@ class PresentatiotionTextToReadViewController: UIViewController {
         textTitle.alpha = 0
     }
     
-    
-    func setUpConstraintsText(){
+
+    func setUpConstraintsButton(){
+        self.view.addSubview(playButton)
+        self.view.addSubview(forwardButton)
+        self.view.addSubview(backButton)
+        self.view.addSubview(backButtonView)
+        self.view.addSubview(dropUpButtonTime)
+        self.view.addSubview(dropDownButtonTime)
         self.view.addSubview(textTitle)
         self.view.addSubview(textToRead)
+        
+        backButtonView.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             
@@ -146,54 +155,39 @@ class PresentatiotionTextToReadViewController: UIViewController {
             
             textToRead.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             textToRead.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            textToRead.heightAnchor.constraint(equalToConstant: 50)
-        ])
-    }
-    
-    func setUpConstraintsButton(){
-        self.view.addSubview(playButton)
-        self.view.addSubview(forwardButton)
-        self.view.addSubview(backButton)
-        self.view.addSubview(backButtonView)
-        self.view.addSubview(dropUpButtonTime)
-        self.view.addSubview(dropDownButtonTime)
-        
-        backButtonView.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-        
-        NSLayoutConstraint.activate([
+            textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             
-            dropDownButtonTime.centerYAnchor.constraint(equalTo: self.backButtonView.centerYAnchor),
+            backButtonView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
+            backButtonView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            backButtonView.heightAnchor.constraint(equalToConstant: 50),
+            backButtonView.widthAnchor.constraint(equalToConstant: 70),
+            
             dropDownButtonTime.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 20),
             dropDownButtonTime.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             dropDownButtonTime.heightAnchor.constraint(equalToConstant: 50),
             dropDownButtonTime.widthAnchor.constraint(equalToConstant: 50),
-            
-            dropUpButtonTime.centerYAnchor.constraint(equalTo: self.playButton.centerYAnchor),
-            dropUpButtonTime.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
-            dropUpButtonTime.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            dropUpButtonTime.heightAnchor.constraint(equalToConstant: 50),
-            dropUpButtonTime.widthAnchor.constraint(equalToConstant: 50),
             
             playButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             playButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
             playButton.heightAnchor.constraint(equalToConstant: 50),
             playButton.widthAnchor.constraint(equalToConstant: 50),
             
-            backButton.centerYAnchor.constraint(equalTo: self.playButton.centerYAnchor),
+            
             backButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
             backButton.trailingAnchor.constraint(equalTo: playButton.leadingAnchor, constant: -20),
             backButton.heightAnchor.constraint(equalToConstant: 50),
             backButton.widthAnchor.constraint(equalToConstant: 50),
             
-            forwardButton.centerYAnchor.constraint(equalTo: self.playButton.centerYAnchor),
             forwardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
             forwardButton.leadingAnchor.constraint(equalTo: playButton.trailingAnchor, constant: 20),
             forwardButton.heightAnchor.constraint(equalToConstant: 50),
             forwardButton.widthAnchor.constraint(equalToConstant: 50),
             
-            backButtonView.centerXAnchor.constraint(equalTo: self.dropUpButtonTime.centerXAnchor),           backButtonView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            backButtonView.heightAnchor.constraint(equalToConstant: 50),
-            backButtonView.widthAnchor.constraint(equalToConstant: 70)
+            dropUpButtonTime.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
+            dropUpButtonTime.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            dropUpButtonTime.heightAnchor.constraint(equalToConstant: 50),
+            dropUpButtonTime.widthAnchor.constraint(equalToConstant: 50),
             
         ])
     }
@@ -201,4 +195,17 @@ class PresentatiotionTextToReadViewController: UIViewController {
     @objc func dismissView(){
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if touch.isKind(of: DropUpViewCollectionViewCell.self){
+            print("ciao bela")
+            return false
+        }
+        if touch.isKind(of: DropUpView.self){
+            print("cia cici")
+            return false
+        }
+        return true
+    }
+    
 }
