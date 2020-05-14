@@ -11,7 +11,7 @@ import UIKit
 
 class FilesViewController : UIViewController{
     
-    var randtext : [[String]] = [["ciao bella","io","ti conosco","tu fumi cannella"],["ciao bella","io","ti conosco"],["ciao bella","io"]]
+    var randtext : [[String]] = [["ciao bella","io","ti conosco","tu fumi cannella"],["ciao bella","io","ti conosco"],["ciao bella","io"],["ciao","io"]]
     fileprivate var currentPage: Int = 0 {
         didSet {
             tableView.reloadData()
@@ -114,7 +114,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
            let layout = self.cardCollectionView.collectionViewLayout as! UPCarouselFlowLayout
            let pageSide = (layout.scrollDirection == .horizontal) ? self.pageSize.width : self.pageSize.height
            let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
-        currentPage = Int(floor((offset - pageSide / 2) / pageSide) + 1)
+        currentPage = Int(ceil((offset*4)/(scrollView.contentSize.width)))
        }
 
 }

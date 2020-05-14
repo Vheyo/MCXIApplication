@@ -18,7 +18,7 @@ class RomboExcerciesViewController : UIViewController{
     override func viewDidLoad() {
         AppUtility.lockOrientation(.landscape)
         var initialTimer = 5
-        
+        setUpConstraint()
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
             self.textView.text = "\(initialTimer)"
             initialTimer -= 1
@@ -36,6 +36,21 @@ class RomboExcerciesViewController : UIViewController{
     }
     override func viewWillDisappear(_ animated: Bool) {
         AppUtility.lockOrientation(.all)
+    }
+    
+    func setUpConstraint(){
+        textView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+        
+            textView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            textView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            textView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
+            textView.heightAnchor.constraint(equalToConstant: 50)
+            
+        
+        
+        
+        ])
     }
     
     @objc func showText(){
