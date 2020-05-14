@@ -118,26 +118,26 @@ class ReadingDeskViewController: UIViewController {
     
     
     @objc func addFile(_ sender : Any){
-       let alert = UIAlertController(title: "Add File", message: "Please Select an Option", preferredStyle: .actionSheet)
-
-           alert.addAction(UIAlertAction(title: "Ocr", style: .default , handler:{ (UIAlertAction)in
-               print("User click Approve button")
-           }))
-
-           alert.addAction(UIAlertAction(title: "Pdf", style: .default , handler:{ (UIAlertAction)in
+        let alert = UIAlertController(title: "Add File", message: "Please Select an Option", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Ocr", style: .default , handler:{ (UIAlertAction)in
+            print("User click Approve button")
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Pdf", style: .default , handler:{ (UIAlertAction)in
             self.importPdf()
-              
-           }))
-
-           alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
-               print("User click Dismiss button")
-           }))
+            
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
         alert.addChild(SaveAndEditViewController())
-
-           self.present(alert, animated: true, completion: {
-               print("completion block")
-           })
-       
+        
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+        
     }
     
     @objc func playMode(){
@@ -163,12 +163,12 @@ class ReadingDeskViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "Done", style: .default, handler: { (ACTION :UIAlertAction!)in
             self.someTextLabel.text = "\(view.hour)"+" ore "+"\(view.minutes)"+" min "+"\(view.seconds)"
         }))
-    
+        
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(actionSheet, animated: true, completion: nil)
     }
     
-
+    
 }
 
 
@@ -181,7 +181,7 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let sandboxFileURL = dir.appendingPathComponent(selectedFileURL.lastPathComponent)
         
-       
+        
         if FileManager.default.fileExists(atPath: sandboxFileURL.path){
             print("Esiste il File e non lo copiamo")
         }
@@ -191,13 +191,23 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                 if let pdf = PDFDocument(url: selectedFileURL) {
                     let pageCount = pdf.pageCount
                     let documentContent = NSMutableAttributedString()
-
+                    
                     for i in 1 ..< pageCount {
                         guard let page = pdf.page(at: i) else { continue }
                         guard let pageContent = page.attributedString else { continue }
                         documentContent.append(pageContent)
                     }
-                    print(documentContent.mutableString)
+                    let file = " (??).txt"
+                    let text = String(documentContent.mutableString)
+                    let fileURL = dir.appendingPathComponent(file)
+                    do{
+                     try text.write(to: fileURL, atomically: false, encoding: .utf8)
+                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
+                    }catch{
+                        print("cant write...")
+                    }
+                        
+
                 }
                 
             }
