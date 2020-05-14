@@ -60,6 +60,7 @@ class DropUpView : UIView{
             cardCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             
         ])
+        
     }
     
     

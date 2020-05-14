@@ -76,8 +76,24 @@ class PresentatiotionTextToReadViewController: UIViewController {
         dropUpButtonTime.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         dropUpButtonTime.layer.cornerRadius = 0.5 * dropUpButtonTime.bounds.size.width
         dropUpButtonTime.clipsToBounds = true
+        dropUpButtonTime.tag = 1
         return dropUpButtonTime
     }()
+    
+    private var dropDownButtonTime : DropUpButton = {
+        let dropDownButtonTime = DropUpButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        dropDownButtonTime.setTitle("PAM", for: .normal)
+        dropDownButtonTime.setTitleColor(UIColor.black, for: .normal)
+        dropDownButtonTime.translatesAutoresizingMaskIntoConstraints = false
+        dropDownButtonTime.layer.borderColor = UIColor.black.cgColor
+        dropDownButtonTime.layer.borderWidth = 1
+        dropDownButtonTime.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        dropDownButtonTime.layer.cornerRadius = 0.5 * dropDownButtonTime.bounds.size.width
+        dropDownButtonTime.clipsToBounds = true
+        dropDownButtonTime.tag = 2
+        return dropDownButtonTime
+    }()
+    
     
     private var backButtonView : UIButton = {
         let backButtonView = UIButton()
@@ -140,10 +156,17 @@ class PresentatiotionTextToReadViewController: UIViewController {
         self.view.addSubview(backButton)
         self.view.addSubview(backButtonView)
         self.view.addSubview(dropUpButtonTime)
+        self.view.addSubview(dropDownButtonTime)
         
         backButtonView.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
+            
+            dropDownButtonTime.centerYAnchor.constraint(equalTo: self.backButtonView.centerYAnchor),
+            dropDownButtonTime.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 20),
+            dropDownButtonTime.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
+            dropDownButtonTime.heightAnchor.constraint(equalToConstant: 50),
+            dropDownButtonTime.widthAnchor.constraint(equalToConstant: 50),
             
             dropUpButtonTime.centerYAnchor.constraint(equalTo: self.playButton.centerYAnchor),
             dropUpButtonTime.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
@@ -168,7 +191,7 @@ class PresentatiotionTextToReadViewController: UIViewController {
             forwardButton.heightAnchor.constraint(equalToConstant: 50),
             forwardButton.widthAnchor.constraint(equalToConstant: 50),
             
-            backButtonView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),           backButtonView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            backButtonView.centerXAnchor.constraint(equalTo: self.dropUpButtonTime.centerXAnchor),           backButtonView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
             backButtonView.heightAnchor.constraint(equalToConstant: 50),
             backButtonView.widthAnchor.constraint(equalToConstant: 70)
             

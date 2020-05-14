@@ -43,36 +43,54 @@ class DropUpButton: UIButton, dropUpProtocol{
     
     func setUpConstraints(){
         NSLayoutConstraint.activate([
-            dropView.bottomAnchor.constraint(equalTo: self.topAnchor),
             dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             dropView.widthAnchor.constraint(equalTo: self.widthAnchor)
-            
         ])
+        
+        switch self.tag {
+        case 1:
+            dropView.bottomAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        case 2:
+            dropView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        default:
+            print("Caso di Default di Merda")
+        }
         
         height = dropView.heightAnchor.constraint(equalToConstant: 0)
     }
     
     var isOpen = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        let start : CGFloat! = 100
+        let fine : CGFloat! = 0
+        var changeCenter : CGFloat!
+        switch self.tag {
+        case 1:
+            changeCenter = self.dropView.frame.height/2
+        case 2:
+            changeCenter = -self.dropView.frame.height/2
+        default:
+            print("Caso di Default di Merda")
+        }
         if !isOpen{
             isOpen = true
             NSLayoutConstraint.deactivate([self.height])
-            self.height.constant = 150
+            self.height.constant = start
             NSLayoutConstraint.activate([self.height])
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
                 self.dropView.layoutIfNeeded()
-                self.dropView.center.y -= self.dropView.frame.height/2
+                self.dropView.center.y -= changeCenter
             }, completion: nil)
         }else{
             isOpen = false
             
             NSLayoutConstraint.deactivate([self.height])
-            self.height.constant = 0
+            self.height.constant = fine
             NSLayoutConstraint.activate([self.height])
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-                self.dropView.center.y += self.dropView.frame.height/2
+                self.dropView.center.y += changeCenter
                 self.dropView.layoutIfNeeded()
             }, completion: nil)
             
@@ -80,14 +98,24 @@ class DropUpButton: UIButton, dropUpProtocol{
     }
     
     func dropDownAfterPressed(){
+        let fine : CGFloat! = 0
+        var changeCenter : CGFloat!
+        switch self.tag {
+        case 1:
+            changeCenter = self.dropView.frame.height/2
+        case 2:
+            changeCenter = -self.dropView.frame.height/2
+        default:
+            print("Caso di Default di Merda")
+        }
         isOpen = false
         
         NSLayoutConstraint.deactivate([self.height])
-        self.height.constant = 0
+        self.height.constant = fine
         NSLayoutConstraint.activate([self.height])
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: .curveEaseInOut, animations: {
-            self.dropView.center.y += self.dropView.frame.height/2
+            self.dropView.center.y += changeCenter
             self.dropView.layoutIfNeeded()
         }, completion: nil)
     }
