@@ -13,14 +13,12 @@ class RomboExcerciesViewController : UIViewController{
     @IBOutlet var textView: UITextView!
     
     var indexWord = 1
-    var textToShow = """
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus euismod sed diam vitae ultricies. Vivamus in justo nibh. Proin ante elit, laoreet vitae magna id, egestas scelerisque leo. Sed luctus risus a tellus blandit venenatis. Phasellus dictum neque quis urna varius viverra. Integer placerat arcu vitae est pulvinar pulvinar. Etiam tempor nec lacus sit amet fringilla. Fusce sit amet dignissim tellus, sed viverra nunc. Aliquam ut nisi quis felis consequat egestas in id ligula. Curabitur vulputate tellus a tempus fringilla. Etiam vel purus nec mi sodales posuere. Cras ut orci consectetur quam pretium finibus.
- """
-    var textSplitted = [String.SubSequence]()
+    var textToShow = ["su","luce","scotch","positivo","sei nuovo", "un detersivo","vai alla grande", "i fiori sono gialli", "c'è Batman e Robin", "macchina fotografica", "la guarigione e il reiki", "tu sai che ore sono o no", " scegli la pillola rossa o blu", "manda baci e abbracci a tutti", "acqua,terra,fuoco,vento,aria","internet e computer diventeranno", "l'amicizia è un valore fondamentale", "andare in palestra fa bene alla salute", "se ti impegni fino in fondo e dai tutto", "le vacanze sono sacre e non si toccano", "la ripetizione è la madre di tutte le abilità", "nel film Gladiatore il motto è : Forza e Onore"," M.Jordan è considerato l'atleta per eccellenza","la medicina cinese sembra essere più completa"]
+    
     override func viewDidLoad() {
         AppUtility.lockOrientation(.landscape)
         var initialTimer = 5
-        textSplitted = textToShow.split(separator: " ")
+        
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
             self.textView.text = "\(initialTimer)"
             initialTimer -= 1
@@ -41,38 +39,10 @@ class RomboExcerciesViewController : UIViewController{
     }
     
     @objc func showText(){
-        let start = textSplitted.index(textSplitted.startIndex, offsetBy: indexWord)
-        let end = textSplitted.index(textSplitted.endIndex, offsetBy: -(textSplitted.endIndex-indexWord*2-1))
-        var range = 0..<1
-        if end == 0{
-            range = start..<1
-        }
-        else {
-            range = start..<end
-        }
-        if end > textSplitted.count {
-            return
-        }
-        
-        let mySubstring = (textSplitted[range])
-        let myArray = Array(mySubstring)
-        var myString = String()
-        for elements in myArray{
-            myString.append(String(elements))
-            myString.append(contentsOf: " ")
-        }
-        self.textView.text = myString
-        if indexWord == 1 {
+        textView.text = textToShow[indexWord]
+        if indexWord < textToShow.count{
             indexWord += 1
         }
-        else {
-            indexWord = indexWord*2-1
-        }
-        
-        if indexWord > textSplitted.count {
-            return
-        }
-        
     }
     
     
