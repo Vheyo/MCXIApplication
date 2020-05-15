@@ -115,6 +115,9 @@
                         <viewLayoutGuide key="safeArea" id="P8M-lz-NYF"/>
                     </view>
                     <navigationItem key="navigationItem" id="IsV-JT-XHA"/>
+                    <connections>
+                        <segue destination="5qt-us-pym" kind="show" identifier="navigation" id="bsT-Ix-YTS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9X6-gT-4Jg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -336,15 +339,36 @@
             </objects>
             <point key="canvasLocation" x="-30.434782608695656" y="338.83928571428572"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BDw-eV-wD9">
+            <objects>
+                <navigationController storyboardIdentifier="Naviagtion" toolbarHidden="NO" id="5qt-us-pym" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eom-bI-paN"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EH5-MD-nN5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cWg-fq-j7h">
+                        <rect key="frame" x="0.0" y="764" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="aeA-dd-f7o" kind="relationship" relationship="rootViewController" id="KKp-Ja-dxC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9c1-yy-Yl0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-955" y="-1171"/>
+        </scene>
         <!--OCR-->
         <scene sceneID="gO2-Pr-k5l">
             <objects>
-                <viewController id="aeA-dd-f7o" customClass="OcrViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aeA-dd-f7o" customClass="OcrViewController" customModule="MCXIApplication" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YB6-z6-NDA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zk-zn-PWb" customClass="BoundingBoxImageView" customModule="OCR" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zk-zn-PWb" customClass="BoundingBoxImageView" customModule="MCXIApplication" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="222" width="414" height="454"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>

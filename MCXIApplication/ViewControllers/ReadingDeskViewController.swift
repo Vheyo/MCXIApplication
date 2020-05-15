@@ -141,9 +141,7 @@ class ReadingDeskViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Ocr", style: .default , handler:{ (UIAlertAction)in
             print("User click Approve button")
-            let vc = OcrViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc,animated: true)
+            self.performSegue(withIdentifier: "navigation", sender: self)
         }))
         
         alert.addAction(UIAlertAction(title: "Pdf", style: .default , handler:{ (UIAlertAction)in
@@ -239,6 +237,7 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                 }
                 
             }
+                
             catch{
                 print("Errore nel copiare il file")
             }

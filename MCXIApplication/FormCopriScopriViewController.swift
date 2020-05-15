@@ -153,10 +153,11 @@ class FormCopriScopriViewController: UIViewController {
         decreaseTime.setTitleColor(.white, for: .normal)
         decreaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         decreaseTime.layer.cornerRadius = 0.5 * decreaseTime.bounds.size.width
+        decreaseTime.addTarget(self, action: #selector(decreaseTimeAction), for: .touchUpInside)
         return decreaseTime
     }()
     
-    private var timeLabel : UILabel = {
+     var timeLabel : UILabel = {
         let timeLabel = UILabel()
         timeLabel.text = "400 ms"
         timeLabel.textAlignment = .center
@@ -175,6 +176,7 @@ class FormCopriScopriViewController: UIViewController {
         increaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         increaseTime.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         increaseTime.layer.cornerRadius = 0.5 * increaseTime.bounds.size.width
+        increaseTime.addTarget(self, action: #selector(increaseTimeAction), for: .touchUpInside)
         return increaseTime
     }()
     
@@ -312,6 +314,17 @@ class FormCopriScopriViewController: UIViewController {
         
     }
     
+    @objc func increaseTimeAction() {
+        if Int(timeLabel.text!)! < 16{
+            timeLabel.text = String(Int(timeLabel.text!)!+1)
+        }
+    }
+    
+    @objc func decreaseTimeAction() {
+        if Int(timeLabel.text!)! > 5{
+            timeLabel.text = String(Int(timeLabel.text!)!-1)
+        }
+    }
     @objc func controlFieldCharacters(_ sender : Any ){
         print(Int(charactersTextField.text!)!)
         if Int(charactersTextField.text!)! < 6 || Int(charactersTextField.text!)! > 15 {

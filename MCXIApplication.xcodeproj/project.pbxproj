@@ -40,11 +40,10 @@
 		751893A12465FD5600C5B695 /* TestiEsercizi.json in Resources */ = {isa = PBXBuildFile; fileRef = 751893A02465FD5600C5B695 /* TestiEsercizi.json */; };
 		75CA249B246F3974009D3C1F /* DetectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2496246F3973009D3C1F /* DetectedViewController.swift */; };
 		75CA249C246F3974009D3C1F /* UIImageView-ImageRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */; };
-		75CA249D246F3974009D3C1F /* OcrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2498246F3973009D3C1F /* OcrViewController.swift */; };
 		75CA249E246F3974009D3C1F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2499246F3973009D3C1F /* Utilities.swift */; };
 		75CA249F246F3974009D3C1F /* BoundingBoxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA249A246F3973009D3C1F /* BoundingBoxImageView.swift */; };
+		75CA24A1246F462E009D3C1F /* OcrSavioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA24A0246F462E009D3C1F /* OcrSavioViewController.swift */; };
 		75D23005246E91EF00B87E4D /* IntermediateReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */; };
-		75D23007246E977000B87E4D /* IntermediateFromPdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D23006246E977000B87E4D /* IntermediateFromPdfViewController.swift */; };
 		F322504D17C1F14A83F48635 /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,11 +83,10 @@
 		751893A02465FD5600C5B695 /* TestiEsercizi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestiEsercizi.json; sourceTree = "<group>"; };
 		75CA2496246F3973009D3C1F /* DetectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectedViewController.swift; sourceTree = "<group>"; };
 		75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView-ImageRect.swift"; sourceTree = "<group>"; };
-		75CA2498246F3973009D3C1F /* OcrViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OcrViewController.swift; sourceTree = "<group>"; };
 		75CA2499246F3973009D3C1F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		75CA249A246F3973009D3C1F /* BoundingBoxImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxImageView.swift; sourceTree = "<group>"; };
+		75CA24A0246F462E009D3C1F /* OcrSavioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OcrSavioViewController.swift; sourceTree = "<group>"; };
 		75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateReadingViewController.swift; sourceTree = "<group>"; };
-		75D23006246E977000B87E4D /* IntermediateFromPdfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateFromPdfViewController.swift; sourceTree = "<group>"; };
 		AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCXIApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00ABD8E286FBDDF04895ED0 /* Pods-MCXIApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.release.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.release.xcconfig"; sourceTree = "<group>"; };
 		B2FE5F6EEA4F112CBBE706E5 /* Pods-MCXIApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MCXIApplication.debug.xcconfig"; path = "Target Support Files/Pods-MCXIApplication/Pods-MCXIApplication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,7 +141,7 @@
 				75CA2496246F3973009D3C1F /* DetectedViewController.swift */,
 				75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */,
 				75CA2499246F3973009D3C1F /* Utilities.swift */,
-				75CA2498246F3973009D3C1F /* OcrViewController.swift */,
+				75CA24A0246F462E009D3C1F /* OcrSavioViewController.swift */,
 				7509E2ED2460B3600021CA4F /* ViewControllers */,
 				7509E2E02460B2A70021CA4F /* Assets.xcassets */,
 				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
@@ -177,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				7509E2EB2460B3530021CA4F /* ReadingDeskViewController.swift */,
-				75D23006246E977000B87E4D /* IntermediateFromPdfViewController.swift */,
 				7509E2EE2460B38B0021CA4F /* ExcerciesViewController.swift */,
 				7509E2F02460B39F0021CA4F /* FilesViewController.swift */,
 				75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */,
@@ -321,7 +318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75CA249D246F3974009D3C1F /* OcrViewController.swift in Sources */,
 				7509E2EF2460B38B0021CA4F /* ExcerciesViewController.swift in Sources */,
 				38884380246C9ACD0064712A /* DropUpView.swift in Sources */,
 				7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */,
@@ -332,7 +328,6 @@
 				385C741D24654905009EB1A2 /* ShadowView.swift in Sources */,
 				7509E2F12460B39F0021CA4F /* FilesViewController.swift in Sources */,
 				7509E2F92460BA3C0021CA4F /* Type2CollectionViewCell.swift in Sources */,
-				75D23007246E977000B87E4D /* IntermediateFromPdfViewController.swift in Sources */,
 				38876592246C713600328D23 /* FileCell.swift in Sources */,
 				385C741F24655A64009EB1A2 /* CheckBox.swift in Sources */,
 				385C742524655AC9009EB1A2 /* FormCopriScopriViewController.swift in Sources */,
@@ -350,6 +345,7 @@
 				3888437E246C9A990064712A /* DropUpButton.swift in Sources */,
 				383C97E32465DEA200812FDF /* TextToAnswerCollectionViewCell.swift in Sources */,
 				3888437C246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift in Sources */,
+				75CA24A1246F462E009D3C1F /* OcrSavioViewController.swift in Sources */,
 				75CA249C246F3974009D3C1F /* UIImageView-ImageRect.swift in Sources */,
 				384225DD246B3AFF009BE84D /* timerPickerView.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
