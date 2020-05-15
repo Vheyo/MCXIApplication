@@ -106,5 +106,24 @@ extension UIView {
         
         return shadowView
     }
+    
+    func addShadowView2(isShadowPathEnabled: Bool = true, shadowColor: UIColor = .black, shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.1, shadowOffset: CGSize = CGSize(width: 0.3, height: 0.3)) -> ShadowView {
+           let shadowView = ShadowView()
+           shadowView.translatesAutoresizingMaskIntoConstraints = false
+           shadowView.isShadowPathEnabled = isShadowPathEnabled
+           shadowView.shadowColor = shadowColor
+           shadowView.shadowRadius = shadowRadius
+           shadowView.shadowOpacity = shadowOpacity
+           shadowView.shadowOffset = shadowOffset
+           shadowView.layer.cornerRadius = layer.cornerRadius
+           superview?.insertSubview(shadowView, belowSubview: self)
+           
+           shadowView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+           shadowView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
+           shadowView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+           shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 6).isActive = true
+           
+           return shadowView
+       }
 }
 

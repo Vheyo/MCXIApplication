@@ -13,10 +13,20 @@ import PDFKit
 
 class ReadingDeskViewController: UIViewController {
     
+    
+    private var viewViole : UIView = {
+        let viewViole = UIView()
+        viewViole.translatesAutoresizingMaskIntoConstraints = false
+        viewViole.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        return viewViole
+    }()
+    
     private var titleTextLabel : UILabel = {
         let titleTextLabel = UILabel()
         titleTextLabel.text = "Il nome del file"
         titleTextLabel.textAlignment = .center
+        titleTextLabel.textColor = .white
+        titleTextLabel.font = UIFont.boldSystemFont(ofSize: 21)
         titleTextLabel.numberOfLines = 0
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleTextLabel
@@ -25,9 +35,8 @@ class ReadingDeskViewController: UIViewController {
     private var textViewContainer : UIView = {
         let textViewContainer = UIView()
         textViewContainer.translatesAutoresizingMaskIntoConstraints = false
-        textViewContainer.layer.cornerRadius = 12
-        textViewContainer.layer.borderColor = UIColor.black.cgColor
-        textViewContainer.layer.borderWidth = 1
+        textViewContainer.backgroundColor = .white
+        textViewContainer.layer.cornerRadius = 25
         return textViewContainer
     }()
     
@@ -44,11 +53,24 @@ class ReadingDeskViewController: UIViewController {
     private var playButton : UIButton = {
         let playButton = UIButton()
         playButton.setTitle("Play", for: .normal)
-        playButton.setTitleColor(.black, for: .normal)
-        playButton.layer.borderWidth = 1
-        playButton.layer.borderColor = UIColor.black.cgColor
+        playButton.setTitleColor(.white, for: .normal)
+        playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.layer.masksToBounds = true
+        playButton.layer.borderWidth = 1
+        playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        playButton.layer.cornerRadius = 40
         return playButton
+    }()
+    
+    private var imagePlay : UIImageView = {
+        let imagePlay = UIImageView()
+        imagePlay.image = UIImage(named: "ButtonPlay")
+        imagePlay.layer.masksToBounds = true
+        imagePlay.layer.cornerRadius = 40
+        imagePlay.translatesAutoresizingMaskIntoConstraints = false
+        return imagePlay
     }()
     
     private var timeTextRead : UIButton = {
@@ -66,6 +88,7 @@ class ReadingDeskViewController: UIViewController {
         AppUtility.lockOrientation(.portrait)
         setUpNavigationBar()
         setUpConstraints()
+        textViewContainer.addShadowView2()
         someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
@@ -104,29 +127,44 @@ class ReadingDeskViewController: UIViewController {
     }
     
     func setUpConstraints(){
+        self.view.addSubview(viewViole)
         self.view.addSubview(titleTextLabel)
         self.view.addSubview(textViewContainer)
         textViewContainer.addSubview(someTextLabel)
         self.view.addSubview(playButton)
         self.view.addSubview(timeTextRead)
-        
+        playButton.addSubview(imagePlay)
         NSLayoutConstraint.activate([
-            titleTextLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            
+            viewViole.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            viewViole.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            viewViole.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+            viewViole.heightAnchor.constraint(equalToConstant: 300),
+            
+            titleTextLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
             titleTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             titleTextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
             textViewContainer.topAnchor.constraint(equalTo: titleTextLabel.bottomAnchor, constant:  16),
-            textViewContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            textViewContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            textViewContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            textViewContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
             textViewContainer.heightAnchor.constraint(equalToConstant: 300),
             
-            someTextLabel.centerYAnchor.constraint(equalTo: textViewContainer.centerYAnchor),
-            someTextLabel.centerXAnchor.constraint(equalTo: textViewContainer.centerXAnchor),
+            someTextLabel.leadingAnchor.constraint(equalTo: textViewContainer.leadingAnchor,constant: 16),
+            someTextLabel.trailingAnchor.constraint(equalTo: textViewContainer.trailingAnchor,constant: -16),
+            someTextLabel.topAnchor.constraint(equalTo: textViewContainer.topAnchor,constant: 16),
+            someTextLabel.bottomAnchor.constraint(equalTo: textViewContainer.bottomAnchor,constant: -16),
             
             
             playButton.topAnchor.constraint(equalTo: textViewContainer.bottomAnchor, constant: 16),
-            playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
+            playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
+            playButton.heightAnchor.constraint(equalToConstant: 80),
+            
+            imagePlay.leadingAnchor.constraint(equalTo: playButton.leadingAnchor),
+            imagePlay.trailingAnchor.constraint(equalTo: playButton.trailingAnchor),
+            imagePlay.topAnchor.constraint(equalTo: playButton.topAnchor),
+            imagePlay.bottomAnchor.constraint(equalTo: playButton.bottomAnchor),
             
             timeTextRead.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 16),
             timeTextRead.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
