@@ -13,7 +13,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var indexWord = 0
     var hidden = true
     var Pam = Int()
-    
+    var text = String()
     var timer = Timer()
     var reading = true
     private var textTitle : UILabel = {
