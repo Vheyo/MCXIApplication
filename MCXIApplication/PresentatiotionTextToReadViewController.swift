@@ -9,6 +9,10 @@
 import UIKit
 
 class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecognizerDelegate {
+    var textSplitted = [String]()
+    var indexWord = 0
+    var hidden = true
+    var Pam = Int()
     
     private var textTitle : UILabel = {
         let textTitle = UILabel()
@@ -36,6 +40,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         playButton.clipsToBounds = true
+        playButton.alpha = 0.0
+        
         return playButton
     }()
     
@@ -49,6 +55,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         backButton.layer.cornerRadius = 0.5 * backButton.bounds.size.width
         backButton.clipsToBounds = true
+        backButton.alpha = 0.0
         return backButton
     }()
     
@@ -62,6 +69,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         forwardButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         forwardButton.layer.cornerRadius = 0.5 * forwardButton.bounds.size.width
         forwardButton.clipsToBounds = true
+        forwardButton.alpha = 0.0
         return forwardButton
     }()
     
@@ -77,6 +85,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropUpButtonTime.layer.cornerRadius = 0.5 * dropUpButtonTime.bounds.size.width
         dropUpButtonTime.clipsToBounds = true
         dropUpButtonTime.tag = 1
+        dropUpButtonTime.alpha = 0.0
         return dropUpButtonTime
     }()
     
@@ -91,6 +100,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropDownButtonTime.layer.cornerRadius = 0.5 * dropDownButtonTime.bounds.size.width
         dropDownButtonTime.clipsToBounds = true
         dropDownButtonTime.tag = 2
+        dropDownButtonTime.alpha = 0.0
         return dropDownButtonTime
     }()
     
@@ -100,17 +110,34 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         backButtonView.setTitle("Back", for: .normal)
         backButtonView.setTitleColor(UIColor.black, for: .normal)
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
+        backButtonView.alpha = 0.0
         return backButtonView
     }()
     
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         AppUtility.lockOrientation(.landscape)
         setUpGesture()
         setUpConstraintsButton()
+        setUpText()
+//        readingInProgress(button: playButton)
         
+        
+    }
+    
+    func setUpText(){
+        let myText = (textToRead.text?.split(separator: " "))!
+        for element in myText{
+            textSplitted.append(String(element))
+        }
+        Pam = (textSplitted.count/500)*60
+        if Pam == 0{
+            Pam = 1
+        }
+        print(Pam)
+        print(textSplitted)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,7 +147,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     override func viewWillDisappear(_ animated: Bool) {
         AppUtility.lockOrientation(.all)
     }
-
+    
     func setUpGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(startToRead))
         tapGesture.delegate = self
@@ -128,12 +155,51 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         self.view.addGestureRecognizer(tapGesture)
     }
     
-    @objc func startToRead(){
-        textToRead.alpha = 1
+    @objc func startToRead(gesture:UITapGestureRecognizer){
+        view.removeGestureRecognizer(gesture)
         textTitle.alpha = 0
+        var initialTimer = 3
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
+            self.textToRead.text = "\(initialTimer)"
+            self.textToRead.alpha = 1
+            initialTimer -= 1
+            if initialTimer == 0 {
+                timer.invalidate()
+                let hideGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideFunction))
+                hideGesture.cancelsTouchesInView = false
+                
+                self.view.addGestureRecognizer(hideGesture)
+            }
+        })
     }
     
-
+    
+    
+    @objc func hideFunction(){
+        if hidden == false {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.backButtonView.alpha = 0.0
+                self.dropUpButtonTime.alpha = 0.0
+                self.dropDownButtonTime.alpha = 0.0
+                self.textTitle.alpha = 0.0
+                self.playButton.alpha = 0.0
+                self.forwardButton.alpha = 0.0
+                self.backButton.alpha = 0.0
+            }, completion: {_ in self.hidden = true})
+        }
+        else if hidden{
+            UIView.animate(withDuration: 0.4, animations: {
+                self.backButtonView.alpha = 1.0
+                self.dropUpButtonTime.alpha = 1.0
+                self.dropDownButtonTime.alpha = 1.0
+                //                self.textTitle.alpha = 1.0
+                self.playButton.alpha = 1.0
+                self.forwardButton.alpha = 1.0
+                self.backButton.alpha = 1.0
+            },completion: {_ in self.hidden = false})
+        }
+    }
+    
     func setUpConstraintsButton(){
         self.view.addSubview(playButton)
         self.view.addSubview(forwardButton)
@@ -197,15 +263,9 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        if touch.isKind(of: DropUpViewCollectionViewCell.self){
-            print("ciao bela")
-            return false
-        }
-        if touch.isKind(of: DropUpView.self){
-            print("cia cici")
-            return false
-        }
-        return true
+       return touch.view == gestureRecognizer.view
     }
+    
+    
     
 }
