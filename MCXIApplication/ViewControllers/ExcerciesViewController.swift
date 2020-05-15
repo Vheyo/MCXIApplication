@@ -13,7 +13,8 @@ import AppstoreTransition
 class ExcerciesViewController : UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    let nameImage  : [String] = ["Copri","Divergente","Copri"]
+    let nameExcercises : [String] = ["Copri e Scopri", "Lettura Divergente","PAM & CR"]
     private var transition: CardTransition?
     
     override func viewDidLoad() {
@@ -22,12 +23,12 @@ class ExcerciesViewController : UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "Type2CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Type2CollectionViewCell")
-        
+        self.title = "Excercises"
         let layout = (collectionView.collectionViewLayout as! UICollectionViewFlowLayout)
         let aspect : CGFloat = 0.85
-        let width : CGFloat = 400
+        let width : CGFloat =  400
         layout.itemSize = CGSize(width:width, height: width * aspect)
-        layout.minimumLineSpacing = 60
+        layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 0
     }
 }
@@ -40,8 +41,8 @@ extension ExcerciesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: UICollectionViewCell
         let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Type2CollectionViewCell", for: indexPath) as! Type2CollectionViewCell
-        customCell.titleLabel.text = "Nome dell'esercizio"
-        customCell.backgroundImage.image = UIImage(named: "type2-bg-bottom")
+        customCell.titleLabel.text = nameExcercises[indexPath.item]
+        customCell.backgroundImage.image = UIImage(named: nameImage[indexPath.item])
         cell = customCell
         return cell
     }
@@ -67,9 +68,10 @@ extension ExcerciesViewController: UICollectionViewDelegate {
         transition = CardTransition(cell: cell, settings: cell.settings)
         viewController.settings = cell.settings
         viewController.transitioningDelegate = transition
-        viewController.titleLabe = "Nome dell'esercizio"
-        viewController.background = UIImage(named: "type2-bg-bottom")
+        viewController.titleLabe = nameExcercises[indexPath.item]
+        viewController.background = UIImage(named: nameImage[indexPath.item])
         viewController.tagButton = indexPath.row
+        viewController.descrip = "fdfsdfasdfkndasfdskfbdskfbdsjkfbdsajkfbdsjfbdsfjkbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdskjfbdsjkfbsdkjfbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdsjkfbdsjfkbsdfjkdsbfjkdsbfjkdsfbdjksfbdsjkfbdsjkfbdsjkfbdsjkfbsdjkfbsdkjfbdsjkfbsdjkfbsdjfbdsfjkdsbfjkdsbfjakdsfbasdjkfbdskjfbdsjkfbsdjkfbsdjkfbadskjfbsdjkfbadsjkfbsdajkfbasdjkfbadsjkfbasdjkfbdsjkfjadksbfajksdfbjadksbfjkasdbfasjdkbfjkadsfbkdjsbfajksdfbdsjkfbdskjfbadsjkfbasdjkfbadskjfbasdkjfbasdkjfbasdkjfbsdkjfbasdjkfbasdjkfbaksdjfbasdkjfbasdjkfbadskjfbadsjkfbadskjfbasdjkfbasdjkfbadskjfbadskjfbasdjkfbadsjkfbdsakjfbasdkjfbdsajkfbjadskfbasdjkfbadsjkfbdsajkfbasdjkfbadsjkfbsdjkfasdbfjasdfbasdkfbadskjfbadsjkfbkjfbjkdsfbjkdfsbjkdfsbjkfdsbjkfdbjkdfsjbkfdsabjkdfsjbkdfsbjkdsbjdfsjbkjbkfdsjbkdfsbjkdfsjbkdsfbjkdfsjbkdfsjbkbjfdsjbkdfbjdfksjbdfsbjkdsfjbkdfsbjkdfbjkdfsbjkdfbjkdfsbjkdfsbjdfsbjkdfsjbkjkdfs"
         
         // If `modalPresentationStyle` is not `.fullScreen`, this should be set to true to make status bar depends on presented vc.
         //viewController.modalPresentationCapturesStatusBarAppearance = true
