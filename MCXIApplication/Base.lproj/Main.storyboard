@@ -163,14 +163,8 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Header" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TW2-6H-tW0">
-                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="26"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="46"/>
                                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
-                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Here is some more info about the subject" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFI-GM-2hF">
-                                                                <rect key="frame" x="0.0" y="28" width="382" height="18"/>
-                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
@@ -247,7 +241,6 @@
                         <outlet property="descriptionExercise" destination="klO-gh-e34" id="8gR-Ax-dEE"/>
                         <outlet property="headerView" destination="dPY-DT-l3o" id="uwZ-T3-bIX"/>
                         <outlet property="heightConstraint" destination="Gon-7w-qAZ" id="IG3-W6-iJH"/>
-                        <outlet property="subtitleLabel" destination="zFI-GM-2hF" id="1wf-PH-ws0"/>
                         <outlet property="titleLabel" destination="TW2-6H-tW0" id="JHM-3m-WI8"/>
                         <segue destination="zCI-qJ-pYI" kind="modal" identifier="Rombo" modalPresentationStyle="fullScreen" id="kRh-6Z-ZQe"/>
                         <segue destination="dH5-TQ-k8O" kind="modal" identifier="CopriEScopri" modalPresentationStyle="fullScreen" id="L64-Cv-jNe"/>

@@ -13,7 +13,6 @@ class Type2ViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
@@ -55,9 +54,6 @@ class Type2ViewController: UIViewController {
         scrollView.contentInsetAdjustmentBehavior = .never
         
         let _ = dismissHandler
-        if let subtitle = subtitle {
-            subtitleLabel.text = subtitle
-        }
         if let background = background {
             backgroundImage.image = background
         }
@@ -78,7 +74,7 @@ class Type2ViewController: UIViewController {
             setUpLayoutButtonPlay()
         }
             
-        heightConstraint.constant = UIScreen.main.bounds.width * 1.272 - 16.0
+        heightConstraint.constant = 400 * 0.85 - 16.0
     }
     
     func setUpConstraintsForFirstSecondExcercise(){

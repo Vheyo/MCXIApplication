@@ -24,10 +24,10 @@ class ExcerciesViewController : UIViewController {
         collectionView.register(UINib(nibName: "Type2CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Type2CollectionViewCell")
         
         let layout = (collectionView.collectionViewLayout as! UICollectionViewFlowLayout)
-        let aspect: CGFloat = 1.272
-        let width = UIScreen.main.bounds.width
+        let aspect : CGFloat = 0.85
+        let width : CGFloat = 400
         layout.itemSize = CGSize(width:width, height: width * aspect)
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 60
         layout.minimumInteritemSpacing = 0
     }
 }
@@ -41,8 +41,7 @@ extension ExcerciesViewController: UICollectionViewDataSource {
         var cell: UICollectionViewCell
         let customCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Type2CollectionViewCell", for: indexPath) as! Type2CollectionViewCell
         customCell.titleLabel.text = "Nome dell'esercizio"
-        customCell.subtitleLabel.text = "Descrizione"
-        customCell.backgroundImage.image = UIImage(named: "pioggia")
+        customCell.backgroundImage.image = UIImage(named: "type2-bg-bottom")
         cell = customCell
         return cell
     }
@@ -69,8 +68,7 @@ extension ExcerciesViewController: UICollectionViewDelegate {
         viewController.settings = cell.settings
         viewController.transitioningDelegate = transition
         viewController.titleLabe = "Nome dell'esercizio"
-        viewController.subtitle = "Descrizione"
-        viewController.background = UIImage(named: "pioggia")
+        viewController.background = UIImage(named: "type2-bg-bottom")
         viewController.tagButton = indexPath.row
         
         // If `modalPresentationStyle` is not `.fullScreen`, this should be set to true to make status bar depends on presented vc.
