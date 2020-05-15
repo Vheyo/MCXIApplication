@@ -18,7 +18,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         return textTitle
     }()
     
-    private var textToRead : UILabel = {
+    var textToRead : UILabel = {
         let textToRead = UILabel()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
         textToRead.text = "Mi so rotto il cazzo merda troia del cazzo"

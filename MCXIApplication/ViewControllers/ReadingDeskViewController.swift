@@ -175,16 +175,21 @@ class ReadingDeskViewController: UIViewController {
 extension ReadingDeskViewController : UIDocumentPickerDelegate {
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        
         guard let selectedFileURL = urls.first else {
             return
         }
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let sandboxFileURL = dir.appendingPathComponent(selectedFileURL.lastPathComponent)
         
-        
+        var file = String()
+        var text = String()
+        var fileUrl = dir.appendingPathComponent(file)
         if FileManager.default.fileExists(atPath: sandboxFileURL.path){
             print("Esiste il File e non lo copiamo")
         }
+            
+            
         else {
             do {
                 try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
@@ -197,24 +202,33 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                         guard let pageContent = page.attributedString else { continue }
                         documentContent.append(pageContent)
                     }
-                    let file = " (??).txt"
-                    let text = String(documentContent.mutableString)
-                    let fileURL = dir.appendingPathComponent(file)
+                    file = "File\(UserDefaults.standard.integer(forKey: "numFile")+1).txt"
+                    text = String(documentContent.mutableString)
+                    fileUrl = dir.appendingPathComponent(file)
+                    
                     do{
-                     try text.write(to: fileURL, atomically: false, encoding: .utf8)
-                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
-                    }catch{
-                        print("cant write...")
-                    }
-                        
-
+                        try text.write(to: fileUrl, atomically: false, encoding: .utf8)
+                            UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
+                        print(text)
+                           } catch {
+                               print("cant write...")
+                           }
+                    
                 }
                 
             }
             catch{
                 print("Errore nel copiare il file")
             }
+            let vc = IntermediateFromPdfViewController()
+            vc.file = file
+            vc.text = text
+            vc.fileURL = fileUrl
+            vc.modalPresentationStyle = .fullScreen
+            present(vc,animated: true)
+            
         }
+        
     }
     
 }
