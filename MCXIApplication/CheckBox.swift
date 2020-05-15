@@ -10,14 +10,16 @@ import UIKit
 
 class CheckBox: UIButton {
 
-    let checkedImage : UIColor = .red
+    let checkedImage : UIColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
     let unCheckedImage : UIColor = .white
     var isChecked : Bool = false {
         didSet {
             if isChecked{
                 self.backgroundColor = checkedImage
+                self.setTitleColor(.white, for: .normal)
             }else{
                 self.backgroundColor = unCheckedImage
+                self.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
             }
         }
     }
@@ -26,8 +28,11 @@ class CheckBox: UIButton {
         super.init(frame: frame)
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.masksToBounds = true
-        self.layer.borderWidth = 1
-        self.layer.cornerRadius = 20
+        self.layer.borderWidth = 2
+        self.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        self.layer.cornerRadius = 35
+        self.backgroundColor = unCheckedImage
+        self.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
