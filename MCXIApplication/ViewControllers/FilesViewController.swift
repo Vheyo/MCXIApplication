@@ -55,7 +55,25 @@ class FilesViewController : UIViewController{
         cardCollectionView.register(FileCell.self, forCellWithReuseIdentifier: "CellId")
         setUpLayoutCardCollectionView()
         setUpConstraints()
+       
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        var ListaFile = [String]()
+        var ListaFileTxt = [String]()
+        let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+               let url = NSURL(fileURLWithPath: path)
+               let filePath = url.path
+               let fileManager = FileManager.default
+        ListaFile.append(contentsOf: try! fileManager.contentsOfDirectory(atPath: filePath!))
+        for element in ListaFile {
+            if element.contains("txt") == true{
+                ListaFileTxt.append(element)
+            }
+        }
+        print(ListaFileTxt.count)
+        UserDefaults.standard.set(ListaFileTxt.count, forKey: "numFile")
+        cardCollectionView.reloadData()
     }
     
     func setUpLayoutCardCollectionView(){
@@ -92,7 +110,13 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        if UserDefaults.standard.integer(forKey: "numFile") == 0{
+            return 1
+        }
+        else{
+            return UserDefaults.standard.integer(forKey: "numFile")
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt
@@ -100,6 +124,34 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath)
 //        cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        loadReadingDeskFile(Item: indexPath.item)
+    }
+    
+    func loadReadingDeskFile(Item : Int){
+        let vc = IntermediateReadingViewController()
+        vc.textView.text = obtainTextFromFile(indexPath: Item+1)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc,animated: true)
+    }
+    
+    func obtainTextFromFile(indexPath: Int) -> String {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let file = ("File\(indexPath).txt")
+            let fileURL = dir.appendingPathComponent(file)
+            
+            do{
+                let text = try String(contentsOf: fileURL, encoding: .utf8)
+                print(text)
+                return text
+                
+            }catch{
+                print("cant read...")
+            }
+        }
+        return "no text"
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -114,7 +166,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
            let layout = self.cardCollectionView.collectionViewLayout as! UPCarouselFlowLayout
            let pageSide = (layout.scrollDirection == .horizontal) ? self.pageSize.width : self.pageSize.height
            let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
-        currentPage = Int(ceil((offset*4)/(scrollView.contentSize.width)))
+        currentPage = Int(ceil((offset*(CGFloat(UserDefaults.standard.integer(forKey: "numFile"))))/(scrollView.contentSize.width)))
        }
 
 }
