@@ -35,7 +35,7 @@ class ReadingDeskViewController: UIViewController {
         let someTextLabel = UILabel()
         someTextLabel.text = "Some Text"
         someTextLabel.textAlignment = .center
-        someTextLabel.numberOfLines = 0
+        someTextLabel.numberOfLines = 1
         someTextLabel.translatesAutoresizingMaskIntoConstraints = false
         return someTextLabel
     }()
@@ -66,8 +66,27 @@ class ReadingDeskViewController: UIViewController {
         AppUtility.lockOrientation(.portrait)
         setUpNavigationBar()
         setUpConstraints()
+        someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
+    }
+    
+    
+    func obtainTextFromFile(indexPath: Int) -> String {
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            let file = ("File\(indexPath).txt")
+            let fileURL = dir.appendingPathComponent(file)
+            
+            do{
+                let text = try String(contentsOf: fileURL, encoding: .utf8)
+                print(text)
+                return text
+                
+            }catch{
+                print("cant read...")
+            }
+        }
+        return "no text"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -143,6 +162,7 @@ class ReadingDeskViewController: UIViewController {
         let vc = PresentatiotionTextToReadViewController()
         vc.modalPresentationStyle = .fullScreen
         vc.view.backgroundColor = .white
+        vc.text = someTextLabel.text!
         self.present(vc, animated: true, completion: nil)
     }
     
@@ -208,7 +228,7 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                     do{
                         try text.write(to: fileUrl, atomically: false, encoding: .utf8)
                             UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
-                        print(text)
+                            
                            } catch {
                                print("cant write...")
                            }
@@ -219,13 +239,9 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             catch{
                 print("Errore nel copiare il file")
             }
-            let vc = IntermediateFromPdfViewController()
-            vc.file = file
-            vc.text = text
-            vc.fileURL = fileUrl
-            vc.modalPresentationStyle = .fullScreen
-            present(vc,animated: true)
             
+            someTextLabel.text = String(text)
+            titleTextLabel.text = file
         }
         
     }
