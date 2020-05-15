@@ -26,10 +26,23 @@ class Type2ViewController: UIViewController {
     private var buttonPlay : UIButton = {
         let buttonPlay = UIButton()
         buttonPlay.setTitle("Play", for: .normal)
+        buttonPlay.setTitleColor(.white, for: .normal)
+        buttonPlay.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
-        buttonPlay.setTitleColor(.darkGray, for: .normal)
         buttonPlay.addTarget(self, action: #selector(showExcercise), for: .touchUpInside)
         return buttonPlay
+    }()
+    
+    
+    private var backButton : UIButton = {
+        let backButton = UIButton()
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.backgroundColor = .white
+        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        backButton.layer.cornerRadius = 0.5 * backButton.bounds.size.width
+        backButton.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        return backButton
     }()
     
 
@@ -76,19 +89,29 @@ class Type2ViewController: UIViewController {
         setUpLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        arrived99 = false
+    }
+    
     func setUpLayout(){
         titleLabel.textColor = .black
+        descriptionExercise.textAlignment = .center
     }
     
     func setUpConstraints(){
         contentView.addSubview(buttonPlay)
+        headerView.addSubview(backButton)
         NSLayoutConstraint.activate([
+            
+            backButton.topAnchor.constraint(equalTo: headerView.topAnchor,constant: 20),
+            backButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
+            backButton.heightAnchor.constraint(equalToConstant: 40),
+            backButton.widthAnchor.constraint(equalToConstant: 40),
 
-            buttonPlay.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            buttonPlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            buttonPlay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            buttonPlay.heightAnchor.constraint(equalToConstant: 80),
-
+            buttonPlay.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            buttonPlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 70),
+            buttonPlay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -70),
+            buttonPlay.heightAnchor.constraint(equalToConstant: 60),
 
 
             descriptionExercise.topAnchor.constraint(equalTo: buttonPlay.bottomAnchor,constant: 30),
@@ -118,31 +141,46 @@ class Type2ViewController: UIViewController {
     func setUpLayoutButtonPlay(){
         descriptionExercise.isEditable = false
         buttonPlay.layer.cornerRadius = 30
-        buttonPlay.backgroundColor  = .white
         buttonPlay.addShadowView()
+//        backButton.addShadowView()
     }
     
     @objc func showExcercise(_ sender : UIButton){
         print(sender.tag)
         switch sender.tag{
         case 0:
-            performSegue(withIdentifier: "CopriEScopri", sender: self);
+            let formCopriEScopri = FormCopriScopriViewController()
+            formCopriEScopri.modalPresentationStyle = .fullScreen
+            formCopriEScopri.view.backgroundColor = .white
+            self.present(formCopriEScopri,animated: true, completion: nil)
         case 1:
             performSegue(withIdentifier: "Rombo", sender: self);
         default :
             print("Fatal error");
-    }
+        }
     
-
+    }
+    @objc func closeView(){
+        self.dismiss(animated: true, completion: nil)
     }
 }
+var arrived99 : Bool = false
 
 extension Type2ViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // prevent bouncing when swiping down to close
+        if scrollView.contentOffset.y >= 0 && scrollView.contentOffset.y <= 50 && !arrived99 {
+            backButton.alpha = 1
+        }
+        else if arrived99{
+            backButton.alpha = 0
+        }
+        if scrollView.contentOffset.y == 98 {
+            backButton.alpha = 0
+            arrived99 = true
+        }
         scrollView.bounces = scrollView.contentOffset.y > 100
-        
         dismissHandler.scrollViewDidScroll(scrollView)
     }
     

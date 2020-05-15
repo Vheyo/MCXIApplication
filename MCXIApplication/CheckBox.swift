@@ -27,7 +27,7 @@ class CheckBox: UIButton {
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.masksToBounds = true
         self.layer.borderWidth = 1
-        self.layer.cornerRadius = 5
+        self.layer.cornerRadius = 20
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addTarget(self, action: #selector(buttonClicked), for: .touchUpInside)
     }
