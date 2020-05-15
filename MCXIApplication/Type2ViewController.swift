@@ -46,25 +46,13 @@ class Type2ViewController: UIViewController {
     }()
     
 
-    
-    
-//    private var cardCollection : UICollectionView = {
-//        let layout = UICollectionViewFlowLayout()
-//        let cardCollection = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
-//        layout.scrollDirection = .vertical
-//        cardCollection.showsVerticalScrollIndicator = false
-//        cardCollection.isScrollEnabled = false
-//        cardCollection.translatesAutoresizingMaskIntoConstraints = false
-//        cardCollection.backgroundColor = .clear
-//        return cardCollection
-//    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.clipsToBounds = true
         contentScrollView.delegate = self
-        
         scrollView.contentInsetAdjustmentBehavior = .never
+        contentScrollView.backgroundColor = .white
+        contentView.backgroundColor = .white
         
         let _ = dismissHandler
         if let background = background {
@@ -120,29 +108,12 @@ class Type2ViewController: UIViewController {
         ])
     }
     
-//    func setUpConstraintsForThirdExcercise(){
-//        cardCollection.delegate = self
-//        cardCollection.dataSource = self
-//        cardCollection.register(TextToAnswerCollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
-//        contentView.addSubview(cardCollection)
-//
-//        NSLayoutConstraint.activate([
-//            descriptionExercise.heightAnchor.constraint(equalToConstant: 200),
-//
-//
-//            cardCollection.topAnchor.constraint(equalTo: descriptionExercise.bottomAnchor, constant: 30),
-//            cardCollection.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-//            cardCollection.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-//            cardCollection.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            cardCollection.heightAnchor.constraint(equalToConstant: 3*80+3*10)
-//        ])
-//    }
+
     
     func setUpLayoutButtonPlay(){
         descriptionExercise.isEditable = false
         buttonPlay.layer.cornerRadius = 30
         buttonPlay.addShadowView()
-//        backButton.addShadowView()
     }
     
     @objc func showExcercise(_ sender : UIButton){
@@ -160,6 +131,7 @@ class Type2ViewController: UIViewController {
         }
     
     }
+    
     @objc func closeView(){
         self.dismiss(animated: true, completion: nil)
     }
