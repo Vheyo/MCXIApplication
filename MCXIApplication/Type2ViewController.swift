@@ -87,7 +87,7 @@ class Type2ViewController: UIViewController {
             buttonPlay.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             buttonPlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             buttonPlay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            buttonPlay.heightAnchor.constraint(equalToConstant: 80),
+            buttonPlay.heightAnchor.constraint(equalToConstant: 60),
 
 
 
@@ -117,7 +117,7 @@ class Type2ViewController: UIViewController {
     
     func setUpLayoutButtonPlay(){
         descriptionExercise.isEditable = false
-        buttonPlay.layer.cornerRadius = 13
+        buttonPlay.layer.cornerRadius = 30
         buttonPlay.backgroundColor  = .white
         buttonPlay.addShadowView()
     }
