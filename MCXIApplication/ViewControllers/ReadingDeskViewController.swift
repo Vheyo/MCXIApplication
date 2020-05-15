@@ -179,7 +179,8 @@ class ReadingDeskViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Ocr", style: .default , handler:{ (UIAlertAction)in
             print("User click Approve button")
-            self.performSegue(withIdentifier: "navigation", sender: self)
+          self.performSegue(withIdentifier: "navigation", sender: self)
+//            self.present(OcrViewController(),animated: true)
         }))
         
         alert.addAction(UIAlertAction(title: "Pdf", style: .default , handler:{ (UIAlertAction)in
