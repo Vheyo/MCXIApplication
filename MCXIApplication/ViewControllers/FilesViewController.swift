@@ -35,7 +35,7 @@ class FilesViewController : UIViewController{
         cardCollectionView.showsHorizontalScrollIndicator = false
         cardCollectionView.isScrollEnabled = true
         cardCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        cardCollectionView.backgroundColor = .red
+        cardCollectionView.backgroundColor = .white
         return cardCollectionView
     }()
     
@@ -45,8 +45,30 @@ class FilesViewController : UIViewController{
         return tableView
     }()
     
+    private var notesLabel : UILabel = {
+        let notesLabel = UILabel()
+        notesLabel.translatesAutoresizingMaskIntoConstraints = false
+        notesLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        notesLabel.text = "Notes"
+        notesLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        return notesLabel
+    }()
+    
+    
+    private var keyWordsLabel : UILabel = {
+        let keyWordsLabel = UILabel()
+        keyWordsLabel.translatesAutoresizingMaskIntoConstraints = false
+        keyWordsLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        keyWordsLabel.text = "Keywords"
+        keyWordsLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        return keyWordsLabel
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "File Manager"
+                
+        tableView.separatorColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self
         tableView.dataSource = self
@@ -78,7 +100,7 @@ class FilesViewController : UIViewController{
     
     func setUpLayoutCardCollectionView(){
         let layout = UPCarouselFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: view.frame.height/2)
+        layout.itemSize = CGSize(width: 310, height: 220)
         layout.scrollDirection = .horizontal
         layout.sideItemAlpha = 1
         layout.sideItemScale = 0.8
@@ -89,15 +111,24 @@ class FilesViewController : UIViewController{
     func setUpConstraints(){
         self.view.addSubview(cardCollectionView)
         self.view.addSubview(tableView)
+        self.view.addSubview(notesLabel)
+        self.view.addSubview(keyWordsLabel)
         tableView.showsVerticalScrollIndicator = false
         NSLayoutConstraint.activate([
             
-            cardCollectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            notesLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 60),
+            notesLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 20),
+            notesLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            cardCollectionView.topAnchor.constraint(equalTo: notesLabel.bottomAnchor,constant: 10),
             cardCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             cardCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            cardCollectionView.heightAnchor.constraint(equalToConstant: view.frame.height/2+150),
+            cardCollectionView.heightAnchor.constraint(equalToConstant: 220),
             
-            tableView.topAnchor.constraint(equalTo: cardCollectionView.bottomAnchor),
+            keyWordsLabel.topAnchor.constraint(equalTo: cardCollectionView.bottomAnchor, constant: 10),
+            keyWordsLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 20),
+            keyWordsLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            
+            tableView.topAnchor.constraint(equalTo: keyWordsLabel.bottomAnchor,constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -110,12 +141,14 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if UserDefaults.standard.integer(forKey: "numFile") == 0{
-            return 1
-        }
-        else{
-            return UserDefaults.standard.integer(forKey: "numFile")
-        }
+//        if UserDefaults.standard.integer(forKey: "numFile") == 0{
+//            return 1
+//        }
+//        else{
+//            return UserDefaults.standard.integer(forKey: "numFile")
+//        }
+        
+        return 4
         
     }
     
@@ -153,11 +186,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         }
         return "no text"
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width-120, height: view.frame.height/2)
-    }
-    
+        
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
