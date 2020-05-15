@@ -132,7 +132,6 @@ class ReadingDeskViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
             print("User click Dismiss button")
         }))
-        alert.addChild(SaveAndEditViewController())
         
         self.present(alert, animated: true, completion: {
             print("completion block")

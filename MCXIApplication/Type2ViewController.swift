@@ -85,9 +85,9 @@ class Type2ViewController: UIViewController {
         NSLayoutConstraint.activate([
 
             buttonPlay.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            buttonPlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            buttonPlay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            buttonPlay.heightAnchor.constraint(equalToConstant: 60),
+            buttonPlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            buttonPlay.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            buttonPlay.heightAnchor.constraint(equalToConstant: 80),
 
 
 
