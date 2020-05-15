@@ -20,11 +20,15 @@ class Type2CollectionViewCell: UICollectionViewCell {
         
         containerView.layer.cornerRadius = 8
         containerView.clipsToBounds = true
-        
+        setUpLayout()
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOpacity = 0.1
         layer.shadowOffset = .init(width: 0, height: 0)
         layer.shadowRadius = 8
+    }
+    
+    func setUpLayout(){
+        titleLabel.textColor = .black
     }
 
     // Make it appears very responsive to touch
