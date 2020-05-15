@@ -26,7 +26,6 @@ class CheckBox: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.borderColor = UIColor.black.cgColor
         self.layer.masksToBounds = true
         self.layer.borderWidth = 2
         self.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
