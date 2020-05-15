@@ -1,20 +1,24 @@
 PODS:
   - appstore-card-transition (1.0.4)
-  - lottie-ios (3.1.6)
+  - lottie-ios (3.1.8)
+  - WeScan (1.5.0)
 
 DEPENDENCIES:
   - appstore-card-transition
   - lottie-ios
+  - WeScan (>= 0.9)
 
 SPEC REPOS:
   trunk:
     - appstore-card-transition
     - lottie-ios
+    - WeScan
 
 SPEC CHECKSUMS:
   appstore-card-transition: 660c136cb8a0f0004b2e99e99f1305bfa041f05c
-  lottie-ios: 85ce835dd8c53e02509f20729fc7d6a4e6645a0a
+  lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
+  WeScan: b2e47d07f5da3dbf3db14b742e403a8924cf32b2
 
-PODFILE CHECKSUM: 1b38894c507462daea62eee4c5e9f6ed72a200b7
+PODFILE CHECKSUM: 349e89aaa011369ed9339afa1fffc6df928b96c8
 
 COCOAPODS: 1.9.1

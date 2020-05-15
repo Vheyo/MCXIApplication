@@ -8,6 +8,7 @@ target 'MCXIApplication' do
   # Pods for MCXIApplication
   pod 'appstore-card-transition'
   pod 'lottie-ios'
+  pod 'WeScan', '>= 0.9'
 
 
 end

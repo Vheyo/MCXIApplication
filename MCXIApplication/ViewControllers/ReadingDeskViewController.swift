@@ -141,6 +141,9 @@ class ReadingDeskViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Ocr", style: .default , handler:{ (UIAlertAction)in
             print("User click Approve button")
+            let vc = OcrViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc,animated: true)
         }))
         
         alert.addAction(UIAlertAction(title: "Pdf", style: .default , handler:{ (UIAlertAction)in

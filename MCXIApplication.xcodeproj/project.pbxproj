@@ -38,6 +38,11 @@
 		7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */; };
 		7518939F2465541700C5B695 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518939E2465541700C5B695 /* AppUtility.swift */; };
 		751893A12465FD5600C5B695 /* TestiEsercizi.json in Resources */ = {isa = PBXBuildFile; fileRef = 751893A02465FD5600C5B695 /* TestiEsercizi.json */; };
+		75CA249B246F3974009D3C1F /* DetectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2496246F3973009D3C1F /* DetectedViewController.swift */; };
+		75CA249C246F3974009D3C1F /* UIImageView-ImageRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */; };
+		75CA249D246F3974009D3C1F /* OcrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2498246F3973009D3C1F /* OcrViewController.swift */; };
+		75CA249E246F3974009D3C1F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2499246F3973009D3C1F /* Utilities.swift */; };
+		75CA249F246F3974009D3C1F /* BoundingBoxImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA249A246F3973009D3C1F /* BoundingBoxImageView.swift */; };
 		75D23005246E91EF00B87E4D /* IntermediateReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */; };
 		75D23007246E977000B87E4D /* IntermediateFromPdfViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D23006246E977000B87E4D /* IntermediateFromPdfViewController.swift */; };
 		F322504D17C1F14A83F48635 /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */; };
@@ -77,6 +82,11 @@
 		7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomboExcerciesViewController.swift; sourceTree = "<group>"; };
 		7518939E2465541700C5B695 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		751893A02465FD5600C5B695 /* TestiEsercizi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestiEsercizi.json; sourceTree = "<group>"; };
+		75CA2496246F3973009D3C1F /* DetectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectedViewController.swift; sourceTree = "<group>"; };
+		75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView-ImageRect.swift"; sourceTree = "<group>"; };
+		75CA2498246F3973009D3C1F /* OcrViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OcrViewController.swift; sourceTree = "<group>"; };
+		75CA2499246F3973009D3C1F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		75CA249A246F3973009D3C1F /* BoundingBoxImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoundingBoxImageView.swift; sourceTree = "<group>"; };
 		75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateReadingViewController.swift; sourceTree = "<group>"; };
 		75D23006246E977000B87E4D /* IntermediateFromPdfViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediateFromPdfViewController.swift; sourceTree = "<group>"; };
 		AF541F15CE26A8EFA5576705 /* Pods_MCXIApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MCXIApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,6 +139,11 @@
 				7518939E2465541700C5B695 /* AppUtility.swift */,
 				7509E2D92460B2A60021CA4F /* SceneDelegate.swift */,
 				7509E2DD2460B2A60021CA4F /* Main.storyboard */,
+				75CA249A246F3973009D3C1F /* BoundingBoxImageView.swift */,
+				75CA2496246F3973009D3C1F /* DetectedViewController.swift */,
+				75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */,
+				75CA2499246F3973009D3C1F /* Utilities.swift */,
+				75CA2498246F3973009D3C1F /* OcrViewController.swift */,
 				7509E2ED2460B3600021CA4F /* ViewControllers */,
 				7509E2E02460B2A70021CA4F /* Assets.xcassets */,
 				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
@@ -306,9 +321,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75CA249D246F3974009D3C1F /* OcrViewController.swift in Sources */,
 				7509E2EF2460B38B0021CA4F /* ExcerciesViewController.swift in Sources */,
 				38884380246C9ACD0064712A /* DropUpView.swift in Sources */,
 				7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */,
+				75CA249E246F3974009D3C1F /* Utilities.swift in Sources */,
 				7509E2EC2460B3530021CA4F /* ReadingDeskViewController.swift in Sources */,
 				7518939F2465541700C5B695 /* AppUtility.swift in Sources */,
 				7509E2F42460B7640021CA4F /* Type2ViewController.swift in Sources */,
@@ -322,15 +339,18 @@
 				383C97E92465EA3C00812FDF /* RadioButton.swift in Sources */,
 				385C742324655A77009EB1A2 /* PopUpViewController.swift in Sources */,
 				75D23005246E91EF00B87E4D /* IntermediateReadingViewController.swift in Sources */,
+				75CA249F246F3974009D3C1F /* BoundingBoxImageView.swift in Sources */,
 				383C97EB2465EB3B00812FDF /* ExerciseWithFormViewController.swift in Sources */,
 				38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */,
 				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
 				385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */,
+				75CA249B246F3974009D3C1F /* DetectedViewController.swift in Sources */,
 				38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */,
 				38876594246C713F00328D23 /* UPCarouselFlowLayout.swift in Sources */,
 				3888437E246C9A990064712A /* DropUpButton.swift in Sources */,
 				383C97E32465DEA200812FDF /* TextToAnswerCollectionViewCell.swift in Sources */,
 				3888437C246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift in Sources */,
+				75CA249C246F3974009D3C1F /* UIImageView-ImageRect.swift in Sources */,
 				384225DD246B3AFF009BE84D /* timerPickerView.swift in Sources */,
 				7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */,
 			);
@@ -478,7 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -497,7 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
