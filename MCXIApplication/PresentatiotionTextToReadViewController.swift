@@ -14,6 +14,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var hidden = true
     var Pam = Int()
     
+    var timer = Timer()
+    var reading = true
     private var textTitle : UILabel = {
         let textTitle = UILabel()
         textTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +27,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var textToRead : UILabel = {
         let textToRead = UILabel()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
-        textToRead.text = "Mi so rotto il cazzo merda troia del cazzo"
+        textToRead.text = "dsbhahbjsbhaj dskbahkbckjbsdkj bdsajbckacnuasnduvc dbsjcksjdbcousabdnjbvsok sjdbkcbdjksbcasudbckjb sdbjcnsadincdsckjasbdjk sdbjkcjksdbcksbdj sjadbncksabdvjbcskdbcv sdjbkckdjsbvcasjbdvjkb sdbjckvjsbdvjksbdvkdj sdjbkakbjkbvjsbd dsjkbavjkbvsjkbvkjbd sdkjbncvjksdbjkvcbsjdv"
         textToRead.alpha = 0
         return textToRead
     }()
@@ -41,7 +43,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         playButton.clipsToBounds = true
         playButton.alpha = 0.0
-        
+        playButton.backgroundColor = .black
+        playButton.addTarget(self, action: #selector(gestioneTimer(button:)), for: .touchUpInside)
         return playButton
     }()
     
@@ -56,6 +59,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         backButton.layer.cornerRadius = 0.5 * backButton.bounds.size.width
         backButton.clipsToBounds = true
         backButton.alpha = 0.0
+        backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         return backButton
     }()
     
@@ -70,6 +74,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         forwardButton.layer.cornerRadius = 0.5 * forwardButton.bounds.size.width
         forwardButton.clipsToBounds = true
         forwardButton.alpha = 0.0
+        forwardButton.addTarget(self, action: #selector(forwardAction), for: .touchUpInside)
         return forwardButton
     }()
     
@@ -122,10 +127,49 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         setUpGesture()
         setUpConstraintsButton()
         setUpText()
-//        readingInProgress(button: playButton)
         
         
     }
+    
+    func activateTimer(){
+        reading = true
+        print("Sto leggendo")
+        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
+            self.textToRead.text = self.textSplitted[self.indexWord]
+            if self.indexWord < self.textSplitted.count - 1 {
+                self.indexWord += 1
+            }
+        })
+    }
+    
+    func deleteTimer(){
+        timer.invalidate()
+        print("non sto leggendo")
+        reading = false
+    }
+    
+    @objc func gestioneTimer(button : UIButton){
+        if reading == true {
+           print(reading)
+            deleteTimer()
+        }
+        else if reading == false {
+            print(reading)
+            activateTimer()
+        }
+        
+    }
+    
+    @objc func backAction(){
+        indexWord -= 1
+        self.textToRead.text = textSplitted[indexWord]
+    }
+    
+    @objc func forwardAction(){
+           indexWord += 1
+           self.textToRead.text = textSplitted[indexWord]
+       }
+
     
     func setUpText(){
         let myText = (textToRead.text?.split(separator: " "))!
@@ -166,9 +210,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             if initialTimer == 0 {
                 timer.invalidate()
                 let hideGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideFunction))
-                hideGesture.cancelsTouchesInView = false
+                
                 
                 self.view.addGestureRecognizer(hideGesture)
+                self.activateTimer()
             }
         })
     }
@@ -177,7 +222,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     @objc func hideFunction(){
         if hidden == false {
-            UIView.animate(withDuration: 0.4, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.backButtonView.alpha = 0.0
                 self.dropUpButtonTime.alpha = 0.0
                 self.dropDownButtonTime.alpha = 0.0
@@ -188,7 +233,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             }, completion: {_ in self.hidden = true})
         }
         else if hidden{
-            UIView.animate(withDuration: 0.4, animations: {
+            UIView.animate(withDuration: 0.1, animations: {
                 self.backButtonView.alpha = 1.0
                 self.dropUpButtonTime.alpha = 1.0
                 self.dropDownButtonTime.alpha = 1.0
