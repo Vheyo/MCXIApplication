@@ -15,18 +15,7 @@ class CopriScopriViewController: UIViewController {
     var numberSelected: Bool = false
     var maiuscSelected: Bool = false
     var minSelected : Bool = false
-    var generateWordOk : Bool = false {
-        didSet {
-            if generateWordOk {
-                newWordButton.setTitle("Rispondi", for: .normal)
-            }else {
-                userAnswer.placeholder = "Inserisci valore"
-                userAnswer.text = ""
-                newWordButton.setTitle("NewWord", for: .normal)
-            }
-            
-        }
-    }
+    var generateWordOk : Bool = false
     
     private var timerView : TimerView = {
         let timerView = TimerView()
@@ -34,25 +23,37 @@ class CopriScopriViewController: UIViewController {
         return timerView
     }()
     
+    private var backButton : UIButton = {
+        let backButton = UIButton()
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.setTitle("back", for: .normal)
+        backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        backButton.titleLabel?.textAlignment = .left
+        return backButton
+    }()
+    
+    private var whatRead : UILabel = {
+        let whatRead = UILabel()
+        whatRead.translatesAutoresizingMaskIntoConstraints = false
+        whatRead.text = "Cosa hai letto ?"
+        whatRead.isHidden = true
+        whatRead.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        whatRead.textAlignment = .center
+        whatRead.font = UIFont.systemFont(ofSize: 35, weight: .semibold)
+        return whatRead
+    }()
+    
         
     private var lineVertical : UIView = {
         let lineVertical = UIView()
         lineVertical.backgroundColor = .black
-        lineVertical.layer.borderWidth = 2
-        lineVertical.layer.borderColor = UIColor.black.cgColor
+        lineVertical.layer.borderWidth = 1
+        lineVertical.layer.borderColor = UIColor.gray.cgColor
         lineVertical.translatesAutoresizingMaskIntoConstraints = false
         lineVertical.isHidden = true
         return lineVertical
-    }()
-    
-    private var newWordButton : UIButton = {
-        let newWord = UIButton()
-        newWord.backgroundColor = .gray
-        newWord.setTitle("NewWord", for: .normal)
-        newWord.setTitleColor(UIColor.black, for: .normal)
-        newWord.translatesAutoresizingMaskIntoConstraints = false
-        newWord.addTarget(self, action: #selector(generateWord), for: .touchUpInside)
-        return newWord
     }()
     
     private var newWordLabel : UILabel = {
@@ -61,33 +62,52 @@ class CopriScopriViewController: UIViewController {
         newWordlabel.isHidden = true
         newWordlabel.translatesAutoresizingMaskIntoConstraints=false
         newWordlabel.textAlignment = .center
+        newWordlabel.font = UIFont.systemFont(ofSize: 38, weight: .regular)
         return newWordlabel
     }()
+    
     
     private var userAnswer : UITextField = {
         var userAnswer = UITextField()
         userAnswer.translatesAutoresizingMaskIntoConstraints = false
         userAnswer.keyboardType = .default
-        userAnswer.placeholder = "Inserisci valore"
-        userAnswer.borderStyle = .roundedRect
+        userAnswer.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        userAnswer.layer.borderWidth = 2
+        userAnswer.layer.cornerRadius = 20
         userAnswer.isHidden = true
+        userAnswer.textAlignment = .center
 //        userAnswer.autocapitalizationType = .none
         return userAnswer
     }()
-   
+    
+    private var newWordButton : UIButton = {
+        let newWord = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        newWord.backgroundColor = .gray
+        newWord.setTitle("Word", for: .normal)
+        newWord.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        newWord.setTitleColor(.white, for: .normal)
+        newWord.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        newWord.translatesAutoresizingMaskIntoConstraints = false
+        newWord.layer.cornerRadius = 0.5 * newWord.bounds.width
+        newWord.layer.shadowColor = UIColor.black.cgColor
+        newWord.layer.shadowOpacity = 0.3
+        newWord.layer.shadowOffset = .init(width: 1, height: 1)
+        newWord.layer.shadowRadius = 5
+        newWord.addTarget(self, action: #selector(generateWord), for: .touchUpInside)
+        return newWord
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpConstraints()
         setUpGestureForKeyboard()
-        timerView.onTap = {
-            self.timerView.removeFromSuperview()
-            DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
-                self.generateWord()
-            })
-        }
-
+//        timerView.onTap = {
+//            self.timerView.removeFromSuperview()
+//            DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
+//                self.generateWord()
+//            })
+//        }
         // Do any additional setup after loading the view.
     }
     
@@ -102,33 +122,46 @@ class CopriScopriViewController: UIViewController {
         view.addSubview(newWordButton)
         view.addSubview(newWordLabel)
         view.addSubview(userAnswer)
-        view.addSubview(timerView)
-        timerView.addShadowView2()
-        timerView.goTimer()
+        view.addSubview(backButton)
+        view.addSubview(whatRead)
         NSLayoutConstraint.activate([
             
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            backButton.heightAnchor.constraint(equalToConstant: 30),
             
-            timerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            timerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            timerView.heightAnchor.constraint(equalToConstant: 200),
-            timerView.widthAnchor.constraint(equalToConstant: 200),
-            
+    
             lineVertical.topAnchor.constraint(equalTo: view.topAnchor),
             lineVertical.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             lineVertical.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             lineVertical.widthAnchor.constraint(equalToConstant: 1),
             
-            newWordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            newWordButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            newWordButton.widthAnchor.constraint(equalToConstant: 100),
-
-            newWordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            newWordLabel.widthAnchor.constraint(equalToConstant: 200),
-            newWordLabel.bottomAnchor.constraint(equalTo: newWordButton.topAnchor, constant: -40),
             
+            newWordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            newWordLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            newWordLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            newWordLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            
+            
+            whatRead.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 30),
+            whatRead.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            whatRead.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            whatRead.bottomAnchor.constraint(equalTo: userAnswer.topAnchor, constant: -60),
+            
+            
+         
             userAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            userAnswer.widthAnchor.constraint(equalToConstant: 200),
-            userAnswer.bottomAnchor.constraint(equalTo: newWordButton.topAnchor, constant: -40)
+            userAnswer.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            userAnswer.heightAnchor.constraint(equalToConstant: 80),
+            userAnswer.widthAnchor.constraint(equalToConstant: 300),
+            
+            
+            newWordButton.topAnchor.constraint(equalTo: userAnswer.bottomAnchor,constant: 100),
+            newWordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            newWordButton.heightAnchor.constraint(equalToConstant: 100),
+            newWordButton.widthAnchor.constraint(equalToConstant: 100),
+        
+        
             
         ])
     }
@@ -142,25 +175,34 @@ class CopriScopriViewController: UIViewController {
             newWordLabel.isHidden = false
             self.userAnswer.isHidden = true
             lineVertical.isHidden = false
+            newWordButton.isHidden = true
+            self.whatRead.isHidden = true
             DispatchQueue.main.asyncAfter(deadline: .now()+TimeInterval(Int(timeShow)!)/1000, execute: {
                 self.newWordLabel.isHidden = true
                 self.userAnswer.isHidden = false
+                self.newWordButton.isHidden = false
                 self.lineVertical.isHidden = true
+                self.whatRead.isHidden = false
+                self.whatRead.text = "Cosa hai Letto ?"
             })
             generateWordOk = true
         }else {
             if userAnswer.isEmpty {
-                addPopUp(text: "Inserisci una Risposta")
+//                addPopUp(text: "Inserisci una Risposta")
             }else {
                 if userAnswer.text == newWordLabel.text{
                     // Inserisci un popUp che scrive corretto
-                    addPopUp(text: "Risposta Corretta")
+//                    addPopUp(text: "Risposta Corretta")
                     self.userAnswer.isHidden = true
+                    self.whatRead.text = "Nice Work !"
+                    self.userAnswer.text = " "
                     generateWordOk = false
                 }else {
                     // Inserisci un popUp che scrive corretto
-                    addPopUp(text: "Risposta Sbagliata")
+//                    addPopUp(text: "Risposta Sbagliata")
                     self.userAnswer.isHidden = true
+                    self.whatRead.text = "Try Next Time !"
+                    self.userAnswer.text = " "
                     generateWordOk = false
                 }
             }
@@ -187,6 +229,11 @@ class CopriScopriViewController: UIViewController {
         
         let arr = (0..<length).map{ _ in letters.randomElement()! }
         return String(arr)
+    }
+    
+    
+    @objc func dismissView(){
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
