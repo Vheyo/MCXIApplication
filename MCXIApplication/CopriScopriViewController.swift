@@ -28,6 +28,13 @@ class CopriScopriViewController: UIViewController {
         }
     }
     
+    private var timerView : TimerView = {
+        let timerView = TimerView()
+        timerView.translatesAutoresizingMaskIntoConstraints = false
+        return timerView
+    }()
+    
+        
     private var lineVertical : UIView = {
         let lineVertical = UIView()
         lineVertical.backgroundColor = .black
@@ -74,6 +81,12 @@ class CopriScopriViewController: UIViewController {
         view.backgroundColor = .white
         setUpConstraints()
         setUpGestureForKeyboard()
+        timerView.onTap = {
+            self.timerView.removeFromSuperview()
+            DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
+                self.generateWord()
+            })
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -89,8 +102,17 @@ class CopriScopriViewController: UIViewController {
         view.addSubview(newWordButton)
         view.addSubview(newWordLabel)
         view.addSubview(userAnswer)
-        
+        view.addSubview(timerView)
+        timerView.addShadowView2()
+        timerView.goTimer()
         NSLayoutConstraint.activate([
+            
+            
+            timerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timerView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            timerView.heightAnchor.constraint(equalToConstant: 200),
+            timerView.widthAnchor.constraint(equalToConstant: 200),
+            
             lineVertical.topAnchor.constraint(equalTo: view.topAnchor),
             lineVertical.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             lineVertical.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -99,7 +121,7 @@ class CopriScopriViewController: UIViewController {
             newWordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             newWordButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             newWordButton.widthAnchor.constraint(equalToConstant: 100),
-            
+
             newWordLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             newWordLabel.widthAnchor.constraint(equalToConstant: 200),
             newWordLabel.bottomAnchor.constraint(equalTo: newWordButton.topAnchor, constant: -40),
@@ -110,6 +132,8 @@ class CopriScopriViewController: UIViewController {
             
         ])
     }
+    
+        
     @objc func generateWord(){
         
         if !generateWordOk {

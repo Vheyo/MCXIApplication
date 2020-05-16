@@ -282,20 +282,7 @@ class FormCopriScopriViewController: UIViewController {
         copriScopriViewController.minSelected = buttonLettereMin.isChecked
         copriScopriViewController.modalPresentationStyle = .fullScreen
         present(copriScopriViewController,animated: true)
-       
-            copriScopriViewController.numberOfCharacthers = charactersTextField.text!
-      
-        
-        if buttonNumber.isChecked || buttonLettereMaisc.isChecked || buttonLettereMin.isChecked {
-            copriScopriViewController.numberSelected = buttonNumber.isChecked
-            copriScopriViewController.maiuscSelected = buttonLettereMaisc.isChecked
-            copriScopriViewController.minSelected = buttonLettereMin.isChecked
-            copriScopriViewController.modalPresentationStyle = .fullScreen
-            present(copriScopriViewController,animated: true)
-        }else {
-            addPopUp(text: "Seleziona modalità")
-        }
-        
+               
     }
     
     @objc func increaseTimeAction() {
