@@ -189,7 +189,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         UIDevice.current.setValue(value, forKey: "orientation")
     }
     override func viewWillDisappear(_ animated: Bool) {
-        AppUtility.lockOrientation(.all)
+        AppUtility.lockOrientation(.portrait,andRotateTo: .portrait)
     }
     
     func setUpGesture(){
