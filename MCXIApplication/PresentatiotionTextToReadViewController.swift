@@ -8,7 +8,17 @@
 
 import UIKit
 
-class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecognizerDelegate {
+protocol dropUpProtocolChangeVal : class {
+    func dropUpPressed(tagButton : Int)
+}
+
+class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecognizerDelegate, dropUpProtocolChangeVal {
+    
+    
+    func dropUpPressed(tagButton: Int) {
+        print(tagButton)
+    }
+    
     var textSplitted = [String]()
     var indexWord = 0
     var hidden = true
@@ -30,6 +40,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         textToRead.translatesAutoresizingMaskIntoConstraints = false
         textToRead.text = "dsbhahbjsbhaj dskbahkbckjbsdkj bdsajbckacnuasnduvc dbsjcksjdbcousabdnjbvsok sjdbkcbdjksbcasudbckjb sdbjcnsadincdsckjasbdjk sdbjkcjksdbcksbdj sjadbncksabdvjbcskdbcv sdjbkckdjsbvcasjbdvjkb sdbjckvjsbdvjksbdvkdj sdjbkakbjkbvjsbd dsjkbavjkbvsjkbvkjbd sdkjbncvjksdbjkvcbsjdv"
         textToRead.alpha = 0
+        textToRead.textAlignment = .center
         return textToRead
     }()
     
@@ -128,7 +139,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         setUpGesture()
         setUpConstraintsButton()
         setUpText()
-        
+        dropUpButtonTime.delegate = self
+        dropDownButtonTime.delegate = self
         
     }
     
@@ -318,6 +330,6 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
        return touch.view == gestureRecognizer.view
     }
     
-    
+
     
 }
