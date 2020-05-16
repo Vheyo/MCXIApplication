@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9X6-gT-4Jg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.71014492753625" y="-404.46428571428572"/>
+            <point key="canvasLocation" x="-149" y="-404"/>
         </scene>
         <!--Intermediate From Pdf View Controller-->
         <scene sceneID="lZk-Ud-EtZ">
@@ -318,7 +318,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXR-IW-3KR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30.434782608695656" y="-404.46428571428572"/>
+            <point key="canvasLocation" x="-955" y="-404"/>
         </scene>
         <!--Excercies-->
         <scene sceneID="ksb-XM-MaA">
@@ -358,7 +358,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9c1-yy-Yl0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-955" y="-1171"/>
+            <point key="canvasLocation" x="58" y="-1171"/>
         </scene>
         <!--OCR-->
         <scene sceneID="gO2-Pr-k5l">
@@ -464,7 +464,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocP-rw-YfA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-30" y="-1171"/>
+            <point key="canvasLocation" x="972" y="-1171"/>
         </scene>
         <!--Files-->
         <scene sceneID="XfV-ck-d2l">
