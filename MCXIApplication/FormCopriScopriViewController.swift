@@ -9,7 +9,7 @@
 import UIKit
 
 class FormCopriScopriViewController: UIViewController {
-
+    
     var someValueTime: Int = 0 {
         didSet {
             timeTextField.text = "\(someValueTime)"
@@ -22,7 +22,7 @@ class FormCopriScopriViewController: UIViewController {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         return backButton
     }()
-        
+    
     private let descriptionLabel : UILabel = {
         let descriptionLabel = UILabel()
         descriptionLabel.text = "Choose at least one"
@@ -43,7 +43,7 @@ class FormCopriScopriViewController: UIViewController {
         verticalStack.distribution = .fillEqually
         return verticalStack
     }()
-
+    
     
     private var timeTextField : UITextField = {
         var timeTextField = UITextField()
@@ -62,7 +62,7 @@ class FormCopriScopriViewController: UIViewController {
         stepper.layer.cornerRadius = 5
         return stepper
     }()
-        
+    
     private let charactersLabel : UILabel = {
         let charactersLabel = UILabel()
         charactersLabel.text = "Numero di caratteri"
@@ -110,6 +110,7 @@ class FormCopriScopriViewController: UIViewController {
         decreaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         decreaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
         decreaseNumberOfWord.layer.cornerRadius = 0.5 * decreaseNumberOfWord.bounds.size.width
+        decreaseNumberOfWord.addTarget(self, action: #selector(decreaseWordAction), for: .touchUpInside)
         return decreaseNumberOfWord
     }()
     
@@ -132,6 +133,7 @@ class FormCopriScopriViewController: UIViewController {
         increaseNumberOfWord.setTitleColor(.white, for: .normal)
         increaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         increaseNumberOfWord.layer.cornerRadius = 0.5 * increaseNumberOfWord.bounds.size.width
+        increaseNumberOfWord.addTarget(self, action: #selector(increaseWordAction), for: .touchUpInside)
         return increaseNumberOfWord
     }()
     
@@ -157,7 +159,7 @@ class FormCopriScopriViewController: UIViewController {
         return decreaseTime
     }()
     
-     var timeLabel : UILabel = {
+    var timeLabel : UILabel = {
         let timeLabel = UILabel()
         timeLabel.text = "400 ms"
         timeLabel.textAlignment = .center
@@ -188,7 +190,7 @@ class FormCopriScopriViewController: UIViewController {
         stackHorizontalTime.distribution = .fillEqually
         return stackHorizontalTime
     }()
-        
+    
     private let playButton : UIButton = {
         let playButton  = UIButton()
         playButton.setTitle("Start", for: .normal)
@@ -198,6 +200,7 @@ class FormCopriScopriViewController: UIViewController {
         playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
         return playButton
     }()
     
@@ -212,8 +215,8 @@ class FormCopriScopriViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setUpConstraints()
-//        setUpStepperForTime()
+        //        setUpConstraints()
+        //        setUpStepperForTime()
         setUpConstraints()
         setUpGestureForKeyboard()
         setUpTargetButton()
@@ -262,7 +265,7 @@ class FormCopriScopriViewController: UIViewController {
             descriptionLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 20),
             descriptionLabel.heightAnchor.constraint(equalToConstant: 60),
             descriptionLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-             descriptionLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             
             verticalStack.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 35),
             verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 80),
@@ -290,7 +293,7 @@ class FormCopriScopriViewController: UIViewController {
             separator.heightAnchor.constraint(equalToConstant: 8)
             
             
-
+            
         ])
     }
     
@@ -307,7 +310,8 @@ class FormCopriScopriViewController: UIViewController {
             copriScopriViewController.numberSelected = buttonNumber.isChecked
             copriScopriViewController.maiuscSelected = buttonLettereMaisc.isChecked
             copriScopriViewController.minSelected = buttonLettereMin.isChecked
-            navigationController?.pushViewController(copriScopriViewController, animated: true)
+            copriScopriViewController.modalPresentationStyle = .fullScreen
+            present(copriScopriViewController,animated: true)
         }else {
             addPopUp(text: "Seleziona modalità")
         }
@@ -315,16 +319,32 @@ class FormCopriScopriViewController: UIViewController {
     }
     
     @objc func increaseTimeAction() {
-        if Int(timeLabel.text!)! < 16{
-            timeLabel.text = String(Int(timeLabel.text!)!+1)
-        }
+        let splitted =  timeLabel.text?.split(separator: " ")
+        var time = Int(splitted![0])
+        time = time! + 25
+        timeLabel.text = "\(String(time!)) ms"
     }
     
     @objc func decreaseTimeAction() {
-        if Int(timeLabel.text!)! > 5{
-            timeLabel.text = String(Int(timeLabel.text!)!-1)
+        let splitted =  timeLabel.text?.split(separator: " ")
+        var time = Int(splitted![0])
+        time = time! - 25
+        timeLabel.text = "\(String(time!)) ms"
+    }
+    
+    @objc func increaseWordAction(){
+        if Int(numberOfWordLabel.text!)! < 16{
+            numberOfWordLabel.text = String(Int(numberOfWordLabel.text!)!+1)
         }
     }
+    
+    @objc func decreaseWordAction(){
+        if Int(numberOfWordLabel.text!)! > 5{
+            numberOfWordLabel.text = String(Int(numberOfWordLabel.text!)!-1)
+        }
+        
+    }
+    
     @objc func controlFieldCharacters(_ sender : Any ){
         print(Int(charactersTextField.text!)!)
         if Int(charactersTextField.text!)! < 6 || Int(charactersTextField.text!)! > 15 {
@@ -336,12 +356,12 @@ class FormCopriScopriViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
-    
-extension UITextField {
 
+extension UITextField {
+    
     var isEmpty: Bool {
         if let text = self.text, !text.isEmpty {
-             return false
+            return false
         }
         return true
     }
