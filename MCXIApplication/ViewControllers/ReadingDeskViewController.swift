@@ -49,36 +49,42 @@ class ReadingDeskViewController: UIViewController {
         return someTextLabel
     }()
     
+    private let verticalStack : UIStackView = {
+           let verticalStack = UIStackView()
+           verticalStack.axis = .vertical
+           verticalStack.backgroundColor = .red
+           verticalStack.translatesAutoresizingMaskIntoConstraints = false
+           verticalStack.spacing = 20
+           verticalStack.distribution = .fillEqually
+           return verticalStack
+       }()
+    
     
     private var playButton : UIButton = {
-        let playButton = UIButton()
+        let playButton = UIButton(type: UIButton.ButtonType.custom)
         playButton.setTitle("Play", for: .normal)
-        playButton.setTitleColor(.white, for: .normal)
+        playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.layer.masksToBounds = true
         playButton.layer.borderWidth = 1
         playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        playButton.layer.cornerRadius = 40
+        playButton.layer.cornerRadius = 30
         return playButton
     }()
     
-    private var imagePlay : UIImageView = {
-        let imagePlay = UIImageView()
-        imagePlay.image = UIImage(named: "ButtonPlay")
-        imagePlay.layer.masksToBounds = true
-        imagePlay.layer.cornerRadius = 40
-        imagePlay.translatesAutoresizingMaskIntoConstraints = false
-        return imagePlay
-    }()
-    
+//      imagePlay.image = UIImage(named: "ButtonPlay")
+
     private var timeTextRead : UIButton = {
         let timeTextRead = UIButton()
-        timeTextRead.setTitle("Tempo di lettura", for: .normal)
-        timeTextRead.setTitleColor(.black, for: .normal)
+        timeTextRead.setTitle("Timer", for: .normal)
+        timeTextRead.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        timeTextRead.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        timeTextRead.layer.masksToBounds = true
         timeTextRead.layer.borderWidth = 1
-        timeTextRead.layer.borderColor = UIColor.black.cgColor
+        timeTextRead.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        timeTextRead.layer.cornerRadius = 30
         timeTextRead.translatesAutoresizingMaskIntoConstraints = false
         return timeTextRead
     }()
@@ -131,9 +137,9 @@ class ReadingDeskViewController: UIViewController {
         self.view.addSubview(titleTextLabel)
         self.view.addSubview(textViewContainer)
         textViewContainer.addSubview(someTextLabel)
-        self.view.addSubview(playButton)
-        self.view.addSubview(timeTextRead)
-        playButton.addSubview(imagePlay)
+        self.view.addSubview(verticalStack)
+        verticalStack.addArrangedSubview(playButton)
+        verticalStack.addArrangedSubview(timeTextRead)
         NSLayoutConstraint.activate([
             
             viewViole.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
@@ -155,21 +161,11 @@ class ReadingDeskViewController: UIViewController {
             someTextLabel.topAnchor.constraint(equalTo: textViewContainer.topAnchor,constant: 16),
             someTextLabel.bottomAnchor.constraint(equalTo: textViewContainer.bottomAnchor,constant: -16),
             
-            
-            playButton.topAnchor.constraint(equalTo: textViewContainer.bottomAnchor, constant: 16),
-            playButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            playButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            playButton.heightAnchor.constraint(equalToConstant: 80),
-            
-            imagePlay.leadingAnchor.constraint(equalTo: playButton.leadingAnchor),
-            imagePlay.trailingAnchor.constraint(equalTo: playButton.trailingAnchor),
-            imagePlay.topAnchor.constraint(equalTo: playButton.topAnchor),
-            imagePlay.bottomAnchor.constraint(equalTo: playButton.bottomAnchor),
-            
-            timeTextRead.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 16),
-            timeTextRead.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            timeTextRead.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
-            
+            verticalStack.topAnchor.constraint(equalTo: textViewContainer.bottomAnchor, constant: 35),
+            verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 80),
+            verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -80),
+            verticalStack.heightAnchor.constraint(equalToConstant: 150),
+                                    
         ])
     }
     

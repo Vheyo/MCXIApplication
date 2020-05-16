@@ -10,12 +10,7 @@ import UIKit
 
 class FormCopriScopriViewController: UIViewController {
     
-    var someValueTime: Int = 0 {
-        didSet {
-            timeTextField.text = "\(someValueTime)"
-        }
-    }
-    
+  
     private let backButton : UIButton = {
         let backButton = UIButton()
         backButton.setImage(UIImage(named: "Xviolet"), for: .normal)
@@ -44,63 +39,31 @@ class FormCopriScopriViewController: UIViewController {
         return verticalStack
     }()
     
-    
-    private var timeTextField : UITextField = {
-        var timeTextField = UITextField()
-        timeTextField.translatesAutoresizingMaskIntoConstraints = false
-        timeTextField.keyboardType = .numberPad
-        timeTextField.placeholder = "400"
-        timeTextField.borderStyle = .roundedRect
-        return timeTextField
-    }()
-    
-    private let stepper : UIView = {
-        let stepper = UIView()
-        stepper.backgroundColor = .white
-        stepper.layer.borderColor = UIColor.lightGray.cgColor
-        stepper.layer.borderWidth = 1
-        stepper.layer.cornerRadius = 5
-        return stepper
-    }()
-    
-    private let charactersLabel : UILabel = {
-        let charactersLabel = UILabel()
-        charactersLabel.text = "Numero di caratteri"
-        charactersLabel.translatesAutoresizingMaskIntoConstraints = false
-        return charactersLabel
-    }()
-    
-    private var charactersTextField : UITextField = {
-        var charactersTextField = UITextField()
-        charactersTextField.translatesAutoresizingMaskIntoConstraints = false
-        charactersTextField.keyboardType = .numberPad
-        charactersTextField.placeholder = "6"
-        charactersTextField.borderStyle = .roundedRect
-        charactersTextField.addTarget(self, action: #selector(controlFieldCharacters), for: .editingDidEnd)
-        return charactersTextField
-    }()
-    
-    private let buttonNumber : CheckBox = {
+    private var buttonNumber : CheckBox = {
         let buttonNumber = CheckBox()
         buttonNumber.setTitle("Numbers", for: .normal)
         buttonNumber.tag = 1
+        buttonNumber.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
         return buttonNumber
     }()
     
-    private let buttonLettereMaisc : CheckBox = {
+    private var buttonLettereMaisc : CheckBox = {
         let buttonLettereMaisc = CheckBox()
         buttonLettereMaisc.setTitle("Lower case letters", for: .normal)
         buttonLettereMaisc.tag = 2
+        buttonLettereMaisc.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
         return buttonLettereMaisc
     }()
     
-    private let buttonLettereMin : CheckBox = {
+    private var buttonLettereMin : CheckBox = {
         let buttonLettereMin = CheckBox()
         buttonLettereMin.setTitle("Upper case letters", for: .normal)
         buttonLettereMin.tag = 3
+        buttonLettereMin.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
         return buttonLettereMin
     }()
     
+
     private var decreaseNumberOfWord : UIButton = {
         let decreaseNumberOfWord = UIButton()
         decreaseNumberOfWord.translatesAutoresizingMaskIntoConstraints = false
@@ -195,7 +158,8 @@ class FormCopriScopriViewController: UIViewController {
         let playButton  = UIButton()
         playButton.setTitle("Start", for: .normal)
         playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
-        playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        playButton.setTitleColor(.gray, for: .normal)
+        playButton.isEnabled = false
         playButton.backgroundColor = .white
         playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
         playButton.titleLabel?.textAlignment = .center
@@ -206,7 +170,7 @@ class FormCopriScopriViewController: UIViewController {
     
     private let separator : UIView = {
         let separator = UIView()
-        separator.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        separator.backgroundColor = .gray
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.layer.cornerRadius = 3
         return separator
@@ -215,8 +179,6 @@ class FormCopriScopriViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        setUpConstraints()
-        //        setUpStepperForTime()
         setUpConstraints()
         setUpGestureForKeyboard()
         setUpTargetButton()
@@ -297,11 +259,29 @@ class FormCopriScopriViewController: UIViewController {
         ])
     }
     
+    @objc func changeButtonStart(){
+        if buttonNumber.isChecked || buttonLettereMin.isChecked || buttonLettereMaisc.isChecked {
+            playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+            separator.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+            playButton.isEnabled = true
+        } else {
+            playButton.setTitleColor(.gray, for: .normal)
+            separator.backgroundColor = .gray
+            playButton.isEnabled = false
+        }
+    }
+    
     @objc func play(){
+        let splitted =  timeLabel.text?.split(separator: " ")
+        var time = Int(splitted![0])
         let copriScopriViewController = CopriScopriViewController()
-            
-            copriScopriViewController.timeShow = timeTextField.text!
-  
+        copriScopriViewController.timeShow = String(time!)
+        copriScopriViewController.numberOfCharacthers = numberOfWordLabel.text!
+        copriScopriViewController.numberSelected = buttonNumber.isChecked
+        copriScopriViewController.maiuscSelected = buttonLettereMaisc.isChecked
+        copriScopriViewController.minSelected = buttonLettereMin.isChecked
+        copriScopriViewController.modalPresentationStyle = .fullScreen
+        present(copriScopriViewController,animated: true)
        
             copriScopriViewController.numberOfCharacthers = charactersTextField.text!
       
@@ -344,14 +324,7 @@ class FormCopriScopriViewController: UIViewController {
         }
         
     }
-    
-    @objc func controlFieldCharacters(_ sender : Any ){
-        print(Int(charactersTextField.text!)!)
-        if Int(charactersTextField.text!)! < 6 || Int(charactersTextField.text!)! > 15 {
-            addPopUp(text: "Il range è tra 6 e 15")
-        }
-    }
-    
+        
     @objc func dismissView(){
         self.dismiss(animated: true, completion: nil)
     }
