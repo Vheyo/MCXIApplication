@@ -27,6 +27,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     var pagineCounter : Int!
     
     
+    @IBOutlet weak var selectAllButton: UIButton!
+    @IBOutlet weak var resetButton: UIButton!
     @IBOutlet var tempImageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var nextButton: UIButton!
@@ -46,6 +48,11 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         setupVision();
         pagineCounter = 0;
         imageCenter = imageView.center
+        
+        selectAllButton.isEnabled = false
+        resetButton.isEnabled = false
+        cropButton.isEnabled = false
+        
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(PhotoScan));
         tap.numberOfTouchesRequired = 1;
@@ -371,6 +378,9 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         if(scan.pageCount > 1){
             nextButton.isEnabled = true
         }
+        cropButton.isEnabled = true
+        selectAllButton.isEnabled = true
+        resetButton.isEnabled = true
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {

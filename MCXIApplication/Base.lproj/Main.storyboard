@@ -410,7 +410,7 @@
                     </view>
                     <toolbarItems>
                         <barButtonItem style="plain" id="z4C-aN-vZP">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cFC-mO-XoW">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cFC-mO-XoW">
                                 <rect key="frame" x="20" y="10" width="136" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -421,7 +421,7 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem style="plain" id="8xv-4Y-UhP">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X1S-MV-lCd">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X1S-MV-lCd">
                                 <rect key="frame" x="156" y="10" width="105" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -432,7 +432,7 @@
                             </button>
                         </barButtonItem>
                         <barButtonItem style="plain" id="Wx7-hn-3F3">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jy3-lP-4VC">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="jy3-lP-4VC">
                                 <rect key="frame" x="261" y="10" width="133" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -455,12 +455,14 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="7oh-X0-N9v" id="YqB-we-I52"/>
-                        <outlet property="cropButton" destination="jy3-lP-4VC" id="uoc-0B-xQH"/>
+                        <outlet property="cropButton" destination="jy3-lP-4VC" id="oUN-Ws-baM"/>
                         <outlet property="croppedImage" destination="0Gx-5O-2am" id="vZf-lP-377"/>
                         <outlet property="imageView" destination="2Zk-zn-PWb" id="y6a-ux-ScZ"/>
                         <outlet property="nextButton" destination="7ER-QO-0se" id="9zd-2p-a3m"/>
+                        <outlet property="resetButton" destination="cFC-mO-XoW" id="cXc-1F-Jyi"/>
                         <outlet property="resultText" destination="YNS-3Y-AxG" id="c0V-vO-kad"/>
                         <outlet property="scanButton" destination="tkD-Ll-nuO" id="U1t-Ho-LEt"/>
+                        <outlet property="selectAllButton" destination="X1S-MV-lCd" id="I1n-SJ-EpI"/>
                         <outlet property="tempImageView" destination="GuS-Ea-iDm" id="OcN-bn-GGy"/>
                         <outlet property="textView" destination="bmD-hB-m96" id="eIG-Re-GWP"/>
                     </connections>
