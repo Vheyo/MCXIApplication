@@ -77,6 +77,10 @@ class FilesViewController : UIViewController{
         cardCollectionView.register(FileCell.self, forCellWithReuseIdentifier: "CellId")
         setUpLayoutCardCollectionView()
         setUpConstraints()
+        UserDefaults.standard.set(randtext[0], forKey: "File0")
+        UserDefaults.standard.set(randtext[1], forKey: "File1")
+        UserDefaults.standard.set(randtext[2], forKey: "File2")
+        UserDefaults.standard.set(randtext[3], forKey: "File3")
        
         // Do any additional setup after loading the view.
     }
@@ -141,14 +145,14 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if UserDefaults.standard.integer(forKey: "numFile") == 0{
-//            return 1
-//        }
-//        else{
-//            return UserDefaults.standard.integer(forKey: "numFile")
-//        }
+        if UserDefaults.standard.integer(forKey: "numFile") == 0{
+            return 1
+        }
+        else{
+            return UserDefaults.standard.integer(forKey: "numFile")
+        }
         
-        return 4
+       
         
     }
     
@@ -208,13 +212,15 @@ extension FilesViewController : UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return randtext[currentPage].count
-        return 3
+        
+        let arrayString = UserDefaults.standard.stringArray(forKey: "File\(currentPage)")
+        return arrayString?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTable", for: indexPath)
-//        cell.textLabel?.text = "\(randtext[currentPage][indexPath.row])"
+        let arrayString = UserDefaults.standard.stringArray(forKey: "File\(currentPage)")
+        cell.textLabel?.text = "\(arrayString?[indexPath.row] ?? "NO key")"
         return cell
     }
 }

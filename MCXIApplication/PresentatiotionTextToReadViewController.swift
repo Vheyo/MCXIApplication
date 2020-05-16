@@ -16,6 +16,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var text = String()
     var timer = Timer()
     var reading = true
+    var nameFile = String()
     private var textTitle : UILabel = {
         let textTitle = UILabel()
         textTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -129,6 +130,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         setUpText()
         
         
+    }
+    
+    func addKeyword(){
+        var arrayString = UserDefaults.standard.stringArray(forKey: "\(nameFile)")
+        arrayString?.append(textToRead.text!)
+        UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
     }
     
     func activateTimer(){

@@ -299,12 +299,12 @@ class FormCopriScopriViewController: UIViewController {
     
     @objc func play(){
         let copriScopriViewController = CopriScopriViewController()
-        if !timeTextField.isEmpty{
+            
             copriScopriViewController.timeShow = timeTextField.text!
-        }
-        if !charactersTextField.isEmpty{
+  
+       
             copriScopriViewController.numberOfCharacthers = charactersTextField.text!
-        }
+      
         
         if buttonNumber.isChecked || buttonLettereMaisc.isChecked || buttonLettereMin.isChecked {
             copriScopriViewController.numberSelected = buttonNumber.isChecked

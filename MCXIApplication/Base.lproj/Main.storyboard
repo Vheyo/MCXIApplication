@@ -21,7 +21,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="879.71014492753625" y="1141.7410714285713"/>
+            <point key="canvasLocation" x="880" y="1142"/>
         </scene>
         <!--Intermediate Reading View Controller-->
         <scene sceneID="AgM-xh-idq">
@@ -122,21 +122,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9X6-gT-4Jg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-149" y="-404"/>
-        </scene>
-        <!--Intermediate From Pdf View Controller-->
-        <scene sceneID="lZk-Ud-EtZ">
-            <objects>
-                <viewController id="dqp-IQ-FaK" customClass="IntermediateFromPdfViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="d3S-LZ-Jba">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="smy-lc-NJU"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tys-WE-C3d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1823" y="-404"/>
         </scene>
         <!--Exercise With Form View Controller-->
         <scene sceneID="iTX-SZ-NA1">
@@ -358,7 +343,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9c1-yy-Yl0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="58" y="-1171"/>
+            <point key="canvasLocation" x="880" y="-1171"/>
         </scene>
         <!--OCR-->
         <scene sceneID="gO2-Pr-k5l">
@@ -464,7 +449,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocP-rw-YfA" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="-1171"/>
+            <point key="canvasLocation" x="1822" y="-1171"/>
         </scene>
         <!--Files-->
         <scene sceneID="XfV-ck-d2l">
