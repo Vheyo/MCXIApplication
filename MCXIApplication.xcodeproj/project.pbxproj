@@ -25,6 +25,7 @@
 		38AD56452462C56200622D31 /* NoFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 38AD56442462C56200622D31 /* NoFile.json */; };
 		38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */; };
 		38F22555246FFA9000287884 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F22554246FFA9000287884 /* TimerView.swift */; };
+		4B7AC8DD24706DF000C59A0C /* FontKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AC8DC24706DF000C59A0C /* FontKit.swift */; };
 		7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D72460B2A60021CA4F /* AppDelegate.swift */; };
 		7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D92460B2A60021CA4F /* SceneDelegate.swift */; };
 		7509E2DF2460B2A60021CA4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7509E2DD2460B2A60021CA4F /* Main.storyboard */; };
@@ -67,6 +68,7 @@
 		38AD56442462C56200622D31 /* NoFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NoFile.json; sourceTree = "<group>"; };
 		38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFileTableViewCell.swift; sourceTree = "<group>"; };
 		38F22554246FFA9000287884 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		4B7AC8DC24706DF000C59A0C /* FontKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
 		7509E2D42460B2A60021CA4F /* MCXIApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCXIApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509E2D72460B2A60021CA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7509E2D92460B2A60021CA4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				3888437F246C9ACD0064712A /* DropUpView.swift */,
 				38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */,
 				38F22554246FFA9000287884 /* TimerView.swift */,
+				4B7AC8DC24706DF000C59A0C /* FontKit.swift */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7509E2EF2460B38B0021CA4F /* ExcerciesViewController.swift in Sources */,
+				4B7AC8DD24706DF000C59A0C /* FontKit.swift in Sources */,
 				38884380246C9ACD0064712A /* DropUpView.swift in Sources */,
 				7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */,
 				75CA249E246F3974009D3C1F /* Utilities.swift in Sources */,
@@ -498,7 +502,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 966CVPMNG4;
+				DEVELOPMENT_TEAM = 5RT78SVMVF;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

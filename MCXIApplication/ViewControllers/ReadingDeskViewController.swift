@@ -27,6 +27,7 @@ class ReadingDeskViewController: UIViewController {
         titleTextLabel.textAlignment = .center
         titleTextLabel.textColor = .white
         titleTextLabel.font = UIFont.boldSystemFont(ofSize: 21)
+//        titleTextLabel.font = FontKit.roundedFont(ofSize: 21, weight: .semibold)
         titleTextLabel.numberOfLines = 0
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleTextLabel
