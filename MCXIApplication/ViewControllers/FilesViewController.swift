@@ -12,7 +12,7 @@ import UIKit
 class FilesViewController : UIViewController{
     
     var randtext : [[String]] = [["ciao bella","io","ti conosco","tu fumi cannella"],["ciao bella","io","ti conosco"],["ciao bella","io"],["ciao","io"]]
-    fileprivate var currentPage: Int = 0 {
+    private var currentPage: Int = 0 {
         didSet {
             tableView.reloadData()
         }
@@ -102,7 +102,7 @@ class FilesViewController : UIViewController{
         let layout = UPCarouselFlowLayout()
         layout.itemSize = CGSize(width: 310, height: 220)
         layout.scrollDirection = .horizontal
-        layout.sideItemAlpha = 1
+        layout.sideItemAlpha = 0.8
         layout.sideItemScale = 0.8
         layout.spacingMode = .fixed(spacing: 5)
         cardCollectionView.collectionViewLayout = layout
