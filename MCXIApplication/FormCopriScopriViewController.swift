@@ -232,8 +232,8 @@ class FormCopriScopriViewController: UIViewController {
             descriptionLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             
             verticalStack.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 35),
-            verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 80),
-            verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -80),
+            verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
             verticalStack.heightAnchor.constraint(equalToConstant: 250),
             
             stackHorizontalNumber.topAnchor.constraint(equalTo: verticalStack.bottomAnchor, constant: 35),
@@ -291,7 +291,7 @@ class FormCopriScopriViewController: UIViewController {
         copriScopriViewController.maiuscSelected = buttonLettereMaisc.isChecked
         copriScopriViewController.minSelected = buttonLettereMin.isChecked
         copriScopriViewController.modalPresentationStyle = .fullScreen
-        present(copriScopriViewController,animated: true)
+        present(copriScopriViewController,animated: false)
                
     }
     

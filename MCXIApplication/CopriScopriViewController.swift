@@ -97,17 +97,29 @@ class CopriScopriViewController: UIViewController {
         return newWord
     }()
     
+    
+    private var labelProssima : UILabel = {
+        let labelProssima = UILabel()
+        labelProssima.text = "Prossima parola in"
+        labelProssima.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
+        labelProssima.translatesAutoresizingMaskIntoConstraints = false
+        labelProssima.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        labelProssima.textAlignment = .center
+        return labelProssima
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setUpConstraints()
         setUpGestureForKeyboard()
-//        timerView.onTap = {
-//            self.timerView.removeFromSuperview()
-//            DispatchQueue.main.asyncAfter(deadline: .now()+1, execute: {
-//                self.generateWord()
-//            })
-//        }
+        generateWord()
+        timerView.onTap = {
+            self.timerView.removeFromSuperview()
+            DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+                self.generateWord()
+            })
+        }
         // Do any additional setup after loading the view.
     }
     
@@ -117,6 +129,20 @@ class CopriScopriViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    func setUpConstraintsTimeView(){
+        view.addSubview(timerView)
+        
+        NSLayoutConstraint.activate([
+  
+            timerView.topAnchor.constraint(equalTo: labelProssima.bottomAnchor,constant: 150),
+            timerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            timerView.heightAnchor.constraint(equalToConstant: 100),
+            timerView.widthAnchor.constraint(equalToConstant: 100),
+   
+        ])
+        timerView.addShadowView2()
+    }
+    
     func setUpConstraints(){
         view.addSubview(lineVertical)
         view.addSubview(newWordButton)
@@ -124,6 +150,7 @@ class CopriScopriViewController: UIViewController {
         view.addSubview(userAnswer)
         view.addSubview(backButton)
         view.addSubview(whatRead)
+        view.addSubview(labelProssima)
         NSLayoutConstraint.activate([
             
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -155,13 +182,18 @@ class CopriScopriViewController: UIViewController {
             userAnswer.heightAnchor.constraint(equalToConstant: 80),
             userAnswer.widthAnchor.constraint(equalToConstant: 300),
             
+            labelProssima.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            labelProssima.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            labelProssima.heightAnchor.constraint(equalToConstant: 80),
+            labelProssima.widthAnchor.constraint(equalToConstant: 300),
             
-            newWordButton.topAnchor.constraint(equalTo: userAnswer.bottomAnchor,constant: 100),
+            
+            newWordButton.topAnchor.constraint(equalTo: userAnswer.bottomAnchor,constant: 150),
             newWordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             newWordButton.heightAnchor.constraint(equalToConstant: 100),
             newWordButton.widthAnchor.constraint(equalToConstant: 100),
-        
-        
+            
+
             
         ])
     }
@@ -177,6 +209,8 @@ class CopriScopriViewController: UIViewController {
             lineVertical.isHidden = false
             newWordButton.isHidden = true
             self.whatRead.isHidden = true
+            timerView.isHidden = true
+            labelProssima.isHidden = true
             DispatchQueue.main.asyncAfter(deadline: .now()+TimeInterval(Int(timeShow)!)/1000, execute: {
                 self.newWordLabel.isHidden = true
                 self.userAnswer.isHidden = false
@@ -194,16 +228,27 @@ class CopriScopriViewController: UIViewController {
                     // Inserisci un popUp che scrive corretto
 //                    addPopUp(text: "Risposta Corretta")
                     self.userAnswer.isHidden = true
+                    self.newWordButton.isHidden = true
                     self.whatRead.text = "Nice Work !"
                     self.userAnswer.text = " "
+                    labelProssima.isHidden = false
+                    setUpConstraintsTimeView()
+                    timerView.goTimer()
                     generateWordOk = false
+                    timerView.isHidden = false
                 }else {
                     // Inserisci un popUp che scrive corretto
-//                    addPopUp(text: "Risposta Sbagliata")
+                    //                    addPopUp(text: "Risposta Sbagliata")
                     self.userAnswer.isHidden = true
+                    self.newWordButton.isHidden = true
                     self.whatRead.text = "Try Next Time !"
                     self.userAnswer.text = " "
+                    setUpConstraintsTimeView()
+                    labelProssima.isHidden = false
                     generateWordOk = false
+                    timerView.goTimer()
+                    timerView.isHidden = false
+                    
                 }
             }
         }

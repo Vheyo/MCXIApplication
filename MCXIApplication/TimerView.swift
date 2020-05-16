@@ -32,7 +32,7 @@ class TimerView: UIView{
     }
     
     func setUpView(){
-        self.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
+        self.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
         self.layer.cornerRadius = 0.5 * self.bounds.size.width
         self.addSubview(labelTime)
         
@@ -44,19 +44,18 @@ class TimerView: UIView{
         ])
     }
     
-
-    
-    private var initialTimer = 5
-    
     func goTimer(){
+        var initialTimer = 2
+        self.labelTime.text = "\(initialTimer)"
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
-            self.labelTime.text = "\(self.initialTimer)"
-            self.initialTimer -= 1
-            if self.initialTimer == -1 {
+            initialTimer -= 1
+            self.labelTime.text = "\(initialTimer)"
+            if initialTimer == -1 {
                 self.onTap?()
                 timer.invalidate()
             }
         })
+
     }
     
     
