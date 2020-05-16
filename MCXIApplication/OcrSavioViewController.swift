@@ -78,6 +78,15 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
     }
+    
+    @IBAction func exitPressed(_ sender: Any) {
+        dismiss(animated: true, completion: {
+            print("dismissed")
+        })
+    }
+    
+    
+    
     @IBAction func backPagePressed(_ sender: Any) {
         if(pagineCounter == 0){
             backButton.isEnabled = false
