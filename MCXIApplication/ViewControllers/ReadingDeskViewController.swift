@@ -27,6 +27,7 @@ class ReadingDeskViewController: UIViewController {
         titleTextLabel.textAlignment = .center
         titleTextLabel.textColor = .white
         titleTextLabel.font = UIFont.boldSystemFont(ofSize: 21)
+//        titleTextLabel.font = FontKit.roundedFont(ofSize: 21, weight: .semibold)
         titleTextLabel.numberOfLines = 0
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleTextLabel
@@ -91,6 +92,9 @@ class ReadingDeskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.tabBarController!.tabBar.layer.borderWidth = 0
+//        self.tabBarController!.tabBar.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+//        self.tabBarController?.tabBar.clipsToBounds = true
         AppUtility.lockOrientation(.portrait)
         setUpNavigationBar()
         setUpConstraints()
@@ -284,3 +288,5 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
     }
     
 }
+
+

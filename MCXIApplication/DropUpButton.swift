@@ -14,6 +14,7 @@ class DropUpButton: UIButton, dropUpProtocol{
     func dropUpPressed(string: String) {
         self.setTitle(string, for: .normal)
         self.dropDownAfterPressed()
+        self.delegate?.dropUpPressed(tagButton: tag)
     }
     
     
@@ -25,6 +26,7 @@ class DropUpButton: UIButton, dropUpProtocol{
     }()
     
     var height = NSLayoutConstraint()
+    weak var delegate : dropUpProtocolChangeVal?
     
     override init(frame: CGRect) {
         super.init(frame : frame)

@@ -158,10 +158,11 @@ class FormCopriScopriViewController: UIViewController {
         let playButton  = UIButton()
         playButton.setTitle("Start", for: .normal)
         playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
-        playButton.setTitleColor(.gray, for: .normal)
+        playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        playButton.alpha = 0.3
         playButton.isEnabled = false
         playButton.backgroundColor = .white
-        playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 40)
+        playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 32)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
@@ -170,7 +171,8 @@ class FormCopriScopriViewController: UIViewController {
     
     private let separator : UIView = {
         let separator = UIView()
-        separator.backgroundColor = .gray
+        separator.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        separator.alpha = 0.3
         separator.translatesAutoresizingMaskIntoConstraints = false
         separator.layer.cornerRadius = 3
         return separator
@@ -244,7 +246,7 @@ class FormCopriScopriViewController: UIViewController {
             stackHorizontalTime.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
             stackHorizontalTime.heightAnchor.constraint(equalToConstant: 80),
             
-            playButton.topAnchor.constraint(equalTo: stackHorizontalTime.bottomAnchor, constant: 50),
+            playButton.topAnchor.constraint(equalTo: stackHorizontalTime.bottomAnchor, constant: 80),
             playButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
             playButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             playButton.heightAnchor.constraint(equalToConstant: 42),
@@ -252,7 +254,7 @@ class FormCopriScopriViewController: UIViewController {
             separator.centerXAnchor.constraint(equalTo: playButton.centerXAnchor),
             separator.topAnchor.constraint(equalTo: playButton.bottomAnchor,constant: 5),
             separator.widthAnchor.constraint(equalToConstant: 60),
-            separator.heightAnchor.constraint(equalToConstant: 8)
+            separator.heightAnchor.constraint(equalToConstant: 4)
             
             
             
@@ -263,10 +265,18 @@ class FormCopriScopriViewController: UIViewController {
         if buttonNumber.isChecked || buttonLettereMin.isChecked || buttonLettereMaisc.isChecked {
             playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
             separator.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+            UIView.animate(withDuration: 0.4) {
+                self.playButton.alpha = 1
+                self.separator.alpha = 1
+            }
             playButton.isEnabled = true
         } else {
-            playButton.setTitleColor(.gray, for: .normal)
-            separator.backgroundColor = .gray
+            playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+            UIView.animate(withDuration: 0.4) {
+                self.separator.alpha = 0.3
+                self.playButton.alpha = 0.3
+            }
+
             playButton.isEnabled = false
         }
     }

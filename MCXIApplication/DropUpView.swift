@@ -44,7 +44,7 @@ class DropUpView : UIView{
         let layout = UPCarouselFlowLayout()
         layout.itemSize = CGSize(width: 70, height: 70)
         layout.scrollDirection = .vertical
-        layout.sideItemAlpha = 1
+        layout.sideItemAlpha = 0
         layout.sideItemScale = 0.6
         layout.spacingMode = .fixed(spacing: 3)
         cardCollectionView.collectionViewLayout = layout
@@ -94,8 +94,10 @@ extension DropUpView : UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        
         self.delegate?.dropUpPressed(string: timeToStart[indexPath.item])
+        
     }
     
 }
