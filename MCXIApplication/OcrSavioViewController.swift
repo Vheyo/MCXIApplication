@@ -71,6 +71,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         
     }
     @IBAction func backPagePressed(_ sender: Any) {
+        if(pagineCounter == 1){ return }
         pagineCounter -= 1;
         for index in imageView.subviews{
             index.removeFromSuperview()
@@ -80,6 +81,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @IBAction func nextPagePressed(_ sender: Any) {
+        if(pagineCounter == pagine.count){ return }
         pagineCounter += 1;
         for index in imageView.subviews{
             index.removeFromSuperview()
