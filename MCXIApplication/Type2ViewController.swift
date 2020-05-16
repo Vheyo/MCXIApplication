@@ -121,7 +121,7 @@ class Type2ViewController: UIViewController {
         switch sender.tag{
         case 0:
             let formCopriEScopri = FormCopriScopriViewController()
-            formCopriEScopri.modalPresentationStyle = .fullScreen
+            formCopriEScopri.modalPresentationStyle = .overFullScreen
             formCopriEScopri.view.backgroundColor = .white
             self.present(formCopriEScopri,animated: true, completion: nil)
         case 1:
