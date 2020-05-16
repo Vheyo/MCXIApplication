@@ -361,6 +361,22 @@
                                 <rect key="frame" x="0.0" y="222" width="414" height="454"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ER-QO-0se">
+                                <rect key="frame" x="350" y="748" width="42" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Avanti"/>
+                                <connections>
+                                    <action selector="nextPagePressed:" destination="aeA-dd-f7o" eventType="touchUpInside" id="u0u-5J-xFo"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7oh-X0-N9v">
+                                <rect key="frame" x="17" y="748" width="53" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Indietro"/>
+                                <connections>
+                                    <action selector="backPagePressed:" destination="aeA-dd-f7o" eventType="touchUpInside" id="MYE-RE-uAn"/>
+                                </connections>
+                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0Gx-5O-2am">
                                 <rect key="frame" x="20" y="108" width="374" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -438,9 +454,11 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="backButton" destination="7oh-X0-N9v" id="YqB-we-I52"/>
                         <outlet property="cropButton" destination="jy3-lP-4VC" id="uoc-0B-xQH"/>
                         <outlet property="croppedImage" destination="0Gx-5O-2am" id="vZf-lP-377"/>
                         <outlet property="imageView" destination="2Zk-zn-PWb" id="y6a-ux-ScZ"/>
+                        <outlet property="nextButton" destination="7ER-QO-0se" id="9zd-2p-a3m"/>
                         <outlet property="resultText" destination="YNS-3Y-AxG" id="c0V-vO-kad"/>
                         <outlet property="scanButton" destination="tkD-Ll-nuO" id="U1t-Ho-LEt"/>
                         <outlet property="tempImageView" destination="GuS-Ea-iDm" id="OcN-bn-GGy"/>
