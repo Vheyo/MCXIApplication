@@ -128,7 +128,6 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         setUpConstraintsButton()
         setUpText()
         
-        
     }
     
     func activateTimer(){
