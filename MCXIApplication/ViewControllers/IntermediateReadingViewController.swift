@@ -28,7 +28,8 @@ class IntermediateReadingViewController: UIViewController{
     
     @objc func playAction(){
         let vc = PresentatiotionTextToReadViewController()
-        vc.textToRead.text = textView.text
+        vc.view.backgroundColor = .white
+        vc.text = textView.text
         present(vc,animated: true)
     }
 }

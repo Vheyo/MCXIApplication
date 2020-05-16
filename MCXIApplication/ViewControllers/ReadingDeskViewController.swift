@@ -251,7 +251,7 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             
         else {
             do {
-                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
+//                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
                 if let pdf = PDFDocument(url: selectedFileURL) {
                     let pageCount = pdf.pageCount
                     let documentContent = NSMutableAttributedString()

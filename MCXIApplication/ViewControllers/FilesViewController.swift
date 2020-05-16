@@ -208,12 +208,13 @@ extension FilesViewController : UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return randtext[currentPage].count
+//        return randtext[currentPage].count
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTable", for: indexPath)
-        cell.textLabel?.text = "\(randtext[currentPage][indexPath.row])"
+//        cell.textLabel?.text = "\(randtext[currentPage][indexPath.row])"
         return cell
     }
 }
