@@ -129,6 +129,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         setUpConstraintsButton()
         setUpText()
         
+        
     }
     
     func addKeyword(){
@@ -178,16 +179,15 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
 
     
     func setUpText(){
-        let myText = (textToRead.text?.split(separator: " "))!
-        for element in myText{
+        let myText = text.split(separator: " ")
+        
+        for element in myText {
             textSplitted.append(String(element))
         }
         Pam = (textSplitted.count/500)*60
         if Pam == 0{
             Pam = 1
         }
-        print(Pam)
-        print(textSplitted)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -216,6 +216,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             if initialTimer == 0 {
                 timer.invalidate()
                 let hideGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideFunction))
+                hideGesture.cancelsTouchesInView = false
                 
                 
                 self.view.addGestureRecognizer(hideGesture)

@@ -108,7 +108,7 @@ class ReadingDeskViewController: UIViewController {
             
             do{
                 let text = try String(contentsOf: fileURL, encoding: .utf8)
-                print(text)
+                
                 return text
                 
             }catch{
@@ -195,12 +195,14 @@ class ReadingDeskViewController: UIViewController {
     }
     
     @objc func playMode(){
-        let vc = PresentatiotionTextToReadViewController()
+       let vc = PresentatiotionTextToReadViewController()
+        vc.text = someTextLabel.text!
         vc.modalPresentationStyle = .fullScreen
         vc.view.backgroundColor = .white
-        vc.text = someTextLabel.text!
-        self.present(vc, animated: true, completion: nil)
+        present(vc,animated: true)
     }
+    
+   
     
     func importPdf(){
         let documentPicker = UIDocumentPickerViewController(documentTypes: [(kUTTypePDF as String)], in: .import)
@@ -247,7 +249,6 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             
         else {
             do {
-//                try FileManager.default.copyItem(at: selectedFileURL, to: sandboxFileURL)
                 if let pdf = PDFDocument(url: selectedFileURL) {
                     let pageCount = pdf.pageCount
                     let documentContent = NSMutableAttributedString()
@@ -268,11 +269,9 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                            } catch {
                                print("cant write...")
                            }
-                    
                 }
                 
             }
-                
             catch{
                 print("Errore nel copiare il file")
             }

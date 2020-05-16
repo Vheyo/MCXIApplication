@@ -121,7 +121,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9X6-gT-4Jg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-149" y="-404"/>
+            <point key="canvasLocation" x="-30" y="-404"/>
+        </scene>
+        <!--Presentatiotion Text To Read View Controller-->
+        <scene sceneID="SHJ-Es-cMD">
+            <objects>
+                <viewController id="GzJ-Tk-U2H" customClass="PresentatiotionTextToReadViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2cS-d3-lDw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4WD-kM-cKi"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="94j-gS-tgH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7mB-iF-ldf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1064" y="-404"/>
         </scene>
         <!--Exercise With Form View Controller-->
         <scene sceneID="iTX-SZ-NA1">
@@ -443,7 +459,7 @@
                     <navigationItem key="navigationItem" title="OCR" id="DeD-fQ-ngG">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="Ij1-kk-Ygr">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="rBS-wq-9Cc">
-                                <rect key="frame" x="20" y="7" width="41" height="34"/>
+                                <rect key="frame" x="20" y="5" width="41" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Exit">
