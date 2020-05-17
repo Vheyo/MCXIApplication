@@ -157,7 +157,6 @@ class FormCopriScopriViewController: UIViewController {
     private let playButton : UIButton = {
         let playButton  = UIButton()
         playButton.setTitle("Start", for: .normal)
-        playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
         playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         playButton.alpha = 0.3
         playButton.isEnabled = false

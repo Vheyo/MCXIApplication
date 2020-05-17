@@ -117,7 +117,6 @@ class Type2ViewController: UIViewController {
     }
     
     @objc func showExcercise(_ sender : UIButton){
-        print(sender.tag)
         switch sender.tag{
         case 0:
             let formCopriEScopri = FormCopriScopriViewController()
@@ -126,6 +125,11 @@ class Type2ViewController: UIViewController {
             self.present(formCopriEScopri,animated: true, completion: nil)
         case 1:
             performSegue(withIdentifier: "Rombo", sender: self);
+        case 2:
+            let pamCrTestiVc = PamCrTestiViewController()
+            pamCrTestiVc.modalPresentationStyle = .overFullScreen
+            pamCrTestiVc.view.backgroundColor = .white
+            self.present(pamCrTestiVc,animated: true, completion: nil)
         default :
             print("Fatal error");
         }
