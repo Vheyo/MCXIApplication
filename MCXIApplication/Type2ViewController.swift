@@ -48,6 +48,7 @@ class Type2ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         view.clipsToBounds = true
         contentScrollView.delegate = self
         scrollView.contentInsetAdjustmentBehavior = .never
@@ -77,8 +78,15 @@ class Type2ViewController: UIViewController {
         setUpLayout()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        AppUtility.lockOrientation(.all)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         arrived99 = false
+        print("ciao")
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     func setUpLayout(){
@@ -124,7 +132,10 @@ class Type2ViewController: UIViewController {
             formCopriEScopri.view.backgroundColor = .white
             self.present(formCopriEScopri,animated: true, completion: nil)
         case 1:
-            performSegue(withIdentifier: "Rombo", sender: self);
+            let romboVC = RomboExcerciesViewController()
+            romboVC.modalPresentationStyle = .overFullScreen
+            romboVC.view.backgroundColor = .white
+            self.present(romboVC,animated: true, completion: nil)
         case 2:
             let pamCrTestiVc = PamCrTestiViewController()
             pamCrTestiVc.modalPresentationStyle = .overFullScreen

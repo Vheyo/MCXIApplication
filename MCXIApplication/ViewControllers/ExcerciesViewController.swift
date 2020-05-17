@@ -33,6 +33,14 @@ class ExcerciesViewController : UIViewController {
         layout.minimumLineSpacing = 20
         layout.minimumInteritemSpacing = 0
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        AppUtility.lockOrientation(.all)
+    }
 }
 
 extension ExcerciesViewController: UICollectionViewDataSource {
