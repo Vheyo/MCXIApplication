@@ -26,7 +26,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         case 2:
             deleteTimer()
             let value = Int(dropDownButtonTime.currentTitle!)
-            Pam = 1
+            Pam = 60/Float(value!*100)
+            print(Pam)
             reading = true
            
             startToRead(gesture: UITapGestureRecognizer())
@@ -39,7 +40,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var textSplitted = [String]()
     var indexWord = 0
     var hidden = true
-    var Pam = Int()
+    var Pam = Float()
     var text = String()
     var timer = Timer()
     var reading = true
@@ -221,7 +222,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         for element in myText {
             textSplitted.append(String(element))
         }
-        Pam = (500/60)
+        Pam = (60/120)
         
     }
     
