@@ -46,6 +46,7 @@
 		7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */; };
 		7518939F2465541700C5B695 /* AppUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7518939E2465541700C5B695 /* AppUtility.swift */; };
 		751893A12465FD5600C5B695 /* TestiEsercizi.json in Resources */ = {isa = PBXBuildFile; fileRef = 751893A02465FD5600C5B695 /* TestiEsercizi.json */; };
+		755B77C32471A61800A3E73D /* PasteAndCopyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 755B77C22471A61800A3E73D /* PasteAndCopyViewController.swift */; };
 		75CA249B246F3974009D3C1F /* DetectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2496246F3973009D3C1F /* DetectedViewController.swift */; };
 		75CA249C246F3974009D3C1F /* UIImageView-ImageRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */; };
 		75CA249E246F3974009D3C1F /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75CA2499246F3973009D3C1F /* Utilities.swift */; };
@@ -120,6 +121,7 @@
 		7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomboExcerciesViewController.swift; sourceTree = "<group>"; };
 		7518939E2465541700C5B695 /* AppUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUtility.swift; sourceTree = "<group>"; };
 		751893A02465FD5600C5B695 /* TestiEsercizi.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = TestiEsercizi.json; sourceTree = "<group>"; };
+		755B77C22471A61800A3E73D /* PasteAndCopyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteAndCopyViewController.swift; sourceTree = "<group>"; };
 		75CA2496246F3973009D3C1F /* DetectedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectedViewController.swift; sourceTree = "<group>"; };
 		75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView-ImageRect.swift"; sourceTree = "<group>"; };
 		75CA2499246F3973009D3C1F /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 				7509E2FA2460BA650021CA4F /* TransitionXib */,
 				385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */,
 				383C97E22465DEA200812FDF /* TextToAnswerCollectionViewCell.swift */,
+				755B77C22471A61800A3E73D /* PasteAndCopyViewController.swift */,
 				383C97E82465EA3C00812FDF /* RadioButton.swift */,
 				383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */,
 				751893A02465FD5600C5B695 /* TestiEsercizi.json */,
@@ -425,6 +428,7 @@
 				7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */,
 				75CA249E246F3974009D3C1F /* Utilities.swift in Sources */,
 				7509E2EC2460B3530021CA4F /* ReadingDeskViewController.swift in Sources */,
+				755B77C32471A61800A3E73D /* PasteAndCopyViewController.swift in Sources */,
 				7518939F2465541700C5B695 /* AppUtility.swift in Sources */,
 				38F22555246FFA9000287884 /* TimerView.swift in Sources */,
 				7509E2F42460B7640021CA4F /* Type2ViewController.swift in Sources */,
@@ -499,7 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -511,7 +515,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -519,7 +523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -531,7 +535,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

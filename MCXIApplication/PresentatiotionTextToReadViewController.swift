@@ -208,12 +208,16 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func backAction(){
+        if self.indexWord > 0 {
         indexWord -= 1
+        }
         self.textToRead.text = textSplitted[indexWord]
     }
     
     @objc func forwardAction(){
+        if self.indexWord < self.textSplitted.count - 1 {
         indexWord += 1
+        }
         self.textToRead.text = textSplitted[indexWord]
     }
     
