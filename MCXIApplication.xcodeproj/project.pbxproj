@@ -499,7 +499,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -519,7 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
