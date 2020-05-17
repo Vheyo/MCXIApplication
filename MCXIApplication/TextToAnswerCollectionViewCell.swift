@@ -38,7 +38,7 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
     
     func setUpConstraints(){
         self.addSubview(containerView)
-        containerView.addShadowView()
+        containerView.addShadowView2()
         containerView.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
