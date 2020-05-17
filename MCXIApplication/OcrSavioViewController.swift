@@ -25,7 +25,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     var expanse = false
     var pagine  = [UIImage]()
     var pagineCounter : Int!
-    
+    var bufferString = [String]()
     
     @IBOutlet weak var selectAllButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
@@ -78,6 +78,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+            print(self.resultText.text)
+        })
+        
     }
     
     @IBAction func exitPressed(_ sender: Any) {
@@ -89,10 +93,12 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     
     @IBAction func backPagePressed(_ sender: Any) {
-        if(pagineCounter == 0){
-            backButton.isEnabled = false
-            return
-        }
+        tmpView.removeAll()
+//        if(pagineCounter == 0){
+//            backButton.isEnabled = false
+//            return
+//        }
+        bufferString.append(resultText.text)
         nextButton.isEnabled = true
         backButton.isEnabled = true
         pagineCounter -= 1;
@@ -107,10 +113,12 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @IBAction func nextPagePressed(_ sender: Any) {
-        if(pagineCounter == (pagine.count - 1)){
-            nextButton.isEnabled = false
-            return
-        }
+        tmpView.removeAll()
+//        if(pagineCounter == (pagine.count - 1)){
+//            nextButton.isEnabled = false
+//            return
+//        }
+        bufferString.append(resultText.text)
         backButton.isEnabled = true
         nextButton.isEnabled = true
         pagineCounter += 1;
@@ -125,9 +133,14 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @IBAction func selectAll_pressed(_ sender: Any) {
+        bufferString.append(resultText.text)
+        var passingString = String()
+        for index in bufferString{
+            passingString += index
+        }
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let file = "File\(UserDefaults.standard.integer(forKey: "numFile")+1).txt"
-        let text = String(resultText.text)
+        let text = passingString
         let fileUrl = dir.appendingPathComponent(file)
         do {
             try text.write(to: fileUrl, atomically: false, encoding: .utf8)
