@@ -72,6 +72,10 @@ class ExerciseWithFormViewController: UIViewController {
         let questionLabel = UILabel()
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.text = "Qui devi mettere la domanda del testo ? "
+        questionLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
+        questionLabel.textColor = .black
+        questionLabel.textAlignment = .left
+        questionLabel.numberOfLines = 0
         return questionLabel
     }()
     
@@ -79,6 +83,9 @@ class ExerciseWithFormViewController: UIViewController {
         let firstAnswer = UILabel()
         firstAnswer.translatesAutoresizingMaskIntoConstraints = false
         firstAnswer.text = "Qui devi mettere ladssadasfdfdsfdsdsa prima risposta"
+        firstAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        firstAnswer.textColor = .black
+        firstAnswer.textAlignment = .left
         firstAnswer.numberOfLines = 0
         return firstAnswer
     }()
@@ -87,6 +94,9 @@ class ExerciseWithFormViewController: UIViewController {
         let secondAnswer = UILabel()
         secondAnswer.translatesAutoresizingMaskIntoConstraints = false
         secondAnswer.text = "Qui devi mettere la seconda risposta "
+        secondAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        secondAnswer.textColor = .black
+        secondAnswer.textAlignment = .left
         secondAnswer.numberOfLines = 0
         return secondAnswer
     }()
@@ -95,6 +105,9 @@ class ExerciseWithFormViewController: UIViewController {
         let thirdAnswer = UILabel()
         thirdAnswer.translatesAutoresizingMaskIntoConstraints = false
         thirdAnswer.text = "Qui devi mettere la terza risposta"
+        thirdAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        thirdAnswer.textColor = .black
+        thirdAnswer.textAlignment = .left
         thirdAnswer.numberOfLines = 0
         return thirdAnswer
     }()
@@ -103,6 +116,9 @@ class ExerciseWithFormViewController: UIViewController {
         let fourthAnswer = UILabel()
         fourthAnswer.translatesAutoresizingMaskIntoConstraints = false
         fourthAnswer.text = "Qui devi mettere la quarta risposta"
+        fourthAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        fourthAnswer.textColor = .black
+        fourthAnswer.textAlignment = .left
         fourthAnswer.numberOfLines = 0
         return fourthAnswer
     }()
@@ -238,36 +254,39 @@ class ExerciseWithFormViewController: UIViewController {
         formQA.addSubview(radioButtonSecond)
         formQA.addSubview(radioButtonThird)
         formQA.addSubview(radioButtonFourth)
-        
+
         NSLayoutConstraint.activate([
             
             
-            formQA.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            formQA.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            formQA.topAnchor.constraint(equalTo: backButton.bottomAnchor,constant: 10),
+            formQA.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -20),
             formQA.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             formQA.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
-            questionLabel.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 10),
-            questionLabel.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
-            questionLabel.topAnchor.constraint(equalTo: formQA.topAnchor,constant: 10),
             
-            radioButtonFirst.topAnchor.constraint(equalTo: questionLabel.bottomAnchor,constant: 16),
-            radioButtonFirst.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 10),
+            questionLabel.topAnchor.constraint(equalTo: formQA.topAnchor,constant: 30 ),
+            questionLabel.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
+            questionLabel.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -30),
+            questionLabel.heightAnchor.constraint(equalToConstant: 200),
+            
+            
+            radioButtonFirst.topAnchor.constraint(equalTo: questionLabel.bottomAnchor,constant: 20),
+            radioButtonFirst.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
             radioButtonFirst.heightAnchor.constraint(equalToConstant: 40),
             radioButtonFirst.widthAnchor.constraint(equalToConstant: 40),
             
             radioButtonSecond.topAnchor.constraint(equalTo: radioButtonFirst.bottomAnchor,constant: 16),
-            radioButtonSecond.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 10),
+            radioButtonSecond.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
             radioButtonSecond.heightAnchor.constraint(equalToConstant: 40),
             radioButtonSecond.widthAnchor.constraint(equalToConstant: 40),
             
             radioButtonThird.topAnchor.constraint(equalTo: radioButtonSecond.bottomAnchor,constant: 16),
-            radioButtonThird.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 10),
+            radioButtonThird.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
             radioButtonThird.heightAnchor.constraint(equalToConstant: 40),
             radioButtonThird.widthAnchor.constraint(equalToConstant: 40),
             
             radioButtonFourth.topAnchor.constraint(equalTo: radioButtonThird.bottomAnchor,constant: 16),
-            radioButtonFourth.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 10),
+            radioButtonFourth.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
             radioButtonFourth.heightAnchor.constraint(equalToConstant: 40),
             radioButtonFourth.widthAnchor.constraint(equalToConstant: 40),
             
