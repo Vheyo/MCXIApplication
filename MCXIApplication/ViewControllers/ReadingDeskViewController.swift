@@ -92,6 +92,8 @@ class ReadingDeskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
 //        self.tabBarController!.tabBar.layer.borderWidth = 0
 //        self.tabBarController!.tabBar.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
 //        self.tabBarController?.tabBar.clipsToBounds = true
@@ -99,6 +101,7 @@ class ReadingDeskViewController: UIViewController {
         setUpNavigationBar()
         setUpConstraints()
         textViewContainer.addShadowView2()
+        view.backgroundColor = .white
         someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)

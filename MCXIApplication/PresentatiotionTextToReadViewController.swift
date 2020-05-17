@@ -60,6 +60,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         textToRead.text = "dsbhahbjsbhaj dskbahkbckjbsdkj bdsajbckacnuasnduvc dbsjcksjdbcousabdnjbvsok sjdbkcbdjksbcasudbckjb sdbjcnsadincdsckjasbdjk sdbjkcjksdbcksbdj sjadbncksabdvjbcskdbcv sdjbkckdjsbvcasjbdvjkb sdbjckvjsbdvjksbdvkdj sdjbkakbjkbvjsbd dsjkbavjkbvsjkbvkjbd sdkjbncvjksdbjkvcbsjdv"
         textToRead.alpha = 0
         textToRead.textAlignment = .center
+        textToRead.textColor = .black
         return textToRead
     }()
     
@@ -161,6 +162,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         setUpText()
         dropUpButtonTime.delegate = self
         dropDownButtonTime.delegate = self
+        view.backgroundColor = .white
         
     }
     
@@ -206,12 +208,16 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func backAction(){
+        if self.indexWord > 0 {
         indexWord -= 1
+        }
         self.textToRead.text = textSplitted[indexWord]
     }
     
     @objc func forwardAction(){
+        if self.indexWord < self.textSplitted.count - 1 {
         indexWord += 1
+        }
         self.textToRead.text = textSplitted[indexWord]
     }
     

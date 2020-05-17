@@ -27,6 +27,8 @@ class RomboExcerciesViewController : UIViewController{
                 self.showText()
             }
         })
+        view.backgroundColor = .white
+        textView.textColor = .black
         let tapNextGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showText))
         view.addGestureRecognizer(tapNextGestureRecognizer);
     }
@@ -51,7 +53,7 @@ class RomboExcerciesViewController : UIViewController{
     
     @objc func showText(){
         textView.text = textToShow[indexWord]
-        if indexWord < textToShow.count{
+        if indexWord < textToShow.count - 1{
             indexWord += 1
         }
     }

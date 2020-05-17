@@ -19,9 +19,12 @@ class IntermediateReadingViewController: UIViewController{
     }()
     
     override func viewDidLoad() {
+        overrideUserInterfaceStyle = .light
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         textView.frame = CGRect(x: 0, y: 276, width: 414, height: 620)
         playButton.frame = CGRect(x: 150, y: 350, width: 100, height: 100)
         view.backgroundColor = .white
+        textView.textColor = .black
         view.addSubview(textView)
         view.addSubview(playButton)
     }

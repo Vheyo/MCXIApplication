@@ -19,7 +19,9 @@ class ExcerciesViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        overrideUserInterfaceStyle = .light
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        view.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "Type2CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Type2CollectionViewCell")
