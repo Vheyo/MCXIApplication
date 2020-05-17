@@ -99,6 +99,7 @@ class ReadingDeskViewController: UIViewController {
         setUpNavigationBar()
         setUpConstraints()
         textViewContainer.addShadowView2()
+        view.backgroundColor = .white
         someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
