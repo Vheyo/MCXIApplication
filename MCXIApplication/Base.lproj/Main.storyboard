@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -157,7 +157,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2te-Je-e4O">
             <objects>
-                <tabBarController id="s6n-DT-Kb2" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="NO_TUTORIAL" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s6n-DT-Kb2" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cGV-66-vwb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -501,6 +501,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ocP-rw-YfA" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1822" y="-1171"/>
+        </scene>
+        <!--Tutorial View Controller-->
+        <scene sceneID="iKA-SY-h6f">
+            <objects>
+                <viewController storyboardIdentifier="TUTORIAL" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zBe-WE-WkW" customClass="TutorialViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="y7n-JJ-10L">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kv-N7-3pv" customClass="PaperOnboarding" customModule="paper_onboarding">
+                                <rect key="frame" x="20" y="44" width="374" height="802"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3n-gC-fcn">
+                                <rect key="frame" x="332" y="733" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Skip"/>
+                                <connections>
+                                    <action selector="skipPressed:" destination="zBe-WE-WkW" eventType="touchUpInside" id="GdB-yy-dTz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="5iu-cC-OTN"/>
+                    </view>
+                    <connections>
+                        <outlet property="skipButton" destination="Q3n-gC-fcn" id="Cya-0D-OQ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NdZ-Vd-2XF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2728.985507246377" y="-1168.5267857142856"/>
         </scene>
         <!--Files-->
         <scene sceneID="XfV-ck-d2l">

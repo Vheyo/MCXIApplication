@@ -45,6 +45,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad();
+        
         setupVision();
         pagineCounter = 0;
         imageCenter = imageView.center
@@ -466,4 +467,3 @@ extension UIView {
         }
     }
 }
-

@@ -104,6 +104,15 @@ class ReadingDeskViewController: UIViewController {
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if(UserDefaults.isFirstLaunch()){
+            let vc = self.storyboard?.instantiateViewController(identifier: "TUTORIAL") as? TutorialViewController
+            self.view.window?.rootViewController = vc
+            
+        }
+    }
+    
     
     func obtainTextFromFile(indexPath: Int) -> String {
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
@@ -287,6 +296,24 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
         
     }
     
+}
+extension UserDefaults {
+        // check for is first launch - only true on first invocation after app install, false on all further invocations
+        // Note: Store this value in AppDelegate if you have multiple places where you are checking for this flag
+        static func isFirstLaunch() -> Bool {
+            let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
+            let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
+            if (isFirstLaunch) {
+                UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
+                UserDefaults.standard.synchronize()
+            }
+            return isFirstLaunch
+        }
+        static func FirstLunchSet(_ valore : Bool){
+            let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
+            UserDefaults.standard.set(!valore, forKey: hasBeenLaunchedBeforeFlag)
+            UserDefaults.standard.synchronize()
+        }
 }
 
 

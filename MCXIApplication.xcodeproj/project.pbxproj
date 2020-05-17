@@ -27,6 +27,7 @@
 		38BA6A39247143B900DF7878 /* PamCrTestiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */; };
 		38F22555246FFA9000287884 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F22554246FFA9000287884 /* TimerView.swift */; };
 		4B7AC8DD24706DF000C59A0C /* FontKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AC8DC24706DF000C59A0C /* FontKit.swift */; };
+		5F1573072471848D00C832B6 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1573062471848D00C832B6 /* TutorialViewController.swift */; };
 		7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D72460B2A60021CA4F /* AppDelegate.swift */; };
 		7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D92460B2A60021CA4F /* SceneDelegate.swift */; };
 		7509E2DF2460B2A60021CA4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7509E2DD2460B2A60021CA4F /* Main.storyboard */; };
@@ -71,6 +72,7 @@
 		38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PamCrTestiViewController.swift; sourceTree = "<group>"; };
 		38F22554246FFA9000287884 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		4B7AC8DC24706DF000C59A0C /* FontKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
+		5F1573062471848D00C832B6 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		7509E2D42460B2A60021CA4F /* MCXIApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCXIApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509E2D72460B2A60021CA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7509E2D92460B2A60021CA4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				38F22554246FFA9000287884 /* TimerView.swift */,
 				4B7AC8DC24706DF000C59A0C /* FontKit.swift */,
 				38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */,
+				5F1573062471848D00C832B6 /* TutorialViewController.swift */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				383C97EB2465EB3B00812FDF /* ExerciseWithFormViewController.swift in Sources */,
 				38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */,
 				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
+				5F1573072471848D00C832B6 /* TutorialViewController.swift in Sources */,
 				385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */,
 				75CA249B246F3974009D3C1F /* DetectedViewController.swift in Sources */,
 				38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */,
@@ -506,7 +510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
+				DEVELOPMENT_TEAM = 966CVPMNG4;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -525,7 +529,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
+				DEVELOPMENT_TEAM = 966CVPMNG4;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

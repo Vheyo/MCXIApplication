@@ -9,6 +9,6 @@ target 'MCXIApplication' do
   pod 'appstore-card-transition'
   pod 'lottie-ios'
   pod 'WeScan', '>= 0.9'
-
+  pod 'paper-onboarding'
 
 end
