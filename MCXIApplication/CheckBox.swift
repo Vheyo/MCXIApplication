@@ -15,11 +15,19 @@ class CheckBox: UIButton {
     var isChecked : Bool = false {
         didSet {
             if isChecked{
-                self.backgroundColor = checkedImage
-                self.setTitleColor(.white, for: .normal)
+                self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                UIView.animate(withDuration: 0.5) {
+                    self.transform = CGAffineTransform.identity
+                    self.backgroundColor = self.checkedImage
+                    self.setTitleColor(.white, for: .normal)
+                }
             }else{
-                self.backgroundColor = unCheckedImage
-                self.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+                self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                UIView.animate(withDuration: 0.5) {
+                    self.transform = CGAffineTransform.identity
+                    self.backgroundColor = self.unCheckedImage
+                    self.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+                }
             }
         }
     }
