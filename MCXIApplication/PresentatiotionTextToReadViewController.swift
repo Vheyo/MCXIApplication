@@ -153,6 +153,22 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }()
     
     
+    private var keywordButton : UIButton = {
+        let keywordButton = UIButton()
+        keywordButton.translatesAutoresizingMaskIntoConstraints = false
+        keywordButton.setTitle("Keywords", for: .normal)
+        keywordButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        keywordButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+//        keywordButton.addTarget(self, action: #selector(showText), for: .touchUpInside)
+        keywordButton.titleLabel?.textAlignment = .center
+        keywordButton.titleLabel?.textAlignment = .left
+        keywordButton.layer.borderWidth = 2
+        keywordButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        keywordButton.layer.cornerRadius = 25
+        return keywordButton
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -303,6 +319,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         self.view.addSubview(dropDownButtonTime)
         self.view.addSubview(textTitle)
         self.view.addSubview(textToRead)
+        self.view.addSubview(keywordButton)
         
         backButtonView.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         
@@ -348,6 +365,11 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             dropUpButtonTime.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
             dropUpButtonTime.heightAnchor.constraint(equalToConstant: 50),
             dropUpButtonTime.widthAnchor.constraint(equalToConstant: 50),
+            
+            keywordButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            keywordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            keywordButton.widthAnchor.constraint(equalToConstant: 130),
+            keywordButton.heightAnchor.constraint(equalToConstant: 50)
             
         ])
     }
