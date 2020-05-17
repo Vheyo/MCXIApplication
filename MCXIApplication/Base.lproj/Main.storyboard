@@ -65,7 +65,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3E-DJ-dxs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4757.971014492754" y="1345.9821428571429"/>
+            <point key="canvasLocation" x="4387" y="1375"/>
         </scene>
         <!--Excercies View Controller-->
         <scene sceneID="9CR-ZL-49B">
@@ -137,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7mB-iF-ldf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1064" y="-404"/>
+            <point key="canvasLocation" x="1068" y="-404"/>
         </scene>
         <!--Exercise With Form View Controller-->
         <scene sceneID="iTX-SZ-NA1">
@@ -152,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47B-I4-Fsn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4757.971014492754" y="-125.22321428571428"/>
+            <point key="canvasLocation" x="4388" y="-123"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="2te-Je-e4O">
@@ -299,7 +299,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MPG-o4-LPO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5668.115942028986" y="604.6875"/>
+            <point key="canvasLocation" x="5404" y="605"/>
         </scene>
         <!--Desk-->
         <scene sceneID="r2K-uz-jGG">
