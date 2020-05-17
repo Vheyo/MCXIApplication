@@ -199,10 +199,16 @@ class ReadingDeskViewController: UIViewController {
             self.importPdf()
             
         }))
-        
+       alert.addAction(UIAlertAction(title: "Scrivi Testo", style: .default , handler:{ (UIAlertAction)in
+                 let vc = PasteAndCopyViewController()
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc,animated: true)
+                  
+              }))
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
             print("User click Dismiss button")
         }))
+        
         
         self.present(alert, animated: true, completion: {
             print("completion block")
