@@ -21,7 +21,7 @@ class PamCrTestiViewController: UIViewController {
     
     private let descriptionLabel : UILabel = {
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Siamo Pronti"
+        descriptionLabel.text = "Siamo Pronti ?"
         descriptionLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = UIFont.boldSystemFont(ofSize: 25)
@@ -39,7 +39,7 @@ class PamCrTestiViewController: UIViewController {
         playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 32)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
-//        playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
         return playButton
     }()
         
@@ -118,35 +118,14 @@ class PamCrTestiViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-//    @objc func changeButtonStart(){
-//        if buttonEsercizio3.isChecked || buttonEsercizio2.isChecked || buttonEsercizio1.isChecked {
-//            playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-//            separator.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-//            UIView.animate(withDuration: 0.4) {
-//                self.playButton.alpha = 1
-//                self.separator.alpha = 1
-//            }
-//            playButton.isEnabled = true
-//        } else {
-//            playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-//            UIView.animate(withDuration: 0.4) {
-//                self.separator.alpha = 0.3
-//                self.playButton.alpha = 0.3
-//            }
-//
-//            playButton.isEnabled = false
-//        }
-//    }
-//
-//    @objc func play(){
-//        numeroText = buttonChecked()
-//        let vc = ExerciseWithFormViewController()
-//        vc.modalPresentationStyle = .fullScreen
-//        vc.view.backgroundColor = .white
-//        self.present(vc, animated: false)
-//
-//    }
-//
+    @objc func play(){
+        let vc = ExerciseWithFormViewController()
+        vc.modalPresentationStyle = .fullScreen
+        vc.view.backgroundColor = .white
+        self.present(vc, animated: false)
+
+    }
+
 
 }
 
@@ -166,6 +145,13 @@ extension PamCrTestiViewController : UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
         numeroText = indexPath.row
+        playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        separator.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        UIView.animate(withDuration: 0.4) {
+            self.playButton.alpha = 1
+            self.separator.alpha = 1
+        }
+        playButton.isEnabled = true
         
     }
     

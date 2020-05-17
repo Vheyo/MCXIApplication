@@ -9,7 +9,7 @@
 import UIKit
 
 class ExerciseWithFormViewController: UIViewController {
-    private var start : CFAbsoluteTime!
+    private var start : CFAbsoluteTime = CFAbsoluteTimeGetCurrent()
     private var diff : CFAbsoluteTime!
     var numberCount : Int = 0
     var numText : Int = numeroText
@@ -23,6 +23,9 @@ class ExerciseWithFormViewController: UIViewController {
     var numberOfAnswerTrue : Int = 0
     var questionIndex : Int = 0
     var answerIndex : Int = 4
+    
+    lazy var contentViewSize = CGSize(width: view.frame.width, height: view.frame.height+400)
+        
     private var formQA : UIView = {
         let formQA = UIView()
         formQA.translatesAutoresizingMaskIntoConstraints = false
@@ -30,17 +33,32 @@ class ExerciseWithFormViewController: UIViewController {
         return formQA
     }()
     
+    private var backButton : UIButton = {
+        let backButton = UIButton()
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.setTitle("back", for: .normal)
+        backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        backButton.titleLabel?.textAlignment = .left
+        return backButton
+    }()
+    
     private var textToRead : UITextView = {
         let textToRead = UITextView()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
         textToRead.text = "Leggi il dialogo e rispondi correttamente alle domande. Luca e Giovanni sono due amici che s'incontrano in strada per caso: Luca: Ciao GiovanniGiovanni: Ciao Luca, come stai?Luca: Bene grazie, anche se ho un po' di mal di schiena. E tu come stai?Giovanni: Bene. Ah mi dispiace per il tuo mal di schiena. Stai prendendo delle medicine?"
         textToRead.isEditable = false
+        textToRead.isSelectable = false
+        textToRead.textAlignment = .center
+        textToRead.showsVerticalScrollIndicator = false
+        textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
         return textToRead
     }()
     
     private var buttonPlay : UIButton = {
         let buttonPlay = UIButton()
-        buttonPlay.setTitle("StartToRead", for: .normal)
+        buttonPlay.setTitle("FineToRead", for: .normal)
         buttonPlay.backgroundColor = .gray
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
         buttonPlay.addTarget(self, action: #selector(playMode), for: .touchUpInside)
@@ -188,17 +206,19 @@ class ExerciseWithFormViewController: UIViewController {
     func setUpTextToRead(){
         self.view.addSubview(textToRead)
         self.view.addSubview(buttonPlay)
+        self.view.addSubview(backButton)
         NSLayoutConstraint.activate([
-            textToRead.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            textToRead.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            textToRead.heightAnchor.constraint(equalToConstant: 400),
-            textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
             
-            buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            buttonPlay.heightAnchor.constraint(equalToConstant: 100),
-            buttonPlay.widthAnchor.constraint(equalToConstant: 200),
+            textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+            textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            
+            buttonPlay.topAnchor.constraint(equalTo: textToRead.bottomAnchor, constant: 20),
+            buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
             buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -120)
         ])
     }
@@ -318,11 +338,6 @@ class ExerciseWithFormViewController: UIViewController {
     
     @objc func playMode(_ sender : UIButton){
         if numberCount == 0 {
-            start = CFAbsoluteTimeGetCurrent()
-            buttonPlay.setTitle("FineToRead", for: .normal)
-            numberCount = 1
-        }
-        else if numberCount == 1 {
             diff = CFAbsoluteTimeGetCurrent() - start
             textToRead.removeFromSuperview()
             buttonPlay.setTitle("Rispondi", for: .normal)
@@ -356,9 +371,12 @@ class ExerciseWithFormViewController: UIViewController {
                 
             }
             
-            
         }
         
+    }
+    
+    @objc func dismissView(){
+        self.dismiss(animated: true, completion: nil)
     }
     
 

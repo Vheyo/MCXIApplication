@@ -46,10 +46,6 @@ class RomboExcerciesViewController : UIViewController{
             textView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             textView.widthAnchor.constraint(equalToConstant: self.view.frame.width),
             textView.heightAnchor.constraint(equalToConstant: 50)
-            
-        
-        
-        
         ])
     }
     
