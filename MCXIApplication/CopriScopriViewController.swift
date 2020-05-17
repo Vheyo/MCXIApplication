@@ -230,7 +230,7 @@ class CopriScopriViewController: UIViewController {
                     self.userAnswer.isHidden = true
                     self.newWordButton.isHidden = true
                     self.whatRead.text = "Nice Work !"
-                    self.userAnswer.text = " "
+                    self.userAnswer.text = ""
                     labelProssima.isHidden = false
                     setUpConstraintsTimeView()
                     timerView.goTimer()
@@ -242,20 +242,18 @@ class CopriScopriViewController: UIViewController {
                     self.userAnswer.isHidden = true
                     self.newWordButton.isHidden = true
                     self.whatRead.text = "Try Next Time !"
-                    self.userAnswer.text = " "
+                    self.userAnswer.text = ""
                     setUpConstraintsTimeView()
                     labelProssima.isHidden = false
                     generateWordOk = false
                     timerView.goTimer()
                     timerView.isHidden = false
-                    
                 }
             }
         }
         
     }
     
-
     func randomString(length: Int) -> String {
         var letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         if numberSelected && !maiuscSelected && !minSelected {
