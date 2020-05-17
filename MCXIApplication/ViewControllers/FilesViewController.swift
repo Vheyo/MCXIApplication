@@ -66,6 +66,8 @@ class FilesViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .light
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         self.title = "File Manager"
         view.backgroundColor = .white
         tableView.separatorColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
