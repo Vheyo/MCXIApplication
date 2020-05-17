@@ -79,10 +79,8 @@ class FilesViewController : UIViewController{
         cardCollectionView.register(FileCell.self, forCellWithReuseIdentifier: "CellId")
         setUpLayoutCardCollectionView()
         setUpConstraints()
-        UserDefaults.standard.set(randtext[0], forKey: "File0")
-        UserDefaults.standard.set(randtext[1], forKey: "File1")
-        UserDefaults.standard.set(randtext[2], forKey: "File2")
-        UserDefaults.standard.set(randtext[3], forKey: "File3")
+       
+       
        
         // Do any additional setup after loading the view.
     }
@@ -102,6 +100,7 @@ class FilesViewController : UIViewController{
         print(ListaFileTxt.count)
         UserDefaults.standard.set(ListaFileTxt.count, forKey: "numFile")
         cardCollectionView.reloadData()
+        AppUtility.lockOrientation(.portrait)
     }
     
     func setUpLayoutCardCollectionView(){
@@ -213,13 +212,13 @@ extension FilesViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let arrayString = UserDefaults.standard.stringArray(forKey: "File\(currentPage)")
+        let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
         return arrayString?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTable", for: indexPath)
-        let arrayString = UserDefaults.standard.stringArray(forKey: "File\(currentPage)")
+        let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
         cell.textLabel?.text = "\(arrayString?[indexPath.row] ?? "NO key")"
         return cell
     }

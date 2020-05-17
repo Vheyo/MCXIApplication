@@ -165,6 +165,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         keywordButton.layer.borderWidth = 2
         keywordButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         keywordButton.layer.cornerRadius = 25
+        keywordButton.addTarget(self, action: #selector(addKeyword), for: .touchUpInside)
         return keywordButton
     }()
     
@@ -186,10 +187,19 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         
     }
     
-    func addKeyword(){
+    @objc func addKeyword(){
         var arrayString = UserDefaults.standard.stringArray(forKey: "\(nameFile)")
-        arrayString?.append(textToRead.text!)
+        if arrayString == nil {
+            arrayString = ["\(textSplitted[indexWord])"]
+        }
+        else{
+            arrayString?.append(textSplitted[indexWord])
+            
+        }
+       
         UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
+        print(nameFile)
+        print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
     }
     
     func activateTimer(){
