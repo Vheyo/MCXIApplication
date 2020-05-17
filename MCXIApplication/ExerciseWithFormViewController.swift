@@ -58,9 +58,12 @@ class ExerciseWithFormViewController: UIViewController {
     
     private var buttonPlay : UIButton = {
         let buttonPlay = UIButton()
-        buttonPlay.setTitle("FineToRead", for: .normal)
-        buttonPlay.backgroundColor = .gray
+        buttonPlay.setTitle("Fine Lettura", for: .normal)
+        buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        buttonPlay.setTitleColor(.white, for: .normal)
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
+        buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+        buttonPlay.layer.cornerRadius = 30
         buttonPlay.addTarget(self, action: #selector(playMode), for: .touchUpInside)
         return buttonPlay
     }()
@@ -211,15 +214,16 @@ class ExerciseWithFormViewController: UIViewController {
             
             backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+                        
+            buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
+            buttonPlay.heightAnchor.constraint(equalToConstant: 70),
+            buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
             
             textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
             textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-            
-            buttonPlay.topAnchor.constraint(equalTo: textToRead.bottomAnchor, constant: 20),
-            buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-            buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -120)
+            textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
         ])
     }
     
@@ -240,9 +244,8 @@ class ExerciseWithFormViewController: UIViewController {
             
             formQA.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             formQA.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            formQA.heightAnchor.constraint(equalToConstant: 400),
-            formQA.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
-            formQA.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            formQA.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            formQA.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             
             questionLabel.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 10),
             questionLabel.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
