@@ -72,9 +72,12 @@ class RomboExcerciesViewController : UIViewController{
     }
     
     @objc func dismissView(){
-        self.dismiss(animated: true, completion: nil)
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
     

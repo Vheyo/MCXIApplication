@@ -353,6 +353,9 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     @objc func dismissView(){
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         self.dismiss(animated: true, completion: nil)
     }
     
