@@ -57,6 +57,34 @@ class RomboExcerciesViewController : UIViewController{
         return lineVertical
     }()
     
+    private var niceLabel : UILabel = {
+        let niceLabel = UILabel()
+        niceLabel.translatesAutoresizingMaskIntoConstraints = false
+        niceLabel.text = "Nice"
+        niceLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        niceLabel.textAlignment = .center
+        niceLabel.alpha = 0
+        niceLabel.font = FontKit.roundedFont(ofSize: 50, weight: .bold)
+        return niceLabel
+    }()
+    
+    private var replyButton : UIButton = {
+        let replyButton = UIButton()
+        replyButton.translatesAutoresizingMaskIntoConstraints = false
+        replyButton.setTitle("Reply", for: .normal)
+        replyButton.setTitleColor(.white, for: .normal)
+        replyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        replyButton.addTarget(self, action: #selector(replyEx), for: .touchUpInside)
+        replyButton.titleLabel?.textAlignment = .center
+        replyButton.titleLabel?.textAlignment = .left
+        replyButton.layer.borderWidth = 2
+        replyButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        replyButton.layer.cornerRadius = 25
+        replyButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        replyButton.alpha = 0
+        return replyButton
+    }()
+    
     var indexWord = 1
     var textToShow = ["su","luce","scotch","positivo","sei nuovo", "un detersivo","vai alla grande", "i fiori sono gialli", "c'è Batman e Robin", "macchina fotografica", "la guarigione e il reiki", "tu sai che ore sono o no", " scegli la pillola rossa o blu", "manda baci e abbracci a tutti", "acqua,terra,fuoco,vento,aria","internet e computer diventeranno", "l'amicizia è un valore fondamentale", "andare in palestra fa bene alla salute", "se ti impegni fino in fondo e dai tutto", "le vacanze sono sacre e non si toccano", "la ripetizione è la madre di tutte le abilità", "nel film Gladiatore il motto è : Forza e Onore"," M.Jordan è considerato l'atleta per eccellenza","la medicina cinese sembra essere più completa"]
     
@@ -78,6 +106,8 @@ class RomboExcerciesViewController : UIViewController{
         view.addSubview(textView)
         view.addSubview(playButton)
         view.addSubview(lineVertical)
+        view.addSubview(niceLabel)
+        view.addSubview(replyButton)
         NSLayoutConstraint.activate([
             
             backButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
@@ -93,22 +123,56 @@ class RomboExcerciesViewController : UIViewController{
             textView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             textView.heightAnchor.constraint(equalToConstant: 50),
             
+            niceLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            niceLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            niceLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            niceLabel.heightAnchor.constraint(equalToConstant: 60),
+            
             playButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             playButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
             playButton.widthAnchor.constraint(equalToConstant: 130),
-            playButton.heightAnchor.constraint(equalToConstant: 50)
+            playButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            replyButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            replyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            replyButton.widthAnchor.constraint(equalToConstant: 130),
+            replyButton.heightAnchor.constraint(equalToConstant: 50)
             
             
         ])
     }
     
     @objc func showText(){
-        lineVertical.isHidden = false
         textView.text = textToShow[indexWord]
         if indexWord < textToShow.count - 1{
+            lineVertical.isHidden = false
+            textView.isHidden = false
+            playButton.isHidden = false
             indexWord += 1
+        }else {
+            lineVertical.isHidden = true
+            textView.isHidden = true
+            playButton.isHidden = true
+            UIView.animate(withDuration: 0.5) {
+                self.replyButton.alpha = 1
+                self.niceLabel.alpha = 1
+            }
         }
     }
+    
+    @objc func replyEx(){
+        indexWord = 1
+        UIView.animate(withDuration: 0.5, animations: {
+            self.replyButton.alpha = 0
+            self.niceLabel.alpha = 0
+        }) { (complete) in
+            if complete {
+                self.showText()
+            }
+        }
+        
+    }
+    
     
     @objc func dismissView(){
         let value = UIInterfaceOrientation.portrait.rawValue
