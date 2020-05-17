@@ -30,9 +30,9 @@
             filePath = "MCXIApplication/PresentatiotionTextToReadViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
-            landmarkName = "startToRead(gesture:)"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "setUpGesture()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

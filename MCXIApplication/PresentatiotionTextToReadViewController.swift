@@ -16,7 +16,24 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     func dropUpPressed(tagButton: Int) {
-        print(tagButton)
+        
+        switch tagButton {
+        case 1:
+            deleteTimer()
+            let value = Int(dropUpButtonTime.currentTitle!)
+            initialTimer = value!
+            startToRead(gesture: UITapGestureRecognizer())
+        case 2:
+            deleteTimer()
+            let value = Int(dropDownButtonTime.currentTitle!)
+            Pam = 1
+            reading = true
+           
+            startToRead(gesture: UITapGestureRecognizer())
+        default:
+            print("No one selected")
+            
+        }
     }
     
     var textSplitted = [String]()
@@ -27,6 +44,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var timer = Timer()
     var reading = true
     var nameFile = String()
+    var initialTimer = 3
     private var textTitle : UILabel = {
         let textTitle = UILabel()
         textTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -103,6 +121,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropUpButtonTime.clipsToBounds = true
         dropUpButtonTime.tag = 1
         dropUpButtonTime.alpha = 0.0
+        
         return dropUpButtonTime
     }()
     
@@ -144,6 +163,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    
     func addKeyword(){
         var arrayString = UserDefaults.standard.stringArray(forKey: "\(nameFile)")
         arrayString?.append(textToRead.text!)
@@ -169,12 +192,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     @objc func gestioneTimer(button : UIButton){
         if reading == true {
-           print(reading)
+            print(reading)
             deleteTimer()
         }
         else if reading == false {
             print(reading)
-            activateTimer()
+            startToRead(gesture: UITapGestureRecognizer())
         }
         
     }
@@ -187,10 +210,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     @objc func forwardAction(){
-           indexWord += 1
-           self.textToRead.text = textSplitted[indexWord]
-       }
-
+        indexWord += 1
+        self.textToRead.text = textSplitted[indexWord]
+    }
+    
     
     func setUpText(){
         let myText = text.split(separator: " ")
@@ -198,10 +221,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         for element in myText {
             textSplitted.append(String(element))
         }
-        Pam = (textSplitted.count/500)*60
-        if Pam == 0{
-            Pam = 1
-        }
+        Pam = (500/60)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -222,12 +243,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     @objc func startToRead(gesture:UITapGestureRecognizer){
         view.removeGestureRecognizer(gesture)
         textTitle.alpha = 0
-        var initialTimer = 3
+        var timervalue = initialTimer
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
-            self.textToRead.text = "\(initialTimer)"
+            self.textToRead.text = "\(timervalue)"
             self.textToRead.alpha = 1
-            initialTimer -= 1
-            if initialTimer == 0 {
+            timervalue -= 1
+            if timervalue < 0 {
                 timer.invalidate()
                 let hideGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideFunction))
                 hideGesture.cancelsTouchesInView = false
@@ -329,9 +350,9 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-       return touch.view == gestureRecognizer.view
+        return touch.view == gestureRecognizer.view
     }
     
-
+    
     
 }
