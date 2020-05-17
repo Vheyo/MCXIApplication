@@ -16,16 +16,38 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius =  15
         containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        containerView.layer.borderWidth = 2
         return containerView
     }()
     
     private var titleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Titolo del Testo"
-        titleLabel.backgroundColor = .white
+        titleLabel.backgroundColor = .clear
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         return titleLabel
     }()
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+                UIView.animate(withDuration: 0.5) {
+                    self.transform = CGAffineTransform.identity
+                    self.containerView.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+                    self.titleLabel.textColor = .white
+                }
+            }
+            else {
+                UIView.animate(withDuration: 0.1) {
+                    self.containerView.backgroundColor = .white
+                    self.titleLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+                }
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -56,4 +78,6 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         
     }
     
+  
+
 }
