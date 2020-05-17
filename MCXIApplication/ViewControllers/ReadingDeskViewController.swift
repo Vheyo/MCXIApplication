@@ -102,6 +102,7 @@ class ReadingDeskViewController: UIViewController {
         setUpConstraints()
         textViewContainer.addShadowView2()
         view.backgroundColor = .white
+        titleTextLabel.text = "File \((UserDefaults.standard.integer(forKey: "numFile")-1))"
         someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
@@ -114,7 +115,10 @@ class ReadingDeskViewController: UIViewController {
             self.view.window?.rootViewController = vc
             
         }
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
     }
+    
+
     
     
     func obtainTextFromFile(indexPath: Int) -> String {
@@ -220,6 +224,7 @@ class ReadingDeskViewController: UIViewController {
        let vc = PresentatiotionTextToReadViewController()
         vc.text = someTextLabel.text!
         vc.modalPresentationStyle = .fullScreen
+        vc.nameFile = titleTextLabel.text!
         vc.view.backgroundColor = .white
         present(vc,animated: true)
     }
