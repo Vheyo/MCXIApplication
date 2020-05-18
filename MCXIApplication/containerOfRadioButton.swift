@@ -31,12 +31,12 @@ class containerOfRadioButton: UIView {
         radioButton.onTap = {
             self.onTap?()
             self.imageCheck.transform = CGAffineTransform(scaleX: 0, y: 0)
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.2) {
                 self.imageCheck.transform = .identity
             }
         }
         radioButton.onTap2 = {
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.2) {
                 self.imageCheck.transform = CGAffineTransform(scaleX: 0, y: 0)
             }
         }
