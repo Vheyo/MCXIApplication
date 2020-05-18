@@ -22,8 +22,6 @@
 		3888437E246C9A990064712A /* DropUpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888437D246C9A990064712A /* DropUpButton.swift */; };
 		38884380246C9ACD0064712A /* DropUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3888437F246C9ACD0064712A /* DropUpView.swift */; };
 		38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */; };
-		38AD56452462C56200622D31 /* NoFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 38AD56442462C56200622D31 /* NoFile.json */; };
-		38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */; };
 		38B9B368247276A9000C16A4 /* containerOfRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */; };
 		38BA6A39247143B900DF7878 /* PamCrTestiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */; };
 		38F22555246FFA9000287884 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F22554246FFA9000287884 /* TimerView.swift */; };
@@ -96,8 +94,6 @@
 		3888437D246C9A990064712A /* DropUpButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpButton.swift; sourceTree = "<group>"; };
 		3888437F246C9ACD0064712A /* DropUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpView.swift; sourceTree = "<group>"; };
 		38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpViewCollectionViewCell.swift; sourceTree = "<group>"; };
-		38AD56442462C56200622D31 /* NoFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NoFile.json; sourceTree = "<group>"; };
-		38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFileTableViewCell.swift; sourceTree = "<group>"; };
 		38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = containerOfRadioButton.swift; sourceTree = "<group>"; };
 		38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PamCrTestiViewController.swift; sourceTree = "<group>"; };
 		38F22554246FFA9000287884 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
@@ -187,68 +183,154 @@
 		7509E2D62460B2A60021CA4F /* MCXIApplication */ = {
 			isa = PBXGroup;
 			children = (
-				7509E2D72460B2A60021CA4F /* AppDelegate.swift */,
-				7518939E2465541700C5B695 /* AppUtility.swift */,
-				7509E2D92460B2A60021CA4F /* SceneDelegate.swift */,
-				7509E2DD2460B2A60021CA4F /* Main.storyboard */,
-				75CA249A246F3973009D3C1F /* BoundingBoxImageView.swift */,
-				75CA2496246F3973009D3C1F /* DetectedViewController.swift */,
-				75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */,
-				75CA2499246F3973009D3C1F /* Utilities.swift */,
-				75CA24A0246F462E009D3C1F /* OcrSavioViewController.swift */,
-				7509E2ED2460B3600021CA4F /* ViewControllers */,
+				755B77C42472D9CC00A3E73D /* Model */,
+				7509E2ED2460B3600021CA4F /* Controllers */,
+				755B77C52472D9FF00A3E73D /* View */,
+				755B77C92472DB2400A3E73D /* Utilities */,
 				7509E2E02460B2A70021CA4F /* Assets.xcassets */,
-				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
 				7509E2E52460B2A70021CA4F /* Info.plist */,
-				7509E2F32460B7630021CA4F /* Type2ViewController.swift */,
-				385C741C24654905009EB1A2 /* ShadowView.swift */,
-				38876593246C713F00328D23 /* UPCarouselFlowLayout.swift */,
-				385C741E24655A64009EB1A2 /* CheckBox.swift */,
-				3888437B246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift */,
-				38876591246C713600328D23 /* FileCell.swift */,
-				385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */,
-				385C742224655A77009EB1A2 /* PopUpViewController.swift */,
-				7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */,
-				38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */,
-				38AD56442462C56200622D31 /* NoFile.json */,
-				7509E2FA2460BA650021CA4F /* TransitionXib */,
-				385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */,
-				383C97E22465DEA200812FDF /* TextToAnswerCollectionViewCell.swift */,
-				755B77C22471A61800A3E73D /* PasteAndCopyViewController.swift */,
-				383C97E82465EA3C00812FDF /* RadioButton.swift */,
-				383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */,
-				751893A02465FD5600C5B695 /* TestiEsercizi.json */,
-				384225DC246B3AFF009BE84D /* timerPickerView.swift */,
-				3888437D246C9A990064712A /* DropUpButton.swift */,
-				3888437F246C9ACD0064712A /* DropUpView.swift */,
-				38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */,
-				38F22554246FFA9000287884 /* TimerView.swift */,
-				4B7AC8DC24706DF000C59A0C /* FontKit.swift */,
-				38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */,
-				5F1573062471848D00C832B6 /* TutorialViewController.swift */,
-				38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
 		};
-		7509E2ED2460B3600021CA4F /* ViewControllers */ = {
+		7509E2ED2460B3600021CA4F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				7509E2EE2460B38B0021CA4F /* ExcerciesViewController.swift */,
-				7509E2EB2460B3530021CA4F /* ReadingDeskViewController.swift */,
-				7509E2F02460B39F0021CA4F /* FilesViewController.swift */,
-				75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */,
+				5F1573062471848D00C832B6 /* TutorialViewController.swift */,
+				755B77CF2472DC7100A3E73D /* FileManager */,
+				755B77C62472DA2700A3E73D /* ReadingDesk */,
+				755B77C72472DA5300A3E73D /* Excercise */,
 			);
-			path = ViewControllers;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		7509E2FA2460BA650021CA4F /* TransitionXib */ = {
+		755B77C42472D9CC00A3E73D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */,
-				7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */,
+				7509E2D72460B2A60021CA4F /* AppDelegate.swift */,
+				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
+				751893A02465FD5600C5B695 /* TestiEsercizi.json */,
 			);
-			path = TransitionXib;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		755B77C52472D9FF00A3E73D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				7509E2D92460B2A60021CA4F /* SceneDelegate.swift */,
+				7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */,
+				7509E2DD2460B2A60021CA4F /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		755B77C62472DA2700A3E73D /* ReadingDesk */ = {
+			isa = PBXGroup;
+			children = (
+				7509E2EB2460B3530021CA4F /* ReadingDeskViewController.swift */,
+				3888437B246C9A6C0064712A /* PresentatiotionTextToReadViewController.swift */,
+				755B77C22471A61800A3E73D /* PasteAndCopyViewController.swift */,
+			);
+			path = ReadingDesk;
+			sourceTree = "<group>";
+		};
+		755B77C72472DA5300A3E73D /* Excercise */ = {
+			isa = PBXGroup;
+			children = (
+				755B77CE2472DBF300A3E73D /* LetturaDivergente */,
+				755B77CD2472DBEA00A3E73D /* PamECr */,
+				755B77C82472DA6F00A3E73D /* CopriEScopri */,
+				7509E2F72460BA3C0021CA4F /* Type2CollectionViewCell.swift */,
+				7509E2F32460B7630021CA4F /* Type2ViewController.swift */,
+				7509E2EE2460B38B0021CA4F /* ExcerciesViewController.swift */,
+			);
+			path = Excercise;
+			sourceTree = "<group>";
+		};
+		755B77C82472DA6F00A3E73D /* CopriEScopri */ = {
+			isa = PBXGroup;
+			children = (
+				385C742024655A6D009EB1A2 /* CopriScopriViewController.swift */,
+				385C742424655AC9009EB1A2 /* FormCopriScopriViewController.swift */,
+			);
+			path = CopriEScopri;
+			sourceTree = "<group>";
+		};
+		755B77C92472DB2400A3E73D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				755B77CC2472DBA000A3E73D /* Animation */,
+				755B77CB2472DB5800A3E73D /* CustomView */,
+				755B77CA2472DB4300A3E73D /* Ocr */,
+				75CA2499246F3973009D3C1F /* Utilities.swift */,
+				7518939E2465541700C5B695 /* AppUtility.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		755B77CA2472DB4300A3E73D /* Ocr */ = {
+			isa = PBXGroup;
+			children = (
+				4B7AC8DC24706DF000C59A0C /* FontKit.swift */,
+				75CA249A246F3973009D3C1F /* BoundingBoxImageView.swift */,
+				75CA2496246F3973009D3C1F /* DetectedViewController.swift */,
+				75CA2497246F3973009D3C1F /* UIImageView-ImageRect.swift */,
+				75CA24A0246F462E009D3C1F /* OcrSavioViewController.swift */,
+			);
+			path = Ocr;
+			sourceTree = "<group>";
+		};
+		755B77CB2472DB5800A3E73D /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				385C741E24655A64009EB1A2 /* CheckBox.swift */,
+				38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */,
+				383C97E82465EA3C00812FDF /* RadioButton.swift */,
+				38F22554246FFA9000287884 /* TimerView.swift */,
+				3888437D246C9A990064712A /* DropUpButton.swift */,
+				385C741C24654905009EB1A2 /* ShadowView.swift */,
+				3888437F246C9ACD0064712A /* DropUpView.swift */,
+				38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */,
+				384225DC246B3AFF009BE84D /* timerPickerView.swift */,
+				385C742224655A77009EB1A2 /* PopUpViewController.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		755B77CC2472DBA000A3E73D /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				38876593246C713F00328D23 /* UPCarouselFlowLayout.swift */,
+			);
+			path = Animation;
+			sourceTree = "<group>";
+		};
+		755B77CD2472DBEA00A3E73D /* PamECr */ = {
+			isa = PBXGroup;
+			children = (
+				38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */,
+				383C97EA2465EB3B00812FDF /* ExerciseWithFormViewController.swift */,
+				383C97E22465DEA200812FDF /* TextToAnswerCollectionViewCell.swift */,
+			);
+			path = PamECr;
+			sourceTree = "<group>";
+		};
+		755B77CE2472DBF300A3E73D /* LetturaDivergente */ = {
+			isa = PBXGroup;
+			children = (
+				7509E2FB2462A3C40021CA4F /* RomboExcerciesViewController.swift */,
+			);
+			path = LetturaDivergente;
+			sourceTree = "<group>";
+		};
+		755B77CF2472DC7100A3E73D /* FileManager */ = {
+			isa = PBXGroup;
+			children = (
+				7509E2F02460B39F0021CA4F /* FilesViewController.swift */,
+				75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */,
+				38876591246C713600328D23 /* FileCell.swift */,
+			);
+			path = FileManager;
 			sourceTree = "<group>";
 		};
 		A78A620A51083812C7515410 /* Pods */ = {
@@ -359,7 +441,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38AD56452462C56200622D31 /* NoFile.json in Resources */,
 				7509E2E42460B2A70021CA4F /* LaunchScreen.storyboard in Resources */,
 				7509E2E12460B2A70021CA4F /* Assets.xcassets in Resources */,
 				751893A12465FD5600C5B695 /* TestiEsercizi.json in Resources */,
@@ -446,7 +527,6 @@
 				75D23005246E91EF00B87E4D /* IntermediateReadingViewController.swift in Sources */,
 				75CA249F246F3974009D3C1F /* BoundingBoxImageView.swift in Sources */,
 				383C97EB2465EB3B00812FDF /* ExerciseWithFormViewController.swift in Sources */,
-				38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */,
 				7509E2FC2462A3C40021CA4F /* RomboExcerciesViewController.swift in Sources */,
 				5F1573072471848D00C832B6 /* TutorialViewController.swift in Sources */,
 				385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */,
@@ -507,7 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -527,7 +607,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -664,7 +744,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -684,7 +764,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = 6JY969UVJY;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
