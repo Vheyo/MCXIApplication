@@ -72,6 +72,7 @@ class ReadingDeskViewController: UIViewController {
         playButton.layer.borderWidth = 1
         playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.layer.cornerRadius = 30
+        playButton.setImage(UIImage(named: "PlayButton"), for: .normal)
         return playButton
     }()
     
@@ -205,8 +206,9 @@ class ReadingDeskViewController: UIViewController {
         }))
        alert.addAction(UIAlertAction(title: "Scrivi Testo", style: .default , handler:{ (UIAlertAction)in
                  let vc = PasteAndCopyViewController()
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc,animated: true)
+        vc.view.backgroundColor = .white
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc,animated: true)
                   
               }))
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in

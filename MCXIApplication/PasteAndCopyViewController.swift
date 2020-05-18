@@ -9,34 +9,89 @@
 import Foundation
 import UIKit
 
-class PasteAndCopyViewController : UIViewController {
-    var textView : UITextView = {
-        let textView = UITextView()
-        textView.frame =  CGRect(x: 0, y: 276, width: 414, height: 620)
-        return textView
-    }()
+class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
+   var textToRead : UITextView = {
+          let textToRead = UITextView()
+          textToRead.translatesAutoresizingMaskIntoConstraints = false
+          textToRead.textAlignment = .center
+          textToRead.showsVerticalScrollIndicator = false
+          textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+            textToRead.text = "Insert Text Here"
+            textToRead.textColor = UIColor.lightGray
+          return textToRead
+      }()
+      
+    private var buttonPlay : UIButton = {
+           let buttonPlay = UIButton()
+           buttonPlay.setTitle("Save", for: .normal)
+           buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+           buttonPlay.setTitleColor(.white, for: .normal)
+           buttonPlay.translatesAutoresizingMaskIntoConstraints = false
+           buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+           buttonPlay.layer.cornerRadius = 16
+           buttonPlay.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
+           return buttonPlay
+       }()
+      
+      private var backButton : UIButton = {
+             let backButton = UIButton()
+             backButton.translatesAutoresizingMaskIntoConstraints = false
+             backButton.setTitle("back", for: .normal)
+             backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+             backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+             backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+             backButton.titleLabel?.textAlignment = .left
+             return backButton
+         }()
+         
+      func textViewDidBeginEditing(_ textView: UITextView) {
+          if textView.textColor == UIColor.lightGray {
+              textView.text = nil
+              textView.textColor = UIColor.black
+          }
+      }
     
-    var saveButton : UIButton = {
-        let saveButton = UIButton()
-        saveButton.setTitle("Save", for: .normal)
-        saveButton.backgroundColor = .black
-        saveButton.frame = CGRect(x: 150, y: 350, width: 100, height: 100)
-        saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
-        return saveButton
-    }()
-    
-    
-    
-    override func viewDidLoad() {
-        view.addSubview(textView)
-        view.addSubview(saveButton)
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Placeholder"
+            textView.textColor = UIColor.lightGray
+        }
     }
     
+      
+      
+      override func viewDidLoad() {
+          setUpTextToRead()
+       view.backgroundColor = .white
+        self.textToRead.delegate = self
+      }
+   
+   
+   func setUpTextToRead(){
+          self.view.addSubview(textToRead)
+          self.view.addSubview(buttonPlay)
+          self.view.addSubview(backButton)
+          NSLayoutConstraint.activate([
+              
+              backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+              backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+                          
+              buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+              buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
+              buttonPlay.heightAnchor.constraint(equalToConstant: 70),
+              buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
+              
+              textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+              textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+              textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+              textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
+          ])
+      }
     
     @objc func saveAction(){
-        let lastFilenum = UserDefaults.standard.integer(forKey: "numFile")
+        let lastFilenum = UserDefaults.standard.integer(forKey: "numFile")+1
         let file = "File\(lastFilenum).txt"
-        let text = textView.text
+        let text = textToRead.text
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
             // aggiungiamo il file alla directory
             let fileURL = dir.appendingPathComponent(file)
@@ -48,7 +103,17 @@ class PasteAndCopyViewController : UIViewController {
                 print("cant write...")
             }
         }
+        dismissView()
         
+    }
+    
+    
+    
+  
+    
+    
+    @objc func dismissView(){
+        dismiss(animated: true, completion: nil)
     }
 }
 

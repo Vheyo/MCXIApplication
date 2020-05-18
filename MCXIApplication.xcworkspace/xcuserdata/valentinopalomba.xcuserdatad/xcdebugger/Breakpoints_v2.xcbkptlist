@@ -30,8 +30,8 @@
             filePath = "MCXIApplication/PresentatiotionTextToReadViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "setUpText()"
             landmarkType = "7">
          </BreakpointContent>
