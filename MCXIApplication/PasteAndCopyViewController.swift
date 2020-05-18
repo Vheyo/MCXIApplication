@@ -99,6 +99,7 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
             
             do{
                 try text?.write(to: fileURL, atomically: false, encoding: .utf8)
+                UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
             }catch{
                 print("cant write...")
             }
