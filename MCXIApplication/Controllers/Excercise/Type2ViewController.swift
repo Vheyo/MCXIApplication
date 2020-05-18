@@ -38,10 +38,8 @@ class Type2ViewController: UIViewController {
     private var backButton : UIButton = {
         let backButton = UIButton()
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.backgroundColor = .white
-        backButton.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
-        backButton.layer.cornerRadius = 0.5 * backButton.bounds.size.width
         backButton.addTarget(self, action: #selector(closeView), for: .touchUpInside)
+        backButton.setImage(UIImage(named: "XWhite"), for: .normal)
         return backButton
     }()
     
@@ -99,10 +97,10 @@ class Type2ViewController: UIViewController {
         headerView.addSubview(backButton)
         NSLayoutConstraint.activate([
             
-            backButton.topAnchor.constraint(equalTo: headerView.topAnchor,constant: 20),
+            backButton.topAnchor.constraint(equalTo: headerView.topAnchor,constant: 40),
             backButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
-            backButton.heightAnchor.constraint(equalToConstant: 40),
-            backButton.widthAnchor.constraint(equalToConstant: 40),
+            backButton.heightAnchor.constraint(equalToConstant: 25),
+            backButton.widthAnchor.constraint(equalToConstant: 25),
 
             buttonPlay.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             buttonPlay.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 70),
@@ -157,15 +155,11 @@ extension Type2ViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // prevent bouncing when swiping down to close
-        if scrollView.contentOffset.y >= 0 && scrollView.contentOffset.y <= 50 && !arrived99 {
-            backButton.alpha = 1
+        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 80{
+            backButton.alpha = 1.0
         }
-        else if arrived99{
-            backButton.alpha = 0
-        }
-        if scrollView.contentOffset.y == 98 {
-            backButton.alpha = 0
-            arrived99 = true
+        else {
+            backButton.alpha = 0.0
         }
         scrollView.bounces = scrollView.contentOffset.y > 100
         dismissHandler.scrollViewDidScroll(scrollView)
