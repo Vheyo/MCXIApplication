@@ -62,7 +62,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var textToRead : UILabel = {
         let textToRead = UILabel()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
-        textToRead.text = "dsbhahbjsbhaj dskbahkbckjbsdkj bdsajbckacnuasnduvc dbsjcksjdbcousabdnjbvsok sjdbkcbdjksbcasudbckjb sdbjcnsadincdsckjasbdjk sdbjkcjksdbcksbdj sjadbncksabdvjbcskdbcv sdjbkckdjsbvcasjbdvjkb sdbjckvjsbdvjksbdvkdj sdjbkakbjkbvjsbd dsjkbavjkbvsjkbvkjbd sdkjbncvjksdbjkvcbsjdv"
+        
         textToRead.alpha = 0
         textToRead.textAlignment = .center
         textToRead.textColor = .black
@@ -76,7 +76,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.layer.borderColor = UIColor.black.cgColor
         playButton.layer.borderWidth = 0
-        playButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        playButton.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         playButton.clipsToBounds = true
         playButton.alpha = 0.0
@@ -93,7 +93,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.layer.borderColor = UIColor.black.cgColor
         backButton.layer.borderWidth = 0
-        backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        backButton.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         backButton.layer.cornerRadius = 0.5 * backButton.bounds.size.width
         backButton.clipsToBounds = true
         backButton.alpha = 0.0
@@ -110,7 +110,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         forwardButton.translatesAutoresizingMaskIntoConstraints = false
         forwardButton.layer.borderColor = UIColor.black.cgColor
         forwardButton.layer.borderWidth = 0
-        forwardButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        forwardButton.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         forwardButton.layer.cornerRadius = 0.5 * forwardButton.bounds.size.width
         forwardButton.clipsToBounds = true
         forwardButton.alpha = 0.0
@@ -128,7 +128,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropUpButtonTime.translatesAutoresizingMaskIntoConstraints = false
         dropUpButtonTime.layer.borderColor = UIColor.black.cgColor
         dropUpButtonTime.layer.borderWidth = 2
-        dropUpButtonTime.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        dropUpButtonTime.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         dropUpButtonTime.layer.cornerRadius = 0.5 * dropUpButtonTime.bounds.size.width
         dropUpButtonTime.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         dropUpButtonTime.clipsToBounds = true
@@ -146,7 +146,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropDownButtonTime.translatesAutoresizingMaskIntoConstraints = false
         dropDownButtonTime.layer.borderColor = UIColor.black.cgColor
         dropDownButtonTime.layer.borderWidth = 2
-        dropDownButtonTime.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+        dropDownButtonTime.frame = CGRect(x: 0, y: 0, width: 60, height: 60)
         dropDownButtonTime.layer.cornerRadius = 0.5 * dropDownButtonTime.bounds.size.width
         dropDownButtonTime.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         dropDownButtonTime.clipsToBounds = true
@@ -293,20 +293,39 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         view.removeGestureRecognizer(gesture)
         textTitle.alpha = 0
         var timervalue = initialTimer
+        self.timerView.labelTime.text = "\(timervalue)"
+        setUpConstraintsTimeView()
+        self.textToRead.alpha = 0.0
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
-            self.textToRead.text = "\(timervalue)"
-            self.textToRead.alpha = 1
+            self.timerView.labelTime.text = "\(timervalue-1)"
             timervalue -= 1
-            if timervalue <= 0 {
+            if timervalue < 0 {
                 timer.invalidate()
                 let hideGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideFunction))
                 hideGesture.cancelsTouchesInView = false
                 self.view.addGestureRecognizer(hideGesture)
+                self.textToRead.alpha = 1.0
                 self.activateTimer()
+                self.timerView.removeFromSuperview()
             }
         })
     }
     
+    func setUpConstraintsTimeView(){
+          view.addSubview(timerView)
+          
+          NSLayoutConstraint.activate([
+    
+            timerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+              timerView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+              timerView.heightAnchor.constraint(equalToConstant: 100),
+              timerView.widthAnchor.constraint(equalToConstant: 100),
+     
+          ])
+        
+            
+          timerView.addShadowView2()
+      }
     
     
     @objc func hideFunction(){
@@ -369,38 +388,38 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             
             backButtonView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
-            backButtonView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            backButtonView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             backButtonView.heightAnchor.constraint(equalToConstant: 50),
             backButtonView.widthAnchor.constraint(equalToConstant: 70),
             
             dropDownButtonTime.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 20),
-            dropDownButtonTime.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
-            dropDownButtonTime.heightAnchor.constraint(equalToConstant: 50),
-            dropDownButtonTime.widthAnchor.constraint(equalToConstant: 50),
+            dropDownButtonTime.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            dropDownButtonTime.heightAnchor.constraint(equalToConstant: 60),
+            dropDownButtonTime.widthAnchor.constraint(equalToConstant: 60),
             
             playButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            playButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
-            playButton.heightAnchor.constraint(equalToConstant: 50),
-            playButton.widthAnchor.constraint(equalToConstant: 50),
+            playButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -20),
+            playButton.heightAnchor.constraint(equalToConstant: 60),
+            playButton.widthAnchor.constraint(equalToConstant: 60),
             
             
-            backButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
+            backButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -20),
             backButton.trailingAnchor.constraint(equalTo: playButton.leadingAnchor, constant: -20),
-            backButton.heightAnchor.constraint(equalToConstant: 50),
-            backButton.widthAnchor.constraint(equalToConstant: 50),
+            backButton.heightAnchor.constraint(equalToConstant: 60),
+            backButton.widthAnchor.constraint(equalToConstant: 60),
             
-            forwardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
+            forwardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -20),
             forwardButton.leadingAnchor.constraint(equalTo: playButton.trailingAnchor, constant: 20),
-            forwardButton.heightAnchor.constraint(equalToConstant: 50),
-            forwardButton.widthAnchor.constraint(equalToConstant: 50),
+            forwardButton.heightAnchor.constraint(equalToConstant: 60),
+            forwardButton.widthAnchor.constraint(equalToConstant: 60),
             
-            dropUpButtonTime.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -30),
-            dropUpButtonTime.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            dropUpButtonTime.heightAnchor.constraint(equalToConstant: 50),
-            dropUpButtonTime.widthAnchor.constraint(equalToConstant: 50),
+            dropUpButtonTime.bottomAnchor.constraint(equalTo: self.view.bottomAnchor,constant: -20),
+            dropUpButtonTime.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            dropUpButtonTime.heightAnchor.constraint(equalToConstant: 60),
+            dropUpButtonTime.widthAnchor.constraint(equalToConstant: 60),
             
             keywordButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            keywordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            keywordButton.centerYAnchor.constraint(equalTo: playButton.centerYAnchor),
             keywordButton.widthAnchor.constraint(equalToConstant: 130),
             keywordButton.heightAnchor.constraint(equalToConstant: 50)
             
