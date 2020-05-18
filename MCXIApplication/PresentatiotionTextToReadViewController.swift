@@ -24,6 +24,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             initialTimer = value!
             startToRead(gesture: UITapGestureRecognizer())
         case 2:
+            
             deleteTimer()
             let value = Int(dropDownButtonTime.currentTitle!)
             Pam = 60/Float(value!*100)
@@ -36,6 +37,13 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             
         }
     }
+    
+    
+    private var timerView : TimerView = {
+        let timerView = TimerView()
+        timerView.translatesAutoresizingMaskIntoConstraints = false
+        return timerView
+    }()
     
     var textSplitted = [String]()
     var indexWord = 0
@@ -67,15 +75,16 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     private var playButton : UIButton = {
         let playButton = UIButton(type: .custom)
         playButton.setTitle("B", for: .normal)
-        playButton.setTitleColor(UIColor.black, for: .normal)
+        playButton.setTitleColor(UIColor.white, for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.layer.borderColor = UIColor.black.cgColor
-        playButton.layer.borderWidth = 1
+        playButton.layer.borderWidth = 0
         playButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         playButton.clipsToBounds = true
         playButton.alpha = 0.0
         playButton.backgroundColor = .black
+        playButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
         playButton.addTarget(self, action: #selector(gestioneTimer(button:)), for: .touchUpInside)
         return playButton
     }()
@@ -83,29 +92,31 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     private var backButton : UIButton = {
         let backButton = UIButton(type: .custom)
         backButton.setTitle("P", for: .normal)
-        backButton.setTitleColor(UIColor.black, for: .normal)
+        backButton.setTitleColor(UIColor.white, for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.layer.borderColor = UIColor.black.cgColor
-        backButton.layer.borderWidth = 1
+        backButton.layer.borderWidth = 0
         backButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         backButton.layer.cornerRadius = 0.5 * backButton.bounds.size.width
         backButton.clipsToBounds = true
         backButton.alpha = 0.0
         backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        backButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
         return backButton
     }()
     
     private var forwardButton : UIButton = {
         let forwardButton = UIButton(type: .custom)
         forwardButton.setTitle("F", for: .normal)
-        forwardButton.setTitleColor(UIColor.black, for: .normal)
+        forwardButton.setTitleColor(UIColor.white, for: .normal)
         forwardButton.translatesAutoresizingMaskIntoConstraints = false
         forwardButton.layer.borderColor = UIColor.black.cgColor
-        forwardButton.layer.borderWidth = 1
+        forwardButton.layer.borderWidth = 0
         forwardButton.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         forwardButton.layer.cornerRadius = 0.5 * forwardButton.bounds.size.width
         forwardButton.clipsToBounds = true
         forwardButton.alpha = 0.0
+        forwardButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
         forwardButton.addTarget(self, action: #selector(forwardAction), for: .touchUpInside)
         return forwardButton
     }()
@@ -114,15 +125,17 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     private var dropUpButtonTime : DropUpButton = {
         let dropUpButtonTime = DropUpButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         dropUpButtonTime.setTitle("T", for: .normal)
-        dropUpButtonTime.setTitleColor(UIColor.black, for: .normal)
+        dropUpButtonTime.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         dropUpButtonTime.translatesAutoresizingMaskIntoConstraints = false
         dropUpButtonTime.layer.borderColor = UIColor.black.cgColor
-        dropUpButtonTime.layer.borderWidth = 1
+        dropUpButtonTime.layer.borderWidth = 2
         dropUpButtonTime.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         dropUpButtonTime.layer.cornerRadius = 0.5 * dropUpButtonTime.bounds.size.width
+        dropUpButtonTime.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         dropUpButtonTime.clipsToBounds = true
         dropUpButtonTime.tag = 1
         dropUpButtonTime.alpha = 0.0
+        
         
         return dropUpButtonTime
     }()
@@ -130,15 +143,18 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     private var dropDownButtonTime : DropUpButton = {
         let dropDownButtonTime = DropUpButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         dropDownButtonTime.setTitle("PAM", for: .normal)
-        dropDownButtonTime.setTitleColor(UIColor.black, for: .normal)
+        dropDownButtonTime.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         dropDownButtonTime.translatesAutoresizingMaskIntoConstraints = false
         dropDownButtonTime.layer.borderColor = UIColor.black.cgColor
-        dropDownButtonTime.layer.borderWidth = 1
+        dropDownButtonTime.layer.borderWidth = 2
         dropDownButtonTime.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         dropDownButtonTime.layer.cornerRadius = 0.5 * dropDownButtonTime.bounds.size.width
+        dropDownButtonTime.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         dropDownButtonTime.clipsToBounds = true
         dropDownButtonTime.tag = 2
         dropDownButtonTime.alpha = 0.0
+        
+        
         return dropDownButtonTime
     }()
     
@@ -146,7 +162,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     private var backButtonView : UIButton = {
         let backButtonView = UIButton()
         backButtonView.setTitle("Back", for: .normal)
-        backButtonView.setTitleColor(UIColor.black, for: .normal)
+        backButtonView.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
         backButtonView.alpha = 0.0
         return backButtonView
@@ -166,6 +182,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         keywordButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         keywordButton.layer.cornerRadius = 25
         keywordButton.addTarget(self, action: #selector(addKeyword), for: .touchUpInside)
+        keywordButton.alpha = 0.0
         return keywordButton
     }()
     
@@ -305,6 +322,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.playButton.alpha = 0.0
                 self.forwardButton.alpha = 0.0
                 self.backButton.alpha = 0.0
+                self.keywordButton.alpha = 0.0
             }, completion: {_ in self.hidden = true})
         }
         else if hidden{
@@ -316,6 +334,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.playButton.alpha = 1.0
                 self.forwardButton.alpha = 1.0
                 self.backButton.alpha = 1.0
+                self.keywordButton.alpha = 1.0
             },completion: {_ in self.hidden = false})
         }
     }

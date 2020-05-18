@@ -89,7 +89,7 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
       }
     
     @objc func saveAction(){
-        let lastFilenum = UserDefaults.standard.integer(forKey: "numFile")
+        let lastFilenum = UserDefaults.standard.integer(forKey: "numFile")+1
         let file = "File\(lastFilenum).txt"
         let text = textToRead.text
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
@@ -103,6 +103,7 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
                 print("cant write...")
             }
         }
+        dismissView()
         
     }
     
