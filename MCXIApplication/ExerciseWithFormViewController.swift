@@ -23,7 +23,7 @@ class ExerciseWithFormViewController: UIViewController {
     var numberOfAnswerTrue : Int = 0
     var questionIndex : Int = 0
     var answerIndex : Int = 4
-    
+    var numeroParole = Int()
     lazy var contentViewSize = CGSize(width: view.frame.width, height: view.frame.height+400)
         
     private var formQA : UIView = {
@@ -208,6 +208,7 @@ class ExerciseWithFormViewController: UIViewController {
                 let tmpString = (element as! NSString) as String
                 risposte_Array.append(tmpString)
             }
+            numeroParole = testo["NumeroParole"] as! Int
             
             firstAnswer.text = risposte_Array[0]
             secondAnswer.text = risposte_Array[1]
@@ -409,7 +410,7 @@ class ExerciseWithFormViewController: UIViewController {
 //                c a massimo è 100 quindi 100/risposteEsatteArray.count * numberOfQuestion
 //                rendimento PAM*C/100
 //                nel calcolo di pam sta il valore 1000 al posto di quello si deve mettere il numero di parole del testo
-                let pam = ( 1000 * 60 )/diff
+                let pam = ( Double(numeroParole) * 60 )/diff
                 let comprensione : Double = Double((100*numberOfAnswerTrue)/risposteEsatte_Array.count)
                 let rendimento = (pam*comprensione)/100
 //                QUello sotto poi non sara più utile era per vedere la stampa dei valori
