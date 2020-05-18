@@ -28,9 +28,6 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             deleteTimer()
             let value = Int(dropDownButtonTime.currentTitle!)
             Pam = 60/Float(value!*100)
-            print(Pam)
-            reading = true
-           
             startToRead(gesture: UITapGestureRecognizer())
         default:
             print("No one selected")
@@ -298,12 +295,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             self.textToRead.text = "\(timervalue)"
             self.textToRead.alpha = 1
             timervalue -= 1
-            if timervalue < 0 {
+            if timervalue <= 0 {
                 timer.invalidate()
                 let hideGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideFunction))
                 hideGesture.cancelsTouchesInView = false
-                
-                
                 self.view.addGestureRecognizer(hideGesture)
                 self.activateTimer()
             }
@@ -313,7 +308,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func hideFunction(){
-        if hidden == false {
+        if hidden == false && (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
             UIView.animate(withDuration: 0.1, animations: {
                 self.backButtonView.alpha = 0.0
                 self.dropUpButtonTime.alpha = 0.0
@@ -337,6 +332,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.keywordButton.alpha = 1.0
             },completion: {_ in self.hidden = false})
         }
+       
+        
     }
     
     func setUpConstraintsButton(){
