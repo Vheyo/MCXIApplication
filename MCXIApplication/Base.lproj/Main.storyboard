@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -449,21 +449,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8kv-N7-3pv" customClass="PaperOnboarding" customModule="paper_onboarding">
-                                <rect key="frame" x="20" y="44" width="374" height="802"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3n-gC-fcn">
-                                <rect key="frame" x="332" y="733" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Skip"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q3n-gC-fcn">
+                                <rect key="frame" x="369" y="44" width="25" height="25"/>
+                                <state key="normal" backgroundImage="XWhite"/>
                                 <connections>
-                                    <action selector="skipPressed:" destination="zBe-WE-WkW" eventType="touchUpInside" id="GdB-yy-dTz"/>
+                                    <action selector="skipPressed:" destination="zBe-WE-WkW" eventType="touchUpInside" id="LrZ-Fg-KPy"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="5iu-cC-OTN" firstAttribute="bottom" secondItem="Q3n-gC-fcn" secondAttribute="bottom" constant="793" id="0j7-Jh-2fx"/>
+                            <constraint firstItem="Q3n-gC-fcn" firstAttribute="trailing" secondItem="y7n-JJ-10L" secondAttribute="trailingMargin" id="7wu-1B-Uqu"/>
+                            <constraint firstItem="Q3n-gC-fcn" firstAttribute="leading" secondItem="5iu-cC-OTN" secondAttribute="leading" constant="369" id="gkt-nT-0Qo"/>
+                            <constraint firstItem="Q3n-gC-fcn" firstAttribute="top" secondItem="5iu-cC-OTN" secondAttribute="top" id="ryR-LN-EsS"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5iu-cC-OTN"/>
                     </view>
                     <connections>
@@ -494,4 +494,7 @@
             <point key="canvasLocation" x="-30.434782608695656" y="1141.7410714285713"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="XWhite" width="63" height="63"/>
+    </resources>
 </document>
