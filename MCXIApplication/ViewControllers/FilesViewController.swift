@@ -168,7 +168,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     
     func loadReadingDeskFile(Item : Int){
         let vc = IntermediateReadingViewController()
-        vc.textView.text = obtainTextFromFile(indexPath: Item+1)
+        vc.textToRead.text = obtainTextFromFile(indexPath: Item+1)
         vc.modalPresentationStyle = .fullScreen
         present(vc,animated: true)
     }

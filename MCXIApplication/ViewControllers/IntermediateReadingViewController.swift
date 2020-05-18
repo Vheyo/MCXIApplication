@@ -9,29 +9,76 @@
 import Foundation
 import UIKit
 class IntermediateReadingViewController: UIViewController{
-    var textView = UITextView()
-    var playButton : UIButton = {
-        let playButton = UIButton()
-        playButton.setTitle("play", for: .normal)
-        playButton.addTarget(self, action: #selector(playAction), for: .touchUpInside)
-        
-        return playButton
-    }()
-    
-    override func viewDidLoad() {
-        overrideUserInterfaceStyle = .light
-        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        textView.frame = CGRect(x: 0, y: 276, width: 414, height: 620)
-        playButton.frame = CGRect(x: 150, y: 350, width: 100, height: 100)
+     var textToRead : UITextView = {
+           let textToRead = UITextView()
+           textToRead.translatesAutoresizingMaskIntoConstraints = false
+           textToRead.textAlignment = .center
+           textToRead.showsVerticalScrollIndicator = false
+           textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+           
+           return textToRead
+       }()
+       
+     private var buttonPlay : UIButton = {
+            let buttonPlay = UIButton()
+            buttonPlay.setTitle("Play", for: .normal)
+            buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+            buttonPlay.setTitleColor(.white, for: .normal)
+            buttonPlay.translatesAutoresizingMaskIntoConstraints = false
+            buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+            buttonPlay.layer.cornerRadius = 16
+            buttonPlay.addTarget(self, action: #selector(playAction), for: .touchUpInside)
+            return buttonPlay
+        }()
+       
+       private var backButton : UIButton = {
+              let backButton = UIButton()
+              backButton.translatesAutoresizingMaskIntoConstraints = false
+              backButton.setTitle("back", for: .normal)
+              backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+              backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+              backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+              backButton.titleLabel?.textAlignment = .left
+              return backButton
+          }()
+          
+       
+       
+       
+       override func viewDidLoad() {
+           setUpTextToRead()
         view.backgroundColor = .white
-        textView.textColor = .black
-        view.addSubview(textView)
-        view.addSubview(playButton)
+       }
+    
+    
+    func setUpTextToRead(){
+           self.view.addSubview(textToRead)
+           self.view.addSubview(buttonPlay)
+           self.view.addSubview(backButton)
+           NSLayoutConstraint.activate([
+               
+               backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+               backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+                           
+               buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+               buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
+               buttonPlay.heightAnchor.constraint(equalToConstant: 70),
+               buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
+               
+               textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+               textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+               textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+               textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
+           ])
+       }
+       
+    @objc func dismissView(){
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func playAction(){
         let vc = PresentatiotionTextToReadViewController()
-        vc.text = textView.text
+        vc.text = textToRead.text
         vc.view.backgroundColor = .white
         
         present(vc,animated: true)

@@ -188,6 +188,8 @@ class ExerciseWithFormViewController: UIViewController {
             
         }
         //        setUpConstraints()
+        
+        
         // Do any additional setup after loading the view.
         let jsonResult = ExerciseWithFormViewController.readJSONFromFile(fileName: "TestiEsercizi") as AnyObject
         numText = numeroText
