@@ -71,8 +71,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var playButton : UIButton = {
         let playButton = UIButton(type: .custom)
-        playButton.setTitle("B", for: .normal)
-        playButton.setTitleColor(UIColor.white, for: .normal)
+//        playButton.setTitle("B", for: .normal)
+//        playButton.setTitleColor(UIColor.white, for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.layer.borderColor = UIColor.black.cgColor
         playButton.layer.borderWidth = 0
@@ -80,16 +80,16 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         playButton.clipsToBounds = true
         playButton.alpha = 0.0
-        playButton.backgroundColor = .black
-        playButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+//        playButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+        playButton.setImage(UIImage(named: "Play-1"), for: .normal)
         playButton.addTarget(self, action: #selector(gestioneTimer(button:)), for: .touchUpInside)
         return playButton
     }()
     
     private var backButton : UIButton = {
         let backButton = UIButton(type: .custom)
-        backButton.setTitle("P", for: .normal)
-        backButton.setTitleColor(UIColor.white, for: .normal)
+//        backButton.setTitle("P", for: .normal)
+//        backButton.setTitleColor(UIColor.white, for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.layer.borderColor = UIColor.black.cgColor
         backButton.layer.borderWidth = 0
@@ -98,14 +98,15 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         backButton.clipsToBounds = true
         backButton.alpha = 0.0
         backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        backButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+//        backButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+        backButton.setImage(UIImage(named: "Previous-1"), for: .normal)
         return backButton
     }()
     
     private var forwardButton : UIButton = {
         let forwardButton = UIButton(type: .custom)
-        forwardButton.setTitle("F", for: .normal)
-        forwardButton.setTitleColor(UIColor.white, for: .normal)
+//        forwardButton.setTitle("F", for: .normal)
+//        forwardButton.setTitleColor(UIColor.white, for: .normal)
         forwardButton.translatesAutoresizingMaskIntoConstraints = false
         forwardButton.layer.borderColor = UIColor.black.cgColor
         forwardButton.layer.borderWidth = 0
@@ -113,7 +114,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         forwardButton.layer.cornerRadius = 0.5 * forwardButton.bounds.size.width
         forwardButton.clipsToBounds = true
         forwardButton.alpha = 0.0
-        forwardButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+//        forwardButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+        forwardButton.setImage(UIImage(named: "Forward-1"), for: .normal)
         forwardButton.addTarget(self, action: #selector(forwardAction), for: .touchUpInside)
         return forwardButton
     }()

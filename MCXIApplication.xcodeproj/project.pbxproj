@@ -27,9 +27,6 @@
 		38F22555246FFA9000287884 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F22554246FFA9000287884 /* TimerView.swift */; };
 		479413D3D40BE167C969FF2F /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75E08D9541D5695E62973B4 /* Pods_MCXIApplication.framework */; };
 		4B7AC8DD24706DF000C59A0C /* FontKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AC8DC24706DF000C59A0C /* FontKit.swift */; };
-		4B7AC8F8247192EF00C59A0C /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AC8F7247192EF00C59A0C /* ShareViewController.swift */; };
-		4B7AC8FB247192EF00C59A0C /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B7AC8F9247192EF00C59A0C /* MainInterface.storyboard */; };
-		4B7AC8FF247192EF00C59A0C /* Copy WebText.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4B7AC8F5247192EF00C59A0C /* Copy WebText.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5F1573072471848D00C832B6 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F1573062471848D00C832B6 /* TutorialViewController.swift */; };
 		7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D72460B2A60021CA4F /* AppDelegate.swift */; };
 		7509E2DA2460B2A60021CA4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509E2D92460B2A60021CA4F /* SceneDelegate.swift */; };
@@ -54,16 +51,6 @@
 		75D23005246E91EF00B87E4D /* IntermediateReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4B7AC8FD247192EF00C59A0C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7509E2CC2460B2A60021CA4F /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4B7AC8F4247192EF00C59A0C;
-			remoteInfo = "Copy WebText";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		4B7AC900247192EF00C59A0C /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -71,7 +58,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				4B7AC8FF247192EF00C59A0C /* Copy WebText.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,10 +84,6 @@
 		38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PamCrTestiViewController.swift; sourceTree = "<group>"; };
 		38F22554246FFA9000287884 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		4B7AC8DC24706DF000C59A0C /* FontKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
-		4B7AC8F5247192EF00C59A0C /* Copy WebText.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Copy WebText.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		4B7AC8F7247192EF00C59A0C /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
-		4B7AC8FA247192EF00C59A0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		4B7AC8FC247192EF00C59A0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5F1573062471848D00C832B6 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		7509E2D42460B2A60021CA4F /* MCXIApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCXIApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509E2D72460B2A60021CA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -132,13 +114,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4B7AC8F2247192EF00C59A0C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7509E2D12460B2A60021CA4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -150,21 +125,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4B7AC8F6247192EF00C59A0C /* Copy WebText */ = {
-			isa = PBXGroup;
-			children = (
-				4B7AC8F7247192EF00C59A0C /* ShareViewController.swift */,
-				4B7AC8F9247192EF00C59A0C /* MainInterface.storyboard */,
-				4B7AC8FC247192EF00C59A0C /* Info.plist */,
-			);
-			path = "Copy WebText";
-			sourceTree = "<group>";
-		};
 		7509E2CB2460B2A60021CA4F = {
 			isa = PBXGroup;
 			children = (
 				7509E2D62460B2A60021CA4F /* MCXIApplication */,
-				4B7AC8F6247192EF00C59A0C /* Copy WebText */,
 				7509E2D52460B2A60021CA4F /* Products */,
 				A78A620A51083812C7515410 /* Pods */,
 				C0A80CF03ECD61B9E9F1FBD1 /* Frameworks */,
@@ -175,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				7509E2D42460B2A60021CA4F /* MCXIApplication.app */,
-				4B7AC8F5247192EF00C59A0C /* Copy WebText.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -353,23 +316,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4B7AC8F4247192EF00C59A0C /* Copy WebText */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4B7AC903247192EF00C59A0C /* Build configuration list for PBXNativeTarget "Copy WebText" */;
-			buildPhases = (
-				4B7AC8F1247192EF00C59A0C /* Sources */,
-				4B7AC8F2247192EF00C59A0C /* Frameworks */,
-				4B7AC8F3247192EF00C59A0C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Copy WebText";
-			productName = "Copy WebText";
-			productReference = 4B7AC8F5247192EF00C59A0C /* Copy WebText.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		7509E2D32460B2A60021CA4F /* MCXIApplication */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7509E2E82460B2A70021CA4F /* Build configuration list for PBXNativeTarget "MCXIApplication" */;
@@ -384,7 +330,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4B7AC8FE247192EF00C59A0C /* PBXTargetDependency */,
 			);
 			name = MCXIApplication;
 			productName = MCXIApplication;
@@ -401,9 +346,6 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Valentino Palomba";
 				TargetAttributes = {
-					4B7AC8F4247192EF00C59A0C = {
-						CreatedOnToolsVersion = 11.4.1;
-					};
 					7509E2D32460B2A60021CA4F = {
 						CreatedOnToolsVersion = 11.3.1;
 					};
@@ -423,20 +365,11 @@
 			projectRoot = "";
 			targets = (
 				7509E2D32460B2A60021CA4F /* MCXIApplication */,
-				4B7AC8F4247192EF00C59A0C /* Copy WebText */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		4B7AC8F3247192EF00C59A0C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B7AC8FB247192EF00C59A0C /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7509E2D22460B2A60021CA4F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -494,14 +427,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		4B7AC8F1247192EF00C59A0C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B7AC8F8247192EF00C59A0C /* ShareViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		7509E2D02460B2A60021CA4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,23 +472,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		4B7AC8FE247192EF00C59A0C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4B7AC8F4247192EF00C59A0C /* Copy WebText */;
-			targetProxy = 4B7AC8FD247192EF00C59A0C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
-		4B7AC8F9247192EF00C59A0C /* MainInterface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4B7AC8FA247192EF00C59A0C /* Base */,
-			);
-			name = MainInterface.storyboard;
-			sourceTree = "<group>";
-		};
 		7509E2DD2460B2A60021CA4F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -583,46 +492,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		4B7AC901247192EF00C59A0C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
-				INFOPLIST_FILE = "Copy WebText/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Valentino-Palomba.MCXIApplication.Copy-WebText";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		4B7AC902247192EF00C59A0C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
-				INFOPLIST_FILE = "Copy WebText/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Valentino-Palomba.MCXIApplication.Copy-WebText";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		7509E2E62460B2A70021CA4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -741,11 +610,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9FFC41B941188FE2D109C72B /* Pods-MCXIApplication.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
+				DEVELOPMENT_TEAM = 5RT78SVMVF;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -761,11 +630,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8C01599C8B646BC19475DC26 /* Pods-MCXIApplication.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PVGZCB3872;
+				DEVELOPMENT_TEAM = 5RT78SVMVF;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -780,15 +649,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4B7AC903247192EF00C59A0C /* Build configuration list for PBXNativeTarget "Copy WebText" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4B7AC901247192EF00C59A0C /* Debug */,
-				4B7AC902247192EF00C59A0C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		7509E2CF2460B2A60021CA4F /* Build configuration list for PBXProject "MCXIApplication" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
