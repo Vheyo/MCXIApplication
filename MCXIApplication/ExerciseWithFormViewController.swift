@@ -72,9 +72,9 @@ class ExerciseWithFormViewController: UIViewController {
         let questionLabel = UILabel()
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.text = "Qui devi mettere la domanda del testo ? "
-        questionLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
-        questionLabel.textColor = .black
-        questionLabel.textAlignment = .left
+        questionLabel.font = FontKit.roundedFont(ofSize: 42, weight: .bold)
+        questionLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        questionLabel.textAlignment = .center
         questionLabel.numberOfLines = 0
         return questionLabel
     }()
@@ -123,34 +123,34 @@ class ExerciseWithFormViewController: UIViewController {
         return fourthAnswer
     }()
     
-    private var radioButtonFirst : RadioButton = {
-        let radioButtonFirst = RadioButton()
-        radioButtonFirst.isSelected = false
-        radioButtonFirst.tag = 0
+    private var radioButtonFirst : containerOfRadioButton = {
+        let radioButtonFirst = containerOfRadioButton()
+        radioButtonFirst.radioButton.isSelected = false
+        radioButtonFirst.radioButton.tag = 0
         radioButtonFirst.translatesAutoresizingMaskIntoConstraints = false
         return radioButtonFirst
     }()
     
-    private var radioButtonSecond : RadioButton = {
-        let radioButtonSecond = RadioButton()
-        radioButtonSecond.isSelected = false
-        radioButtonSecond.tag = 1
+    private var radioButtonSecond : containerOfRadioButton = {
+        let radioButtonSecond = containerOfRadioButton()
+        radioButtonSecond.radioButton.isSelected = false
+        radioButtonSecond.radioButton.tag = 1
         radioButtonSecond.translatesAutoresizingMaskIntoConstraints = false
         return radioButtonSecond
     }()
     
-    private var radioButtonThird : RadioButton = {
-        let radioButtonThird  = RadioButton()
-        radioButtonThird.isSelected = false
-        radioButtonThird.tag = 2
+    private var radioButtonThird : containerOfRadioButton = {
+        let radioButtonThird  = containerOfRadioButton()
+        radioButtonThird.radioButton.isSelected = false
+        radioButtonThird.radioButton.tag = 2
         radioButtonThird .translatesAutoresizingMaskIntoConstraints = false
         return radioButtonThird
     }()
     
-    private var radioButtonFourth : RadioButton = {
-        let radioButtonFourth = RadioButton()
-        radioButtonFourth.isSelected = false
-        radioButtonFourth.tag = 3
+    private var radioButtonFourth : containerOfRadioButton = {
+        let radioButtonFourth = containerOfRadioButton()
+        radioButtonFourth.radioButton.isSelected = false
+        radioButtonFourth.radioButton.tag = 3
         radioButtonFourth.translatesAutoresizingMaskIntoConstraints = false
         return radioButtonFourth
     }()
@@ -216,10 +216,10 @@ class ExerciseWithFormViewController: UIViewController {
     }
     
     func setUpAlternateButton(){
-        radioButtonFirst.alternateButton = [radioButtonSecond,radioButtonThird,radioButtonFourth]
-        radioButtonSecond.alternateButton = [radioButtonFirst,radioButtonThird,radioButtonFourth]
-        radioButtonThird.alternateButton = [radioButtonSecond,radioButtonFirst,radioButtonFourth]
-        radioButtonFourth.alternateButton = [radioButtonSecond,radioButtonThird,radioButtonFirst]
+        radioButtonFirst.radioButton.alternateButton = [radioButtonSecond.radioButton,radioButtonThird.radioButton,radioButtonFourth.radioButton]
+        radioButtonSecond.radioButton.alternateButton = [radioButtonFirst.radioButton,radioButtonThird.radioButton,radioButtonFourth.radioButton]
+        radioButtonThird.radioButton.alternateButton = [radioButtonSecond.radioButton,radioButtonFirst.radioButton,radioButtonFourth.radioButton]
+        radioButtonFourth.radioButton.alternateButton = [radioButtonSecond.radioButton,radioButtonThird.radioButton,radioButtonFirst.radioButton]
     }
     
     func setUpTextToRead(){
@@ -309,23 +309,23 @@ class ExerciseWithFormViewController: UIViewController {
         ])
     }
     func checkAnswer() -> Bool{
-        if radioButtonFirst.oneSelected().0 {
+        if radioButtonFirst.radioButton.oneSelected().0 {
             print("uno è selezionato ")
             //        cosicontrolli il bottone premuto
-            print(radioButtonFirst.oneSelected().1.tag)
-            if radioButtonFirst.oneSelected().1.tag == risposteEsatte_Array[questionIndex]{
+            print(radioButtonFirst.radioButton.oneSelected().1.tag)
+            if radioButtonFirst.radioButton.oneSelected().1.tag == risposteEsatte_Array[questionIndex]{
                 questionIndex += 1;
-                 radioButtonFirst.oneSelected().1.isSelected = false
+                 radioButtonFirst.radioButton.oneSelected().1.isSelected = false
                 return true
                
             }
             questionIndex += 1
-             radioButtonFirst.oneSelected().1.isSelected = false
+             radioButtonFirst.radioButton.oneSelected().1.isSelected = false
         return false
         
         }
         questionIndex += 1
-         radioButtonFirst.oneSelected().1.isSelected = false
+         radioButtonFirst.radioButton.oneSelected().1.isSelected = false
         return false
     }
         

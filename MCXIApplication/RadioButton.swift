@@ -8,13 +8,20 @@
 
 import Foundation
 import UIKit
+
+protocol insertCheckInButton : class {
+    func insertCheck()
+}
+
 class RadioButton: UIButton {
     var alternateButton:Array<RadioButton>?
+    var onTap : (() -> Void)!
+    var onTap2 : (() -> Void)!
     
     override init(frame: CGRect) {
         super.init(frame : frame)
         self.layer.cornerRadius = 5
-        self.layer.borderWidth = 2.0
+        self.backgroundColor = .lightGray
         self.layer.masksToBounds = true
     }
     
@@ -46,9 +53,9 @@ class RadioButton: UIButton {
     override var isSelected: Bool {
         didSet {
             if isSelected {
-                self.layer.borderColor = UIColor.red.cgColor
+                onTap?()
             } else {
-                self.layer.borderColor = UIColor.black.cgColor
+                onTap2?()
             }
         }
     }

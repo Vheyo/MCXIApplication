@@ -24,6 +24,7 @@
 		38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */; };
 		38AD56452462C56200622D31 /* NoFile.json in Resources */ = {isa = PBXBuildFile; fileRef = 38AD56442462C56200622D31 /* NoFile.json */; };
 		38AD56472462C56D00622D31 /* AnimationFileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */; };
+		38B9B368247276A9000C16A4 /* containerOfRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */; };
 		38BA6A39247143B900DF7878 /* PamCrTestiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */; };
 		38F22555246FFA9000287884 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F22554246FFA9000287884 /* TimerView.swift */; };
 		479413D3D40BE167C969FF2F /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75E08D9541D5695E62973B4 /* Pods_MCXIApplication.framework */; };
@@ -97,6 +98,7 @@
 		38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		38AD56442462C56200622D31 /* NoFile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = NoFile.json; sourceTree = "<group>"; };
 		38AD56462462C56D00622D31 /* AnimationFileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationFileTableViewCell.swift; sourceTree = "<group>"; };
+		38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = containerOfRadioButton.swift; sourceTree = "<group>"; };
 		38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PamCrTestiViewController.swift; sourceTree = "<group>"; };
 		38F22554246FFA9000287884 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		4B7AC8DC24706DF000C59A0C /* FontKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				4B7AC8DC24706DF000C59A0C /* FontKit.swift */,
 				38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */,
 				5F1573062471848D00C832B6 /* TutorialViewController.swift */,
+				38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */,
 			);
 			path = MCXIApplication;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				5F1573072471848D00C832B6 /* TutorialViewController.swift in Sources */,
 				385C742124655A6D009EB1A2 /* CopriScopriViewController.swift in Sources */,
 				75CA249B246F3974009D3C1F /* DetectedViewController.swift in Sources */,
+				38B9B368247276A9000C16A4 /* containerOfRadioButton.swift in Sources */,
 				38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */,
 				38876594246C713F00328D23 /* UPCarouselFlowLayout.swift in Sources */,
 				3888437E246C9A990064712A /* DropUpButton.swift in Sources */,
