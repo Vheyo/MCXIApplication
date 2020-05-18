@@ -103,8 +103,7 @@ class ReadingDeskViewController: UIViewController {
         setUpConstraints()
         textViewContainer.addShadowView2()
         view.backgroundColor = .white
-        titleTextLabel.text = "File \((UserDefaults.standard.integer(forKey: "numFile")-1))"
-        someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
+        
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
     }
@@ -114,7 +113,12 @@ class ReadingDeskViewController: UIViewController {
         if(UserDefaults.isFirstLaunch()){
             let vc = self.storyboard?.instantiateViewController(identifier: "TUTORIAL") as? TutorialViewController
             self.view.window?.rootViewController = vc
-            
+            titleTextLabel.alpha = 0.0
+            someTextLabel.text = "Use the + Button to add new File!"
+        }
+        if UserDefaults.standard.integer(forKey: "numFile") > 0{
+            titleTextLabel.text = "File \((UserDefaults.standard.integer(forKey: "numFile")-1))"
+            someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
         }
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
     }
