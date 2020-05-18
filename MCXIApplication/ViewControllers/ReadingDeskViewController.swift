@@ -72,6 +72,7 @@ class ReadingDeskViewController: UIViewController {
         playButton.layer.borderWidth = 1
         playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.layer.cornerRadius = 30
+//        playButton.setImage("", for: .normal)
         return playButton
     }()
     
