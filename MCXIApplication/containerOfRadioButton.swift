@@ -10,6 +10,7 @@ import UIKit
 
 class containerOfRadioButton: UIView {
     
+    var onTap : (() -> Void)!
     var radioButton : RadioButton = {
         let radioButton = RadioButton()
         radioButton.isSelected = false
@@ -28,6 +29,7 @@ class containerOfRadioButton: UIView {
         super.init(frame: frame)
         setUpConstraints()
         radioButton.onTap = {
+            self.onTap?()
             self.imageCheck.transform = CGAffineTransform(scaleX: 0, y: 0)
             UIView.animate(withDuration: 0.5) {
                 self.imageCheck.transform = .identity

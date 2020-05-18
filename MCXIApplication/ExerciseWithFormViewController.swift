@@ -83,7 +83,7 @@ class ExerciseWithFormViewController: UIViewController {
         let firstAnswer = UILabel()
         firstAnswer.translatesAutoresizingMaskIntoConstraints = false
         firstAnswer.text = "Qui devi mettere ladssadasfdfdsfdsdsa prima risposta"
-        firstAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        firstAnswer.font = FontKit.roundedFont(ofSize: 22, weight: .regular)
         firstAnswer.textColor = .black
         firstAnswer.textAlignment = .left
         firstAnswer.numberOfLines = 0
@@ -94,7 +94,7 @@ class ExerciseWithFormViewController: UIViewController {
         let secondAnswer = UILabel()
         secondAnswer.translatesAutoresizingMaskIntoConstraints = false
         secondAnswer.text = "Qui devi mettere la seconda risposta "
-        secondAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        secondAnswer.font = FontKit.roundedFont(ofSize: 22, weight: .regular)
         secondAnswer.textColor = .black
         secondAnswer.textAlignment = .left
         secondAnswer.numberOfLines = 0
@@ -105,7 +105,7 @@ class ExerciseWithFormViewController: UIViewController {
         let thirdAnswer = UILabel()
         thirdAnswer.translatesAutoresizingMaskIntoConstraints = false
         thirdAnswer.text = "Qui devi mettere la terza risposta"
-        thirdAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        thirdAnswer.font = FontKit.roundedFont(ofSize: 22, weight: .regular)
         thirdAnswer.textColor = .black
         thirdAnswer.textAlignment = .left
         thirdAnswer.numberOfLines = 0
@@ -116,7 +116,7 @@ class ExerciseWithFormViewController: UIViewController {
         let fourthAnswer = UILabel()
         fourthAnswer.translatesAutoresizingMaskIntoConstraints = false
         fourthAnswer.text = "Qui devi mettere la quarta risposta"
-        fourthAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        fourthAnswer.font = FontKit.roundedFont(ofSize: 22, weight: .regular)
         fourthAnswer.textColor = .black
         fourthAnswer.textAlignment = .left
         fourthAnswer.numberOfLines = 0
@@ -159,6 +159,34 @@ class ExerciseWithFormViewController: UIViewController {
         super.viewDidLoad()
         setUpAlternateButton()
         setUpTextToRead()
+        radioButtonFirst.onTap = {
+            UIView.animate(withDuration: 0.5) {
+                self.buttonPlay.alpha = 1
+                self.buttonPlay.isEnabled = true
+            }
+            
+        }
+        radioButtonSecond.onTap = {
+            UIView.animate(withDuration: 0.5) {
+                self.buttonPlay.alpha = 1
+                self.buttonPlay.isEnabled = true
+            }
+            
+        }
+        radioButtonThird.onTap = {
+            UIView.animate(withDuration: 0.5) {
+                self.buttonPlay.alpha = 1
+                self.buttonPlay.isEnabled = true
+                
+            }
+        }
+        radioButtonFourth.onTap = {
+            UIView.animate(withDuration: 0.5) {
+                self.buttonPlay.alpha = 1
+                self.buttonPlay.isEnabled = true
+            }
+            
+        }
         //        setUpConstraints()
         // Do any additional setup after loading the view.
         let jsonResult = ExerciseWithFormViewController.readJSONFromFile(fileName: "TestiEsercizi") as AnyObject
@@ -271,22 +299,22 @@ class ExerciseWithFormViewController: UIViewController {
             
             
             radioButtonFirst.topAnchor.constraint(equalTo: questionLabel.bottomAnchor,constant: 20),
-            radioButtonFirst.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
+            radioButtonFirst.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
             radioButtonFirst.heightAnchor.constraint(equalToConstant: 40),
             radioButtonFirst.widthAnchor.constraint(equalToConstant: 40),
             
             radioButtonSecond.topAnchor.constraint(equalTo: radioButtonFirst.bottomAnchor,constant: 16),
-            radioButtonSecond.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
+            radioButtonSecond.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
             radioButtonSecond.heightAnchor.constraint(equalToConstant: 40),
             radioButtonSecond.widthAnchor.constraint(equalToConstant: 40),
             
             radioButtonThird.topAnchor.constraint(equalTo: radioButtonSecond.bottomAnchor,constant: 16),
-            radioButtonThird.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
+            radioButtonThird.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
             radioButtonThird.heightAnchor.constraint(equalToConstant: 40),
             radioButtonThird.widthAnchor.constraint(equalToConstant: 40),
             
             radioButtonFourth.topAnchor.constraint(equalTo: radioButtonThird.bottomAnchor,constant: 16),
-            radioButtonFourth.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
+            radioButtonFourth.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
             radioButtonFourth.heightAnchor.constraint(equalToConstant: 40),
             radioButtonFourth.widthAnchor.constraint(equalToConstant: 40),
             
@@ -360,6 +388,8 @@ class ExerciseWithFormViewController: UIViewController {
     
     @objc func playMode(_ sender : UIButton){
         if numberCount == 0 {
+            buttonPlay.alpha = 0.3
+            buttonPlay.isEnabled = false
             diff = CFAbsoluteTimeGetCurrent() - start
             textToRead.removeFromSuperview()
             buttonPlay.setTitle("Rispondi", for: .normal)
@@ -367,6 +397,8 @@ class ExerciseWithFormViewController: UIViewController {
             numberCount = 2
         }
         else if numberCount == 2 {
+            buttonPlay.alpha = 0.3
+            buttonPlay.isEnabled = false
             if(checkAnswer() == true){
                 numberOfAnswerTrue+=1
                /*INCREMENTO DI UNA VARIABILE PER TENER TRACCIA DI QUANTE RISPOSTE ESATTE*/
