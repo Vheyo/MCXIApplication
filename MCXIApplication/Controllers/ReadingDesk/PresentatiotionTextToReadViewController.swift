@@ -308,7 +308,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func hideFunction(){
-        if hidden == false && (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
+        if hidden == false {
             UIView.animate(withDuration: 0.1, animations: {
                 self.backButtonView.alpha = 0.0
                 self.dropUpButtonTime.alpha = 0.0
@@ -318,7 +318,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.forwardButton.alpha = 0.0
                 self.backButton.alpha = 0.0
                 self.keywordButton.alpha = 0.0
-            }, completion: {_ in self.hidden = true})
+            }, completion: {_ in self.hidden = true
+                self.dropDownButtonTime.dropDownAfterPressed()
+                self.dropUpButtonTime.dropDownAfterPressed()
+            })
         }
         else if hidden{
             UIView.animate(withDuration: 0.1, animations: {
