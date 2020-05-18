@@ -308,22 +308,23 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func hideFunction(){
-        if hidden == false {
-            UIView.animate(withDuration: 0.1, animations: {
-                self.backButtonView.alpha = 0.0
-                self.dropUpButtonTime.alpha = 0.0
-                self.dropDownButtonTime.alpha = 0.0
-                self.textTitle.alpha = 0.0
-                self.playButton.alpha = 0.0
-                self.forwardButton.alpha = 0.0
-                self.backButton.alpha = 0.0
-                self.keywordButton.alpha = 0.0
-            }, completion: {_ in self.hidden = true
-                self.dropDownButtonTime.dropDownAfterPressed()
-                self.dropUpButtonTime.dropDownAfterPressed()
-            })
+//        if hidden == false && (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
+        if !hidden {
+            if (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
+                UIView.animate(withDuration: 0.1, animations: {
+                    self.backButtonView.alpha = 0.0
+                    self.dropUpButtonTime.alpha = 0.0
+                    self.dropDownButtonTime.alpha = 0.0
+                    self.textTitle.alpha = 0.0
+                    self.playButton.alpha = 0.0
+                    self.forwardButton.alpha = 0.0
+                    self.backButton.alpha = 0.0
+                    self.keywordButton.alpha = 0.0
+                }, completion: {_ in self.hidden = true})
+            }
+            
         }
-        else if hidden{
+        else{
             UIView.animate(withDuration: 0.1, animations: {
                 self.backButtonView.alpha = 1.0
                 self.dropUpButtonTime.alpha = 1.0
@@ -335,6 +336,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.keywordButton.alpha = 1.0
             },completion: {_ in self.hidden = false})
         }
+
        
         
     }
@@ -411,6 +413,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        print("ciao bella io ti conosco tu fumi canella")
         return touch.view == gestureRecognizer.view
     }
     

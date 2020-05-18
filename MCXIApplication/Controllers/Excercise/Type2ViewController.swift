@@ -81,8 +81,6 @@ class Type2ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        arrived99 = false
-        print("ciao")
         let value = UIInterfaceOrientation.portrait.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
     }
@@ -147,20 +145,21 @@ class Type2ViewController: UIViewController {
     
     @objc func closeView(){
         self.dismiss(animated: true, completion: nil)
+        backButton.alpha = 0
     }
 }
-var arrived99 : Bool = false
+var lastNumber : CGFloat!
 
 extension Type2ViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // prevent bouncing when swiping down to close
-        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 80{
-            backButton.alpha = 1.0
-        }
-        else {
-            backButton.alpha = 0.0
-        }
+//        lastNumber = scrollView.contentOffset.y
+//        if scrollView.contentOffset.y > 0 && scrollView.contentOffset.y < 500 && lastNumber != 98 {
+//            backButton.alpha = 1.0
+//        }
+//        else if lastNumber == 98{
+//            backButton.alpha = 0.0
+//        }
         scrollView.bounces = scrollView.contentOffset.y > 100
         dismissHandler.scrollViewDidScroll(scrollView)
     }
@@ -179,6 +178,10 @@ extension Type2ViewController: CardDetailViewController {
     var cardContentView: UIView {
         return headerView
     }
-
+    
+    func didStartDismissAnimation() {
+        backButton.alpha = 0
+    }
+    
 }
 

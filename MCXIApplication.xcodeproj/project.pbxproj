@@ -207,8 +207,6 @@
 		755B77C42472D9CC00A3E73D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7509E2D72460B2A60021CA4F /* AppDelegate.swift */,
-				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
 				751893A02465FD5600C5B695 /* TestiEsercizi.json */,
 			);
 			path = Model;
@@ -219,6 +217,8 @@
 			children = (
 				7509E2D92460B2A60021CA4F /* SceneDelegate.swift */,
 				7509E2F62460BA3C0021CA4F /* Type2CollectionViewCell.xib */,
+				7509E2D72460B2A60021CA4F /* AppDelegate.swift */,
+				7509E2E22460B2A70021CA4F /* LaunchScreen.storyboard */,
 				7509E2DD2460B2A60021CA4F /* Main.storyboard */,
 			);
 			path = View;
@@ -587,7 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = PVGZCB3872;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -607,7 +607,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = PVGZCB3872;
 				INFOPLIST_FILE = "Copy WebText/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -744,7 +744,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = PVGZCB3872;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -764,7 +764,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5RT78SVMVF;
+				DEVELOPMENT_TEAM = PVGZCB3872;
 				INFOPLIST_FILE = MCXIApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
