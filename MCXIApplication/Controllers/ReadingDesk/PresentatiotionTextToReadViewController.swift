@@ -27,7 +27,13 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             
             deleteTimer()
             let value = Int(dropDownButtonTime.currentTitle!)
-            Pam = 60/Float(value!*100)
+            if dropUpButtonTime.currentTitle != "W"{
+                Pam = (60/Float(value!*100))*Float(Int(dropUpButtonTime.currentTitle!)!)
+            }
+            else{
+                Pam = 60/Float(value!*100)
+            }
+            
             startToRead(gesture: UITapGestureRecognizer())
         default:
             print("No one selected")
@@ -43,6 +49,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }()
     
     var textSplitted = [String]()
+    var textSplittedWithSpace = [String]()
     var indexWord = 0
     var hidden = true
     var Pam = Float()
@@ -50,7 +57,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var timer = Timer()
     var reading = true
     var nameFile = String()
-    var initialTimer = 3
+    var initialTimer = 2
+    var initialIndex = 0
     private var textTitle : UILabel = {
         let textTitle = UILabel()
         textTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -71,8 +79,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var playButton : UIButton = {
         let playButton = UIButton(type: .custom)
-//        playButton.setTitle("B", for: .normal)
-//        playButton.setTitleColor(UIColor.white, for: .normal)
+        //        playButton.setTitle("B", for: .normal)
+        //        playButton.setTitleColor(UIColor.white, for: .normal)
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.layer.borderColor = UIColor.black.cgColor
         playButton.layer.borderWidth = 0
@@ -80,7 +88,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.layer.cornerRadius = 0.5 * playButton.bounds.size.width
         playButton.clipsToBounds = true
         playButton.alpha = 0.0
-//        playButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+        //        playButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
         playButton.setImage(UIImage(named: "Play-1"), for: .normal)
         playButton.addTarget(self, action: #selector(gestioneTimer(button:)), for: .touchUpInside)
         return playButton
@@ -88,8 +96,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var backButton : UIButton = {
         let backButton = UIButton(type: .custom)
-//        backButton.setTitle("P", for: .normal)
-//        backButton.setTitleColor(UIColor.white, for: .normal)
+        //        backButton.setTitle("P", for: .normal)
+        //        backButton.setTitleColor(UIColor.white, for: .normal)
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.layer.borderColor = UIColor.black.cgColor
         backButton.layer.borderWidth = 0
@@ -98,15 +106,15 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         backButton.clipsToBounds = true
         backButton.alpha = 0.0
         backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-//        backButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+        //        backButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
         backButton.setImage(UIImage(named: "Previous-1"), for: .normal)
         return backButton
     }()
     
     private var forwardButton : UIButton = {
         let forwardButton = UIButton(type: .custom)
-//        forwardButton.setTitle("F", for: .normal)
-//        forwardButton.setTitleColor(UIColor.white, for: .normal)
+        //        forwardButton.setTitle("F", for: .normal)
+        //        forwardButton.setTitleColor(UIColor.white, for: .normal)
         forwardButton.translatesAutoresizingMaskIntoConstraints = false
         forwardButton.layer.borderColor = UIColor.black.cgColor
         forwardButton.layer.borderWidth = 0
@@ -114,7 +122,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         forwardButton.layer.cornerRadius = 0.5 * forwardButton.bounds.size.width
         forwardButton.clipsToBounds = true
         forwardButton.alpha = 0.0
-//        forwardButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
+        //        forwardButton.setBackgroundImage(UIImage(named: "ButtonCircle"), for: .normal)
         forwardButton.setImage(UIImage(named: "Forward-1"), for: .normal)
         forwardButton.addTarget(self, action: #selector(forwardAction), for: .touchUpInside)
         return forwardButton
@@ -123,7 +131,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var dropUpButtonTime : DropUpButton = {
         let dropUpButtonTime = DropUpButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        dropUpButtonTime.setTitle("T", for: .normal)
+        dropUpButtonTime.setTitle("W", for: .normal)
         dropUpButtonTime.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         dropUpButtonTime.translatesAutoresizingMaskIntoConstraints = false
         dropUpButtonTime.layer.borderColor = UIColor.black.cgColor
@@ -174,7 +182,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         keywordButton.setTitle("Keywords", for: .normal)
         keywordButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         keywordButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-//        keywordButton.addTarget(self, action: #selector(showText), for: .touchUpInside)
+        //        keywordButton.addTarget(self, action: #selector(showText), for: .touchUpInside)
         keywordButton.titleLabel?.textAlignment = .center
         keywordButton.titleLabel?.textAlignment = .left
         keywordButton.layer.borderWidth = 2
@@ -216,7 +224,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             arrayString?.append(textSplitted[indexWord])
             
         }
-    
+        
         UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
         print(nameFile)
         print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
@@ -225,12 +233,46 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     func activateTimer(){
         reading = true
         print("Sto leggendo")
-        timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
-            self.textToRead.text = self.textSplitted[self.indexWord]
-            if self.indexWord < self.textSplitted.count - 1 {
-                self.indexWord += 1
-            }
-        })
+        if dropUpButtonTime.currentTitle != "W"{
+            self.initialTimer = indexWord+Int(dropUpButtonTime.currentTitle!)!
+            self.initialIndex = indexWord
+            timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
+                var range = 0..<1
+               
+                if self.initialTimer >= self.textSplitted.count {
+                    if self.initialIndex >= self.textSplitted.count {
+                        range = self.textSplitted.count-2..<self.textSplitted.count-1
+                    }
+                    else{
+                    range = self.initialIndex..<self.textSplitted.count-1
+                    }
+                }
+                else if self.initialIndex < self.initialTimer{
+                    range = self.initialIndex..<self.initialTimer
+                }
+                
+                let textToShowSlice = self.textSplitted[range]
+                var textToShow = String()
+                for element in textToShowSlice {
+                    textToShow.append(element)
+                    textToShow.append(" ")
+                }
+                self.textToRead.text = textToShow as String
+                self.initialTimer = self.initialTimer+Int(self.dropUpButtonTime.currentTitle!)!
+                self.initialIndex = self.initialIndex+Int(self.dropUpButtonTime.currentTitle!)!
+            })
+            
+            
+            
+        }
+        else {
+            timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
+                self.textToRead.text = self.textSplitted[self.indexWord]
+                if self.indexWord < self.textSplitted.count - 1 {
+                    self.indexWord += 1
+                }
+            })
+        }
     }
     
     func deleteTimer(){
@@ -255,14 +297,14 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     @objc func backAction(){
         if self.indexWord > 0 {
-        indexWord -= 1
+            indexWord -= 1
         }
         self.textToRead.text = textSplitted[indexWord]
     }
     
     @objc func forwardAction(){
         if self.indexWord < self.textSplitted.count - 1 {
-        indexWord += 1
+            indexWord += 1
         }
         self.textToRead.text = textSplitted[indexWord]
     }
@@ -273,6 +315,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         
         for element in myText {
             textSplitted.append(String(element))
+            textSplittedWithSpace.append(String(element))
+            textSplittedWithSpace.append(" ")
         }
         Pam = (60/120)
         
@@ -296,7 +340,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     @objc func startToRead(gesture:UITapGestureRecognizer){
         view.removeGestureRecognizer(gesture)
         textTitle.alpha = 0
-        var timervalue = initialTimer
+        var timervalue = 3
         self.timerView.labelTime.text = "\(timervalue)"
         setUpConstraintsTimeView()
         self.textToRead.alpha = 0.0
@@ -328,24 +372,24 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     func setUpConstraintsTimeView(){
-          view.addSubview(timerView)
-          
-          NSLayoutConstraint.activate([
-    
-            timerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-              timerView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-              timerView.heightAnchor.constraint(equalToConstant: 100),
-              timerView.widthAnchor.constraint(equalToConstant: 100),
-     
-          ])
+        view.addSubview(timerView)
         
+        NSLayoutConstraint.activate([
             
-          timerView.addShadowView2()
-      }
+            timerView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            timerView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            timerView.heightAnchor.constraint(equalToConstant: 100),
+            timerView.widthAnchor.constraint(equalToConstant: 100),
+            
+        ])
+        
+        
+        timerView.addShadowView2()
+    }
     
     
     @objc func hideFunction(){
-//        if hidden == false && (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
+        //        if hidden == false && (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
         if !hidden {
             if (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
                 UIView.animate(withDuration: 0.1, animations: {
@@ -373,8 +417,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.keywordButton.alpha = 1.0
             },completion: {_ in self.hidden = false})
         }
-
-       
+        
+        
         
     }
     
