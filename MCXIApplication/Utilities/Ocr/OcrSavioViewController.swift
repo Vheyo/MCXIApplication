@@ -26,6 +26,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     var pagine  = [UIImage]()
     var pagineCounter : Int!
     var bufferString = [String]()
+    var saveTxt = false
     
     @IBOutlet weak var selectAllButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
@@ -80,6 +81,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
             print(self.resultText.text)
+            print(self.pagineCounter)
+            print(self.bufferString)
         })
         
     }
@@ -98,7 +101,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
 //            backButton.isEnabled = false
 //            return
 //        }
-        bufferString.append(resultText.text)
+//        bufferString.append(resultText.text)
         nextButton.isEnabled = true
         backButton.isEnabled = true
         pagineCounter -= 1;
@@ -118,7 +121,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
 //            nextButton.isEnabled = false
 //            return
 //        }
-        bufferString.append(resultText.text)
+//        bufferString.append(resultText.text)
         backButton.isEnabled = true
         nextButton.isEnabled = true
         pagineCounter += 1;
@@ -226,10 +229,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         resultText.text = ""
         for index in tmpView{
             if(index!.selected){
+                saveTxt = true
                 index!.imageView.layer.borderColor = UIColor.clear.cgColor
                 self.croppedImage.image = self.imageView.snapshot(of: index?.imageView.frame, afterScreenUpdates: false)
                 self.recognizeTextInImage(self.croppedImage.image!)
-                
             }
         }
     }
@@ -354,6 +357,14 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 
                 self.textView.text = detectedText
                 self.resultText.text += detectedText
+                if(self.saveTxt){
+                    self.saveTxt = false;
+                    if(self.bufferString.count == self.pagineCounter){
+                     self.bufferString.insert("", at: self.pagineCounter)
+                    }
+                    self.bufferString[self.pagineCounter] = self.resultText.text
+//                    self.bufferString.insert(self.resultText.text, at: self.pagineCounter)
+                }
                 self.textView.flashScrollIndicators()
                 
                 self.imageView.load(boundingBoxes: boundingBoxes)
