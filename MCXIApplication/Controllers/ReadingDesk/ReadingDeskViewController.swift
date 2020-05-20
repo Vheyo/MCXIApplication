@@ -153,7 +153,7 @@ class ReadingDeskViewController: UIViewController {
     
     func setUpNavigationBar(){
         self.title = "Reading Desk"
-        let button1 = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(addFile))
+        let button1 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFile(_:)))
         self.navigationItem.rightBarButtonItem  = button1
     }
     
@@ -198,13 +198,13 @@ class ReadingDeskViewController: UIViewController {
     @objc func addFile(_ sender : Any){
         let alert = UIAlertController(title: "Add File", message: "Please Select an Option", preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Ocr", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Scan Images", style: .default , handler:{ (UIAlertAction)in
             print("User click Approve button")
           self.performSegue(withIdentifier: "navigation", sender: self)
 //            self.present(OcrViewController(),animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Pdf", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Import Pdf", style: .default , handler:{ (UIAlertAction)in
             self.importPdf()
             
         }))
@@ -258,8 +258,6 @@ class ReadingDeskViewController: UIViewController {
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(actionSheet, animated: true, completion: nil)
     }
-    
-    
 }
 
 

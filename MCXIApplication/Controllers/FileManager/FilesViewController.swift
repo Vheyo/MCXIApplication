@@ -100,6 +100,7 @@ class FilesViewController : UIViewController{
         print(ListaFileTxt.count)
         UserDefaults.standard.set(ListaFileTxt.count, forKey: "numFile")
         cardCollectionView.reloadData()
+        tableView.reloadData()
         AppUtility.lockOrientation(.portrait)
     }
     
@@ -219,7 +220,7 @@ extension FilesViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTable", for: indexPath)
         let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
-        cell.textLabel?.text = "\(arrayString?[indexPath.row] ?? "NO key")"
+        cell.textLabel?.text = "\(arrayString?[indexPath.row] ?? "No Keywords Inserted")"
         return cell
     }
 }

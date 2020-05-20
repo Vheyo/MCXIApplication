@@ -62,7 +62,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var textToRead : UILabel = {
         let textToRead = UILabel()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
-        
+        textToRead.font = FontKit.roundedFont(ofSize: 24, weight: .regular)
         textToRead.alpha = 0
         textToRead.textAlignment = .center
         textToRead.textColor = .black
@@ -200,10 +200,14 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
+        AppUtility.lockOrientation(.landscape)
     }
     
     @objc func addKeyword(){
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
+        
         var arrayString = UserDefaults.standard.stringArray(forKey: "\(nameFile)")
         if arrayString == nil {
             arrayString = ["\(textSplitted[indexWord])"]
@@ -212,7 +216,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             arrayString?.append(textSplitted[indexWord])
             
         }
-       
+    
         UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
         print(nameFile)
         print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
@@ -296,6 +300,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         self.timerView.labelTime.text = "\(timervalue)"
         setUpConstraintsTimeView()
         self.textToRead.alpha = 0.0
+        backButton.isEnabled = false
+        forwardButton.isEnabled = false
+        dropUpButtonTime.isEnabled = false
+        dropDownButtonTime.isEnabled = false
+        playButton.isEnabled = false
+        keywordButton.isEnabled = false
         Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {timer in
             self.timerView.labelTime.text = "\(timervalue-1)"
             timervalue -= 1
@@ -305,6 +315,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 hideGesture.cancelsTouchesInView = false
                 self.view.addGestureRecognizer(hideGesture)
                 self.textToRead.alpha = 1.0
+                self.backButton.isEnabled = true
+                self.forwardButton.isEnabled = true
+                self.dropUpButtonTime.isEnabled = true
+                self.dropDownButtonTime.isEnabled = true
+                self.playButton.isEnabled = true
+                self.keywordButton.isEnabled = true
                 self.activateTimer()
                 self.timerView.removeFromSuperview()
             }
@@ -361,6 +377,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
        
         
     }
+    
+    
+    
+    
     
     func setUpConstraintsButton(){
         self.view.addSubview(playButton)

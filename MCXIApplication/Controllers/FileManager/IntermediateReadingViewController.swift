@@ -48,7 +48,26 @@ class IntermediateReadingViewController: UIViewController{
        override func viewDidLoad() {
            setUpTextToRead()
         view.backgroundColor = .white
+        setUpTextField()
        }
+    
+    @objc func dismissKeyboard(){
+           self.view.endEditing(true)
+       }
+       
+       func setUpTextField(){
+           let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
+           
+           let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+           
+           let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+           toolbar.setItems([flexSpace,doneButton], animated: false)
+           toolbar.sizeToFit()
+           
+           textToRead.inputAccessoryView = toolbar
+       }
+    
+    
     
     
     func setUpTextToRead(){
