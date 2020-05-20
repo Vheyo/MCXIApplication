@@ -79,11 +79,11 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-            print(self.resultText.text)
-            print(self.pagineCounter)
-            print(self.bufferString)
-        })
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+//            print(self.resultText.text)
+//            print(self.pagineCounter)
+//            print(self.bufferString)
+//        })
         
     }
     
@@ -96,6 +96,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     
     @IBAction func backPagePressed(_ sender: Any) {
+        saveTxt = false
         tmpView.removeAll()
 //        if(pagineCounter == 0){
 //            backButton.isEnabled = false
@@ -116,6 +117,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @IBAction func nextPagePressed(_ sender: Any) {
+        saveTxt = false
         tmpView.removeAll()
 //        if(pagineCounter == (pagine.count - 1)){
 //            nextButton.isEnabled = false
@@ -358,7 +360,6 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 self.textView.text = detectedText
                 self.resultText.text += detectedText
                 if(self.saveTxt){
-                    self.saveTxt = false;
                     if(self.bufferString.count == self.pagineCounter){
                      self.bufferString.insert("", at: self.pagineCounter)
                     }
