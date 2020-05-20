@@ -28,13 +28,23 @@ class FormCopriScopriViewController: UIViewController {
         return descriptionLabel
     }()
     
+    private let descriptionLabelNumber : UILabel = {
+        let descriptionLabelNumber = UILabel()
+        descriptionLabelNumber.text = "number of characters"
+        descriptionLabelNumber.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        descriptionLabelNumber.textAlignment = .center
+        descriptionLabelNumber.font = UIFont.boldSystemFont(ofSize: 25)
+        descriptionLabelNumber.translatesAutoresizingMaskIntoConstraints = false
+        return descriptionLabelNumber
+    }()
+    
     
     private let verticalStack : UIStackView = {
         let verticalStack = UIStackView()
         verticalStack.axis = .vertical
         verticalStack.backgroundColor = .red
         verticalStack.translatesAutoresizingMaskIntoConstraints = false
-        verticalStack.spacing = 20
+        verticalStack.spacing = 15
         verticalStack.distribution = .fillEqually
         return verticalStack
     }()
@@ -49,7 +59,7 @@ class FormCopriScopriViewController: UIViewController {
     
     private var buttonLettereMaisc : CheckBox = {
         let buttonLettereMaisc = CheckBox()
-        buttonLettereMaisc.setTitle("Lower case letters", for: .normal)
+        buttonLettereMaisc.setTitle("Upper case letters", for: .normal)
         buttonLettereMaisc.tag = 2
         buttonLettereMaisc.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
         return buttonLettereMaisc
@@ -57,7 +67,7 @@ class FormCopriScopriViewController: UIViewController {
     
     private var buttonLettereMin : CheckBox = {
         let buttonLettereMin = CheckBox()
-        buttonLettereMin.setTitle("Upper case letters", for: .normal)
+        buttonLettereMin.setTitle("Lower case letters", for: .normal)
         buttonLettereMin.tag = 3
         buttonLettereMin.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
         return buttonLettereMin
@@ -71,7 +81,7 @@ class FormCopriScopriViewController: UIViewController {
         decreaseNumberOfWord.setTitle("-", for: .normal)
         decreaseNumberOfWord.setTitleColor(.white, for: .normal)
         decreaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        decreaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        decreaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
         decreaseNumberOfWord.layer.cornerRadius = 0.5 * decreaseNumberOfWord.bounds.size.width
         decreaseNumberOfWord.addTarget(self, action: #selector(decreaseWordAction), for: .touchUpInside)
         return decreaseNumberOfWord
@@ -91,7 +101,7 @@ class FormCopriScopriViewController: UIViewController {
         let increaseNumberOfWord = UIButton()
         increaseNumberOfWord.translatesAutoresizingMaskIntoConstraints = false
         increaseNumberOfWord.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        increaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        increaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
         increaseNumberOfWord.setTitle("+", for: .normal)
         increaseNumberOfWord.setTitleColor(.white, for: .normal)
         increaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -104,7 +114,7 @@ class FormCopriScopriViewController: UIViewController {
         let stackHorizontalNumber = UIStackView()
         stackHorizontalNumber.translatesAutoresizingMaskIntoConstraints = false
         stackHorizontalNumber.axis = .horizontal
-        stackHorizontalNumber.spacing = 30
+        stackHorizontalNumber.spacing = 35
         stackHorizontalNumber.distribution = .fillEqually
         return stackHorizontalNumber
     }()
@@ -113,7 +123,7 @@ class FormCopriScopriViewController: UIViewController {
         let decreaseTime = UIButton()
         decreaseTime.translatesAutoresizingMaskIntoConstraints = false
         decreaseTime.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        decreaseTime.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        decreaseTime.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
         decreaseTime.setTitle("-", for: .normal)
         decreaseTime.setTitleColor(.white, for: .normal)
         decreaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -139,7 +149,7 @@ class FormCopriScopriViewController: UIViewController {
         increaseTime.setTitle("+", for: .normal)
         increaseTime.setTitleColor(.white, for: .normal)
         increaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        increaseTime.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        increaseTime.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
         increaseTime.layer.cornerRadius = 0.5 * increaseTime.bounds.size.width
         increaseTime.addTarget(self, action: #selector(increaseTimeAction), for: .touchUpInside)
         return increaseTime
@@ -149,7 +159,7 @@ class FormCopriScopriViewController: UIViewController {
         let stackHorizontalTime = UIStackView()
         stackHorizontalTime.translatesAutoresizingMaskIntoConstraints = false
         stackHorizontalTime.axis = .horizontal
-        stackHorizontalTime.spacing = 30
+        stackHorizontalTime.spacing = 35
         stackHorizontalTime.distribution = .fillEqually
         return stackHorizontalTime
     }()
@@ -217,6 +227,7 @@ class FormCopriScopriViewController: UIViewController {
         stackHorizontalNumber.addArrangedSubview(increaseNumberOfWord)
         view.addSubview(playButton)
         view.addSubview(separator)
+        view.addSubview(descriptionLabelNumber)
         let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             
@@ -231,21 +242,28 @@ class FormCopriScopriViewController: UIViewController {
             descriptionLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             
             verticalStack.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 35),
-            verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-            verticalStack.heightAnchor.constraint(equalToConstant: 250),
+            verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70),
+            verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -70),
+            verticalStack.heightAnchor.constraint(equalToConstant: 230),
             
-            stackHorizontalNumber.topAnchor.constraint(equalTo: verticalStack.bottomAnchor, constant: 35),
-            stackHorizontalNumber.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            stackHorizontalNumber.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-            stackHorizontalNumber.heightAnchor.constraint(equalToConstant: 80),
+            stackHorizontalTime.topAnchor.constraint(equalTo: verticalStack.bottomAnchor, constant: 35),
+            stackHorizontalTime.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70),
+            stackHorizontalTime.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -70),
+            stackHorizontalTime.heightAnchor.constraint(equalToConstant: 70),
             
-            stackHorizontalTime.topAnchor.constraint(equalTo: stackHorizontalNumber.bottomAnchor, constant: 35),
-            stackHorizontalTime.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-            stackHorizontalTime.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-            stackHorizontalTime.heightAnchor.constraint(equalToConstant: 80),
             
-            playButton.topAnchor.constraint(equalTo: stackHorizontalTime.bottomAnchor, constant: 80),
+            descriptionLabelNumber.topAnchor.constraint(equalTo: stackHorizontalTime.bottomAnchor, constant: 50),
+            descriptionLabelNumber.heightAnchor.constraint(equalToConstant: 40),
+            descriptionLabelNumber.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            descriptionLabelNumber.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            
+            
+            stackHorizontalNumber.topAnchor.constraint(equalTo: descriptionLabelNumber.bottomAnchor, constant: 25),
+            stackHorizontalNumber.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70),
+            stackHorizontalNumber.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -70),
+            stackHorizontalNumber.heightAnchor.constraint(equalToConstant: 70),
+                        
+            playButton.topAnchor.constraint(equalTo: stackHorizontalNumber.bottomAnchor, constant: 60),
             playButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
             playButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             playButton.heightAnchor.constraint(equalToConstant: 42),
