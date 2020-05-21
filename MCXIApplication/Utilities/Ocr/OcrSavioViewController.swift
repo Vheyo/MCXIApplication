@@ -245,23 +245,26 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         resultText.text = ""
         for index in tmpView{
             if(index!.selected){
+                bugged = true
                 saveTxt = true
                 index!.imageView.layer.borderColor = UIColor.clear.cgColor
                 self.croppedImage.image = self.imageView.snapshot(of: index?.imageView.frame, afterScreenUpdates: false)
                 self.recognizeTextInImage(self.croppedImage.image!)
             }
         }
-//        tmpView.removeAll()
-//        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {_ in
-//            for index in self.imageView.subviews{
-//                index.removeFromSuperview()
-//            }
-//            self.processImage(self.imageView.image!)
-//        })
     }
     
     @objc func reset() {
         tempImageView.image = nil
+        for sub in imageView.subviews{
+            if sub.backgroundColor == .blue{
+                sub.backgroundColor = .clear
+                sub.layer.borderColor = UIColor.gray.cgColor
+                sub.layer.borderWidth = 2
+                sub.layer.cornerRadius = 2
+                sub.layer.masksToBounds = true
+            }
+        }
         
         for index in tmpView{
             index?.selected = false
@@ -385,7 +388,6 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                         self.bufferString.insert("", at: self.pagineCounter)
                     }
                     self.bufferString[self.pagineCounter] = self.resultText.text
-                    //                    self.bufferString.insert(self.resultText.text, at: self.pagineCounter)
                 }
                 self.textView.flashScrollIndicators()
                 

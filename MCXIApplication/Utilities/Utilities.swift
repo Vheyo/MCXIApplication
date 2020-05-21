@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+var bugged = false
 var tmpView : [Box?] = []
 
 class Box{

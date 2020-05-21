@@ -81,7 +81,9 @@ class BoundingBoxImageView: UIImageView {
         rectView.layer.cornerRadius = 2
         rectView.layer.masksToBounds = true
         rectView.backgroundColor = .clear
-        addSubview(rectView)
+        if(bugged == false){
+            addSubview(rectView)
+        }
 //        tmpView.append(rectView)
         tmpView.append(Box(imageView: rectView, selected: false))
         boundingBoxViews.append(view)
