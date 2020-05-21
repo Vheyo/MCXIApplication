@@ -1,11 +1,13 @@
 PODS:
   - appstore-card-transition (1.0.4)
+  - JGProgressHUD (2.1)
   - lottie-ios (3.1.8)
   - paper-onboarding (6.1.5)
   - WeScan (1.5.0)
 
 DEPENDENCIES:
   - appstore-card-transition
+  - JGProgressHUD
   - lottie-ios
   - paper-onboarding
   - WeScan (>= 0.9)
@@ -13,16 +15,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - appstore-card-transition
+    - JGProgressHUD
     - lottie-ios
     - paper-onboarding
     - WeScan
 
 SPEC CHECKSUMS:
   appstore-card-transition: 660c136cb8a0f0004b2e99e99f1305bfa041f05c
+  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   paper-onboarding: fede1799b1da6988f3788e3b71654583c6f3bce1
   WeScan: b2e47d07f5da3dbf3db14b742e403a8924cf32b2
 
-PODFILE CHECKSUM: e1ce4388c1a7d3fbb17e55311bd33b3423caa9f3
+PODFILE CHECKSUM: 969e739b72d4489399bdbc3c5af3767371f30415
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.8.4

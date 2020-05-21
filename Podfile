@@ -10,5 +10,6 @@ target 'MCXIApplication' do
   pod 'lottie-ios'
   pod 'WeScan', '>= 0.9'
   pod 'paper-onboarding'
+  pod 'JGProgressHUD'
 
 end

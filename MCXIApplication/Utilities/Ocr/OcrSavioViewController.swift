@@ -11,6 +11,7 @@ import UIKit
 import Vision
 import VisionKit
 import WeScan
+import JGProgressHUD
 
 class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelegate {
     var swipeActivation: Bool = false
@@ -93,11 +94,11 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
-        //        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-        //            print(self.resultText.text)
-        //            print(self.pagineCounter)
-        //            print(self.bufferString)
-        //        })
+//                Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+//                    print(self.resultText.text)
+//                    print(self.pagineCounter)
+//                    print(self.bufferString)
+//                })
         
     }
     
@@ -109,7 +110,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     
     
-    @objc func backPagePressed() {
+    @objc func backPagePressed(){
+        bugged = false
         saveTxt = false
         tmpView.removeAll()
         //        if(pagineCounter == 0){
@@ -131,6 +133,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @objc func nextPagePressed() {
+        bugged = false
         saveTxt = false
         tmpView.removeAll()
         //        if(pagineCounter == (pagine.count - 1)){
@@ -152,7 +155,30 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @objc func selectAll_pressed() {
+        bugged = false
         bufferString.append(resultText.text)
+        var passingString = String()
+        for index in bufferString{
+            passingString += index
+        }
+        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let file = "File\(UserDefaults.standard.integer(forKey: "numFile")+1).txt"
+        let text = passingString
+        let fileUrl = dir.appendingPathComponent(file)
+        do {
+            try text.write(to: fileUrl, atomically: false, encoding: .utf8)
+            UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
+            
+        } catch {
+            print("cant write...")
+        }
+        
+        dismiss(animated: true, completion: {
+            print("dismissed")
+        })
+    }
+    
+    func exit(){
         var passingString = String()
         for index in bufferString{
             passingString += index
@@ -250,6 +276,59 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 index!.imageView.layer.borderColor = UIColor.clear.cgColor
                 self.croppedImage.image = self.imageView.snapshot(of: index?.imageView.frame, afterScreenUpdates: false)
                 self.recognizeTextInImage(self.croppedImage.image!)
+            }
+        }
+        
+        let hud = JGProgressHUD(style: .dark)
+        
+        if(pagineCounter == (pagine.count - 1)){
+            hud.textLabel.text = "Saving text..."
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: {_ in
+//                self.exit()
+            })
+        }else{
+            hud.textLabel.text = "Cropped"
+        }
+        
+        if(hud.textLabel.text == "Saving text..."){
+            DispatchQueue.global(qos: .background).sync{
+                let indicator = JGProgressHUDRingIndicatorView()
+                hud.indicatorView = indicator
+                hud.show(in: self.view)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)){
+                    self.incrementHUD(hud, progress: 0)
+                }
+            }
+        }else{
+            let indicator = JGProgressHUDSuccessIndicatorView()
+            hud.indicatorView = indicator
+            hud.show(in: self.view)
+            hud.dismiss(afterDelay: 1)
+        }
+            
+    }
+    func incrementHUD(_ hud: JGProgressHUD, progress previousProgress: Int) {
+        let progress = previousProgress + 1
+        hud.progress = Float(progress)/100.0
+        hud.detailTextLabel.text = "\(progress)% Complete"
+        
+        if progress == 100 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                UIView.animate(withDuration: 2, animations: {
+                    hud.textLabel.text = "Success"
+                    hud.detailTextLabel.text = nil
+                    hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+                }, completion: {_ in
+                    self.exit()
+                })
+                
+                hud.dismiss(afterDelay: 1.0)
+            }
+        }
+        else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(20)) {
+                self.incrementHUD(hud, progress: progress)
             }
         }
     }
