@@ -13,7 +13,7 @@ import AppstoreTransition
 class ExcerciesViewController : UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    let nameImage  : [String] = ["Copri","Divergente","Copri"]
+    let nameImage  : [String] = ["Copri","Divergente","PameCR"]
     let nameExcercises : [String] = ["Copri e Scopri", "Lettura Divergente","PAM & CR"]
     private var transition: CardTransition?
     
