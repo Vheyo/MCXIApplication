@@ -52,7 +52,13 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         pagineCounter = 0;
         imageCenter = imageView.center
         
+        let swipDx = UISwipeGestureRecognizer(target: self, action: #selector(nextPagePressed))
+        swipDx.direction = .left
+        view.addGestureRecognizer(swipDx)
         
+        let swipSx = UISwipeGestureRecognizer(target: self, action: #selector(backPagePressed))
+        swipSx.direction = .right
+        view.addGestureRecognizer(swipSx)
         
         
         let spaceItemLeft = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
@@ -265,6 +271,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
             
         }
     }
+    
     
     
     @objc func cropPLS(){
