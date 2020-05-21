@@ -1,7 +1,6 @@
 {
   "images" : [
     {
-      "filename" : "Play.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -11,11 +10,12 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "Play.png",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "author" : "xcode",
-    "version" : 1
+    "version" : 1,
+    "author" : "xcode"
   }
 }
