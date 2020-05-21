@@ -227,6 +227,10 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
             cell.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
             cell.labelTitle.text = arrayString?[indexPath.item] ?? "No Keywords Inserted"
+            cell.alpha = 0
+            UIView.animate(withDuration: 0.3) {
+                cell.alpha = 1
+            }
             return cell
             
         }
