@@ -28,7 +28,8 @@ class Type2CollectionViewCell: UICollectionViewCell {
     }
     
     func setUpLayout(){
-        titleLabel.textColor = .black
+        titleLabel.textColor = .white
+        titleLabel.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
     }
 
     // Make it appears very responsive to touch

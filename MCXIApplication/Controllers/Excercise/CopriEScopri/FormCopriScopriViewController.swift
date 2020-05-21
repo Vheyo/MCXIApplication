@@ -23,7 +23,7 @@ class FormCopriScopriViewController: UIViewController {
         descriptionLabel.text = "Choose at least one"
         descriptionLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         descriptionLabel.textAlignment = .center
-        descriptionLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        descriptionLabel.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         return descriptionLabel
     }()
@@ -33,7 +33,7 @@ class FormCopriScopriViewController: UIViewController {
         descriptionLabelNumber.text = "number of characters"
         descriptionLabelNumber.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         descriptionLabelNumber.textAlignment = .center
-        descriptionLabelNumber.font = UIFont.boldSystemFont(ofSize: 25)
+        descriptionLabelNumber.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
         descriptionLabelNumber.translatesAutoresizingMaskIntoConstraints = false
         return descriptionLabelNumber
     }()
@@ -54,6 +54,7 @@ class FormCopriScopriViewController: UIViewController {
         buttonNumber.setTitle("Numbers", for: .normal)
         buttonNumber.tag = 1
         buttonNumber.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
+        buttonNumber.titleLabel!.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         return buttonNumber
     }()
     
@@ -62,6 +63,7 @@ class FormCopriScopriViewController: UIViewController {
         buttonLettereMaisc.setTitle("Upper case letters", for: .normal)
         buttonLettereMaisc.tag = 2
         buttonLettereMaisc.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
+        buttonLettereMaisc.titleLabel!.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         return buttonLettereMaisc
     }()
     
@@ -70,6 +72,7 @@ class FormCopriScopriViewController: UIViewController {
         buttonLettereMin.setTitle("Lower case letters", for: .normal)
         buttonLettereMin.tag = 3
         buttonLettereMin.addTarget(self, action: #selector(changeButtonStart), for: .touchUpInside)
+        buttonLettereMin.titleLabel!.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         return buttonLettereMin
     }()
     
@@ -92,7 +95,7 @@ class FormCopriScopriViewController: UIViewController {
         numberOfWordLabel.text = "6"
         numberOfWordLabel.textAlignment = .center
         numberOfWordLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        numberOfWordLabel.font = UIFont.systemFont(ofSize: 18)
+        numberOfWordLabel.font = FontKit.roundedFont(ofSize: 17, weight: .light)
         numberOfWordLabel.translatesAutoresizingMaskIntoConstraints = false
         return numberOfWordLabel
     }()
@@ -137,7 +140,7 @@ class FormCopriScopriViewController: UIViewController {
         timeLabel.text = "400 ms"
         timeLabel.textAlignment = .center
         timeLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        timeLabel.font = UIFont.systemFont(ofSize: 18)
+        timeLabel.font = FontKit.roundedFont(ofSize: 17, weight: .light)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         return timeLabel
     }()
@@ -171,7 +174,7 @@ class FormCopriScopriViewController: UIViewController {
         playButton.alpha = 0.3
         playButton.isEnabled = false
         playButton.backgroundColor = .white
-        playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 32)
+        playButton.titleLabel?.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
