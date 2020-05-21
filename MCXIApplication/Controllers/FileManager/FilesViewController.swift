@@ -64,6 +64,30 @@ class FilesViewController : UIViewController{
         return keyWordsLabel
     }()
     
+    
+    
+    //Ho aggiunto questo
+    private var noFileImageView: UIImageView = {
+        let image = #imageLiteral(resourceName: "MissingFile")
+        let noFileImageView = UIImageView(image: image)
+        let height = image.size.height/2
+        let width = image.size.width/2
+        noFileImageView.frame.size = (CGSize(width: width, height: height))
+        return noFileImageView
+    }()
+    
+    private var noFileLabel: UILabel = {
+        let noFileLabel = UILabel()
+        noFileLabel.translatesAutoresizingMaskIntoConstraints = false
+        noFileLabel.textColor = #colorLiteral(red: 0.6979846954, green: 0.6980700493, blue: 0.6979557276, alpha: 1)
+        noFileLabel.text = "There are no\nfiles Yet!"
+        noFileLabel.font = FontKit.roundedFont(ofSize: CGFloat(40), weight: .bold)
+        return noFileLabel
+    }()
+    //--------------------------
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
@@ -98,6 +122,23 @@ class FilesViewController : UIViewController{
             }
         }
         print(ListaFileTxt.count)
+        
+        //Tito ho modificato qui
+        if(ListaFile.count == 0){
+            tableView.removeFromSuperview()
+            keyWordsLabel.removeFromSuperview()
+            notesLabel.removeFromSuperview()
+            noFileImageView.center = CGPoint(x: self.view.center.x, y:self.view.center.y - 100)
+            noFileLabel.center = CGPoint(x: self.view.center.x, y:self.view.center.y + 200)
+            view.addSubview(noFileImageView)
+            view.addSubview(noFileLabel)
+        }else{
+            noFileLabel.removeFromSuperview()
+            noFileImageView.removeFromSuperview()
+            self.viewDidLoad()
+            
+        }
+        //-------------------------
         UserDefaults.standard.set(ListaFileTxt.count, forKey: "numFile")
         cardCollectionView.reloadData()
         tableView.reloadData()
