@@ -244,7 +244,7 @@
         <scene sceneID="r2K-uz-jGG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hbo-9u-GVg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Desk" id="qUr-0x-obq"/>
+                    <tabBarItem key="tabBarItem" title="Desk" largeContentSizeImage="TabExViolet" selectedImage="TabExGrey" id="qUr-0x-obq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ki-Gz-g90">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -263,7 +263,7 @@
         <scene sceneID="ksb-XM-MaA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3VN-0k-Mpi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Excercies" id="JvT-Ll-Th3"/>
+                    <tabBarItem key="tabBarItem" title="Excercies" selectedImage="TabExGrey" id="JvT-Ll-Th3"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="crs-bu-JJV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -443,6 +443,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TabExGrey" width="60.333332061767578" height="60.333332061767578"/>
+        <image name="TabExViolet" width="60.333332061767578" height="60.333332061767578"/>
         <image name="XWhite" width="63" height="63"/>
     </resources>
 </document>

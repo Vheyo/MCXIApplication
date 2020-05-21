@@ -64,6 +64,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         
         toolbarItems = [spaceItemLeft, backButton, resetButton, cropButton, selectAllButton, nextButton, spaceItemRight]
         
+        backButton.isEnabled = false
+        nextButton.isEnabled = false
         selectAllButton.isEnabled = false
         resetButton.isEnabled = false
         cropButton.isEnabled = false
@@ -249,6 +251,13 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 self.recognizeTextInImage(self.croppedImage.image!)
             }
         }
+//        tmpView.removeAll()
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: {_ in
+//            for index in self.imageView.subviews{
+//                index.removeFromSuperview()
+//            }
+//            self.processImage(self.imageView.image!)
+//        })
     }
     
     @objc func reset() {
