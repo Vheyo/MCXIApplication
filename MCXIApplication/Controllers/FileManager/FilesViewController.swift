@@ -43,7 +43,7 @@ class FilesViewController : UIViewController{
         notesLabel.translatesAutoresizingMaskIntoConstraints = false
         notesLabel.textColor =  #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         notesLabel.text = "Notes"
-        notesLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        notesLabel.font = FontKit.roundedFont(ofSize: 22, weight: .bold)
         return notesLabel
     }()
     
@@ -53,7 +53,7 @@ class FilesViewController : UIViewController{
         keyWordsLabel.translatesAutoresizingMaskIntoConstraints = false
         keyWordsLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         keyWordsLabel.text = "Keywords"
-        keyWordsLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        keyWordsLabel.font = FontKit.roundedFont(ofSize: 22, weight: .bold)
         return keyWordsLabel
     }()
     
@@ -193,9 +193,9 @@ class FilesViewController : UIViewController{
             keyWordsLabel.leadingAnchor.constraint(equalTo: self.view.leadingAnchor,constant: 20),
             keyWordsLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             
-            cardCollectionKeywords.topAnchor.constraint(equalTo: keyWordsLabel.bottomAnchor,constant: 10),
-            cardCollectionKeywords.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            cardCollectionKeywords.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            cardCollectionKeywords.topAnchor.constraint(equalTo: keyWordsLabel.bottomAnchor,constant: 20),
+            cardCollectionKeywords.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            cardCollectionKeywords.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
             cardCollectionKeywords.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
@@ -224,7 +224,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId2", for: indexPath) as! KeywordsCollectionViewCell
-            cell.backgroundColor = .gray
+            cell.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
             cell.labelTitle.text = arrayString?[indexPath.item] ?? "No Keywords Inserted"
             return cell
@@ -245,8 +245,8 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         if collectionView == cardCollectionKeywords{
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
             let element = arrayString?[indexPath.item] ?? ("No Keywords Inserted" as NSString) as String
-            let stringSize = element.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18.0)])
-            size = CGSize(width: stringSize.width+20, height: 30)
+            let stringSize = element.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0)])
+            size = CGSize(width: stringSize.width+40, height: 40)
         }
         else {
             size = CGSize(width: 310, height: 220)
@@ -288,7 +288,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         if collectionView == cardCollectionView {
             spacing = 0
         }else {
-            spacing = 10
+            spacing = 20
         }
         return spacing
     }

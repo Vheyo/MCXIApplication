@@ -49,7 +49,6 @@ class FileCell: UICollectionViewCell {
         self.addSubview(containerView)
         containerView.addSubview(imageBackground)
         containerView.addSubview(nameFileLabel)
-        containerView.addShadowView()
         
         NSLayoutConstraint.activate([
             containerView.centerYAnchor.constraint(equalTo: self.centerYAnchor),

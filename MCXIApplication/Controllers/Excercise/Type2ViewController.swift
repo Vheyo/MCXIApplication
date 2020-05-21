@@ -70,9 +70,9 @@ class Type2ViewController: UIViewController {
         
         setUpConstraints()
         setUpLayoutButtonPlay()
-
-            
-        heightConstraint.constant = 400 * 0.85 - 16.0
+        descriptionExercise.font = FontKit.roundedFont(ofSize: 17, weight: .light)
+        descriptionExercise.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        heightConstraint.constant = 400 * 1.2305 - 16.0
         setUpLayout()
     }
     
@@ -86,7 +86,8 @@ class Type2ViewController: UIViewController {
     }
     
     func setUpLayout(){
-        titleLabel.textColor = .black
+        titleLabel.textColor = .white
+        titleLabel.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
         descriptionExercise.textAlignment = .center
     }
     

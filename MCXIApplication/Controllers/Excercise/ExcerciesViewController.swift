@@ -27,7 +27,7 @@ class ExcerciesViewController : UIViewController {
         collectionView.register(UINib(nibName: "Type2CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Type2CollectionViewCell")
         self.title = "Excercises"
         let layout = (collectionView.collectionViewLayout as! UICollectionViewFlowLayout)
-        let aspect : CGFloat = 0.85
+        let aspect : CGFloat = 1.2305
         let width : CGFloat =  400
         layout.itemSize = CGSize(width:width, height: width * aspect)
         layout.minimumLineSpacing = 20
@@ -98,7 +98,7 @@ extension ExcerciesViewController: CardsViewController {
 
 extension UIView {
 
-    func addShadowView(isShadowPathEnabled: Bool = true, shadowColor: UIColor = .black, shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.1, shadowOffset: CGSize = CGSize(width: 0.3, height: 0.3)) -> ShadowView {
+    func addShadowView(isShadowPathEnabled: Bool = true, shadowColor: UIColor = #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.5, shadowOffset: CGSize = CGSize(width: 0.3, height: 0.3)) -> ShadowView {
         let shadowView = ShadowView()
         shadowView.translatesAutoresizingMaskIntoConstraints = false
         shadowView.isShadowPathEnabled = isShadowPathEnabled
@@ -111,8 +111,8 @@ extension UIView {
         
         shadowView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         shadowView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
-        shadowView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 10).isActive = true
-        shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 6).isActive = true
+        shadowView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
+        shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 9.78).isActive = true
         
         return shadowView
     }

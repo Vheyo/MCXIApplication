@@ -3,7 +3,6 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,7 +80,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" name="type2color"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="BeC-nC-20A" secondAttribute="trailing" id="9M0-dF-GgF"/>
                             <constraint firstItem="BeC-nC-20A" firstAttribute="top" secondItem="wtS-bU-fgt" secondAttribute="bottom" id="JIS-7z-8uH"/>
@@ -110,9 +108,4 @@
             <point key="canvasLocation" x="331.15942028985512" y="157.03125"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <namedColor name="type2color">
-            <color red="1" green="0.87058823529411766" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

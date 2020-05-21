@@ -14,12 +14,14 @@ class KeywordsCollectionViewCell: UICollectionViewCell {
         let labelTitle = UILabel()
         labelTitle.translatesAutoresizingMaskIntoConstraints = false
         labelTitle.textAlignment = .center
+        labelTitle.font = FontKit.roundedFont(ofSize: 22, weight: .regular)
+        labelTitle.textColor = #colorLiteral(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
         return labelTitle
     }()
     
     override init(frame: CGRect) {
         super.init(frame : frame)
-        self.layer.cornerRadius = 15
+        self.layer.cornerRadius = 20
         setUpConstraints()
     }
     
