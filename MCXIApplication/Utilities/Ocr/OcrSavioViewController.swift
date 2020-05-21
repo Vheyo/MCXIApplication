@@ -28,14 +28,14 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     var bufferString = [String]()
     var saveTxt = false
     
-    @IBOutlet weak var selectAllButton: UIButton!
-    @IBOutlet weak var resetButton: UIButton!
+    var selectAllButton: UIBarButtonItem!
+    var resetButton: UIBarButtonItem!
     @IBOutlet var tempImageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var backButton: UIButton!
+    var nextButton: UIBarButtonItem!
+    var backButton: UIBarButtonItem!
     @IBOutlet weak var scanButton: UIButton!
-    @IBOutlet weak var cropButton: UIButton!
+    var cropButton: UIBarButtonItem!
     @IBOutlet weak var imageView: BoundingBoxImageView!
     @IBOutlet weak var croppedImage: UIImageView!
     @IBOutlet weak var resultText: UITextView!
@@ -51,10 +51,22 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         pagineCounter = 0;
         imageCenter = imageView.center
         
+        
+        
+        
+        let spaceItemLeft = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrBefore"), style: .plain, target: self, action: #selector(backPagePressed))
+        nextButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrNext"), style: .plain, target: self, action: #selector(nextPagePressed))
+        cropButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrCrop"), style: .plain, target: self, action: #selector(cropPLS))
+        selectAllButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrAll"), style: .plain, target: self, action: #selector(selectAll_pressed))
+        resetButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrReset"), style: .plain, target: self, action: #selector(reset))
+        let spaceItemRight = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        
+        toolbarItems = [spaceItemLeft, backButton, resetButton, cropButton, selectAllButton, nextButton, spaceItemRight]
+        
         selectAllButton.isEnabled = false
         resetButton.isEnabled = false
         cropButton.isEnabled = false
-        
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(PhotoScan));
         tap.numberOfTouchesRequired = 1;
@@ -64,10 +76,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         resetTap.numberOfTapsRequired = 2;
         tempImageView.addGestureRecognizer(resetTap)
         
-        
-        let cropGesture = UITapGestureRecognizer(target: self, action: #selector(cropPLS));
-        cropGesture.numberOfTouchesRequired = 1;
-        cropButton.addGestureRecognizer(cropGesture);
+        //
+        //        let cropGesture = UITapGestureRecognizer(target: self, action: #selector(cropPLS));
+        //        cropGesture.numberOfTouchesRequired = 1;
+        //        cropButton.addGestureRecognizer(cropGesture);
         
         
         let pinch = UIPinchGestureRecognizer(target: self, action: #selector(pichToZoom))
@@ -79,11 +91,11 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
-//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-//            print(self.resultText.text)
-//            print(self.pagineCounter)
-//            print(self.bufferString)
-//        })
+        //        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+        //            print(self.resultText.text)
+        //            print(self.pagineCounter)
+        //            print(self.bufferString)
+        //        })
         
     }
     
@@ -95,14 +107,14 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     
     
-    @IBAction func backPagePressed(_ sender: Any) {
+    @objc func backPagePressed() {
         saveTxt = false
         tmpView.removeAll()
-//        if(pagineCounter == 0){
-//            backButton.isEnabled = false
-//            return
-//        }
-//        bufferString.append(resultText.text)
+        //        if(pagineCounter == 0){
+        //            backButton.isEnabled = false
+        //            return
+        //        }
+        //        bufferString.append(resultText.text)
         nextButton.isEnabled = true
         backButton.isEnabled = true
         pagineCounter -= 1;
@@ -116,14 +128,14 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         }
     }
     
-    @IBAction func nextPagePressed(_ sender: Any) {
+    @objc func nextPagePressed() {
         saveTxt = false
         tmpView.removeAll()
-//        if(pagineCounter == (pagine.count - 1)){
-//            nextButton.isEnabled = false
-//            return
-//        }
-//        bufferString.append(resultText.text)
+        //        if(pagineCounter == (pagine.count - 1)){
+        //            nextButton.isEnabled = false
+        //            return
+        //        }
+        //        bufferString.append(resultText.text)
         backButton.isEnabled = true
         nextButton.isEnabled = true
         pagineCounter += 1;
@@ -137,7 +149,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         }
     }
     
-    @IBAction func selectAll_pressed(_ sender: Any) {
+    @objc func selectAll_pressed() {
         bufferString.append(resultText.text)
         var passingString = String()
         for index in bufferString{
@@ -239,7 +251,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         }
     }
     
-    @IBAction func reset(_ sender: AnyObject) {
+    @objc func reset() {
         tempImageView.image = nil
         
         for index in tmpView{
@@ -361,10 +373,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 self.resultText.text += detectedText
                 if(self.saveTxt){
                     if(self.bufferString.count == self.pagineCounter){
-                     self.bufferString.insert("", at: self.pagineCounter)
+                        self.bufferString.insert("", at: self.pagineCounter)
                     }
                     self.bufferString[self.pagineCounter] = self.resultText.text
-//                    self.bufferString.insert(self.resultText.text, at: self.pagineCounter)
+                    //                    self.bufferString.insert(self.resultText.text, at: self.pagineCounter)
                 }
                 self.textView.flashScrollIndicators()
                 
