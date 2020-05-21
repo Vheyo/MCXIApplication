@@ -228,6 +228,22 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
         print(nameFile)
         print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
+        
+        
+        backButton.alpha = 1.0
+        keywordButton.alpha = 1.0
+        backButtonView.alpha = 1.0
+        forwardButton.alpha = 1.0
+        playButton.alpha = 1.0
+        dropUpButtonTime.alpha = 1.0
+        dropDownButtonTime.alpha = 1.0
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
+            self.hidden = false
+        })
+        
+        
+        
     }
     
     func activateTimer(){
