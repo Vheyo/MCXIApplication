@@ -24,6 +24,7 @@
 		38884382246C9D4A0064712A /* DropUpViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */; };
 		38B9B368247276A9000C16A4 /* containerOfRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */; };
 		38BA6A39247143B900DF7878 /* PamCrTestiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */; };
+		38BC70E0247717960017C35C /* KeywordsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BC70DF247717960017C35C /* KeywordsCollectionViewCell.swift */; };
 		38F22555246FFA9000287884 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38F22554246FFA9000287884 /* TimerView.swift */; };
 		479413D3D40BE167C969FF2F /* Pods_MCXIApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F75E08D9541D5695E62973B4 /* Pods_MCXIApplication.framework */; };
 		4B7AC8DD24706DF000C59A0C /* FontKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7AC8DC24706DF000C59A0C /* FontKit.swift */; };
@@ -82,6 +83,7 @@
 		38884381246C9D4A0064712A /* DropUpViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropUpViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		38B9B367247276A9000C16A4 /* containerOfRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = containerOfRadioButton.swift; sourceTree = "<group>"; };
 		38BA6A38247143B900DF7878 /* PamCrTestiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PamCrTestiViewController.swift; sourceTree = "<group>"; };
+		38BC70DF247717960017C35C /* KeywordsCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeywordsCollectionViewCell.swift; path = ../../../../../../Desktop/provaCelleDinamiche/provaCelleDinamiche/KeywordsCollectionViewCell.swift; sourceTree = "<group>"; };
 		38F22554246FFA9000287884 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		4B7AC8DC24706DF000C59A0C /* FontKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
 		5F1573062471848D00C832B6 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				7509E2F02460B39F0021CA4F /* FilesViewController.swift */,
 				75D23004246E91EF00B87E4D /* IntermediateReadingViewController.swift */,
+				38BC70DF247717960017C35C /* KeywordsCollectionViewCell.swift */,
 				38876591246C713600328D23 /* FileCell.swift */,
 			);
 			path = FileManager;
@@ -434,6 +437,7 @@
 				7509E2EF2460B38B0021CA4F /* ExcerciesViewController.swift in Sources */,
 				4B7AC8DD24706DF000C59A0C /* FontKit.swift in Sources */,
 				38884380246C9ACD0064712A /* DropUpView.swift in Sources */,
+				38BC70E0247717960017C35C /* KeywordsCollectionViewCell.swift in Sources */,
 				7509E2D82460B2A60021CA4F /* AppDelegate.swift in Sources */,
 				75CA249E246F3974009D3C1F /* Utilities.swift in Sources */,
 				7509E2EC2460B3530021CA4F /* ReadingDeskViewController.swift in Sources */,
