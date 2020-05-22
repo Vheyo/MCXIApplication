@@ -12,7 +12,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FilesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -43,11 +43,11 @@
             <objects>
                 <viewController id="sRn-XZ-clf" customClass="ExcerciesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7E-l5-EZd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xR5-yg-VFH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vvw-3z-Erq">
                                     <size key="itemSize" width="50" height="50"/>
@@ -78,14 +78,15 @@
         <!--Reading Desk-->
         <scene sceneID="WdV-IS-4CQ">
             <objects>
-                <viewController id="S23-bu-ZB5" customClass="ReadingDeskViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController interfaceStyle="light" id="S23-bu-ZB5" customClass="ReadingDeskViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9dJ-ei-WRe">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="P8M-lz-NYF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reading Desk" id="IsV-JT-XHA"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
                         <segue destination="5qt-us-pym" kind="modal" identifier="navigation" modalPresentationStyle="fullScreen" id="olU-cg-ax5"/>
                     </connections>
@@ -113,11 +114,12 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2te-Je-e4O">
             <objects>
-                <tabBarController storyboardIdentifier="NO_TUTORIAL" useStoryboardIdentifierAsRestorationIdentifier="YES" id="s6n-DT-Kb2" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cGV-66-vwb">
+                <tabBarController storyboardIdentifier="NO_TUTORIAL" useStoryboardIdentifierAsRestorationIdentifier="YES" interfaceStyle="light" id="s6n-DT-Kb2" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="cGV-66-vwb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.55686274509803924" green="0.41568627450980389" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="hbo-9u-GVg" kind="relationship" relationship="viewControllers" id="TjC-GA-zeD"/>
@@ -265,12 +267,13 @@
         <!--Navigation Controller-->
         <scene sceneID="ksb-XM-MaA">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3VN-0k-Mpi" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="3VN-0k-Mpi" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="TabExViolet-1" id="JvT-Ll-Th3">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="crs-bu-JJV">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="crs-bu-JJV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -430,12 +433,14 @@
         <!--Navigation Controller-->
         <scene sceneID="XfV-ck-d2l">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DoQ-SV-NPw" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" interfaceStyle="light" id="DoQ-SV-NPw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="TabFileViolet-1" id="iI8-mY-iod">
                         <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yiy-j3-xxE">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics" translucent="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="Yiy-j3-xxE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
