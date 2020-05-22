@@ -94,6 +94,7 @@ class FilesViewController : UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         overrideUserInterfaceStyle = .light
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
 //        self.title = "File Manager"
@@ -260,7 +261,13 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        var uiEdgeInset : UIEdgeInsets = UIEdgeInsets()
+        if collectionView == cardCollectionView {
+            uiEdgeInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 0)
+        } else{
+            uiEdgeInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+        return uiEdgeInset
     }
     
     func loadReadingDeskFile(Item : Int){

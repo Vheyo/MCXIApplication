@@ -44,20 +44,10 @@ class ReadingDeskViewController: UIViewController {
         return someTextLabel
     }()
 
-    private let verticalStack : UIStackView = {
-           let verticalStack = UIStackView()
-           verticalStack.axis = .vertical
-           verticalStack.backgroundColor = .clear
-           verticalStack.translatesAutoresizingMaskIntoConstraints = false
-           verticalStack.spacing = 20
-        verticalStack.distribution = .fill
-           return verticalStack
-       }()
-    
     private let circleView : UIView = {
         let circleView = UIView()
         circleView.backgroundColor = .white
-        circleView.frame = CGRect(x: 0, y: 0, width: 177, height: 177)
+        circleView.frame = CGRect(x: 0, y: 0, width: 235, height: 235)
         circleView.layer.cornerRadius = circleView.frame.width/2
         circleView.translatesAutoresizingMaskIntoConstraints = false
         return circleView
@@ -67,7 +57,7 @@ class ReadingDeskViewController: UIViewController {
     private var playButton : UIButton = {
         let playButton = UIButton(type: UIButton.ButtonType.custom)
         playButton.setTitle("Play", for: .normal)
-        playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        playButton.setTitleColor(.white, for: .normal)
         playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +65,7 @@ class ReadingDeskViewController: UIViewController {
         playButton.layer.borderWidth = 1
         playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.layer.cornerRadius = 30
-        playButton.setImage(UIImage(named: "PlayButton"), for: .normal)
+        playButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.frame = CGRect(x: 0, y: 0, width: 235, height: 50)
         return playButton
     }()
@@ -88,9 +78,9 @@ class ReadingDeskViewController: UIViewController {
         timeTextRead.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         timeTextRead.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         timeTextRead.layer.masksToBounds = true
-        timeTextRead.layer.borderWidth = 1
+        timeTextRead.layer.borderWidth = 2
         timeTextRead.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        timeTextRead.layer.cornerRadius = 30
+        timeTextRead.layer.cornerRadius = 22
         timeTextRead.translatesAutoresizingMaskIntoConstraints = false
         timeTextRead.frame = CGRect(x: 0, y: 0, width: 190, height: 40)
         return timeTextRead
@@ -98,11 +88,9 @@ class ReadingDeskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         overrideUserInterfaceStyle = .light
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-//        self.tabBarController!.tabBar.layer.borderWidth = 0
-//        self.tabBarController!.tabBar.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-//        self.tabBarController?.tabBar.clipsToBounds = true
         AppUtility.lockOrientation(.portrait)
         setUpNavigationBar()
         setUpConstraints()
@@ -159,6 +147,7 @@ class ReadingDeskViewController: UIViewController {
     func setUpNavigationBar(){
 //        self.title = "Reading Desk"
         let button1 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFile(_:)))
+        button1.tintColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         self.navigationItem.rightBarButtonItem  = button1
     }
     
@@ -168,37 +157,38 @@ class ReadingDeskViewController: UIViewController {
         self.view.addSubview(titleTextLabel)
 //        self.view.addSubview(someTextLabel)
         
-        self.view.addSubview(verticalStack)
         backgroundImageView.addSubview(circleView)
-        verticalStack.addArrangedSubview(playButton)
-        verticalStack.addArrangedSubview(timeTextRead)
+        self.view.addSubview(playButton)
+        self.view.addSubview(timeTextRead)
         NSLayoutConstraint.activate([
             
             circleView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
-            circleView.centerYAnchor.constraint(equalTo: self.backgroundImageView.centerYAnchor, constant: -62),
-            circleView.widthAnchor.constraint(equalToConstant: 177),
-            circleView.heightAnchor.constraint(equalToConstant: 177),
+            circleView.centerYAnchor.constraint(equalTo: self.backgroundImageView.centerYAnchor, constant: -71),
+            circleView.widthAnchor.constraint(equalToConstant: 235),
+            circleView.heightAnchor.constraint(equalToConstant: 235),
             
-            
-           
-            
+    
             titleTextLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
             titleTextLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
-//
+
             backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: -90),
-            backgroundImageView.widthAnchor.constraint(equalToConstant: 255),
-            backgroundImageView.heightAnchor.constraint(equalToConstant: 380),
+            backgroundImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            backgroundImageView.widthAnchor.constraint(equalToConstant: 293),
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 437),
             
             
            
-            verticalStack.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 35),
-            verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 80),
-            verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -80),
-            verticalStack.heightAnchor.constraint(equalToConstant: 110),
+            playButton.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 35),
+            playButton.heightAnchor.constraint(equalToConstant: 60),
+            playButton.widthAnchor.constraint(equalToConstant: 270),
+            playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-           
-                                    
+            timeTextRead.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 20),
+            timeTextRead.heightAnchor.constraint(equalToConstant: 44),
+            timeTextRead.widthAnchor.constraint(equalToConstant: 218),
+            timeTextRead.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+        
         ])
     }
     

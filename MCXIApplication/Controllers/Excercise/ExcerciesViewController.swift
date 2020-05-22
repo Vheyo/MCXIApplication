@@ -19,6 +19,7 @@ class ExcerciesViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         overrideUserInterfaceStyle = .light
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         view.backgroundColor = .white
