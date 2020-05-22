@@ -14,31 +14,24 @@ import PDFKit
 class ReadingDeskViewController: UIViewController {
     
     
-    private var viewViole : UIView = {
-        let viewViole = UIView()
-        viewViole.translatesAutoresizingMaskIntoConstraints = false
-        viewViole.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        return viewViole
-    }()
-    
     private var titleTextLabel : UILabel = {
         let titleTextLabel = UILabel()
         titleTextLabel.text = "Il nome del file"
         titleTextLabel.textAlignment = .center
-        titleTextLabel.textColor = .white
+        titleTextLabel.textColor = .black
         titleTextLabel.font = UIFont.boldSystemFont(ofSize: 21)
 //        titleTextLabel.font = FontKit.roundedFont(ofSize: 21, weight: .semibold)
         titleTextLabel.numberOfLines = 0
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         return titleTextLabel
     }()
     
-    private var textViewContainer : UIView = {
-        let textViewContainer = UIView()
-        textViewContainer.translatesAutoresizingMaskIntoConstraints = false
-        textViewContainer.backgroundColor = .white
-        textViewContainer.layer.cornerRadius = 25
-        return textViewContainer
+    private let backgroundImageView : UIImageView = {
+        let backgroundImageView = UIImageView(image: UIImage(named: "violet"))
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundImageView.contentMode = .scaleAspectFit
+        return backgroundImageView
     }()
     
     private var someTextLabel : UILabel = {
@@ -47,18 +40,28 @@ class ReadingDeskViewController: UIViewController {
         someTextLabel.textAlignment = .center
         someTextLabel.numberOfLines = 1
         someTextLabel.translatesAutoresizingMaskIntoConstraints = false
+
         return someTextLabel
     }()
-    
+
     private let verticalStack : UIStackView = {
            let verticalStack = UIStackView()
            verticalStack.axis = .vertical
-           verticalStack.backgroundColor = .red
+           verticalStack.backgroundColor = .clear
            verticalStack.translatesAutoresizingMaskIntoConstraints = false
            verticalStack.spacing = 20
-           verticalStack.distribution = .fillEqually
+        verticalStack.distribution = .fill
            return verticalStack
        }()
+    
+    private let circleView : UIView = {
+        let circleView = UIView()
+        circleView.backgroundColor = .white
+        circleView.frame = CGRect(x: 0, y: 0, width: 177, height: 177)
+        circleView.layer.cornerRadius = circleView.frame.width/2
+        circleView.translatesAutoresizingMaskIntoConstraints = false
+        return circleView
+    }()
     
     
     private var playButton : UIButton = {
@@ -73,6 +76,7 @@ class ReadingDeskViewController: UIViewController {
         playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.layer.cornerRadius = 30
         playButton.setImage(UIImage(named: "PlayButton"), for: .normal)
+        playButton.frame = CGRect(x: 0, y: 0, width: 235, height: 50)
         return playButton
     }()
     
@@ -88,6 +92,7 @@ class ReadingDeskViewController: UIViewController {
         timeTextRead.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         timeTextRead.layer.cornerRadius = 30
         timeTextRead.translatesAutoresizingMaskIntoConstraints = false
+        timeTextRead.frame = CGRect(x: 0, y: 0, width: 190, height: 40)
         return timeTextRead
     }()
     
@@ -101,7 +106,7 @@ class ReadingDeskViewController: UIViewController {
         AppUtility.lockOrientation(.portrait)
         setUpNavigationBar()
         setUpConstraints()
-        textViewContainer.addShadowView2()
+        
         view.backgroundColor = .white
         
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
@@ -158,38 +163,41 @@ class ReadingDeskViewController: UIViewController {
     }
     
     func setUpConstraints(){
-        self.view.addSubview(viewViole)
+       
+        self.view.addSubview(backgroundImageView)
         self.view.addSubview(titleTextLabel)
-        self.view.addSubview(textViewContainer)
-        textViewContainer.addSubview(someTextLabel)
+//        self.view.addSubview(someTextLabel)
+        
         self.view.addSubview(verticalStack)
+        backgroundImageView.addSubview(circleView)
         verticalStack.addArrangedSubview(playButton)
         verticalStack.addArrangedSubview(timeTextRead)
         NSLayoutConstraint.activate([
             
-            viewViole.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            viewViole.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            viewViole.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            viewViole.heightAnchor.constraint(equalToConstant: 300),
+            circleView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
+            circleView.centerYAnchor.constraint(equalTo: self.backgroundImageView.centerYAnchor, constant: -62),
+            circleView.widthAnchor.constraint(equalToConstant: 177),
+            circleView.heightAnchor.constraint(equalToConstant: 177),
             
-            titleTextLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            titleTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            titleTextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             
-            textViewContainer.topAnchor.constraint(equalTo: titleTextLabel.bottomAnchor, constant:  16),
-            textViewContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40),
-            textViewContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40),
-            textViewContainer.heightAnchor.constraint(equalToConstant: 300),
+           
             
-            someTextLabel.leadingAnchor.constraint(equalTo: textViewContainer.leadingAnchor,constant: 16),
-            someTextLabel.trailingAnchor.constraint(equalTo: textViewContainer.trailingAnchor,constant: -16),
-            someTextLabel.topAnchor.constraint(equalTo: textViewContainer.topAnchor,constant: 16),
-            someTextLabel.bottomAnchor.constraint(equalTo: textViewContainer.bottomAnchor,constant: -16),
+            titleTextLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
+            titleTextLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
+//
+            backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            backgroundImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor,constant: -90),
+            backgroundImageView.widthAnchor.constraint(equalToConstant: 255),
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 380),
             
-            verticalStack.topAnchor.constraint(equalTo: textViewContainer.bottomAnchor, constant: 35),
+            
+           
+            verticalStack.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 35),
             verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 80),
             verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -80),
-            verticalStack.heightAnchor.constraint(equalToConstant: 150),
+            verticalStack.heightAnchor.constraint(equalToConstant: 110),
+            
+           
                                     
         ])
     }
