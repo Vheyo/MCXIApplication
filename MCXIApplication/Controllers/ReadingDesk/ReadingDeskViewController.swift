@@ -152,7 +152,7 @@ class ReadingDeskViewController: UIViewController {
     }
     
     func setUpNavigationBar(){
-        self.title = "Reading Desk"
+//        self.title = "Reading Desk"
         let button1 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFile(_:)))
         self.navigationItem.rightBarButtonItem  = button1
     }

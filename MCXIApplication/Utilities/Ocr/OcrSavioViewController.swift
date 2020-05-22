@@ -51,16 +51,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         setupVision();
         pagineCounter = 0;
         imageCenter = imageView.center
-        
-        let swipDx = UISwipeGestureRecognizer(target: self, action: #selector(nextPagePressed))
-        swipDx.direction = .left
-        view.addGestureRecognizer(swipDx)
-        
-        let swipSx = UISwipeGestureRecognizer(target: self, action: #selector(backPagePressed))
-        swipSx.direction = .right
-        view.addGestureRecognizer(swipSx)
-        
-        
+    
         let spaceItemLeft = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrBefore"), style: .plain, target: self, action: #selector(backPagePressed))
         nextButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrNext"), style: .plain, target: self, action: #selector(nextPagePressed))

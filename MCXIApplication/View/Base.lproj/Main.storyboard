@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Files View Controller-->
+        <!--File-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FilesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,7 +17,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="3gf-5B-dvK"/>
+                    <navigationItem key="navigationItem" title="File" id="3gf-5B-dvK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -38,7 +38,7 @@
             </objects>
             <point key="canvasLocation" x="1710.144927536232" y="1141.7410714285713"/>
         </scene>
-        <!--Excercies View Controller-->
+        <!--Exercises-->
         <scene sceneID="9CR-ZL-49B">
             <objects>
                 <viewController id="sRn-XZ-clf" customClass="ExcerciesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -66,7 +66,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Nka-rj-jfu"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bg9-zm-ObL"/>
+                    <navigationItem key="navigationItem" title="Exercises" id="bg9-zm-ObL"/>
                     <connections>
                         <outlet property="collectionView" destination="xR5-yg-VFH" id="56w-sS-BHy"/>
                     </connections>
@@ -75,7 +75,7 @@
             </objects>
             <point key="canvasLocation" x="879.71014492753625" y="338.83928571428572"/>
         </scene>
-        <!--Reading Desk View Controller-->
+        <!--Reading Desk-->
         <scene sceneID="WdV-IS-4CQ">
             <objects>
                 <viewController id="S23-bu-ZB5" customClass="ReadingDeskViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,7 +85,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="P8M-lz-NYF"/>
                     </view>
-                    <navigationItem key="navigationItem" id="IsV-JT-XHA"/>
+                    <navigationItem key="navigationItem" title="Reading Desk" id="IsV-JT-XHA"/>
                     <connections>
                         <segue destination="5qt-us-pym" kind="modal" identifier="navigation" modalPresentationStyle="fullScreen" id="olU-cg-ax5"/>
                     </connections>
@@ -117,6 +117,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cGV-66-vwb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.55686274509803924" green="0.41568627450980389" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="hbo-9u-GVg" kind="relationship" relationship="viewControllers" id="TjC-GA-zeD"/>
@@ -240,11 +241,13 @@
             </objects>
             <point key="canvasLocation" x="4389.855072463768" y="604.6875"/>
         </scene>
-        <!--Desk-->
+        <!--Navigation Controller-->
         <scene sceneID="r2K-uz-jGG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hbo-9u-GVg" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Desk" largeContentSizeImage="TabExViolet" selectedImage="TabExGrey" id="qUr-0x-obq"/>
+                    <tabBarItem key="tabBarItem" title="" image="TabReadingViolet-1" id="qUr-0x-obq">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Ki-Gz-g90">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -259,11 +262,13 @@
             </objects>
             <point key="canvasLocation" x="-955" y="-404"/>
         </scene>
-        <!--Excercies-->
+        <!--Navigation Controller-->
         <scene sceneID="ksb-XM-MaA">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3VN-0k-Mpi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Excercies" selectedImage="TabExGrey" id="JvT-Ll-Th3"/>
+                    <tabBarItem key="tabBarItem" title="" image="TabExViolet-1" id="JvT-Ll-Th3">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="crs-bu-JJV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -422,11 +427,13 @@
             </objects>
             <point key="canvasLocation" x="2728.985507246377" y="-1168.5267857142856"/>
         </scene>
-        <!--Files-->
+        <!--Navigation Controller-->
         <scene sceneID="XfV-ck-d2l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="DoQ-SV-NPw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Files" id="iI8-mY-iod"/>
+                    <tabBarItem key="tabBarItem" title="" image="TabFileViolet-1" id="iI8-mY-iod">
+                        <inset key="imageInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Yiy-j3-xxE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -443,8 +450,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="TabExGrey" width="60.333332061767578" height="60.333332061767578"/>
-        <image name="TabExViolet" width="60.333332061767578" height="60.333332061767578"/>
+        <image name="TabExViolet-1" width="60.333332061767578" height="60.333332061767578"/>
+        <image name="TabFileViolet-1" width="60.333332061767578" height="60.333332061767578"/>
+        <image name="TabReadingViolet-1" width="60.333332061767578" height="60.333332061767578"/>
         <image name="XWhite" width="63" height="63"/>
     </resources>
 </document>

@@ -96,7 +96,7 @@ class FilesViewController : UIViewController{
         super.viewDidLoad()
         overrideUserInterfaceStyle = .light
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
-        self.title = "File Manager"
+//        self.title = "File Manager"
         view.backgroundColor = .white
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self

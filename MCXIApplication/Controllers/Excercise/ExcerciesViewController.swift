@@ -25,7 +25,7 @@ class ExcerciesViewController : UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "Type2CollectionViewCell", bundle: Bundle.main), forCellWithReuseIdentifier: "Type2CollectionViewCell")
-        self.title = "Excercises"
+//        self.title = "Excercises"
         let layout = (collectionView.collectionViewLayout as! UICollectionViewFlowLayout)
         let aspect : CGFloat = 1.2305
         let width : CGFloat =  400
