@@ -16,35 +16,35 @@ class TutorialViewController: UIViewController {
     @IBOutlet var skipButton: UIButton!
 
     fileprivate let items = [
-    OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "Risorsa 4"),
+    OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "HomeBoarding1"),
                        title: "File Manager",
-                       description: "Manage the files that you \nhave uploaded or upload new ones!\nEach file has its related keywords underneath.\n Click on the file to display the text with keywords \nhighlighted and there you can either\n fast read the text starting from a specific\n point or edit the keywords you set before. ",
+                       description: "Upload or Scan your files and start your speed reading!",
                        pageIcon: .actions,
                        color: #colorLiteral(red: 0.5632914901, green: 0.4769576788, blue: 1, alpha: 1),
                        titleColor: .white,
                        descriptionColor: .white,
-                       titleFont: FontKit.roundedFont(ofSize: 32, weight: .bold),
-                       descriptionFont: FontKit.roundedFont(ofSize: 18, weight: .light)),
+                       titleFont: FontKit.roundedFont(ofSize: 38, weight: .bold),
+                       descriptionFont: FontKit.roundedFont(ofSize: 24, weight: .light)),
 
-    OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "Risorsa 2"),
+    OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "HomeBoarding2"),
                        title: "Reading Desk",
-                       description: "Choose between different options\n to upload your file and start your speed reading!\n Decide how much time your session lasts\n and how many Words Per Minute you want\n to read and you are ready to go! ",
+                       description: "Manage your files as well as keywords! ",
                        pageIcon: .actions,
                        color: #colorLiteral(red: 0.5224255919, green: 0.4336446226, blue: 0.97723037, alpha: 1),
                        titleColor: .white,
                        descriptionColor: .white,
-                       titleFont: FontKit.roundedFont(ofSize: 32, weight: .bold),
-                       descriptionFont: FontKit.roundedFont(ofSize: 18, weight: .light)),
+                       titleFont: FontKit.roundedFont(ofSize: 38, weight: .bold),
+                       descriptionFont: FontKit.roundedFont(ofSize: 24, weight: .light)),
 
     OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "Risorsa 3") ,
                        title: "Exercises",
-                       description: "Increase your fast reading skills through three essential exercises: cover & uncover, divergent reading and words per minute and comprehension coefficient calculator.",
+                       description: "Choose between three types of exercises in order to improve your skills!",
                        pageIcon: .actions ,
                        color: #colorLiteral(red: 0.4855933785, green: 0.4067794085, blue: 0.9202699661, alpha: 1),
                        titleColor: .white,
                        descriptionColor: .white,
-                       titleFont: FontKit.roundedFont(ofSize: 32, weight: .bold),
-                       descriptionFont: FontKit.roundedFont(ofSize: 18, weight: .light)),
+                       titleFont: FontKit.roundedFont(ofSize: 38, weight: .bold),
+                       descriptionFont: FontKit.roundedFont(ofSize: 24, weight: .light)),
     ]
 
     
