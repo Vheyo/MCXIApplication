@@ -88,21 +88,23 @@ class ReadingDeskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        UITabBar.appearance().shadowImage = UIImage()
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
         overrideUserInterfaceStyle = .light
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         AppUtility.lockOrientation(.portrait)
+        
         setUpNavigationBar()
         setUpConstraints()
         
         view.backgroundColor = .white
-        
         timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         if(UserDefaults.isFirstLaunch()){
             let vc = self.storyboard?.instantiateViewController(identifier: "TUTORIAL") as? TutorialViewController
             self.view.window?.rootViewController = vc
