@@ -41,17 +41,17 @@ class IntermediateReadingViewController: UIViewController{
         saveButton.layer.cornerRadius = 16
         return saveButton
     }()
-       
-       private var backButton : UIButton = {
-              let backButton = UIButton()
-              backButton.translatesAutoresizingMaskIntoConstraints = false
-              backButton.setTitle("back", for: .normal)
-              backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-              backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-              backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
-              backButton.titleLabel?.textAlignment = .left
-              return backButton
-          }()
+    
+    private var backButton : UIButton = {
+        let backButton = UIButton()
+        backButton.translatesAutoresizingMaskIntoConstraints = false
+        backButton.setTitle("back", for: .normal)
+        backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
+        backButton.titleLabel?.textAlignment = .left
+        return backButton
+    }()
           
        
        
@@ -82,28 +82,34 @@ class IntermediateReadingViewController: UIViewController{
     
     
     func setUpTextToRead(){
-           self.view.addSubview(textToRead)
-           self.view.addSubview(buttonPlay)
-           self.view.addSubview(backButton)
-           NSLayoutConstraint.activate([
-               
-               backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-               backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-                           
-               buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-               buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-               buttonPlay.heightAnchor.constraint(equalToConstant: 70),
-               buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
-               
-               
-               
-               textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
-               textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-               textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-               textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
-           ])
-       }
-       
+        self.view.addSubview(textToRead)
+        self.view.addSubview(buttonPlay)
+        self.view.addSubview(backButton)
+        view.addSubview(saveButton)
+        NSLayoutConstraint.activate([
+            
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            
+            buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
+            buttonPlay.heightAnchor.constraint(equalToConstant: 70),
+            buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
+            buttonPlay.widthAnchor.constraint(equalToConstant: 160),
+            
+            saveButton.leadingAnchor.constraint(equalTo: buttonPlay.trailingAnchor, constant: 30),
+            saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            saveButton.heightAnchor.constraint(equalToConstant: 70),
+            saveButton.centerYAnchor.constraint(equalTo: buttonPlay.centerYAnchor),
+          
+            
+            
+            textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+            textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
+        ])
+    }
+    
     @objc func dismissView(){
         dismiss(animated: true, completion: nil)
     }
