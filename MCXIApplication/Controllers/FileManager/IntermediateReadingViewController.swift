@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 class IntermediateReadingViewController: UIViewController{
+    var nameFile = String()
+    
      var textToRead : UITextView = {
            let textToRead = UITextView()
            textToRead.translatesAutoresizingMaskIntoConstraints = false
@@ -118,7 +120,7 @@ class IntermediateReadingViewController: UIViewController{
         let vc = PresentatiotionTextToReadViewController()
         vc.text = textToRead.text
         vc.view.backgroundColor = .white
-        
+        vc.nameFile = nameFile
         present(vc,animated: true)
     }
 }
