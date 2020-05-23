@@ -30,6 +30,17 @@ class IntermediateReadingViewController: UIViewController{
             buttonPlay.addTarget(self, action: #selector(playAction), for: .touchUpInside)
             return buttonPlay
         }()
+    
+    private var saveButton : UIButton = {
+        let saveButton = UIButton()
+        saveButton.setTitle("Save", for: .normal)
+        saveButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        saveButton.setTitleColor(.white, for: .normal)
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        saveButton.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+        saveButton.layer.cornerRadius = 16
+        return saveButton
+    }()
        
        private var backButton : UIButton = {
               let backButton = UIButton()
@@ -83,6 +94,8 @@ class IntermediateReadingViewController: UIViewController{
                buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
                buttonPlay.heightAnchor.constraint(equalToConstant: 70),
                buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
+               
+               
                
                textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
                textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
