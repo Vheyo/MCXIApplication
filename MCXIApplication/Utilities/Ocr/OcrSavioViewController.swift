@@ -60,7 +60,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         resetButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrReset"), style: .plain, target: self, action: #selector(reset))
         let spaceItemRight = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
-        toolbarItems = [spaceItemLeft, backButton, resetButton, cropButton, selectAllButton, nextButton, spaceItemRight]
+        toolbarItems = [spaceItemLeft, backButton, nextButton, selectAllButton, resetButton, cropButton, spaceItemRight]
         
         backButton.isEnabled = false
         nextButton.isEnabled = false
