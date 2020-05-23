@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var orientationLock = UIInterfaceOrientationMask.all
     var image : UIImage!
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
-        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().shadowImage = UIImage(named: "blur4")
         UITabBar.appearance().backgroundImage = UIImage()
 //        UINavigationBar.appearance().setBackgroundImage(UIImage() , for: UIBarMetrics.default)
-        UINavigationBar.appearance().shadowImage = #imageLiteral(resourceName: "separatore")
+        UINavigationBar.appearance().shadowImage = UIImage(named: "blur5")
         
         return self.orientationLock
             
