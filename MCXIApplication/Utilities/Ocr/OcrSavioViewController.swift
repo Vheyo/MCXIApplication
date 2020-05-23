@@ -35,7 +35,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     @IBOutlet weak var textView: UITextView!
     var nextButton: UIBarButtonItem!
     var backButton: UIBarButtonItem!
-    @IBOutlet weak var scanButton: UIButton!
+    var scanButton: UIBarButtonItem!
     var cropButton: UIBarButtonItem!
     @IBOutlet weak var imageView: BoundingBoxImageView!
     @IBOutlet weak var croppedImage: UIImageView!
@@ -51,7 +51,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         setupVision();
         pagineCounter = 0;
         imageCenter = imageView.center
-    
+        
+        scanButton = UIBarButtonItem(title: "Scan", style: .plain, target: self, action: #selector(PhotoScan))
+        
+        scanButton.tintColor = #colorLiteral(red: 0.5298756361, green: 0.440577805, blue: 0.9893320203, alpha: 1)
         let spaceItemLeft = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrBefore"), style: .plain, target: self, action: #selector(backPagePressed))
         nextButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrNext"), style: .plain, target: self, action: #selector(nextPagePressed))
@@ -62,15 +65,17 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         
         toolbarItems = [spaceItemLeft, backButton, nextButton, selectAllButton, resetButton, cropButton, spaceItemRight]
         
+        navigationItem.rightBarButtonItems = [scanButton];
+        
         backButton.isEnabled = false
         nextButton.isEnabled = false
         selectAllButton.isEnabled = false
         resetButton.isEnabled = false
         cropButton.isEnabled = false
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(PhotoScan));
-        tap.numberOfTouchesRequired = 1;
-        scanButton.addGestureRecognizer(tap);
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(PhotoScan));
+//        tap.numberOfTouchesRequired = 1;
+//        scanButton.addGestureRecognizer(tap);
         
         let resetTap = UITapGestureRecognizer(target: self, action: #selector(tap2Reset))
         resetTap.numberOfTapsRequired = 2;
@@ -425,9 +430,14 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @objc func PhotoScan(){
-        let scannerViewController = VNDocumentCameraViewController();
-        scannerViewController.delegate = self;
-        present(scannerViewController, animated: true);
+        if(scanButton.title == "Scan"){
+            let scannerViewController = VNDocumentCameraViewController();
+            scannerViewController.delegate = self;
+            present(scannerViewController, animated: true);
+        }
+        else if(scanButton.title == "Done"){
+            exit()
+        }
     }
     
     
@@ -516,6 +526,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         cropButton.isEnabled = true
         selectAllButton.isEnabled = true
         resetButton.isEnabled = true
+        
+        scanButton.title = "Done"
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {

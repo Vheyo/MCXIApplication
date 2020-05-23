@@ -402,7 +402,6 @@
                         <outlet property="croppedImage" destination="0Gx-5O-2am" id="vZf-lP-377"/>
                         <outlet property="imageView" destination="2Zk-zn-PWb" id="y6a-ux-ScZ"/>
                         <outlet property="resultText" destination="YNS-3Y-AxG" id="c0V-vO-kad"/>
-                        <outlet property="scanButton" destination="tkD-Ll-nuO" id="U1t-Ho-LEt"/>
                         <outlet property="tempImageView" destination="GuS-Ea-iDm" id="OcN-bn-GGy"/>
                         <outlet property="textView" destination="bmD-hB-m96" id="eIG-Re-GWP"/>
                     </connections>
@@ -478,6 +477,6 @@
         <image name="TabFileViolet-1" width="60.333332061767578" height="60.333332061767578"/>
         <image name="TabReadingViolet-1" width="60.333332061767578" height="60.333332061767578"/>
         <image name="XWhite" width="63" height="63"/>
-        <image name="separatore" width="143" height="0.3333333432674408"/>
+        <image name="separatore" width="429" height="1"/>
     </resources>
 </document>
