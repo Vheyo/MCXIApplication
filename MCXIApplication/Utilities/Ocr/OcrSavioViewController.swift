@@ -13,7 +13,7 @@ import VisionKit
 import WeScan
 import JGProgressHUD
 
-class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelegate {
+class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     var swipeActivation: Bool = false
     
     var lastPoint = CGPoint.zero
@@ -40,6 +40,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     @IBOutlet weak var imageView: BoundingBoxImageView!
     @IBOutlet weak var croppedImage: UIImageView!
     @IBOutlet weak var resultText: UITextView!
+    let imagePicker = UIImagePickerController()
     
     var imageCenter : CGPoint!
     
@@ -52,9 +53,9 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         pagineCounter = 0;
         imageCenter = imageView.center
         
-        scanButton = UIBarButtonItem(title: "Scan", style: .plain, target: self, action: #selector(PhotoScan))
+        imagePicker.delegate = self
         
-        scanButton.tintColor = #colorLiteral(red: 0.5298756361, green: 0.440577805, blue: 0.9893320203, alpha: 1)
+        scanButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(PhotoScan))
         let spaceItemLeft = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         backButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrBefore"), style: .plain, target: self, action: #selector(backPagePressed))
         nextButton = UIBarButtonItem(image: #imageLiteral(resourceName: "OcrNext"), style: .plain, target: self, action: #selector(nextPagePressed))
@@ -103,13 +104,29 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
 //                })
         
     }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        //prendo l'immagine scattata dall'utente
+        if let userPickerdImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage{
+            //Setto l'immagine pickata come immagine di sfondo del mio IBOutlet
+            imageView.image = userPickerdImage
+        }
+        
+        imagePicker.dismiss(animated: true, completion: {
+            self.processImage(self.imageView.image!)
+            self.pagine.append(self.imageView.image!)
+        })
+        self.navigationItem.rightBarButtonItem = nil;
+        scanButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(PhotoScan))
+        navigationItem.rightBarButtonItems = [scanButton]
+    }
+    
     
     @IBAction func exitPressed(_ sender: Any) {
         dismiss(animated: true, completion: {
             print("dismissed")
         })
     }
-    
     
     
     @objc func backPagePressed(){
@@ -282,7 +299,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
             }
         }
         
-        let hud = JGProgressHUD(style: .dark)
+        let hud = JGProgressHUD(style: .light)
         
         if(pagineCounter == (pagine.count - 1)){
             hud.textLabel.text = "Saving text..."
@@ -430,16 +447,69 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @objc func PhotoScan(){
-        if(scanButton.title == "Scan"){
-            let scannerViewController = VNDocumentCameraViewController();
-            scannerViewController.delegate = self;
-            present(scannerViewController, animated: true);
+        if(scanButton.title == "Done"){
+            if(pagineCounter != pagine.count - 1){
+                wrongEntryAlert(title: "Attenzione:", message: "Non hai completato tutte le pagine")
+            }
+            else{
+                cropPLS()
+            }
         }
-        else if(scanButton.title == "Done"){
-            exit()
+        else /*(scanButton.title == "Scan")*/{
+            
+            let alert = UIAlertController(title: "OCR Selection", message: "Scegli come vuoi scannerizzare l'immagine", preferredStyle: .actionSheet)
+            
+            alert.addAction(UIAlertAction(title: "Take a photo", style: .default , handler:{ (UIAlertAction)in
+                let scannerViewController = VNDocumentCameraViewController();
+                scannerViewController.delegate = self;
+                self.present(scannerViewController, animated: true);
+            }))
+            alert.addAction(UIAlertAction(title: "Import from gallery", style: .default , handler:{ (UIAlertAction)in
+                self.imagePicker.sourceType = .photoLibrary
+                
+                self.imagePicker.allowsEditing = false
+                //Quando premo sull'icona della camera voglio presetare il controller della camera (PickerController)
+                self.present(self.imagePicker, animated: true, completion: nil)
+            }))
+        
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+            
         }
     }
-    
+    func wrongEntryAlert(title: String, message: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Annulla", style: .cancel, handler: { (action) in
+            alert.dismiss(animated: true, completion: {
+//                self.saveButton.isHidden = false
+//                self.saveButton.isEnabled = true
+//                self.checkmarkAnimationView.removeFromSuperview()
+//
+            })
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Continua comunque", style: .default, handler: {(action) in
+            alert.dismiss(animated: true, completion: {
+                let hud = JGProgressHUD(style: .light)
+                hud.textLabel.text = "Saving text..."
+                DispatchQueue.global(qos: .background).sync{
+                    let indicator = JGProgressHUDRingIndicatorView()
+                    hud.indicatorView = indicator
+                    hud.show(in: self.view)
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)){
+                        self.incrementHUD(hud, progress: 0)
+                    }
+                }
+                
+//                self.exit()
+            })
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
     
     
     //    Questa funzione fa i BOX
@@ -527,7 +597,9 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         selectAllButton.isEnabled = true
         resetButton.isEnabled = true
         
-        scanButton.title = "Done"
+        self.navigationItem.rightBarButtonItem = nil;
+        scanButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(PhotoScan))
+        navigationItem.rightBarButtonItems = [scanButton]
     }
     
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
