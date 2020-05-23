@@ -306,10 +306,14 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let layout = self.cardCollectionView.collectionViewLayout as! UPCarouselFlowLayout
-        let pageSide = (layout.scrollDirection == .horizontal) ? self.pageSize.width : self.pageSize.height
-        let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
-        currentPage = Int(ceil((offset*(CGFloat(UserDefaults.standard.integer(forKey: "numFile"))))/(scrollView.contentSize.width)))
+        if scrollView == self.cardCollectionView {
+            print("ciadsiasidsaifnds")
+            let layout = self.cardCollectionView.collectionViewLayout as! UPCarouselFlowLayout
+            let pageSide = (layout.scrollDirection == .horizontal) ? self.pageSize.width : self.pageSize.height
+            let offset = (layout.scrollDirection == .horizontal) ? scrollView.contentOffset.x : scrollView.contentOffset.y
+            currentPage = Int(ceil((offset*(CGFloat(UserDefaults.standard.integer(forKey: "numFile"))))/(scrollView.contentSize.width)))
+        }
+        
     }
 
 }
