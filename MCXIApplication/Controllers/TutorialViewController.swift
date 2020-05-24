@@ -16,41 +16,41 @@ class TutorialViewController: UIViewController {
     @IBOutlet var skipButton: UIButton!
 
     fileprivate let items = [
-    OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "HomeBoarding1"),
+        OnboardingItemInfo(informationImage: UIImage(named: "FileIconHB")!,
                        title: "File Manager",
-                       description: "Upload or Scan your files and start your speed reading!",
-                       pageIcon: .actions,
+                       description: "Upload or Scan your files and \nstart your speed reading!",
+                       pageIcon: #imageLiteral(resourceName: "pagecontrol"),
                        color: #colorLiteral(red: 0.5632914901, green: 0.4769576788, blue: 1, alpha: 1),
                        titleColor: .white,
                        descriptionColor: .white,
-                       titleFont: FontKit.roundedFont(ofSize: 38, weight: .bold),
-                       descriptionFont: FontKit.roundedFont(ofSize: 24, weight: .light)),
+                       titleFont: FontKit.roundedFont(ofSize: 34, weight: .bold),
+                       descriptionFont: FontKit.roundedFont(ofSize: 21, weight: .light)),
 
-    OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "HomeBoarding2"),
+    OnboardingItemInfo(informationImage: UIImage(named: "ReadIconHB")!,
                        title: "Reading Desk",
-                       description: "Manage your files as well as keywords! ",
-                       pageIcon: .actions,
+                       description: "Manage your files as well\n as keywords! ",
+                       pageIcon: #imageLiteral(resourceName: "pagecontrol"),
                        color: #colorLiteral(red: 0.5224255919, green: 0.4336446226, blue: 0.97723037, alpha: 1),
                        titleColor: .white,
                        descriptionColor: .white,
-                       titleFont: FontKit.roundedFont(ofSize: 38, weight: .bold),
-                       descriptionFont: FontKit.roundedFont(ofSize: 24, weight: .light)),
+                       titleFont: FontKit.roundedFont(ofSize: 34, weight: .bold),
+                       descriptionFont: FontKit.roundedFont(ofSize: 21, weight: .light)),
 
-    OnboardingItemInfo(informationImage: #imageLiteral(resourceName: "Risorsa 3") ,
+    OnboardingItemInfo(informationImage: UIImage(named: "ExIconHB")! ,
                        title: "Exercises",
-                       description: "Choose between three types of exercises in order to improve your skills!",
-                       pageIcon: .actions ,
+                       description: "Choose between three types\n of exercises in order to improve\n your skills!",
+                       pageIcon: #imageLiteral(resourceName: "pagecontrol") ,
                        color: #colorLiteral(red: 0.4855933785, green: 0.4067794085, blue: 0.9202699661, alpha: 1),
                        titleColor: .white,
                        descriptionColor: .white,
-                       titleFont: FontKit.roundedFont(ofSize: 38, weight: .bold),
-                       descriptionFont: FontKit.roundedFont(ofSize: 24, weight: .light)),
+                       titleFont: FontKit.roundedFont(ofSize: 34, weight: .bold),
+                       descriptionFont: FontKit.roundedFont(ofSize: 21, weight: .light)),
     ]
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        skipButton.isHidden = true
+//        skipButton.isHidden = true
 
         setupPaperOnboardingView()
 
@@ -90,13 +90,14 @@ class TutorialViewController: UIViewController {
 extension TutorialViewController: PaperOnboardingDelegate {
 
     func onboardingWillTransitonToIndex(_ index: Int) {
-        skipButton.isHidden = index == 2 ? false : true
+//        skipButton.isHidden = index == 2 ? false : true
     }
 
     func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index: Int) {
         
-        //item.titleCenterConstraint?.constant = 100
-        //item.descriptionCenterConstraint?.constant = 100
+        item.titleCenterConstraint?.constant = -10
+        item.descriptionCenterConstraint?.constant = 10
+        
         
         // configure item
         

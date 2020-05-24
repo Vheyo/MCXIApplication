@@ -21,7 +21,7 @@ public struct OnboardingItemInfo {
     public let descriptionLabelPadding: CGFloat
     public let titleLabelPadding: CGFloat
     
-    public init (informationImage: UIImage, title: String, description: String, pageIcon: UIImage, color: UIColor, titleColor: UIColor, descriptionColor: UIColor, titleFont: UIFont, descriptionFont: UIFont, descriptionLabelPadding: CGFloat = 0, titleLabelPadding: CGFloat = 0) {
+    public init (informationImage: UIImage, title: String, description: String, pageIcon: UIImage, color: UIColor, titleColor: UIColor, descriptionColor: UIColor, titleFont: UIFont, descriptionFont: UIFont, descriptionLabelPadding: CGFloat = 20, titleLabelPadding: CGFloat = 0) {
         self.informationImage = informationImage
         self.title = title
         self.description = description
@@ -64,7 +64,7 @@ open class PaperOnboarding: UIView {
     public fileprivate(set) var gestureControl: GestureControl?
     fileprivate var contentView: OnboardingContentView?
     
-    public init(pageViewBottomConstant: CGFloat = 32) {
+    public init(pageViewBottomConstant: CGFloat = 50) {
         
         self.pageViewBottomConstant = pageViewBottomConstant
 
