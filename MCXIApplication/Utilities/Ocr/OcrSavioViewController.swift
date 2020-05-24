@@ -230,8 +230,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         resultText.text = ""
         for i in tmpView{ i?.selected = true }
         for sub in imageView.subviews{
-            sub.backgroundColor = .blue
-            sub.alpha = 0.2
+            sub.backgroundColor = #colorLiteral(red: 0.5017122626, green: 0.4142552614, blue: 0.9326224923, alpha: 1)
+            sub.alpha = 0.4
         }
         //        for index in tmpView{
         //            if(index!.selected){
@@ -421,8 +421,9 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         
         bufferString.removeAll()
         tempImageView.image = nil
+        cropButton.isEnabled = false
         for sub in imageView.subviews{
-            if sub.backgroundColor == .blue{
+            if sub.backgroundColor == #colorLiteral(red: 0.5017122626, green: 0.4142552614, blue: 0.9326224923, alpha: 1){
                 sub.backgroundColor = .clear
                 sub.layer.borderColor = UIColor.gray.cgColor
                 sub.layer.borderWidth = 2
@@ -495,10 +496,11 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 let max_y = CGFloat(Float(min_y) + Float((index?.imageView.frame.height)!) - Float(fourth_part))
                 
                 if(currentPoint.x > min_x && currentPoint.x < max_x && currentPoint.y > min_y && currentPoint.y < max_y){
-                    index?.imageView.backgroundColor = .blue
+                    index?.imageView.backgroundColor = #colorLiteral(red: 0.5017122626, green: 0.4142552614, blue: 0.9326224923, alpha: 1)
                     //0x06aff
-                    index?.imageView.alpha = 0.2
+                    index?.imageView.alpha = 0.4
                     index?.selected = true
+                    cropButton.isEnabled = true
                 }
                 
             }
@@ -666,7 +668,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         if(scan.pageCount > 1){
             nextButton.isEnabled = true
         }
-        cropButton.isEnabled = true
+        cropButton.isEnabled = false
         selectAllButton.isEnabled = true
         resetButton.isEnabled = true
         
