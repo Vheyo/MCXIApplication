@@ -22,6 +22,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             deleteTimer()
             let value = Int(dropUpButtonTime.currentTitle!)
             initialTimer = value!
+            hideFunction()
             startToRead(gesture: UITapGestureRecognizer())
         case 2:
             
@@ -33,7 +34,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             else{
                 Pam = 60/Float(value!*100)
             }
-            
+            hideFunction()
             startToRead(gesture: UITapGestureRecognizer())
         default:
             print("No one selected")
@@ -218,16 +219,16 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         
         var arrayString = UserDefaults.standard.stringArray(forKey: "\(nameFile)")
         if arrayString == nil {
-            arrayString = ["\(textSplitted[indexWord])"]
+            arrayString = ["\(textSplitted[indexWord-1])"]
         }
         else{
-            arrayString?.append(textSplitted[indexWord])
+            arrayString?.append(textSplitted[indexWord-1])
             
         }
         
         UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
         print(nameFile)
-        print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
+//        print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
         
         
         backButton.alpha = 1.0
