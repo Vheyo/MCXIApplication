@@ -40,10 +40,10 @@ class RomboExcerciesViewController : UIViewController{
         playButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         playButton.addTarget(self, action: #selector(showText), for: .touchUpInside)
         playButton.titleLabel?.textAlignment = .center
-        playButton.titleLabel?.textAlignment = .left
         playButton.layer.borderWidth = 2
         playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.layer.cornerRadius = 25
+        playButton.backgroundColor = .white
         return playButton
     }()
     
@@ -76,14 +76,15 @@ class RomboExcerciesViewController : UIViewController{
         replyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         replyButton.addTarget(self, action: #selector(replyEx), for: .touchUpInside)
         replyButton.titleLabel?.textAlignment = .center
-        replyButton.titleLabel?.textAlignment = .left
-        replyButton.layer.borderWidth = 2
-        replyButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         replyButton.layer.cornerRadius = 25
         replyButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         replyButton.alpha = 0
         return replyButton
     }()
+    
+    
+    var shadowIncrease : ShadowView!
+    var shadowReply : ShadowView!
     
     var indexWord = 1
     var textToShow = ["su","luce","scotch","positivo","sei nuovo", "un detersivo","vai alla grande", "i fiori sono gialli", "c'è Batman e Robin", "macchina fotografica", "la guarigione e il reiki", "tu sai che ore sono o no", " scegli la pillola rossa o blu", "manda baci e abbracci a tutti", "acqua,terra,fuoco,vento,aria","internet e computer diventeranno", "l'amicizia è un valore fondamentale", "andare in palestra fa bene alla salute", "se ti impegni fino in fondo e dai tutto", "le vacanze sono sacre e non si toccano", "la ripetizione è la madre di tutte le abilità", "nel film Gladiatore il motto è : Forza e Onore"," M.Jordan è considerato l'atleta per eccellenza","la medicina cinese sembra essere più completa"]
@@ -141,25 +142,42 @@ class RomboExcerciesViewController : UIViewController{
             
         ])
         
-        playButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        replyButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        shadowIncrease = playButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        replyButton.layer.masksToBounds = true
+        replyButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: 150, height: 50))
     }
     
+    var isOk : Bool = true
     @objc func showText(){
         textView.text = textToShow[indexWord]
         if indexWord < textToShow.count - 1{
             lineVertical.isHidden = false
             textView.isHidden = false
             playButton.isHidden = false
+            if shadowReply != nil {
+                if isOk {
+                    shadowIncrease = playButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+                    isOk = false
+                }
+            }
+            
             indexWord += 1
         }else {
             lineVertical.isHidden = true
             textView.isHidden = true
             playButton.isHidden = true
-            UIView.animate(withDuration: 0.5) {
+            shadowIncrease.removeFromSuperview()
+            UIView.animate(withDuration: 0.5, animations: {
                 self.replyButton.alpha = 1
                 self.niceLabel.alpha = 1
+            }) { (complete) in
+                if complete{
+                    self.shadowReply = self.replyButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+                }
             }
+            
+            
+            isOk = true
         }
     }
     
@@ -168,6 +186,7 @@ class RomboExcerciesViewController : UIViewController{
         UIView.animate(withDuration: 0.5, animations: {
             self.replyButton.alpha = 0
             self.niceLabel.alpha = 0
+            self.shadowReply.removeFromSuperview()
         }) { (complete) in
             if complete {
                 self.showText()
