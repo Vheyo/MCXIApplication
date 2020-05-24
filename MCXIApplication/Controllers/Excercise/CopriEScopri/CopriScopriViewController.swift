@@ -37,7 +37,7 @@ class CopriScopriViewController: UIViewController {
     private var whatRead : UILabel = {
         let whatRead = UILabel()
         whatRead.translatesAutoresizingMaskIntoConstraints = false
-        whatRead.text = "Cosa hai letto ?"
+        whatRead.text = "Write down the text"
         whatRead.isHidden = true
         whatRead.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         whatRead.textAlignment = .center
@@ -96,7 +96,7 @@ class CopriScopriViewController: UIViewController {
     
     private var labelProssima : UILabel = {
         let labelProssima = UILabel()
-        labelProssima.text = "Prossima parola in"
+        labelProssima.text = "Next string in"
         labelProssima.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
         labelProssima.translatesAutoresizingMaskIntoConstraints = false
         labelProssima.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
@@ -215,7 +215,7 @@ class CopriScopriViewController: UIViewController {
 //                self.newWordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3 , offsetY: 3, offsetX: 0)
                 self.lineVertical.isHidden = true
                 self.whatRead.isHidden = false
-                self.whatRead.text = "Cosa hai Letto ?"
+                self.whatRead.text = "Write down the text"
             })
             generateWordOk = true
         }else {
@@ -227,7 +227,7 @@ class CopriScopriViewController: UIViewController {
 //                    addPopUp(text: "Risposta Corretta")
                     self.userAnswer.isHidden = true
                     self.newWordButton.isHidden = true
-                    self.whatRead.text = "Nice Work !"
+                    self.whatRead.text = "Well Done!"
                     self.userAnswer.text = ""
                     labelProssima.isHidden = false
                     setUpConstraintsTimeView()
@@ -239,7 +239,7 @@ class CopriScopriViewController: UIViewController {
                     //                    addPopUp(text: "Risposta Sbagliata")
                     self.userAnswer.isHidden = true
                     self.newWordButton.isHidden = true
-                    self.whatRead.text = "Try Next Time !"
+                    self.whatRead.text = "Try Again!"
                     self.userAnswer.text = ""
                     setUpConstraintsTimeView()
                     labelProssima.isHidden = false

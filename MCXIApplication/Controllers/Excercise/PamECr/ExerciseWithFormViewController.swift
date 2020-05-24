@@ -58,7 +58,7 @@ class ExerciseWithFormViewController: UIViewController {
     
     private var buttonPlay : UIButton = {
         let buttonPlay = UIButton()
-        buttonPlay.setTitle("Fine Lettura", for: .normal)
+        buttonPlay.setTitle("Stop", for: .normal)
         buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         buttonPlay.setTitleColor(.white, for: .normal)
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
@@ -429,7 +429,7 @@ class ExerciseWithFormViewController: UIViewController {
             buttonPlay.isEnabled = false
             diff = CFAbsoluteTimeGetCurrent() - start
             textToRead.removeFromSuperview()
-            buttonPlay.setTitle("Rispondi", for: .normal)
+            buttonPlay.setTitle("Answer", for: .normal)
             setUpConstraints()
             numberCount = 2
         }

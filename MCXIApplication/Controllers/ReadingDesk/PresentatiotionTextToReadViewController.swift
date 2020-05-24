@@ -150,7 +150,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var dropDownButtonTime : DropUpButton = {
         let dropDownButtonTime = DropUpButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        dropDownButtonTime.setTitle("PAM", for: .normal)
+        dropDownButtonTime.setTitle("WPM", for: .normal)
         dropDownButtonTime.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         dropDownButtonTime.translatesAutoresizingMaskIntoConstraints = false
         dropDownButtonTime.layer.borderColor = UIColor.black.cgColor

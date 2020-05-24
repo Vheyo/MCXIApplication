@@ -14,7 +14,8 @@ class ExcerciesViewController : UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     let nameImage  : [String] = ["Copri","Divergente","PameCR"]
-    let nameExcercises : [String] = ["Copri e Scopri", "Lettura Divergente","PAM & CR"]
+    let nameExcercises : [String] = ["Cover & Uncover", "Divergent Reading","WPM & CC"]
+    let descriptionExcercises : [String] = ["The goal of this exercise is to increase your field of view and the speed of perception by looking in the middle of the screen highlighted by a line, a random customisable string will appear and you have to remember it. You can choose at least one of four options: Numbers, uppercase letters, lowercase letters and the number of characters. Selecting more than one option will make things harder! Set up the speed, in milliseconds, to which the string will appear. The default speed is 600ms. Either your answer right or wrong the exercise will be repeated until you decide to go back.", "Thanks to divergent reading you will be able to enlarge your field of view. As soon as you’ll click play, the screen will be in landscape mode, that’s because the goal is to have enough space to read every word on a single line. A random text will appear and, by looking to the center of the screen, you have to read all the words without moving your eyes. Clicking on “Increase” a string with an additional word will display and so on. ","Words Per Minute and comprehension coefficient calculator is the exercise which allows you to understand how many words per minute you can read and how much you understand while reading. You can choose between three different scripts, once you choose one you have to read the entire text, we calculate the wpm by multiplying the number of words for the time (in seconds) and then dividing per 60 seconds. Then you have to answer to 5 questions and the comprehension coefficient is the result of the percentage between correct and incorrect answers."]
     private var transition: CardTransition?
     
     override func viewDidLoad() {
@@ -82,8 +83,8 @@ extension ExcerciesViewController: UICollectionViewDelegate {
         viewController.transitioningDelegate = transition
         viewController.titleLabe = nameExcercises[indexPath.item]
         viewController.background = UIImage(named: nameImage[indexPath.item])
-        viewController.tagButton = indexPath.row
-        viewController.descrip = "The goal of this exercise is to increase your field of view and the speed of perception by looking in the middle of the screen highlighted by a line, a random customisable string will appear and you have to remember it. You can choose at least one of four options: Numbers, uppercase letters, lowercase letters and the number of characters. Selecting more than one option will make things harder! Set up the speed, in milliseconds, to which the string will appear. The default speed is 600ms. Either your answer right or wrong the exercise will be repeated until you decide to go back."
+        viewController.tagButton = indexPath.item
+        viewController.descrip = descriptionExcercises[indexPath.item]
         
         // If `modalPresentationStyle` is not `.fullScreen`, this should be set to true to make status bar depends on presented vc.
         //viewController.modalPresentationCapturesStatusBarAppearance = true

@@ -104,6 +104,7 @@ class FilesViewController : UIViewController{
         cardCollectionView.register(FileCell.self, forCellWithReuseIdentifier: "CellId")
         cardCollectionKeywords.delegate = self
         cardCollectionKeywords.dataSource = self
+        cardCollectionKeywords.showsVerticalScrollIndicator = false
         cardCollectionKeywords.register(KeywordsCollectionViewCell.self, forCellWithReuseIdentifier: "CellId2")
         setUpLayoutCardCollectionView()
         setUpConstraints()
@@ -227,7 +228,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId2", for: indexPath) as! KeywordsCollectionViewCell
             cell.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
-            cell.labelTitle.text = arrayString?[indexPath.item] ?? "No Keywords Inserted"
+            cell.labelTitle.text = arrayString?[indexPath.item] ?? "No Keywords Taken"
             cell.alpha = 0
             UIView.animate(withDuration: 0.3) {
                 cell.alpha = 1
@@ -249,7 +250,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         var size : CGSize = CGSize()
         if collectionView == cardCollectionKeywords{
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
-            let element = arrayString?[indexPath.item] ?? ("No Keywords Inserted" as NSString) as String
+            let element = arrayString?[indexPath.item] ?? ("No Keywords Taken" as NSString) as String
             let stringSize = element.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0)])
             size = CGSize(width: stringSize.width+40, height: 40)
         }

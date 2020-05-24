@@ -20,7 +20,7 @@ class TutorialViewController: UIViewController {
                        title: "File Manager",
                        description: "Upload or Scan your files and \nstart your speed reading!",
                        pageIcon: #imageLiteral(resourceName: "pagecontrol"),
-                       color: #colorLiteral(red: 0.5632914901, green: 0.4769576788, blue: 1, alpha: 1),
+                       color: .clear,
                        titleColor: .white,
                        descriptionColor: .white,
                        titleFont: FontKit.roundedFont(ofSize: 34, weight: .bold),
@@ -30,7 +30,7 @@ class TutorialViewController: UIViewController {
                        title: "Reading Desk",
                        description: "Manage your files as well\n as keywords! ",
                        pageIcon: #imageLiteral(resourceName: "pagecontrol"),
-                       color: #colorLiteral(red: 0.5224255919, green: 0.4336446226, blue: 0.97723037, alpha: 1),
+                       color: .clear,
                        titleColor: .white,
                        descriptionColor: .white,
                        titleFont: FontKit.roundedFont(ofSize: 34, weight: .bold),
@@ -40,7 +40,7 @@ class TutorialViewController: UIViewController {
                        title: "Exercises",
                        description: "Choose between three types\n of exercises in order to improve\n your skills!",
                        pageIcon: #imageLiteral(resourceName: "pagecontrol") ,
-                       color: #colorLiteral(red: 0.4855933785, green: 0.4067794085, blue: 0.9202699661, alpha: 1),
+                       color: .clear,
                        titleColor: .white,
                        descriptionColor: .white,
                        titleFont: FontKit.roundedFont(ofSize: 34, weight: .bold),
@@ -97,7 +97,7 @@ extension TutorialViewController: PaperOnboardingDelegate {
         
         item.titleCenterConstraint?.constant = -10
         item.descriptionCenterConstraint?.constant = 10
-        
+        item.superview!.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         
         // configure item
         

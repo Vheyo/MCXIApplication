@@ -35,7 +35,7 @@ class RomboExcerciesViewController : UIViewController{
     private var playButton : UIButton = {
         let playButton = UIButton()
         playButton.translatesAutoresizingMaskIntoConstraints = false
-        playButton.setTitle("Go On", for: .normal)
+        playButton.setTitle("Increase", for: .normal)
         playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         playButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         playButton.addTarget(self, action: #selector(showText), for: .touchUpInside)
@@ -71,7 +71,7 @@ class RomboExcerciesViewController : UIViewController{
     private var replyButton : UIButton = {
         let replyButton = UIButton()
         replyButton.translatesAutoresizingMaskIntoConstraints = false
-        replyButton.setTitle("Reply", for: .normal)
+        replyButton.setTitle("Retry", for: .normal)
         replyButton.setTitleColor(.white, for: .normal)
         replyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         replyButton.addTarget(self, action: #selector(replyEx), for: .touchUpInside)
