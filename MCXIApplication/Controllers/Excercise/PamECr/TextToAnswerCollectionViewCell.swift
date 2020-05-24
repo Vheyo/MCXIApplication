@@ -9,16 +9,23 @@
 import UIKit
 
 class TextToAnswerCollectionViewCell: UICollectionViewCell {
-    
-    
+    var nameImage : [String] = ["PamCrRomaV","PamCrMedic","PamCrAmerica"]
+    var nameImageBianche : [String] = ["PamCrRomaW","PamCrMedicBianca","PamCrAmericaBianca"]
     private var containerView : UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .white
         containerView.layer.cornerRadius =  15
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        containerView.layer.borderWidth = 2
+        containerView.layer.masksToBounds = true
         return containerView
+    }()
+    
+    var containerImage : UIImageView = {
+        let containerImage = UIImageView()
+        containerImage.translatesAutoresizingMaskIntoConstraints = false
+        containerImage.layer.masksToBounds = true
+        containerImage.contentMode = .scaleAspectFill
+        return containerImage
     }()
     
     private var titleLabel : UILabel = {
@@ -26,7 +33,9 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         titleLabel.text = "Titolo del Testo"
         titleLabel.backgroundColor = .clear
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        titleLabel.textAlignment = .center
+        titleLabel.font = FontKit.roundedFont(ofSize: 20, weight: .bold)
+        titleLabel.textColor = #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1)
         return titleLabel
     }()
     
@@ -36,14 +45,14 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
                 self.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 UIView.animate(withDuration: 0.5) {
                     self.transform = CGAffineTransform.identity
-                    self.containerView.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
                     self.titleLabel.textColor = .white
+                    self.containerImage.image = UIImage(named: self.nameImage[self.containerImage.tag])
                 }
             }
             else {
                 UIView.animate(withDuration: 0.1) {
-                    self.containerView.backgroundColor = .white
-                    self.titleLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+                    self.titleLabel.textColor = #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1)
+                    self.containerImage.image = UIImage(named: self.nameImageBianche[self.containerImage.tag])
                 }
             }
         }
@@ -60,27 +69,34 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
     
     func setUpConstraints(){
         self.addSubview(containerView)
-        containerView.addShadowView2()
-        containerView.addSubview(titleLabel)
         
+
+        containerView.addSubview(containerImage)
+        containerImage.addSubview(titleLabel)
+        containerView.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5529411765, green: 0.4156862745, blue: 1, alpha: 1) , shadowRadius: 6.5, shadowOpacity: 0.3, offsetY: 5, offsetX: 0, widthOffset : 0.9)
         NSLayoutConstraint.activate([
-        
-            containerView.topAnchor.constraint(equalTo: self.topAnchor),
-            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             
-            titleLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor,constant:  10),
-            titleLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
+            containerView.topAnchor.constraint(equalTo: self.topAnchor,  constant: 10),
+            containerView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -10),
+            containerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            containerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10),
+            
+            containerImage.topAnchor.constraint(equalTo: containerView.topAnchor),
+            containerImage.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            containerImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            containerImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            
+            
+            titleLabel.centerYAnchor.constraint(equalTo: containerImage.centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: containerImage.leadingAnchor,constant:  10),
+            titleLabel.trailingAnchor.constraint(equalTo: containerImage.trailingAnchor, constant: -10)
         
         ])
-        
-        containerView.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 4, shadowOpacity: 0.3,shadowOffset : CGSize(width: 0.8, height: 0.8),offsetY: 4, offsetX: 0)
         
         
     }
     
+  
   
 
 }

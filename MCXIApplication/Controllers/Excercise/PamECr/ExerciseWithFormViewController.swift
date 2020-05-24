@@ -163,6 +163,11 @@ class ExerciseWithFormViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.buttonPlay.alpha = 1
                 self.buttonPlay.isEnabled = true
+                if self.shadow == nil {
+                    self.shadow = self.buttonPlay.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.4, offsetY: 3.5, offsetX: 0)
+                }
+                
+                
             }
             
         }
@@ -170,6 +175,13 @@ class ExerciseWithFormViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.buttonPlay.alpha = 1
                 self.buttonPlay.isEnabled = true
+                self.buttonPlay.alpha = 1
+                self.buttonPlay.isEnabled = true
+                if self.shadow == nil {
+                    self.shadow = self.buttonPlay.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.4, offsetY: 3.5, offsetX: 0)
+                }
+                
+                
             }
             
         }
@@ -177,6 +189,13 @@ class ExerciseWithFormViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.buttonPlay.alpha = 1
                 self.buttonPlay.isEnabled = true
+                self.buttonPlay.alpha = 1
+                self.buttonPlay.isEnabled = true
+                if self.shadow == nil {
+                    self.shadow = self.buttonPlay.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.4, offsetY: 3.5, offsetX: 0)
+                }
+                
+
                 
             }
         }
@@ -184,6 +203,12 @@ class ExerciseWithFormViewController: UIViewController {
             UIView.animate(withDuration: 0.5) {
                 self.buttonPlay.alpha = 1
                 self.buttonPlay.isEnabled = true
+                self.buttonPlay.alpha = 1
+                self.buttonPlay.isEnabled = true
+                if self.shadow == nil {
+                     self.shadow = self.buttonPlay.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.4, offsetY: 3.5, offsetX: 0)
+                }
+               
             }
             
         }
@@ -272,7 +297,14 @@ class ExerciseWithFormViewController: UIViewController {
             textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
         ])
+        
+        buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        buttonPlay.layer.masksToBounds = true
+        buttonPlay.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: view.frame.width-120, height: 70), livello : 0)
+        shadow = buttonPlay.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.4, offsetY: 3.5, offsetX: 0)
     }
+    
+    var shadow : ShadowView!
     
     func setUpConstraints(){
         self.view.addSubview(formQA)
@@ -392,6 +424,8 @@ class ExerciseWithFormViewController: UIViewController {
     @objc func playMode(_ sender : UIButton){
         if numberCount == 0 {
             buttonPlay.alpha = 0.3
+            shadow.removeFromSuperview()
+            shadow = nil
             buttonPlay.isEnabled = false
             diff = CFAbsoluteTimeGetCurrent() - start
             textToRead.removeFromSuperview()
@@ -401,6 +435,8 @@ class ExerciseWithFormViewController: UIViewController {
         }
         else if numberCount == 2 {
             buttonPlay.alpha = 0.3
+            shadow.removeFromSuperview()
+            shadow = nil
             buttonPlay.isEnabled = false
             if(checkAnswer() == true){
                 numberOfAnswerTrue+=1

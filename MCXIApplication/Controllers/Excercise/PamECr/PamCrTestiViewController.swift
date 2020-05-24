@@ -10,6 +10,7 @@ import UIKit
 
 class PamCrTestiViewController: UIViewController {
     
+    var nameImage : [String] = ["PamCrRomaW","PamCrMedicBianca","PamCrAmericaBianca"]
     
     private let backButton : UIButton = {
         let backButton = UIButton()
@@ -71,6 +72,12 @@ class PamCrTestiViewController: UIViewController {
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.cardCollectionView.reloadData()
+        self.playButton.alpha = 0.3
+        self.separator.alpha = 0.3
     }
     
     
@@ -139,6 +146,8 @@ extension PamCrTestiViewController : UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! TextToAnswerCollectionViewCell
+        cell.containerImage.image = UIImage(named: nameImage[indexPath.item])
+        cell.containerImage.tag = indexPath.item
         return cell
     }
     
