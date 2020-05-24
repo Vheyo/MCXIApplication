@@ -136,6 +136,7 @@ class CopriScopriViewController: UIViewController {
             timerView.widthAnchor.constraint(equalToConstant: 100),
    
         ])
+        timerView.addShadowView(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6039215686, green: 0.6039215686, blue: 0.6039215686, alpha: 1), shadowRadius: 10, shadowOpacity: 0.5)
     }
     
     func setUpConstraints(){

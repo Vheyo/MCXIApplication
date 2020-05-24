@@ -28,7 +28,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             
             deleteTimer()
             let value = Int(dropDownButtonTime.currentTitle!)
-            if dropUpButtonTime.currentTitle != "W"{
+            if dropUpButtonTime.currentTitle != "WPM"{
                 Pam = (60/Float(value!*100))*Float(Int(dropUpButtonTime.currentTitle!)!)
             }
             else{
@@ -143,8 +143,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropUpButtonTime.clipsToBounds = true
         dropUpButtonTime.tag = 1
         dropUpButtonTime.alpha = 0.0
-        
-        
+        dropUpButtonTime.backgroundColor = .white
         return dropUpButtonTime
     }()
     
@@ -161,8 +160,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropDownButtonTime.clipsToBounds = true
         dropDownButtonTime.tag = 2
         dropDownButtonTime.alpha = 0.0
-        
-        
+        dropDownButtonTime.backgroundColor = .white
         return dropDownButtonTime
     }()
     
@@ -189,6 +187,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         keywordButton.layer.borderWidth = 2
         keywordButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         keywordButton.layer.cornerRadius = 25
+        keywordButton.backgroundColor = .white
         keywordButton.addTarget(self, action: #selector(addKeyword), for: .touchUpInside)
         keywordButton.alpha = 0.0
         return keywordButton
@@ -238,6 +237,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.alpha = 1.0
         dropUpButtonTime.alpha = 1.0
         dropDownButtonTime.alpha = 1.0
+        self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
             self.hidden = false
@@ -427,6 +430,9 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         timerView.addShadowView2()
     }
     
+    var shadowDropUpButtonTime : ShadowView!
+    var shadowDropDownButtonTime : ShadowView!
+    var shadowKeywordButton : ShadowView!
     
     @objc func hideFunction(){
         //        if hidden == false && (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
@@ -441,7 +447,11 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                     self.forwardButton.alpha = 0.0
                     self.backButton.alpha = 0.0
                     self.keywordButton.alpha = 0.0
-                   
+                    self.shadowDropUpButtonTime.removeFromSuperview()
+                    self.shadowDropDownButtonTime.removeFromSuperview()
+                    self.shadowKeywordButton.removeFromSuperview()
+                    
+
                 }, completion: {_ in self.hidden = true})
             }
             
@@ -456,6 +466,11 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.forwardButton.alpha = 1.0
                 self.backButton.alpha = 1.0
                 self.keywordButton.alpha = 1.0
+                self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+                self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+                self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+                
+            
                  self.deleteTimer()
             },completion: {_ in self.hidden = false})
         }
@@ -531,12 +546,6 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             
         ])
         
-//        keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-//        dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-//        dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-//        playButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-//        forwardButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-//        backButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
     }
     
     @objc func dismissView(){
