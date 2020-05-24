@@ -98,10 +98,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-            
-            print(self.bufferString)
-        })
+//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+//            
+//            print(self.bufferString)
+//        })
         
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
