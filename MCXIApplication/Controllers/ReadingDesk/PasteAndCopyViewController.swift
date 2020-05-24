@@ -28,7 +28,7 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
            buttonPlay.setTitleColor(.white, for: .normal)
            buttonPlay.translatesAutoresizingMaskIntoConstraints = false
            buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
-           buttonPlay.layer.cornerRadius = 16
+           buttonPlay.layer.cornerRadius = 30
            buttonPlay.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
            return buttonPlay
        }()
@@ -83,26 +83,29 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
         textToRead.inputAccessoryView = toolbar
     }
    
-   func setUpTextToRead(){
-          self.view.addSubview(textToRead)
-          self.view.addSubview(buttonPlay)
-          self.view.addSubview(backButton)
-          NSLayoutConstraint.activate([
-              
-              backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-              backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-                          
-              buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
-              buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
-              buttonPlay.heightAnchor.constraint(equalToConstant: 70),
-              buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
-              
-              textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
-              textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
-              textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
-              textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
-          ])
-      }
+    func setUpTextToRead(){
+        self.view.addSubview(textToRead)
+        self.view.addSubview(buttonPlay)
+        self.view.addSubview(backButton)
+        NSLayoutConstraint.activate([
+            
+            backButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
+            
+            buttonPlay.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 60),
+            buttonPlay.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -60),
+            buttonPlay.heightAnchor.constraint(equalToConstant: 70),
+            buttonPlay.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -80),
+            
+            textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+            textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
+            textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
+        ])
+        buttonPlay.layer.masksToBounds = true
+        buttonPlay.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: view.frame.width-120, height: 70))
+        buttonPlay.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.4, offsetY: 3.5, offsetX: 0)
+    }
     
     @objc func saveAction(){
         let lastFilenum = UserDefaults.standard.integer(forKey: "numFile")+1
