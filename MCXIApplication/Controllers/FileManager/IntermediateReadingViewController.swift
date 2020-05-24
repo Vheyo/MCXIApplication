@@ -11,27 +11,26 @@ import UIKit
 class IntermediateReadingViewController: UIViewController{
     var nameFile = String()
     
-     var textToRead : UITextView = {
-           let textToRead = UITextView()
-           textToRead.translatesAutoresizingMaskIntoConstraints = false
-           textToRead.textAlignment = .center
-           textToRead.showsVerticalScrollIndicator = false
-           textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
-           
-           return textToRead
-       }()
-       
-     private var buttonPlay : UIButton = {
-            let buttonPlay = UIButton()
-            buttonPlay.setTitle("Play", for: .normal)
-            buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-            buttonPlay.setTitleColor(.white, for: .normal)
-            buttonPlay.translatesAutoresizingMaskIntoConstraints = false
-            buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
-            buttonPlay.layer.cornerRadius = 16
-            buttonPlay.addTarget(self, action: #selector(playAction), for: .touchUpInside)
-            return buttonPlay
-        }()
+    var textToRead : UITextView = {
+        let textToRead = UITextView()
+        textToRead.translatesAutoresizingMaskIntoConstraints = false
+        textToRead.textAlignment = .center
+        textToRead.showsVerticalScrollIndicator = false
+        textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        return textToRead
+    }()
+    
+    private var buttonPlay : UIButton = {
+        let buttonPlay = UIButton()
+        buttonPlay.setTitle("Play", for: .normal)
+        buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        buttonPlay.setTitleColor(.white, for: .normal)
+        buttonPlay.translatesAutoresizingMaskIntoConstraints = false
+        buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+        buttonPlay.layer.cornerRadius = 16
+        buttonPlay.addTarget(self, action: #selector(playAction), for: .touchUpInside)
+        return buttonPlay
+    }()
     
     private var saveButton : UIButton = {
         let saveButton = UIButton()
@@ -41,6 +40,7 @@ class IntermediateReadingViewController: UIViewController{
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         saveButton.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
         saveButton.layer.cornerRadius = 16
+        saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         return saveButton
     }()
     
@@ -54,31 +54,31 @@ class IntermediateReadingViewController: UIViewController{
         backButton.titleLabel?.textAlignment = .left
         return backButton
     }()
-          
-       
-       
-       
-       override func viewDidLoad() {
-           setUpTextToRead()
+    
+    
+    
+    
+    override func viewDidLoad() {
+        setUpTextToRead()
         view.backgroundColor = .white
         setUpTextField()
-       }
+    }
     
     @objc func dismissKeyboard(){
-           self.view.endEditing(true)
-       }
-       
-       func setUpTextField(){
-           let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
-           
-           let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-           
-           let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
-           toolbar.setItems([flexSpace,doneButton], animated: false)
-           toolbar.sizeToFit()
-           
-           textToRead.inputAccessoryView = toolbar
-       }
+        self.view.endEditing(true)
+    }
+    
+    func setUpTextField(){
+        let toolbar = UIToolbar(frame: CGRect(origin: .zero, size: .init(width: view.frame.size.width, height: 30)))
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        toolbar.setItems([flexSpace,doneButton], animated: false)
+        toolbar.sizeToFit()
+        
+        textToRead.inputAccessoryView = toolbar
+    }
     
     
     
@@ -102,7 +102,7 @@ class IntermediateReadingViewController: UIViewController{
             saveButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             saveButton.heightAnchor.constraint(equalToConstant: 70),
             saveButton.centerYAnchor.constraint(equalTo: buttonPlay.centerYAnchor),
-          
+            
             
             
             textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
@@ -122,5 +122,26 @@ class IntermediateReadingViewController: UIViewController{
         vc.view.backgroundColor = .white
         vc.nameFile = nameFile
         present(vc,animated: true)
+    }
+    
+    
+    @objc func saveAction(){
+      
+        let file = "\(nameFile).txt"
+        let text = textToRead.text
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+            // aggiungiamo il file alla directory
+            let fileURL = dir.appendingPathComponent(file)
+            // Scriviamo il contenuto nel file
+            
+            do{
+                try text?.write(to: fileURL, atomically: false, encoding: .utf8)
+                UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
+            }catch{
+                print("cant write...")
+            }
+        }
+        dismissView()
+        
     }
 }
