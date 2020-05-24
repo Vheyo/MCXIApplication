@@ -278,9 +278,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 }
                 let myMutableString = NSMutableAttributedString(string: textToShow as String, attributes: [NSAttributedString.Key.font:FontKit.roundedFont(ofSize: 24, weight: .semibold)])
                 let (startingIndex, lenghtIndex) = String(textToShow).findMiddle()
-                if (textToShow[startingIndex...startingIndex+1].contains()){
-                    
-                    }
+              
                 
                 myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 142/255, green: 106/255, blue: 255/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
                 
