@@ -35,6 +35,7 @@ class FilesViewController : UIViewController{
         cardCollectionView.isScrollEnabled = true
         cardCollectionView.translatesAutoresizingMaskIntoConstraints = false
         cardCollectionView.backgroundColor = .white
+        
         return cardCollectionView
     }()
     
@@ -222,7 +223,9 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         indexPath: IndexPath) -> UICollectionViewCell {
         
         if collectionView == cardCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! FileCell
+            cell.nameFileLabel.text = "File \(currentPage)"
+            
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId2", for: indexPath) as! KeywordsCollectionViewCell
