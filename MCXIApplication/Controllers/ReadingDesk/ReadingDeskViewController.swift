@@ -198,26 +198,26 @@ class ReadingDeskViewController: UIViewController {
     
     
     @objc func addFile(_ sender : Any){
-        let alert = UIAlertController(title: "Add File", message: "Please Select an Option", preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Add File", message: "Select an Option", preferredStyle: .actionSheet)
         
-        alert.addAction(UIAlertAction(title: "Scan Images", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Scan", style: .default , handler:{ (UIAlertAction)in
             print("User click Approve button")
           self.performSegue(withIdentifier: "navigation", sender: self)
 //            self.present(OcrViewController(),animated: true)
         }))
         
-        alert.addAction(UIAlertAction(title: "Import Pdf", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Import File", style: .default , handler:{ (UIAlertAction)in
             self.importPdf()
             
         }))
-       alert.addAction(UIAlertAction(title: "Scrivi Testo", style: .default , handler:{ (UIAlertAction)in
+       alert.addAction(UIAlertAction(title: "Write Text", style: .default , handler:{ (UIAlertAction)in
                  let vc = PasteAndCopyViewController()
         vc.view.backgroundColor = .white
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc,animated: true)
                   
               }))
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
             print("User click Dismiss button")
         }))
         
@@ -249,12 +249,12 @@ class ReadingDeskViewController: UIViewController {
     
     
     @objc func timerAnimation(){
-        let actionSheet = UIAlertController(title: "Seleziona il tempo dell'esercizio \n\n\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "Choose the time of reading \n\n\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         let view = timerPickerView(frame: CGRect(x: 8.0, y: 8.0, width: actionSheet.view.bounds.size.width - 8.0 * 4.5, height: 200.0))
         actionSheet.view.addSubview(view)
         
         actionSheet.addAction(UIAlertAction(title: "Done", style: .default, handler: { (ACTION :UIAlertAction!)in
-            self.someTextLabel.text = "\(view.hour)"+" ore "+"\(view.minutes)"+" min "+"\(view.seconds)"
+            self.someTextLabel.text = "\(view.hour)"+" h "+"\(view.minutes)"+" min "+"\(view.seconds)"
         }))
         
         actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
