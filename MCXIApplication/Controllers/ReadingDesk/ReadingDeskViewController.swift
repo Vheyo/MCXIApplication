@@ -152,7 +152,7 @@ class ReadingDeskViewController: UIViewController {
         self.view.addSubview(backgroundImageView)
         self.view.addSubview(titleTextLabel)
         playButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-//        playButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1))
+        playButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: 270, height: 60))
         backgroundImageView.addSubview(circleView)
         self.view.addSubview(playButton)
         self.view.addSubview(timeTextRead)
@@ -336,15 +336,17 @@ extension UserDefaults {
         }
 }
 
-//extension UIView {
-//    func setGradientBackground(colorOne: UIColor, colorTwo : UIColor){
-//        let gradientLayer = CAGradientLayer()
-//        gradientLayer.frame = bounds
-//        gradientLayer.colors = [ colorOne.cgColor, colorTwo.cgColor]
-//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
-//        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
-//        layer.insertSublayer(gradientLayer, at: 0)
-//    }
-//}
+extension UIView {
+    func setGradientBackground(colorOne: UIColor, colorTwo : UIColor, frame : CGRect, livello : UInt32 = 0){
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = frame
+        gradientLayer.colors = [ colorOne.cgColor, colorTwo.cgColor]
+        gradientLayer.locations = [0.0 , 0.7]
+        gradientLayer.startPoint = CGPoint(x: 0 , y: 0.4)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+        layer.insertSublayer(gradientLayer, at: livello)
+        
+    }
+}
 
 
