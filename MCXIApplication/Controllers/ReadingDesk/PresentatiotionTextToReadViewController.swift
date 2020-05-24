@@ -63,7 +63,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     private var textTitle : UILabel = {
         let textTitle = UILabel()
         textTitle.translatesAutoresizingMaskIntoConstraints = false
-        textTitle.text = " Tap To Start To Read "
+        textTitle.text = " Tap To Start Reading "
         textTitle.textAlignment = .center
         return textTitle
     }()
@@ -132,7 +132,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var dropUpButtonTime : DropUpButton = {
         let dropUpButtonTime = DropUpButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        dropUpButtonTime.setTitle("W", for: .normal)
+        dropUpButtonTime.setTitle("N", for: .normal)
         dropUpButtonTime.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         dropUpButtonTime.translatesAutoresizingMaskIntoConstraints = false
         dropUpButtonTime.layer.borderColor = UIColor.black.cgColor
@@ -169,7 +169,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var backButtonView : UIButton = {
         let backButtonView = UIButton()
-        backButtonView.setTitle("Back", for: .normal)
+        backButtonView.setTitle("back", for: .normal)
         backButtonView.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
         backButtonView.alpha = 0.0
@@ -249,8 +249,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     func activateTimer(){
         reading = true
-        print("Sto leggendo")
-        if dropUpButtonTime.currentTitle != "W"{
+        if dropUpButtonTime.currentTitle != "N"{
             self.initialTimer = indexWord+Int(dropUpButtonTime.currentTitle!)!
             self.initialIndex = indexWord
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
