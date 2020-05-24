@@ -118,7 +118,7 @@ class Type2ViewController: UIViewController {
     func setUpLayoutButtonPlay(){
         descriptionExercise.isEditable = false
         buttonPlay.layer.cornerRadius = 30
-        buttonPlay.addShadowView()
+        buttonPlay.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.4, offsetY: 3.5, offsetX: 0)
     }
     
     @objc func showExcercise(_ sender : UIButton){

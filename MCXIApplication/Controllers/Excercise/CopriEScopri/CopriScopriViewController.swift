@@ -89,10 +89,6 @@ class CopriScopriViewController: UIViewController {
         newWord.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         newWord.translatesAutoresizingMaskIntoConstraints = false
         newWord.layer.cornerRadius = 0.5 * newWord.bounds.width
-        newWord.layer.shadowColor = UIColor.black.cgColor
-        newWord.layer.shadowOpacity = 0.3
-        newWord.layer.shadowOffset = .init(width: 1, height: 1)
-        newWord.layer.shadowRadius = 5
         newWord.addTarget(self, action: #selector(generateWord), for: .touchUpInside)
         return newWord
     }()
@@ -140,7 +136,6 @@ class CopriScopriViewController: UIViewController {
             timerView.widthAnchor.constraint(equalToConstant: 100),
    
         ])
-        timerView.addShadowView2()
     }
     
     func setUpConstraints(){
@@ -196,6 +191,8 @@ class CopriScopriViewController: UIViewController {
 
             
         ])
+        
+
     }
     
         
@@ -215,6 +212,7 @@ class CopriScopriViewController: UIViewController {
                 self.newWordLabel.isHidden = true
                 self.userAnswer.isHidden = false
                 self.newWordButton.isHidden = false
+//                self.newWordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3 , offsetY: 3, offsetX: 0)
                 self.lineVertical.isHidden = true
                 self.whatRead.isHidden = false
                 self.whatRead.text = "Cosa hai Letto ?"

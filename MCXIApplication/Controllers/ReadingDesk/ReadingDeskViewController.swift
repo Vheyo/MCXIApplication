@@ -47,8 +47,6 @@ class ReadingDeskViewController: UIViewController {
     private let circleView : UIView = {
         let circleView = UIView()
         circleView.backgroundColor = .white
-        circleView.frame = CGRect(x: 0, y: 0, width: 235, height: 235)
-        circleView.layer.cornerRadius = circleView.frame.width/2
         circleView.translatesAutoresizingMaskIntoConstraints = false
         return circleView
     }()
@@ -62,10 +60,7 @@ class ReadingDeskViewController: UIViewController {
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.layer.masksToBounds = true
-        playButton.layer.borderWidth = 1
-        playButton.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.layer.cornerRadius = 30
-        playButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         playButton.frame = CGRect(x: 0, y: 0, width: 235, height: 50)
         return playButton
     }()
@@ -154,20 +149,19 @@ class ReadingDeskViewController: UIViewController {
     }
     
     func setUpConstraints(){
-       
         self.view.addSubview(backgroundImageView)
         self.view.addSubview(titleTextLabel)
-//        self.view.addSubview(someTextLabel)
-        
+        playButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+//        playButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1))
         backgroundImageView.addSubview(circleView)
         self.view.addSubview(playButton)
         self.view.addSubview(timeTextRead)
         NSLayoutConstraint.activate([
             
             circleView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
-            circleView.centerYAnchor.constraint(equalTo: self.backgroundImageView.centerYAnchor, constant: -71),
-            circleView.widthAnchor.constraint(equalToConstant: 235),
-            circleView.heightAnchor.constraint(equalToConstant: 235),
+            circleView.centerYAnchor.constraint(equalTo: self.backgroundImageView.centerYAnchor, constant: -13*backgroundImageView.frame.size.height/200),
+            circleView.widthAnchor.constraint(equalToConstant: 48*view.frame.size.width/100),
+            circleView.heightAnchor.constraint(equalToConstant: 48*view.frame.size.width/100),
             
     
             titleTextLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
@@ -175,8 +169,8 @@ class ReadingDeskViewController: UIViewController {
 
             backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             backgroundImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
-            backgroundImageView.widthAnchor.constraint(equalToConstant: 293),
-            backgroundImageView.heightAnchor.constraint(equalToConstant: 437),
+            backgroundImageView.widthAnchor.constraint(equalToConstant: 70*view.frame.size.width/100),
+            backgroundImageView.heightAnchor.constraint(equalToConstant: 48*view.frame.size.height/100),
             
             
            
@@ -192,6 +186,14 @@ class ReadingDeskViewController: UIViewController {
             
         
         ])
+        
+        circleView.frame = CGRect(x: 0, y: 0, width: 48*view.frame.size.width/100, height: 48*view.frame.size.width/100)
+        circleView.layer.cornerRadius = circleView.frame.size.width/2
+        
+        circleView.addShadowView(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6039215686, green: 0.6039215686, blue: 0.6039215686, alpha: 1), shadowRadius: 10, shadowOpacity: 0.5)
+        
+        playButton.addShadowView2(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: 3.5, shadowOpacity: 0.5)
+        
     }
     
     
@@ -333,5 +335,16 @@ extension UserDefaults {
             UserDefaults.standard.synchronize()
         }
 }
+
+//extension UIView {
+//    func setGradientBackground(colorOne: UIColor, colorTwo : UIColor){
+//        let gradientLayer = CAGradientLayer()
+//        gradientLayer.frame = bounds
+//        gradientLayer.colors = [ colorOne.cgColor, colorTwo.cgColor]
+//        gradientLayer.startPoint = CGPoint(x: 0, y: 0)
+//        gradientLayer.endPoint = CGPoint(x: 1, y: 1)
+//        layer.insertSublayer(gradientLayer, at: 0)
+//    }
+//}
 
 

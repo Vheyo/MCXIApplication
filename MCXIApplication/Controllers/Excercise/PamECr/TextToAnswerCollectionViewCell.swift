@@ -76,6 +76,9 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         
         ])
         
+        containerView.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 4, shadowOpacity: 0.3,shadowOffset : CGSize(width: 0.8, height: 0.8),offsetY: 4, offsetX: 0)
+        
+        
     }
     
   

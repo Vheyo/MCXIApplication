@@ -55,7 +55,6 @@ class PamCrTestiViewController: UIViewController {
     private var cardCollectionView : UICollectionView =  {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 300, height: 130)
         layout.minimumLineSpacing = 30
         let cardCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cardCollectionView.showsVerticalScrollIndicator = false
@@ -97,11 +96,12 @@ class PamCrTestiViewController: UIViewController {
             
             
             cardCollectionView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 30),
-            cardCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 40),
-            cardCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -40),
-            cardCollectionView.heightAnchor.constraint(equalToConstant: 490),
+            cardCollectionView.heightAnchor.constraint(equalToConstant: 55*view.frame.size.height/100),
+            cardCollectionView.widthAnchor.constraint(equalToConstant: 70*view.frame.size.width/100),
+            cardCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
           
-            playButton.topAnchor.constraint(equalTo: cardCollectionView.bottomAnchor, constant: 70),
+            playButton.topAnchor.constraint(equalTo: cardCollectionView.bottomAnchor, constant: view.frame.size.height/100*5),
             playButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
             playButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             playButton.heightAnchor.constraint(equalToConstant: 42),
@@ -153,6 +153,10 @@ extension PamCrTestiViewController : UICollectionViewDataSource, UICollectionVie
         }
         playButton.isEnabled = true
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 70*view.frame.size.width/100, height: 15*view.frame.size.height/100)
     }
     
 }

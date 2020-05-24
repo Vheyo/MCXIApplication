@@ -37,7 +37,7 @@ class CheckBox: UIButton {
         self.layer.masksToBounds = true
         self.layer.borderWidth = 2
         self.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        self.layer.cornerRadius = 35
+        self.layer.cornerRadius = 28
         self.backgroundColor = unCheckedImage
         self.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         self.translatesAutoresizingMaskIntoConstraints = false

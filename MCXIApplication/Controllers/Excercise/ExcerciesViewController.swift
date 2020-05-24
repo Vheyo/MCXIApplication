@@ -55,6 +55,7 @@ extension ExcerciesViewController: UICollectionViewDataSource {
         customCell.titleLabel.text = nameExcercises[indexPath.item]
         customCell.backgroundImage.image = UIImage(named: nameImage[indexPath.item])
         cell = customCell
+        
         return cell
     }
     
@@ -99,7 +100,7 @@ extension ExcerciesViewController: CardsViewController {
 
 extension UIView {
 
-    func addShadowView(isShadowPathEnabled: Bool = true, shadowColor: UIColor = #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.5, shadowOffset: CGSize = CGSize(width: 0.3, height: 0.3)) -> ShadowView {
+    func addShadowView(isShadowPathEnabled: Bool = true, shadowColor: UIColor = #colorLiteral(red: 0.6274509804, green: 0.6274509804, blue: 0.6274509804, alpha: 1), shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.5, shadowOffset: CGSize = CGSize(width: 0, height: 0)) -> ShadowView {
         let shadowView = ShadowView()
         shadowView.translatesAutoresizingMaskIntoConstraints = false
         shadowView.isShadowPathEnabled = isShadowPathEnabled
@@ -107,6 +108,7 @@ extension UIView {
         shadowView.shadowRadius = shadowRadius
         shadowView.shadowOpacity = shadowOpacity
         shadowView.shadowOffset = shadowOffset
+        shadowView.layer.compositingFilter = "multiplyBlendMode"
         shadowView.layer.cornerRadius = layer.cornerRadius
         superview?.insertSubview(shadowView, belowSubview: self)
         
@@ -118,7 +120,7 @@ extension UIView {
         return shadowView
     }
     
-    func addShadowView2(isShadowPathEnabled: Bool = true, shadowColor: UIColor = .black, shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.1, shadowOffset: CGSize = CGSize(width: 0.3, height: 0.3)) -> ShadowView {
+    func addShadowView2(isShadowPathEnabled: Bool = true, shadowColor: UIColor = .black, shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.1, shadowOffset: CGSize = CGSize(width: 0, height: 0)) -> ShadowView {
            let shadowView = ShadowView()
            shadowView.translatesAutoresizingMaskIntoConstraints = false
            shadowView.isShadowPathEnabled = isShadowPathEnabled
@@ -132,12 +134,13 @@ extension UIView {
            shadowView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
            shadowView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
            shadowView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
-           shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 6).isActive = true
+        shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 3.5).isActive = true
            
            return shadowView
        }
     
-    func addShadowView3(isShadowPathEnabled: Bool = true, shadowColor: UIColor = .white, shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.3, shadowOffset: CGSize = CGSize(width: 0.3, height: 0.5)) -> ShadowView {
+    
+    func addShadowViewBest(isShadowPathEnabled: Bool = true, shadowColor: UIColor = .black, shadowRadius: CGFloat = 7, shadowOpacity: Float = 0.1, shadowOffset: CGSize = CGSize(width: 0, height: 0), offsetY : CGFloat, offsetX : CGFloat, heightOffset : CGFloat = 1, widthOffset : CGFloat = 1) -> ShadowView {
         let shadowView = ShadowView()
         shadowView.translatesAutoresizingMaskIntoConstraints = false
         shadowView.isShadowPathEnabled = isShadowPathEnabled
@@ -146,14 +149,18 @@ extension UIView {
         shadowView.shadowOpacity = shadowOpacity
         shadowView.shadowOffset = shadowOffset
         shadowView.layer.cornerRadius = layer.cornerRadius
+        shadowView.layer.compositingFilter = "multiplyBlendMode"
         superview?.insertSubview(shadowView, belowSubview: self)
         
-        shadowView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
-        shadowView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 1).isActive = true
-        shadowView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 10).isActive = true
-        shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 10).isActive = true
+        
+        shadowView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: widthOffset).isActive = true
+        shadowView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: heightOffset).isActive = true
+        shadowView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: offsetX).isActive = true
+        shadowView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: offsetY).isActive = true
         
         return shadowView
     }
+    
+    
 }
 

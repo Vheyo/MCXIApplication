@@ -44,7 +44,6 @@ class FormCopriScopriViewController: UIViewController {
         verticalStack.axis = .vertical
         verticalStack.backgroundColor = .red
         verticalStack.translatesAutoresizingMaskIntoConstraints = false
-        verticalStack.spacing = 15
         verticalStack.distribution = .fillEqually
         return verticalStack
     }()
@@ -84,8 +83,6 @@ class FormCopriScopriViewController: UIViewController {
         decreaseNumberOfWord.setTitle("-", for: .normal)
         decreaseNumberOfWord.setTitleColor(.white, for: .normal)
         decreaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        decreaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-        decreaseNumberOfWord.layer.cornerRadius = 0.5 * decreaseNumberOfWord.bounds.size.width
         decreaseNumberOfWord.addTarget(self, action: #selector(decreaseWordAction), for: .touchUpInside)
         return decreaseNumberOfWord
     }()
@@ -104,11 +101,9 @@ class FormCopriScopriViewController: UIViewController {
         let increaseNumberOfWord = UIButton()
         increaseNumberOfWord.translatesAutoresizingMaskIntoConstraints = false
         increaseNumberOfWord.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        increaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
         increaseNumberOfWord.setTitle("+", for: .normal)
         increaseNumberOfWord.setTitleColor(.white, for: .normal)
         increaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        increaseNumberOfWord.layer.cornerRadius = 0.5 * increaseNumberOfWord.bounds.size.width
         increaseNumberOfWord.addTarget(self, action: #selector(increaseWordAction), for: .touchUpInside)
         return increaseNumberOfWord
     }()
@@ -117,7 +112,7 @@ class FormCopriScopriViewController: UIViewController {
         let stackHorizontalNumber = UIStackView()
         stackHorizontalNumber.translatesAutoresizingMaskIntoConstraints = false
         stackHorizontalNumber.axis = .horizontal
-        stackHorizontalNumber.spacing = 35
+        stackHorizontalNumber.spacing = 27
         stackHorizontalNumber.distribution = .fillEqually
         return stackHorizontalNumber
     }()
@@ -126,11 +121,9 @@ class FormCopriScopriViewController: UIViewController {
         let decreaseTime = UIButton()
         decreaseTime.translatesAutoresizingMaskIntoConstraints = false
         decreaseTime.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        decreaseTime.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
         decreaseTime.setTitle("-", for: .normal)
         decreaseTime.setTitleColor(.white, for: .normal)
         decreaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        decreaseTime.layer.cornerRadius = 0.5 * decreaseTime.bounds.size.width
         decreaseTime.addTarget(self, action: #selector(decreaseTimeAction), for: .touchUpInside)
         return decreaseTime
     }()
@@ -152,8 +145,6 @@ class FormCopriScopriViewController: UIViewController {
         increaseTime.setTitle("+", for: .normal)
         increaseTime.setTitleColor(.white, for: .normal)
         increaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-        increaseTime.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
-        increaseTime.layer.cornerRadius = 0.5 * increaseTime.bounds.size.width
         increaseTime.addTarget(self, action: #selector(increaseTimeAction), for: .touchUpInside)
         return increaseTime
     }()
@@ -162,7 +153,7 @@ class FormCopriScopriViewController: UIViewController {
         let stackHorizontalTime = UIStackView()
         stackHorizontalTime.translatesAutoresizingMaskIntoConstraints = false
         stackHorizontalTime.axis = .horizontal
-        stackHorizontalTime.spacing = 35
+        stackHorizontalTime.spacing = 27
         stackHorizontalTime.distribution = .fillEqually
         return stackHorizontalTime
     }()
@@ -206,9 +197,6 @@ class FormCopriScopriViewController: UIViewController {
     }
     
     func setUpTargetButton(){
-        buttonNumber.addShadowView()
-        buttonLettereMaisc.addShadowView()
-        buttonLettereMin.addShadowView()
         backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
     }
     
@@ -231,6 +219,7 @@ class FormCopriScopriViewController: UIViewController {
         view.addSubview(playButton)
         view.addSubview(separator)
         view.addSubview(descriptionLabelNumber)
+        verticalStack.spacing = 2.33*view.frame.height/100
         let guide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
             
@@ -245,14 +234,14 @@ class FormCopriScopriViewController: UIViewController {
             descriptionLabel.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
             
             verticalStack.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 35),
-            verticalStack.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70),
-            verticalStack.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -70),
-            verticalStack.heightAnchor.constraint(equalToConstant: 230),
+            verticalStack.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            verticalStack.widthAnchor.constraint(equalToConstant: 64*view.frame.size.width/100),
+            verticalStack.heightAnchor.constraint(equalToConstant: 25.5*view.frame.size.height/100),
             
             stackHorizontalTime.topAnchor.constraint(equalTo: verticalStack.bottomAnchor, constant: 35),
-            stackHorizontalTime.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70),
-            stackHorizontalTime.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -70),
-            stackHorizontalTime.heightAnchor.constraint(equalToConstant: 70),
+            stackHorizontalTime.heightAnchor.constraint(equalToConstant:7.6*view.frame.size.height/100),
+            stackHorizontalTime.widthAnchor.constraint(equalToConstant: 63*view.frame.size.width/100),
+            stackHorizontalTime.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             
             descriptionLabelNumber.topAnchor.constraint(equalTo: stackHorizontalTime.bottomAnchor, constant: 50),
@@ -262,11 +251,11 @@ class FormCopriScopriViewController: UIViewController {
             
             
             stackHorizontalNumber.topAnchor.constraint(equalTo: descriptionLabelNumber.bottomAnchor, constant: 25),
-            stackHorizontalNumber.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 70),
-            stackHorizontalNumber.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -70),
-            stackHorizontalNumber.heightAnchor.constraint(equalToConstant: 70),
+            stackHorizontalNumber.widthAnchor.constraint(equalToConstant: 63*view.frame.size.width/100),
+            stackHorizontalNumber.heightAnchor.constraint(equalToConstant: 7.6*view.frame.size.height/100),
+            stackHorizontalNumber.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                         
-            playButton.topAnchor.constraint(equalTo: stackHorizontalNumber.bottomAnchor, constant: 60),
+            playButton.topAnchor.constraint(equalTo: stackHorizontalNumber.bottomAnchor, constant: 5*view.frame.size.height/100),
             playButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
             playButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
             playButton.heightAnchor.constraint(equalToConstant: 42),
@@ -279,6 +268,24 @@ class FormCopriScopriViewController: UIViewController {
             
             
         ])
+        
+        decreaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 16*view.frame.size.width/100, height: 7.6*view.frame.size.height/100)
+        decreaseNumberOfWord.layer.cornerRadius = 0.5 * decreaseNumberOfWord.frame.size.width
+        
+        increaseNumberOfWord.frame = CGRect(x: 0, y: 0, width: 16*view.frame.size.width/100, height: 7.6*view.frame.size.height/100)
+        increaseNumberOfWord.layer.cornerRadius = 0.5 * increaseNumberOfWord.frame.size.width
+        
+        increaseTime.frame = CGRect(x: 0, y: 0, width: 16*view.frame.size.width/100, height: 7.6*view.frame.size.height/100)
+        increaseTime.layer.cornerRadius = 0.5 * increaseTime.frame.size.width
+        
+        decreaseTime.frame = CGRect(x: 0, y: 0, width: 16*view.frame.size.width/100, height: 7.6*view.frame.size.height/100)
+        decreaseTime.layer.cornerRadius = 0.5 * decreaseTime.frame.size.width
+        
+        buttonNumber.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 4, shadowOpacity: 0.3, offsetY: 4, offsetX: 0)
+        buttonLettereMin.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 4, shadowOpacity: 0.3, offsetY: 4, offsetX: 0)
+        buttonLettereMaisc.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 4, shadowOpacity: 0.3, offsetY: 4, offsetX: 0)
+        
+        
     }
     
     @objc func changeButtonStart(){
