@@ -53,7 +53,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         setupVision();
         pagineCounter = 0;
         imageCenter = imageView.center
-        
+        tempImageView.image = #imageLiteral(resourceName: "OcrNoFile")
         imagePicker.delegate = self
         
         scanButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(PhotoScan))
