@@ -28,6 +28,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     var pagineCounter : Int!
     var bufferString = [String]()
     var saveTxt = false
+    var allSelected = false
     
     var selectAllButton: UIBarButtonItem!
     var resetButton: UIBarButtonItem!
@@ -74,9 +75,9 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         resetButton.isEnabled = false
         cropButton.isEnabled = false
         
-//        let tap = UITapGestureRecognizer(target: self, action: #selector(PhotoScan));
-//        tap.numberOfTouchesRequired = 1;
-//        scanButton.addGestureRecognizer(tap);
+        //        let tap = UITapGestureRecognizer(target: self, action: #selector(PhotoScan));
+        //        tap.numberOfTouchesRequired = 1;
+        //        scanButton.addGestureRecognizer(tap);
         
         let resetTap = UITapGestureRecognizer(target: self, action: #selector(tap2Reset))
         resetTap.numberOfTapsRequired = 2;
@@ -97,11 +98,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
-//                Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-//                    print(self.resultText.text)
-//                    print(self.pagineCounter)
-//                    print(self.bufferString)
-//                })
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+            
+            print(self.bufferString)
+        })
         
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -123,9 +123,35 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     
     @IBAction func exitPressed(_ sender: Any) {
-        dismiss(animated: true, completion: {
-            print("dismissed")
-        })
+        var filled = false
+        for string in bufferString{
+            if string != ""{
+                filled = true
+            }
+        }
+        
+        if(filled){
+            let alert = UIAlertController(title: "Attenzione", message: "Continuando perderai tutte le tue modifiche", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Annulla", style: .cancel, handler: { (action) in
+                alert.dismiss(animated: true, completion: {
+                    //                self.saveButton.isHidden = false
+                    //                self.saveButton.isEnabled = true
+                    //                self.checkmarkAnimationView.removeFromSuperview()
+                    //
+                })
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Continua comunque", style: .default, handler: {(action) in
+                alert.dismiss(animated: true, completion: {
+                    self.dismiss(animated: true, completion: nil)
+                })
+            }))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     
@@ -174,27 +200,52 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @objc func selectAll_pressed() {
-        bugged = false
-        bufferString.append(resultText.text)
-        var passingString = String()
-        for index in bufferString{
-            passingString += index
-        }
-        let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        let file = "File\(UserDefaults.standard.integer(forKey: "numFile")+1).txt"
-        let text = passingString
-        let fileUrl = dir.appendingPathComponent(file)
-        do {
-            try text.write(to: fileUrl, atomically: false, encoding: .utf8)
-            UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
-            
-        } catch {
-            print("cant write...")
+        let hud = JGProgressHUD(style: .light)
+        
+        if(pagineCounter == (pagine.count - 1)){
+            hud.textLabel.text = "Saving text..."
+            Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: {_ in
+                //                self.exit()
+            })
+        }else{
+            hud.textLabel.text = "Cropped"
         }
         
-        dismiss(animated: true, completion: {
-            print("dismissed")
-        })
+        if(hud.textLabel.text == "Saving text..."){
+            DispatchQueue.global(qos: .background).sync{
+                let indicator = JGProgressHUDRingIndicatorView()
+                hud.indicatorView = indicator
+                hud.show(in: self.view)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)){
+                    self.incrementHUD(hud, progress: 0)
+                }
+            }
+        }else{
+            let indicator = JGProgressHUDSuccessIndicatorView()
+            hud.indicatorView = indicator
+            hud.show(in: self.view)
+            hud.dismiss(afterDelay: 1)
+        }
+        resultText.text = ""
+        for i in tmpView{ i?.selected = true }
+        for sub in imageView.subviews{
+            sub.backgroundColor = .blue
+            sub.alpha = 0.2
+        }
+        //        for index in tmpView{
+        //            if(index!.selected){
+        //                bugged = true
+        //                saveTxt = true
+        //                index!.imageView.layer.borderColor = UIColor.clear.cgColor
+        //                self.croppedImage.image = self.imageView.snapshot(of: index?.imageView.frame, afterScreenUpdates: false)
+        //                self.recognizeTextInImage(self.croppedImage.image!)
+        //            }
+        //        }
+        //        print(bufferString)
+        allSelected = true
+        saveTxt = true
+        self.recognizeTextInImage(self.imageView.image!)
     }
     
     func exit(){
@@ -202,6 +253,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         for index in bufferString{
             passingString += index
         }
+        bufferString.removeAll()
+        
         let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let file = "File\(UserDefaults.standard.integer(forKey: "numFile")+1).txt"
         let text = passingString
@@ -288,6 +341,17 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     
     @objc func cropPLS(){
+        if(resultText.text == ""){
+            let hud = JGProgressHUD(style: .light)
+            let indicator = JGProgressHUDErrorIndicatorView()
+            hud.indicatorView = indicator
+            hud.textLabel.text = "Nothing to scan"
+            hud.show(in: self.view)
+            hud.dismiss(afterDelay: 1.5)
+            return ;
+        }
+        
+        
         resultText.text = ""
         for index in tmpView{
             if(index!.selected){
@@ -304,7 +368,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         if(pagineCounter == (pagine.count - 1)){
             hud.textLabel.text = "Saving text..."
             Timer.scheduledTimer(withTimeInterval: 1.5, repeats: false, block: {_ in
-//                self.exit()
+                //                self.exit()
             })
         }else{
             hud.textLabel.text = "Cropped"
@@ -326,7 +390,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
             hud.show(in: self.view)
             hud.dismiss(afterDelay: 1)
         }
-            
+        
     }
     func incrementHUD(_ hud: JGProgressHUD, progress previousProgress: Int) {
         let progress = previousProgress + 1
@@ -354,6 +418,8 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @objc func reset() {
+        
+        bufferString.removeAll()
         tempImageView.image = nil
         for sub in imageView.subviews{
             if sub.backgroundColor == .blue{
@@ -430,6 +496,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 
                 if(currentPoint.x > min_x && currentPoint.x < max_x && currentPoint.y > min_y && currentPoint.y < max_y){
                     index?.imageView.backgroundColor = .blue
+                    //0x06aff
                     index?.imageView.alpha = 0.2
                     index?.selected = true
                 }
@@ -471,7 +538,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 //Quando premo sull'icona della camera voglio presetare il controller della camera (PickerController)
                 self.present(self.imagePicker, animated: true, completion: nil)
             }))
-        
+            
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
             }))
             
@@ -483,10 +550,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Annulla", style: .cancel, handler: { (action) in
             alert.dismiss(animated: true, completion: {
-//                self.saveButton.isHidden = false
-//                self.saveButton.isEnabled = true
-//                self.checkmarkAnimationView.removeFromSuperview()
-//
+                //                self.saveButton.isHidden = false
+                //                self.saveButton.isEnabled = true
+                //                self.checkmarkAnimationView.removeFromSuperview()
+                //
             })
         }))
         
@@ -504,7 +571,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                     }
                 }
                 
-//                self.exit()
+                //                self.exit()
             })
         }))
         
@@ -544,7 +611,13 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                     if(self.bufferString.count == self.pagineCounter){
                         self.bufferString.insert("", at: self.pagineCounter)
                     }
-                    self.bufferString[self.pagineCounter] = self.resultText.text
+                    if(!self.allSelected){
+                        self.bufferString[self.pagineCounter] = self.resultText.text
+                    }
+                    else{
+                        self.allSelected = false
+                        self.bufferString[self.pagineCounter] = self.textView.text
+                    }
                 }
                 self.textView.flashScrollIndicators()
                 
