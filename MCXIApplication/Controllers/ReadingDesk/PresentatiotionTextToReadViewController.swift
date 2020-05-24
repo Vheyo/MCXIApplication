@@ -227,7 +227,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         
         UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
         print(nameFile)
-//        print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
+        //        print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
         
         
         backButton.alpha = 1.0
@@ -257,13 +257,13 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             self.initialIndex = indexWord
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
                 var range = 0..<1
-               
+                
                 if self.initialTimer >= self.textSplitted.count {
                     if self.initialIndex >= self.textSplitted.count {
                         range = self.textSplitted.count-2..<self.textSplitted.count-1
                     }
                     else{
-                    range = self.initialIndex..<self.textSplitted.count-1
+                        range = self.initialIndex..<self.textSplitted.count-1
                     }
                 }
                 else if self.initialIndex < self.initialTimer{
@@ -276,7 +276,15 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                     textToShow.append(element)
                     textToShow.append(" ")
                 }
-                self.textToRead.text = textToShow as String
+                let myMutableString = NSMutableAttributedString(string: textToShow as String, attributes: [NSAttributedString.Key.font:FontKit.roundedFont(ofSize: 24, weight: .semibold)])
+                let (startingIndex, lenghtIndex) = String(textToShow).findMiddle()
+                if (textToShow[startingIndex...startingIndex+1].contains()){
+                    
+                    }
+                
+                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 142/255, green: 106/255, blue: 255/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
+                
+                self.textToRead.attributedText = myMutableString
                 self.initialTimer = self.initialTimer+Int(self.dropUpButtonTime.currentTitle!)!
                 self.initialIndex = self.initialIndex+Int(self.dropUpButtonTime.currentTitle!)!
             })
@@ -286,7 +294,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         }
         else {
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
-                self.textToRead.text = self.textSplitted[self.indexWord]
+                let myMutableString = NSMutableAttributedString(string: self.textSplitted[self.indexWord] as String, attributes: [NSAttributedString.Key.font:FontKit.roundedFont(ofSize: 24, weight: .semibold)])
+                let (startingIndex, lenghtIndex) = String(self.textSplitted[self.indexWord]).findMiddle()
+                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 142/255, green: 106/255, blue: 255/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
+                self.textToRead.attributedText = myMutableString
                 if self.indexWord < self.textSplitted.count - 1 {
                     self.indexWord += 1
                 }
@@ -457,7 +468,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                     self.shadowDropDownButtonTime.removeFromSuperview()
                     self.shadowKeywordButton.removeFromSuperview()
                     
-
+                    
                 }, completion: {_ in self.hidden = true})
             }
             
@@ -476,8 +487,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
                 self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
                 
-            
-                 self.deleteTimer()
+                
+                self.deleteTimer()
             },completion: {_ in self.hidden = false})
         }
         
@@ -574,3 +585,48 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
 }
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    var myString:NSString = "Miaooo"
+    var myMutableString = NSMutableAttributedString()
+    
+    @IBOutlet weak var label: UILabel!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 18.0)!])
+        let (startingIndex, lenghtIndex) = String(myString).findMiddle()
+        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location: (startingIndex),length: lenghtIndex+1))
+        label.attributedText = myMutableString
+        
+    }
+}
+
+extension String{
+    func findMiddle() -> (Int, Int) {
+        let count = self.count;
+        var start = 0;
+        var end = 0;
+        
+        switch count{
+        case 1:
+            return (0,0);
+        case 2:
+            return (0, 1);
+        default:
+            if((self.count % 2) == 0){
+                //Se pari
+                start = (self.count/2 - 1)
+                end = 1
+            }
+            else{
+                start = self.count/2
+                end = 0
+            }
+        }
+        return (start, end)
+    }
+}
+
