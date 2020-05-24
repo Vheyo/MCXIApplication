@@ -386,16 +386,7 @@
                                 <action selector="exitPressed:" destination="aeA-dd-f7o" id="jbp-SB-tEj"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Y9v-3p-W75">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tkD-Ll-nuO">
-                                <rect key="frame" x="353" y="5" width="41" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Scan">
-                                    <color key="titleColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="camera" id="Y9v-3p-W75"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

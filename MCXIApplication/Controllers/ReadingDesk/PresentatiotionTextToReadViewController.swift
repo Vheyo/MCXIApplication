@@ -316,6 +316,18 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             indexWord -= 1
         }
         self.textToRead.text = textSplitted[indexWord]
+        backButton.alpha = 1.0
+               keywordButton.alpha = 1.0
+               backButtonView.alpha = 1.0
+               forwardButton.alpha = 1.0
+               playButton.alpha = 1.0
+               dropUpButtonTime.alpha = 1.0
+               dropDownButtonTime.alpha = 1.0
+               
+               DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
+                   self.hidden = false
+               })
+               
     }
     
     @objc func forwardAction(){
@@ -323,6 +335,18 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             indexWord += 1
         }
         self.textToRead.text = textSplitted[indexWord]
+        backButton.alpha = 1.0
+               keywordButton.alpha = 1.0
+               backButtonView.alpha = 1.0
+               forwardButton.alpha = 1.0
+               playButton.alpha = 1.0
+               dropUpButtonTime.alpha = 1.0
+               dropDownButtonTime.alpha = 1.0
+               
+               DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
+                   self.hidden = false
+               })
+               
     }
     
     
@@ -417,6 +441,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                     self.forwardButton.alpha = 0.0
                     self.backButton.alpha = 0.0
                     self.keywordButton.alpha = 0.0
+                   
                 }, completion: {_ in self.hidden = true})
             }
             
@@ -431,6 +456,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.forwardButton.alpha = 1.0
                 self.backButton.alpha = 1.0
                 self.keywordButton.alpha = 1.0
+                 self.deleteTimer()
             },completion: {_ in self.hidden = false})
         }
         
@@ -521,7 +547,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        print("ciao bella io ti conosco tu fumi canella")
+        
+        if touch.isKind(of: DropUpViewCollectionViewCell.self) {
+            print("ciao bella io ti conosco tu fumi canella")
+            return true
+        }
+        
         return touch.view == gestureRecognizer.view
     }
     
