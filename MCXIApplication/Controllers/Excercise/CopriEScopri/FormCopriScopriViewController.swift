@@ -190,6 +190,13 @@ class FormCopriScopriViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+//        buttonNumber.isChecked = false
+//        buttonLettereMin.isChecked = false
+//        buttonLettereMaisc.isChecked = false
+//        changeButtonStart()
+    }
+    
     func setUpGestureForKeyboard(){
         let tap = UITapGestureRecognizer(target : view, action: #selector(UIView.endEditing(_:)))
         tap.cancelsTouchesInView = false
