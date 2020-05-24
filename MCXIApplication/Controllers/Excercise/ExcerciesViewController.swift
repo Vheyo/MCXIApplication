@@ -32,7 +32,7 @@ class ExcerciesViewController : UIViewController {
         let aspect : CGFloat = 1.2305
         let width : CGFloat =  400
         layout.itemSize = CGSize(width:width, height: width * aspect)
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 0
     }
     
