@@ -10,6 +10,7 @@ import Foundation
 import  UIKit
 import MobileCoreServices
 import PDFKit
+import JGProgressHUD
 
 class ReadingDeskViewController: UIViewController {
     
@@ -264,6 +265,30 @@ class ReadingDeskViewController: UIViewController {
 
 
 extension ReadingDeskViewController : UIDocumentPickerDelegate {
+    func incrementHUD(_ hud: JGProgressHUD, progress previousProgress: Int) {
+        let progress = previousProgress + 1
+        hud.progress = Float(progress)/100.0
+        hud.detailTextLabel.text = "\(progress)% Complete"
+        
+        if progress == 100 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+                UIView.animate(withDuration: 2, animations: {
+                    hud.textLabel.text = "Success"
+                    hud.detailTextLabel.text = nil
+                    hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+                }, completion: {_ in
+                    
+                })
+                
+                hud.dismiss(afterDelay: 1.0)
+            }
+        }
+        else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(20)) {
+                self.incrementHUD(hud, progress: progress)
+            }
+        }
+    }
     
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         
@@ -282,6 +307,17 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             
             
         else {
+            let hud = JGProgressHUD(style: .light)
+            DispatchQueue.global(qos: .background).sync{
+                let indicator = JGProgressHUDRingIndicatorView()
+                hud.textLabel.text = "Processing data";
+                hud.indicatorView = indicator
+                hud.show(in: self.view)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)){
+                    self.incrementHUD(hud, progress: 0)
+                }
+            }
             do {
                 if let pdf = PDFDocument(url: selectedFileURL) {
                     let pageCount = pdf.pageCount
@@ -299,7 +335,6 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                     do{
                         try text.write(to: fileUrl, atomically: false, encoding: .utf8)
                             UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
-                            
                            } catch {
                                print("cant write...")
                            }
