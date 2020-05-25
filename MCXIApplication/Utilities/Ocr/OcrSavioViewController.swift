@@ -102,11 +102,11 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
-        //        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-        //            
-        //            print(self.bufferString)
-        //        })
-        
+//                Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+//
+//                    print(self.textView.text)
+//                })
+//
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
@@ -345,27 +345,6 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     
     
     @objc func cropPLS(){
-        if(resultText.text == ""){
-            let hud = JGProgressHUD(style: .light)
-            let indicator = JGProgressHUDErrorIndicatorView()
-            hud.indicatorView = indicator
-            hud.textLabel.text = "Nothing to scan"
-            hud.show(in: self.view)
-            hud.dismiss(afterDelay: 1.5)
-            return ;
-        }
-        
-        
-        resultText.text = ""
-        for index in tmpView{
-            if(index!.selected){
-                bugged = true
-                saveTxt = true
-                index!.imageView.layer.borderColor = UIColor.clear.cgColor
-                self.croppedImage.image = self.imageView.snapshot(of: index?.imageView.frame, afterScreenUpdates: false)
-                self.recognizeTextInImage(self.croppedImage.image!)
-            }
-        }
         
         let hud = JGProgressHUD(style: .light)
         
@@ -395,6 +374,54 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
             hud.dismiss(afterDelay: 1)
         }
         
+        let fullName    = textView.text
+        let fullNameArr = fullName!.components(separatedBy: "\n")
+        
+        var i = 0;
+        var string = String()
+        for index in imageView.subviews{
+            if(index.backgroundColor == #colorLiteral(red: 0.5017122626, green: 0.4142552614, blue: 0.9326224923, alpha: 1)){
+                string.append(fullNameArr[i])
+                string.append(" ")
+            }
+            i += 1
+        }
+        print(string)
+        if(self.bufferString.count == self.pagineCounter){
+            self.bufferString.insert("", at: self.pagineCounter)
+        }
+        bufferString[pagineCounter] = string
+        
+        
+        print(bufferString)
+//        if(resultText.text == ""){
+//            let hud = JGProgressHUD(style: .light)
+//            let indicator = JGProgressHUDErrorIndicatorView()
+//            hud.indicatorView = indicator
+//            hud.textLabel.text = "Nothing to scan"
+//            hud.show(in: self.view)
+//            hud.dismiss(afterDelay: 1.5)
+//            return ;
+//        }
+//
+//        DispatchQueue.main.async {
+//            let hud = JGProgressHUD(style: .light)
+//            let indicator = JGProgressHUDIndeterminateIndicatorView()
+//            hud.indicatorView = indicator
+//            hud.textLabel.text = "Processing data"
+//            hud.show(in: self.view)
+//        }
+//
+//        resultText.text = ""
+//        for index in tmpView{
+//            if(index!.selected){
+//                bugged = true
+//                saveTxt = true
+//                index!.imageView.layer.borderColor = UIColor.clear.cgColor
+//                self.croppedImage.image = self.imageView.snapshot(of: index?.imageView.frame, afterScreenUpdates: false)
+//                self.recognizeTextInImage(self.croppedImage.image!)
+//            }
+//        }
     }
     func incrementHUD(_ hud: JGProgressHUD, progress previousProgress: Int) {
         let progress = previousProgress + 1
@@ -635,7 +662,6 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                     }
                 }
                 self.textView.flashScrollIndicators()
-                
                 self.imageView.load(boundingBoxes: boundingBoxes)
             }
         }
