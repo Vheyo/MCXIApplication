@@ -17,7 +17,9 @@ class ReadingDeskViewController: UIViewController {
     
     private var titleTextLabel : UILabel = {
         let titleTextLabel = UILabel()
-        titleTextLabel.text = "Il nome del file"
+        titleTextLabel.text = """
+        Add files\n by clicking\n "+"
+        """
         titleTextLabel.textAlignment = .center
         titleTextLabel.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         titleTextLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
