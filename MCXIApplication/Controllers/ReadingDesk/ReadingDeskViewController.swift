@@ -28,7 +28,7 @@ class ReadingDeskViewController: UIViewController {
     }()
     
     private let backgroundImageView : UIImageView = {
-        let backgroundImageView = UIImageView(image: UIImage(named: "violet"))
+        let backgroundImageView = UIImageView(image: UIImage(named: "Ghost-1"))
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.contentMode = .scaleAspectFit
         return backgroundImageView
@@ -139,7 +139,7 @@ class ReadingDeskViewController: UIViewController {
         self.view.addSubview(backgroundImageView)
         self.view.addSubview(titleTextLabel)
         playButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        playButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: 270, height: 60))
+        playButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3725490196, green: 0.2274509804, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: 270, height: 60))
         backgroundImageView.addSubview(circleView)
         self.view.addSubview(playButton)
         NSLayoutConstraint.activate([
@@ -154,7 +154,7 @@ class ReadingDeskViewController: UIViewController {
             titleTextLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
 
             backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            backgroundImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 90),
             backgroundImageView.widthAnchor.constraint(equalToConstant: 70*view.frame.size.width/100),
             backgroundImageView.heightAnchor.constraint(equalToConstant: 48*view.frame.size.height/100),
             

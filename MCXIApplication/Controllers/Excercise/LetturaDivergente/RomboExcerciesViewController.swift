@@ -144,7 +144,7 @@ class RomboExcerciesViewController : UIViewController{
         
         shadowIncrease = playButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
         replyButton.layer.masksToBounds = true
-        replyButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: 150, height: 50))
+        replyButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), colorTwo: #colorLiteral(red: 0.3725490196, green: 0.2274509804, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: 150, height: 50))
     }
     
     var isOk : Bool = true
