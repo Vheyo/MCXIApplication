@@ -97,13 +97,13 @@ extension TutorialViewController: PaperOnboardingDelegate {
         
         item.titleCenterConstraint?.constant = -10
         item.descriptionCenterConstraint?.constant = 10
-        item.superview!.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+//        item.superview!.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = CGRect(x: 0, y: 0 , width: view.frame.width , height: view.frame.height )
-        gradientLayer.colors =  [#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1) ].map{$0.cgColor}
-        gradientLayer.startPoint = CGPoint(x: 0.0, y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.0, y: 1)
+        gradientLayer.colors =  [#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), #colorLiteral(red: 0.3921568627, green: 0.2666666667, blue: 0.8666666667, alpha: 1) ].map{$0.cgColor}
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
         item.superview!.layer.insertSublayer(gradientLayer, at: 0)
         
         // configure item
