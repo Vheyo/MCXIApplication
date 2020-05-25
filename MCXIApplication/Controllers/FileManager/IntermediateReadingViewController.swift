@@ -14,9 +14,7 @@ class IntermediateReadingViewController: UIViewController{
     var textToRead : UITextView = {
         let textToRead = UITextView()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
-        textToRead.textAlignment = .center
         textToRead.showsVerticalScrollIndicator = false
-        textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
         return textToRead
     }()
     
@@ -26,7 +24,7 @@ class IntermediateReadingViewController: UIViewController{
         buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         buttonPlay.setTitleColor(.white, for: .normal)
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
-        buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+        buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         buttonPlay.layer.cornerRadius = 35
         buttonPlay.addTarget(self, action: #selector(playAction), for: .touchUpInside)
         return buttonPlay
@@ -38,7 +36,7 @@ class IntermediateReadingViewController: UIViewController{
         saveButton.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         saveButton.setTitleColor(.white, for: .normal)
         saveButton.translatesAutoresizingMaskIntoConstraints = false
-        saveButton.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+        saveButton.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         saveButton.layer.cornerRadius = 35
         saveButton.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
         return saveButton
@@ -62,6 +60,18 @@ class IntermediateReadingViewController: UIViewController{
         setUpTextToRead()
         view.backgroundColor = .white
         setUpTextField()
+        
+        let attributeString = NSMutableAttributedString(string: textToRead.text)
+        let style = NSMutableParagraphStyle()
+        
+        style.lineSpacing = 8
+        
+        attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, textToRead.text.count))
+        
+        textToRead.attributedText = attributeString
+        textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        textToRead.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
+        textToRead.textAlignment = .center
     }
     
     @objc func dismissKeyboard(){

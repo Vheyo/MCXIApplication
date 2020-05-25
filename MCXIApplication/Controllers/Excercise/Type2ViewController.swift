@@ -27,7 +27,7 @@ class Type2ViewController: UIViewController {
         let buttonPlay = UIButton()
         buttonPlay.setTitle("Play", for: .normal)
         buttonPlay.setTitleColor(.white, for: .normal)
-        buttonPlay.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
         buttonPlay.addTarget(self, action: #selector(showExcercise), for: .touchUpInside)
         return buttonPlay
@@ -67,10 +67,20 @@ class Type2ViewController: UIViewController {
         }
         
         
+        let attributeString = NSMutableAttributedString(string: descrip!)
+        let style = NSMutableParagraphStyle()
+        
+        style.lineSpacing = 8
+    
+        attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, descrip!.count))
+        
+        descriptionExercise.attributedText = attributeString
+        
+        
         setUpConstraints()
         setUpLayoutButtonPlay()
-        descriptionExercise.font = FontKit.roundedFont(ofSize: 17, weight: .light)
-        descriptionExercise.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        descriptionExercise.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        descriptionExercise.textColor = #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
         heightConstraint.constant = 400 * 1.2305 - 16.0
         setUpLayout()
     }
@@ -86,7 +96,7 @@ class Type2ViewController: UIViewController {
     
     func setUpLayout(){
         titleLabel.textColor = .white
-        titleLabel.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
+        titleLabel.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
         descriptionExercise.textAlignment = .center
     }
     

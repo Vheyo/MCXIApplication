@@ -38,7 +38,7 @@ class ExerciseWithFormViewController: UIViewController {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.setTitle("back", for: .normal)
         backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17,weight: .regular)
         backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         backButton.titleLabel?.textAlignment = .left
         return backButton
@@ -52,13 +52,12 @@ class ExerciseWithFormViewController: UIViewController {
         textToRead.isSelectable = false
         textToRead.textAlignment = .center
         textToRead.showsVerticalScrollIndicator = false
-        textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
         return textToRead
     }()
     
     private var buttonPlay : UIButton = {
         let buttonPlay = UIButton()
-        buttonPlay.setTitle("Stop", for: .normal)
+        buttonPlay.setTitle("Done", for: .normal)
         buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         buttonPlay.setTitleColor(.white, for: .normal)
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
@@ -72,8 +71,8 @@ class ExerciseWithFormViewController: UIViewController {
         let questionLabel = UILabel()
         questionLabel.translatesAutoresizingMaskIntoConstraints = false
         questionLabel.text = "Qui devi mettere la domanda del testo ? "
-        questionLabel.font = FontKit.roundedFont(ofSize: 42, weight: .bold)
-        questionLabel.textColor = .black
+        questionLabel.font = FontKit.roundedFont(ofSize: 36, weight: .black)
+        questionLabel.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         questionLabel.textAlignment = .left
         questionLabel.numberOfLines = 0
         return questionLabel
@@ -83,8 +82,8 @@ class ExerciseWithFormViewController: UIViewController {
         let firstAnswer = UILabel()
         firstAnswer.translatesAutoresizingMaskIntoConstraints = false
         firstAnswer.text = "Qui devi mettere ladssadasfdfdsfdsdsa prima risposta"
-        firstAnswer.font = FontKit.roundedFont(ofSize: 19, weight: .light)
-        firstAnswer.textColor = .black
+        firstAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        firstAnswer.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         firstAnswer.textAlignment = .left
         firstAnswer.numberOfLines = 0
         return firstAnswer
@@ -94,8 +93,8 @@ class ExerciseWithFormViewController: UIViewController {
         let secondAnswer = UILabel()
         secondAnswer.translatesAutoresizingMaskIntoConstraints = false
         secondAnswer.text = "Qui devi mettere la seconda risposta "
-        secondAnswer.font = FontKit.roundedFont(ofSize: 19, weight: .light)
-        secondAnswer.textColor = .black
+        secondAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        secondAnswer.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         secondAnswer.textAlignment = .left
         secondAnswer.numberOfLines = 0
         return secondAnswer
@@ -105,8 +104,8 @@ class ExerciseWithFormViewController: UIViewController {
         let thirdAnswer = UILabel()
         thirdAnswer.translatesAutoresizingMaskIntoConstraints = false
         thirdAnswer.text = "Qui devi mettere la terza risposta"
-        thirdAnswer.font = FontKit.roundedFont(ofSize: 19, weight: .light)
-        thirdAnswer.textColor = .black
+        thirdAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        thirdAnswer.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         thirdAnswer.textAlignment = .left
         thirdAnswer.numberOfLines = 0
         return thirdAnswer
@@ -116,8 +115,8 @@ class ExerciseWithFormViewController: UIViewController {
         let fourthAnswer = UILabel()
         fourthAnswer.translatesAutoresizingMaskIntoConstraints = false
         fourthAnswer.text = "Qui devi mettere la quarta risposta"
-        fourthAnswer.font = FontKit.roundedFont(ofSize: 19, weight: .light)
-        fourthAnswer.textColor = .black
+        fourthAnswer.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        fourthAnswer.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         fourthAnswer.textAlignment = .left
         fourthAnswer.numberOfLines = 0
         return fourthAnswer
@@ -201,7 +200,7 @@ class ExerciseWithFormViewController: UIViewController {
         tempoResultLabel.translatesAutoresizingMaskIntoConstraints = false
         tempoResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
         tempoResultLabel.textAlignment = .center
-        tempoResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        tempoResultLabel.textColor = #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
         return tempoResultLabel
     }()
     
@@ -210,7 +209,7 @@ class ExerciseWithFormViewController: UIViewController {
         pamResultLabel.translatesAutoresizingMaskIntoConstraints = false
         pamResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
         pamResultLabel.textAlignment = .center
-        pamResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        pamResultLabel.textColor = #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
         return pamResultLabel
     }()
     
@@ -219,7 +218,7 @@ class ExerciseWithFormViewController: UIViewController {
         crResultLabel.translatesAutoresizingMaskIntoConstraints = false
         crResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
         crResultLabel.textAlignment = .center
-        crResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        crResultLabel.textColor = #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
         return crResultLabel
     }()
     
@@ -228,7 +227,7 @@ class ExerciseWithFormViewController: UIViewController {
         rendimentoResultLabel.translatesAutoresizingMaskIntoConstraints = false
         rendimentoResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
         rendimentoResultLabel.textAlignment = .center
-        rendimentoResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        rendimentoResultLabel.textColor = #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
         rendimentoResultLabel.text = "Rendimento"
         return rendimentoResultLabel
     }()
@@ -324,6 +323,7 @@ class ExerciseWithFormViewController: UIViewController {
             }
             
         }
+    
         //        setUpConstraints()
         
         
@@ -359,6 +359,18 @@ class ExerciseWithFormViewController: UIViewController {
                 let tmpInt = ((elements as! NSInteger) as Int)
                 risposteEsatte_Array.append(tmpInt);
             }
+            
+            let attributeString = NSMutableAttributedString(string: textToRead.text)
+            let style = NSMutableParagraphStyle()
+            
+            style.lineSpacing = 8
+            
+            attributeString.addAttribute(NSAttributedString.Key.paragraphStyle, value: style, range: NSMakeRange(0, textToRead.text.count))
+            
+            textToRead.attributedText = attributeString
+            textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+            textToRead.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
+            textToRead.textAlignment = .center
             
         }
         catch {
@@ -445,7 +457,7 @@ class ExerciseWithFormViewController: UIViewController {
             questionLabel.heightAnchor.constraint(equalToConstant: 200),
             
             
-            radioButtonFirst.topAnchor.constraint(equalTo: questionLabel.bottomAnchor,constant: 20),
+            radioButtonFirst.topAnchor.constraint(equalTo: questionLabel.bottomAnchor,constant: 30),
             radioButtonFirst.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
             radioButtonFirst.heightAnchor.constraint(equalToConstant: 40),
             radioButtonFirst.widthAnchor.constraint(equalToConstant: 40),

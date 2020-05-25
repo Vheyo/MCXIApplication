@@ -25,7 +25,7 @@ class PamCrTestiViewController: UIViewController {
         descriptionLabel.text = "Choose a script"
         descriptionLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         descriptionLabel.textAlignment = .center
-        descriptionLabel.font = UIFont.boldSystemFont(ofSize: 25)
+        descriptionLabel.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         return descriptionLabel
     }()
@@ -37,7 +37,7 @@ class PamCrTestiViewController: UIViewController {
         playButton.alpha = 0.3
         playButton.isEnabled = false
         playButton.backgroundColor = .white
-        playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 32)
+        playButton.titleLabel?.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.addTarget(self, action: #selector(play), for: .touchUpInside)
@@ -68,6 +68,8 @@ class PamCrTestiViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpConstraints()
+        
+        
         cardCollectionView.register(TextToAnswerCollectionViewCell.self, forCellWithReuseIdentifier: "CellId")
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self

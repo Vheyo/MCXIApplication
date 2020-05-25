@@ -27,7 +27,7 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
            buttonPlay.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
            buttonPlay.setTitleColor(.white, for: .normal)
            buttonPlay.translatesAutoresizingMaskIntoConstraints = false
-           buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 18, weight: .semibold)
+           buttonPlay.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
            buttonPlay.layer.cornerRadius = 30
            buttonPlay.addTarget(self, action: #selector(saveAction), for: .touchUpInside)
            return buttonPlay
@@ -38,7 +38,7 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
              backButton.translatesAutoresizingMaskIntoConstraints = false
              backButton.setTitle("back", for: .normal)
              backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-             backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17,weight: .regular)
              backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
              backButton.titleLabel?.textAlignment = .left
              return backButton

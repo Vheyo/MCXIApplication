@@ -14,8 +14,8 @@ class RomboExcerciesViewController : UIViewController{
     private var textView : UITextView = {
         let textView = UITextView()
         textView.translatesAutoresizingMaskIntoConstraints = false
-        textView.font = FontKit.roundedFont(ofSize: 24, weight: .regular)
-        textView.textColor = .black
+        textView.font = FontKit.roundedFont(ofSize: 24, weight: .semibold)
+        textView.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         textView.isEditable = false
         textView.isSelectable = false
         textView.textAlignment = .center
@@ -27,7 +27,7 @@ class RomboExcerciesViewController : UIViewController{
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.setTitle("back", for: .normal)
         backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17,weight: .regular)
         backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         return backButton
     }()
@@ -37,7 +37,7 @@ class RomboExcerciesViewController : UIViewController{
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.setTitle("Increase", for: .normal)
         playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-        playButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        playButton.titleLabel?.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
         playButton.addTarget(self, action: #selector(showText), for: .touchUpInside)
         playButton.titleLabel?.textAlignment = .center
         playButton.layer.borderWidth = 2
@@ -64,7 +64,7 @@ class RomboExcerciesViewController : UIViewController{
         niceLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         niceLabel.textAlignment = .center
         niceLabel.alpha = 0
-        niceLabel.font = FontKit.roundedFont(ofSize: 50, weight: .bold)
+        niceLabel.font = FontKit.roundedFont(ofSize: 56, weight: .bold)
         return niceLabel
     }()
     
@@ -73,7 +73,7 @@ class RomboExcerciesViewController : UIViewController{
         replyButton.translatesAutoresizingMaskIntoConstraints = false
         replyButton.setTitle("Retry", for: .normal)
         replyButton.setTitleColor(.white, for: .normal)
-        replyButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        replyButton.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .bold)
         replyButton.addTarget(self, action: #selector(replyEx), for: .touchUpInside)
         replyButton.titleLabel?.textAlignment = .center
         replyButton.layer.cornerRadius = 25

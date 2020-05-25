@@ -188,7 +188,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1rp-gC-9U2">
-                                        <rect key="frame" x="0.0" y="420" width="414" height="520"/>
+                                        <rect key="frame" x="0.0" y="420" width="414" height="540"/>
                                         <subviews>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="klO-gh-e34">
                                                 <rect key="frame" x="16" y="16" width="382" height="512"/>
@@ -204,7 +204,7 @@
                                         <color key="backgroundColor" red="0.96862745100000003" green="0.97254901959999995" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="klO-gh-e34" secondAttribute="trailing" constant="16" id="nUV-Ib-VWp"/>
-                                            <constraint firstAttribute="height" constant="520" id="ovc-Ww-VgA"/>
+                                            <constraint firstAttribute="height" constant="540" id="ovc-Ww-VgA"/>
                                             <constraint firstItem="klO-gh-e34" firstAttribute="leading" secondItem="1rp-gC-9U2" secondAttribute="leading" constant="16" id="u7a-nH-j3v"/>
                                         </constraints>
                                     </view>
