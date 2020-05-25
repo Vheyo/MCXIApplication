@@ -31,7 +31,7 @@ class FileCell: UICollectionViewCell {
         let nameFileLabel = UILabel()
         nameFileLabel.text = "Name File.pdf"
         nameFileLabel.textColor = .white
-        nameFileLabel.font = UIFont.boldSystemFont(ofSize: 20)
+        nameFileLabel.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         nameFileLabel.translatesAutoresizingMaskIntoConstraints = false
         return nameFileLabel
     }()

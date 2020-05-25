@@ -44,7 +44,7 @@ class FilesViewController : UIViewController{
         notesLabel.translatesAutoresizingMaskIntoConstraints = false
         notesLabel.textColor =  #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         notesLabel.text = "Notes"
-        notesLabel.font = FontKit.roundedFont(ofSize: 22, weight: .bold)
+        notesLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
         return notesLabel
     }()
     
@@ -54,7 +54,7 @@ class FilesViewController : UIViewController{
         keyWordsLabel.translatesAutoresizingMaskIntoConstraints = false
         keyWordsLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         keyWordsLabel.text = "Keywords"
-        keyWordsLabel.font = FontKit.roundedFont(ofSize: 22, weight: .bold)
+        keyWordsLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
         return keyWordsLabel
     }()
     
@@ -71,9 +71,9 @@ class FilesViewController : UIViewController{
     private var noFileLabel: UILabel = {
         let noFileLabel = UILabel()
         noFileLabel.translatesAutoresizingMaskIntoConstraints = false
-        noFileLabel.textColor =  #colorLiteral(red: 0.6979846954, green: 0.6980700493, blue: 0.6979557276, alpha: 1)
+        noFileLabel.textColor =  #colorLiteral(red: 0.5019607843, green: 0.5019607843, blue: 0.5019607843, alpha: 1)
         noFileLabel.text = "There are no\nfiles Yet!"
-        noFileLabel.font = FontKit.roundedFont(ofSize: CGFloat(30), weight: .bold)
+        noFileLabel.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
         noFileLabel.textAlignment = .center
         noFileLabel.numberOfLines = 0
         return noFileLabel
@@ -229,7 +229,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
             return cell
         }else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId2", for: indexPath) as! KeywordsCollectionViewCell
-            cell.backgroundColor = #colorLiteral(red: 0.9450980392, green: 0.9450980392, blue: 0.9450980392, alpha: 1)
+            cell.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
             cell.labelTitle.text = arrayString?[indexPath.item] ?? "No Keywords Taken"
             cell.alpha = 0
@@ -254,7 +254,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         if collectionView == cardCollectionKeywords{
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
             let element = arrayString?[indexPath.item] ?? ("No Keywords Taken" as NSString) as String
-            let stringSize = element.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22.0)])
+            let stringSize = element.size(withAttributes: [NSAttributedString.Key.font: FontKit.roundedFont(ofSize: 18, weight: .regular)])
             size = CGSize(width: stringSize.width+40, height: 40)
         }
         else {

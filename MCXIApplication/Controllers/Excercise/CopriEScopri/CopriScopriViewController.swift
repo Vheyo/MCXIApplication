@@ -28,7 +28,7 @@ class CopriScopriViewController: UIViewController {
         backButton.translatesAutoresizingMaskIntoConstraints = false
         backButton.setTitle("back", for: .normal)
         backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17,weight: .regular)
         backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         backButton.titleLabel?.textAlignment = .left
         return backButton
@@ -37,11 +37,11 @@ class CopriScopriViewController: UIViewController {
     private var whatRead : UILabel = {
         let whatRead = UILabel()
         whatRead.translatesAutoresizingMaskIntoConstraints = false
-        whatRead.text = "Write down the text"
+        whatRead.text = "Write down the text!"
         whatRead.isHidden = true
         whatRead.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         whatRead.textAlignment = .center
-        whatRead.font = UIFont.systemFont(ofSize: 35, weight: .semibold)
+        whatRead.font = UIFont.systemFont(ofSize: 28, weight: .bold)
         return whatRead
     }()
     
@@ -62,7 +62,7 @@ class CopriScopriViewController: UIViewController {
         newWordlabel.isHidden = true
         newWordlabel.translatesAutoresizingMaskIntoConstraints=false
         newWordlabel.textAlignment = .center
-        newWordlabel.font = UIFont.systemFont(ofSize: 38, weight: .regular)
+        newWordlabel.font = FontKit.roundedFont(ofSize: 38, weight: .semibold)
         return newWordlabel
     }()
     
@@ -83,10 +83,10 @@ class CopriScopriViewController: UIViewController {
     private var newWordButton : UIButton = {
         let newWord = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         newWord.backgroundColor = .gray
-        newWord.setTitle("Word", for: .normal)
+        newWord.setTitle("Repeat", for: .normal)
         newWord.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         newWord.setTitleColor(.white, for: .normal)
-        newWord.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        newWord.titleLabel?.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
         newWord.translatesAutoresizingMaskIntoConstraints = false
         newWord.layer.cornerRadius = 0.5 * newWord.bounds.width
         newWord.addTarget(self, action: #selector(generateWord), for: .touchUpInside)

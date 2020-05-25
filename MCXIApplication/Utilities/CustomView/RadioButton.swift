@@ -21,7 +21,7 @@ class RadioButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame : frame)
         self.layer.cornerRadius = 5
-        self.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
         self.layer.masksToBounds = true
     }
     

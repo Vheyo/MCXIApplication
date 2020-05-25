@@ -36,7 +36,7 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         titleLabel.backgroundColor = .clear
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.textAlignment = .center
-        titleLabel.font = FontKit.roundedFont(ofSize: 20, weight: .bold)
+        titleLabel.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         titleLabel.textColor = #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1)
         return titleLabel
     }()

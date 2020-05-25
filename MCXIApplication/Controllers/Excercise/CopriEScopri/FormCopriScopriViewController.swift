@@ -23,7 +23,7 @@ class FormCopriScopriViewController: UIViewController {
         descriptionLabel.text = "Choose at least one"
         descriptionLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         descriptionLabel.textAlignment = .center
-        descriptionLabel.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
+        descriptionLabel.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         return descriptionLabel
     }()
@@ -33,7 +33,7 @@ class FormCopriScopriViewController: UIViewController {
         descriptionLabelNumber.text = "number of characters"
         descriptionLabelNumber.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         descriptionLabelNumber.textAlignment = .center
-        descriptionLabelNumber.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
+        descriptionLabelNumber.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
         descriptionLabelNumber.translatesAutoresizingMaskIntoConstraints = false
         return descriptionLabelNumber
     }()
@@ -82,7 +82,7 @@ class FormCopriScopriViewController: UIViewController {
         decreaseNumberOfWord.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         decreaseNumberOfWord.setTitle("-", for: .normal)
         decreaseNumberOfWord.setTitleColor(.white, for: .normal)
-        decreaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        decreaseNumberOfWord.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         decreaseNumberOfWord.addTarget(self, action: #selector(decreaseWordAction), for: .touchUpInside)
         return decreaseNumberOfWord
     }()
@@ -92,7 +92,7 @@ class FormCopriScopriViewController: UIViewController {
         numberOfWordLabel.text = "6"
         numberOfWordLabel.textAlignment = .center
         numberOfWordLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        numberOfWordLabel.font = FontKit.roundedFont(ofSize: 17, weight: .light)
+        numberOfWordLabel.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
         numberOfWordLabel.translatesAutoresizingMaskIntoConstraints = false
         return numberOfWordLabel
     }()
@@ -103,7 +103,7 @@ class FormCopriScopriViewController: UIViewController {
         increaseNumberOfWord.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         increaseNumberOfWord.setTitle("+", for: .normal)
         increaseNumberOfWord.setTitleColor(.white, for: .normal)
-        increaseNumberOfWord.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        increaseNumberOfWord.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         increaseNumberOfWord.addTarget(self, action: #selector(increaseWordAction), for: .touchUpInside)
         return increaseNumberOfWord
     }()
@@ -123,7 +123,7 @@ class FormCopriScopriViewController: UIViewController {
         decreaseTime.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         decreaseTime.setTitle("-", for: .normal)
         decreaseTime.setTitleColor(.white, for: .normal)
-        decreaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        decreaseTime.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         decreaseTime.addTarget(self, action: #selector(decreaseTimeAction), for: .touchUpInside)
         return decreaseTime
     }()
@@ -133,7 +133,7 @@ class FormCopriScopriViewController: UIViewController {
         timeLabel.text = "400 ms"
         timeLabel.textAlignment = .center
         timeLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        timeLabel.font = FontKit.roundedFont(ofSize: 17, weight: .light)
+        timeLabel.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         return timeLabel
     }()
@@ -144,7 +144,7 @@ class FormCopriScopriViewController: UIViewController {
         increaseTime.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         increaseTime.setTitle("+", for: .normal)
         increaseTime.setTitleColor(.white, for: .normal)
-        increaseTime.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        increaseTime.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         increaseTime.addTarget(self, action: #selector(increaseTimeAction), for: .touchUpInside)
         return increaseTime
     }()
@@ -165,7 +165,7 @@ class FormCopriScopriViewController: UIViewController {
         playButton.alpha = 0.3
         playButton.isEnabled = false
         playButton.backgroundColor = .white
-        playButton.titleLabel?.font = FontKit.roundedFont(ofSize: 27, weight: .bold)
+        playButton.titleLabel?.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.addTarget(self, action: #selector(play), for: .touchUpInside)

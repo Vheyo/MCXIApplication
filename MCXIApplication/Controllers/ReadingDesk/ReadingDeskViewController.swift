@@ -19,9 +19,8 @@ class ReadingDeskViewController: UIViewController {
         let titleTextLabel = UILabel()
         titleTextLabel.text = "Il nome del file"
         titleTextLabel.textAlignment = .center
-        titleTextLabel.textColor = .black
-        titleTextLabel.font = UIFont.boldSystemFont(ofSize: 21)
-//        titleTextLabel.font = FontKit.roundedFont(ofSize: 21, weight: .semibold)
+        titleTextLabel.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
+        titleTextLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
         titleTextLabel.numberOfLines = 0
         titleTextLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -57,7 +56,7 @@ class ReadingDeskViewController: UIViewController {
         let playButton = UIButton(type: UIButton.ButtonType.custom)
         playButton.setTitle("Play", for: .normal)
         playButton.setTitleColor(.white, for: .normal)
-        playButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        playButton.titleLabel?.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         playButton.titleLabel?.textAlignment = .center
         playButton.translatesAutoresizingMaskIntoConstraints = false
         playButton.layer.masksToBounds = true
@@ -72,7 +71,7 @@ class ReadingDeskViewController: UIViewController {
         let timeTextRead = UIButton()
         timeTextRead.setTitle("Timer", for: .normal)
         timeTextRead.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-        timeTextRead.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        timeTextRead.titleLabel?.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
         timeTextRead.layer.masksToBounds = true
         timeTextRead.layer.borderWidth = 2
         timeTextRead.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
