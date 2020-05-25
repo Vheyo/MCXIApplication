@@ -282,19 +282,23 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 
                 
                 //MARK: FOR VALENTINO <3<3<3<3<3<3
-                if(lenghtIndex == 1){
-                    let start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2) - 1)
-                    let index = textToShow.index(start, offsetBy: lenghtIndex)
-                    let end = textToShow.index(index, offsetBy: 1)
-                    let mySubstring = textToShow[index...end]
-                    
-                    print(mySubstring)
-                    
-                    if(mySubstring.contains(" ") || mySubstring.contains(",")){
-                        startingIndex -= 1;
-                    }
+                var start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2)-1)
+                if(lenghtIndex == 0){
+                    start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2))
                 }
-                print(textToShow)
+                
+                let index = textToShow.index(start, offsetBy: lenghtIndex)
+                let end = textToShow.index(index, offsetBy: 1)
+                let mySubstring = textToShow[index...end]
+                
+                
+                if(mySubstring.contains(" ") || mySubstring.contains(",")){
+                    startingIndex -= 1;
+                }
+                print("[\(mySubstring)]")
+                print("[\(textToShow)]")
+                
+
                 //**********************************
                 
                 
