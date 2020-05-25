@@ -87,7 +87,7 @@ class RomboExcerciesViewController : UIViewController{
     var shadowReply : ShadowView!
     
     var indexWord = 1
-    var textToShow = ["su","luce","scotch","positivo","sei nuovo", "un detersivo","vai alla grande", "i fiori sono gialli", "c'è Batman e Robin", "macchina fotografica", "la guarigione e il reiki", "tu sai che ore sono o no", " scegli la pillola rossa o blu", "manda baci e abbracci a tutti", "acqua,terra,fuoco,vento,aria","internet e computer diventeranno", "l'amicizia è un valore fondamentale", "andare in palestra fa bene alla salute", "se ti impegni fino in fondo e dai tutto", "le vacanze sono sacre e non si toccano", "la ripetizione è la madre di tutte le abilità", "nel film Gladiatore il motto è : Forza e Onore"," M.Jordan è considerato l'atleta per eccellenza","la medicina cinese sembra essere più completa"]
+    var textToShow = ["on","lens","scotch","positive","are known", "of detersive","the cool detail", "a fact does things", "will Batman a baker", "behavior governments", "so healings and the reiki", "know what time is it or no", "the choice of red or blue pill", "sends kisses and hugs to Fyn", "air, earth, fire, wind, air, land, ok","internet and computers will have", "friendship is a fundamental valour", "is going to gym is so healthy for you", "if you hardly commit and you give a test", "holidays are a must, you don’t miss them", "repeating and repeating is mother of needs", "Force and Honour is the Gladiator’s film motto","M.B. Jordan is considered the best athlete ever","chinese medicine looks like the most complete one"]
     
     override func viewDidLoad() {
         AppUtility.lockOrientation(.landscape)
