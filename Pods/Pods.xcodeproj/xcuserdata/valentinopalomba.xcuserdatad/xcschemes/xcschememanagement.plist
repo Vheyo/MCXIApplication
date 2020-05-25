@@ -4,10 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>AssetsPickerViewController-AssetsPickerViewController.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>AssetsPickerViewController.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
+		<key>Device.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>JGProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>9</integer>
 		</dict>
 		<key>Pods-MCXIApplication.xcscheme</key>
 		<dict>
@@ -15,6 +30,11 @@
 			<false/>
 			<key>orderHint</key>
 			<integer>3</integer>
+		</dict>
+		<key>SnapKit.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
 		</dict>
 		<key>WeScan.xcscheme</key>
 		<dict>

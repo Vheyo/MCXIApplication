@@ -265,7 +265,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 
                 if self.initialTimer >= self.textSplitted.count {
                     if self.initialIndex >= self.textSplitted.count {
-                        range = self.textSplitted.count-2..<self.textSplitted.count-1
+                        range = (self.textSplitted.count-self.initialTimer)..<self.textSplitted.count-1
                     }
                     else{
                         range = self.initialIndex..<self.textSplitted.count-1
