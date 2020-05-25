@@ -11,6 +11,8 @@ import UIKit
 import Vision
 import VisionKit
 import WeScan
+import AssetsPickerViewController
+import Photos
 import JGProgressHUD
 
 class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -540,11 +542,15 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                 self.tempImageView.image = UIImage()
             }))
             alert.addAction(UIAlertAction(title: "Import from gallery", style: .default , handler:{ (UIAlertAction)in
-                self.imagePicker.sourceType = .photoLibrary
+//                self.imagePicker.sourceType = .photoLibrary
+//
+//                self.imagePicker.allowsEditing = false
+//                //Quando premo sull'icona della camera voglio presetare il controller della camera (PickerController)
+//                self.present(self.imagePicker, animated: true, completion: nil)
                 
-                self.imagePicker.allowsEditing = false
-                //Quando premo sull'icona della camera voglio presetare il controller della camera (PickerController)
-                self.present(self.imagePicker, animated: true, completion: nil)
+                let picker = AssetsPickerViewController()
+                picker.pickerDelegate = self
+                self.present(picker, animated: true, completion: nil)
                 self.tempImageView.image = UIImage()
             }))
             
@@ -757,4 +763,52 @@ extension UIView {
             drawHierarchy(in: bounds, afterScreenUpdates: afterScreenUpdates)
         }
     }
+}
+
+extension OcrViewController: AssetsPickerViewControllerDelegate {
+    
+    func assetsPickerCannotAccessPhotoLibrary(controller: AssetsPickerViewController) {}
+    func assetsPickerDidCancel(controller: AssetsPickerViewController) {}
+    func assetsPicker(controller: AssetsPickerViewController, selected assets: [PHAsset]) {
+        // do your job with selected assets
+        for index in assets{
+            let img = getUIImage(asset: index)
+            pagine.append(img!)
+        }
+        if(pagine.count > 1){
+            nextButton.isEnabled = true
+        }
+        cropButton.isEnabled = false
+        selectAllButton.isEnabled = true
+        resetButton.isEnabled = true
+        imageView.image = pagine.first
+        recognizeTextInImage(imageView.image!)
+        self.navigationItem.rightBarButtonItem = nil;
+        scanButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(PhotoScan))
+        navigationItem.rightBarButtonItems = [scanButton]
+    }
+    func getUIImage(asset: PHAsset) -> UIImage? {
+
+        var img: UIImage?
+        let manager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+        options.version = .original
+        options.isSynchronous = true
+        manager.requestImageData(for: asset, options: options) { data, _, _, _ in
+
+            if let data = data {
+                img = UIImage(data: data)
+            }
+        }
+        return img
+    }
+    
+    func assetsPicker(controller: AssetsPickerViewController, shouldSelect asset: PHAsset, at indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func assetsPicker(controller: AssetsPickerViewController, didSelect asset: PHAsset, at indexPath: IndexPath) {}
+    func assetsPicker(controller: AssetsPickerViewController, shouldDeselect asset: PHAsset, at indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func assetsPicker(controller: AssetsPickerViewController, didDeselect asset: PHAsset, at indexPath: IndexPath) {}
 }

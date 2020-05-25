@@ -161,14 +161,20 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AssetsPickerViewController/AssetsPickerViewController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Device/Device.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WeScan/WeScan.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/appstore-card-transition/AppstoreTransition.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AssetsPickerViewController/AssetsPickerViewController.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/Device/Device.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/WeScan/WeScan.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/appstore-card-transition/AppstoreTransition.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework"
