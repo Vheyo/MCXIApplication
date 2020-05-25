@@ -171,7 +171,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     private var backButtonView : UIButton = {
         let backButtonView = UIButton()
-        backButtonView.setTitle("back", for: .normal)
+        backButtonView.setTitle("Back", for: .normal)
         backButtonView.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         backButtonView.translatesAutoresizingMaskIntoConstraints = false
         backButtonView.alpha = 0.0

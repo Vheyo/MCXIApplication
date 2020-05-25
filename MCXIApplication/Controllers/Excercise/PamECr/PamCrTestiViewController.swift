@@ -11,7 +11,7 @@ import UIKit
 class PamCrTestiViewController: UIViewController {
     
     var nameImage : [String] = ["PamCrRomaW","PamCrMedicBianca","PamCrAmericaBianca"]
-    
+    let nameText : [String] = ["This is Rome", "Medical Comparision", "New World"]
     private let backButton : UIButton = {
         let backButton = UIButton()
         backButton.setImage(UIImage(named: "Xviolet"), for: .normal)
@@ -22,7 +22,7 @@ class PamCrTestiViewController: UIViewController {
     
     private let descriptionLabel : UILabel = {
         let descriptionLabel = UILabel()
-        descriptionLabel.text = "Choose a script"
+        descriptionLabel.text = "Choose a text"
         descriptionLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = FontKit.roundedFont(ofSize: 28, weight: .bold)
@@ -149,12 +149,12 @@ extension PamCrTestiViewController : UICollectionViewDataSource, UICollectionVie
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! TextToAnswerCollectionViewCell
         cell.containerImage.image = UIImage(named: nameImage[indexPath.item])
+        cell.titleLabel.text = nameText[indexPath.item]
         cell.containerImage.tag = indexPath.item
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
-        
         numeroText = indexPath.row
         playButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         separator.backgroundColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)

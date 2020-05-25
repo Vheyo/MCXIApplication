@@ -11,6 +11,8 @@ import UIKit
 class TextToAnswerCollectionViewCell: UICollectionViewCell {
     var nameImage : [String] = ["PamCrRomaV","PamCrMedic","PamCrAmerica"]
     var nameImageBianche : [String] = ["PamCrRomaW","PamCrMedicBianca","PamCrAmericaBianca"]
+    
+    
     private var containerView : UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .white
@@ -30,7 +32,7 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         return containerImage
     }()
     
-    private var titleLabel : UILabel = {
+    var titleLabel : UILabel = {
         let titleLabel = UILabel()
         titleLabel.text = "Titolo del Testo"
         titleLabel.backgroundColor = .clear

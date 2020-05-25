@@ -36,7 +36,7 @@ class ExerciseWithFormViewController: UIViewController {
     private var backButton : UIButton = {
         let backButton = UIButton()
         backButton.translatesAutoresizingMaskIntoConstraints = false
-        backButton.setTitle("back", for: .normal)
+        backButton.setTitle("Back", for: .normal)
         backButton.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
         backButton.titleLabel?.font = UIFont.systemFont(ofSize: 17,weight: .regular)
         backButton.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
@@ -181,7 +181,7 @@ class ExerciseWithFormViewController: UIViewController {
         crLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
         crLabel.textAlignment = .center
         crLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        crLabel.text = "Comprensione"
+        crLabel.text = "Comprehension"
         return crLabel
     }()
     
@@ -191,7 +191,7 @@ class ExerciseWithFormViewController: UIViewController {
         rendimentoLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
         rendimentoLabel.textAlignment = .center
         rendimentoLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        rendimentoLabel.text = "Rendimento"
+        rendimentoLabel.text = "Yield"
         return rendimentoLabel
     }()
     
@@ -531,7 +531,7 @@ class ExerciseWithFormViewController: UIViewController {
             return questionIndex
         }
         else {
-            questionLabel.text = "Your Result!"
+            questionLabel.text = "Results!"
             questionLabel.textAlignment = .center
             firstAnswer.removeFromSuperview()
             secondAnswer.removeFromSuperview()
