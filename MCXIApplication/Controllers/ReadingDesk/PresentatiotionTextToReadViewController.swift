@@ -312,7 +312,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 
                 
                 //Ho commentato il colore per renderlo più facilmente testabile
-                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red/*UIColor(red: 142/255, green: 106/255, blue: 255/255, alpha: 1.0)*/, range: NSRange(location: (startingIndex),length: lenghtIndex+1))
+                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 104/255, green: 72/255, blue: 239/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
                 
                 self.textToRead.attributedText = myMutableString
                 self.initialTimer = self.initialTimer+Int(self.dropUpButtonTime.currentTitle!)!
@@ -326,7 +326,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
                 let myMutableString = NSMutableAttributedString(string: self.textSplitted[self.indexWord] as String, attributes: [NSAttributedString.Key.font:FontKit.roundedFont(ofSize: 24, weight: .semibold)])
                 let (startingIndex, lenghtIndex) = String(self.textSplitted[self.indexWord]).findMiddle()
-                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 142/255, green: 106/255, blue: 255/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
+                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 104/255, green: 72/255, blue: 239/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
                 self.textToRead.attributedText = myMutableString
                 if self.indexWord < self.textSplitted.count - 1 {
                     self.indexWord += 1
@@ -670,3 +670,17 @@ extension StringProtocol {
     }
 }
 
+extension UILabel{
+
+    func alwaysCenterCharacters(subStirng: String, viewToCenter: UIView){
+        self.frame.origin = viewToCenter.center
+        let range: NSRange = (self.text! as NSString).range(of: String(subStirng))
+        let prefix = (self.text! as NSString).substring(to: range.location)//"Good,Morning".substring(to: range.location)
+        let size: CGSize = prefix.size(withAttributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18.0)])
+        let p = CGPoint(x: size.width , y: 0)
+        print("p.x: \(p.x)")
+        print("p.y: \(p.y)")
+        
+        self.frame = CGRect(x: self.frame.minX - p.x, y: self.frame.minY - p.y, width: self.frame.width, height: self.frame.height)
+    }
+}

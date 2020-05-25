@@ -11,5 +11,5 @@ target 'MCXIApplication' do
   pod 'WeScan', '>= 0.9'
   pod 'paper-onboarding'
   pod 'JGProgressHUD'
-
+  pod 'AssetsPickerViewController'
 end
