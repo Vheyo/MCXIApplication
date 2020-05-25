@@ -65,6 +65,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         textTitle.translatesAutoresizingMaskIntoConstraints = false
         textTitle.text = " Tap To Start Reading "
         textTitle.textAlignment = .center
+        textTitle.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
+        textTitle.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         return textTitle
     }()
     
@@ -74,7 +76,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         textToRead.font = FontKit.roundedFont(ofSize: 24, weight: .regular)
         textToRead.alpha = 0
         textToRead.textAlignment = .center
-        textToRead.textColor = .black
+        textToRead.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         return textToRead
     }()
     
@@ -144,6 +146,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropUpButtonTime.tag = 1
         dropUpButtonTime.alpha = 0.0
         dropUpButtonTime.backgroundColor = .white
+        dropUpButtonTime.titleLabel?.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
         return dropUpButtonTime
     }()
     
@@ -161,6 +164,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         dropDownButtonTime.tag = 2
         dropDownButtonTime.alpha = 0.0
         dropDownButtonTime.backgroundColor = .white
+        dropDownButtonTime.titleLabel?.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
         return dropDownButtonTime
     }()
     
@@ -190,6 +194,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         keywordButton.backgroundColor = .white
         keywordButton.addTarget(self, action: #selector(addKeyword), for: .touchUpInside)
         keywordButton.alpha = 0.0
+        keywordButton.titleLabel?.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
         return keywordButton
     }()
     
@@ -538,8 +543,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             
             textTitle.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 0),
             textTitle.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: 0),
-            textTitle.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
-            textTitle.heightAnchor.constraint(equalToConstant: 30),
+            textTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            textTitle.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
             
             textToRead.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             textToRead.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),

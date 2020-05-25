@@ -67,19 +67,6 @@ class ReadingDeskViewController: UIViewController {
     
 //      imagePlay.image = UIImage(named: "ButtonPlay")
 
-    private var timeTextRead : UIButton = {
-        let timeTextRead = UIButton()
-        timeTextRead.setTitle("Timer", for: .normal)
-        timeTextRead.setTitleColor(#colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), for: .normal)
-        timeTextRead.titleLabel?.font = FontKit.roundedFont(ofSize: 20, weight: .semibold)
-        timeTextRead.layer.masksToBounds = true
-        timeTextRead.layer.borderWidth = 2
-        timeTextRead.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
-        timeTextRead.layer.cornerRadius = 22
-        timeTextRead.translatesAutoresizingMaskIntoConstraints = false
-        timeTextRead.frame = CGRect(x: 0, y: 0, width: 190, height: 40)
-        return timeTextRead
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +80,6 @@ class ReadingDeskViewController: UIViewController {
         setUpConstraints()
         
         view.backgroundColor = .white
-        timeTextRead.addTarget(self, action: #selector(timerAnimation), for: .touchUpInside)
         playButton.addTarget(self, action: #selector(playMode), for: .touchUpInside)
     }
     
@@ -156,7 +142,6 @@ class ReadingDeskViewController: UIViewController {
         playButton.setGradientBackground(colorOne: #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1), colorTwo: #colorLiteral(red: 0.3490196078, green: 0.3333333333, blue: 0.8274509804, alpha: 1), frame : CGRect(x: 0, y: 0, width: 270, height: 60))
         backgroundImageView.addSubview(circleView)
         self.view.addSubview(playButton)
-        self.view.addSubview(timeTextRead)
         NSLayoutConstraint.activate([
             
             circleView.centerXAnchor.constraint(equalTo: self.backgroundImageView.centerXAnchor),
@@ -175,16 +160,12 @@ class ReadingDeskViewController: UIViewController {
             
             
            
-            playButton.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 35),
+            playButton.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 60),
             playButton.heightAnchor.constraint(equalToConstant: 60),
             playButton.widthAnchor.constraint(equalToConstant: 270),
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            timeTextRead.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 20),
-            timeTextRead.heightAnchor.constraint(equalToConstant: 44),
-            timeTextRead.widthAnchor.constraint(equalToConstant: 218),
-            timeTextRead.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
+  
         
         ])
         
