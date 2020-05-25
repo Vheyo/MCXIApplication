@@ -100,7 +100,8 @@ class ReadingDeskViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        AppUtility.lockOrientation(.portrait)
         if(UserDefaults.isFirstLaunch()){
             let vc = self.storyboard?.instantiateViewController(identifier: "TUTORIAL") as? TutorialViewController
             self.view.window?.rootViewController = vc
