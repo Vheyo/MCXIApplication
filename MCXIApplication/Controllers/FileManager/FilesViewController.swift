@@ -16,7 +16,8 @@ class FilesViewController : UIViewController{
             cardCollectionKeywords.reloadData()
         }
     }
-    private var indexName = 0
+    var ListaFileTxt = [String]()
+    
     fileprivate var pageSize: CGSize {
         let layout = self.cardCollectionView.collectionViewLayout as! UPCarouselFlowLayout
         var pageSize = layout.itemSize
@@ -115,19 +116,31 @@ class FilesViewController : UIViewController{
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
+        checkNumFile()
+        AppUtility.lockOrientation(.portrait)
+    }
+    
+    
+    
+    
+    func checkNumFile(){
+        ListaFileTxt.removeAll()
         var ListaFile = [String]()
-        var ListaFileTxt = [String]()
+        print(ListaFileTxt)
         let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
                let url = NSURL(fileURLWithPath: path)
                let filePath = url.path
                let fileManager = FileManager.default
-        ListaFile.append(contentsOf: try! fileManager.contentsOfDirectory(atPath: filePath!))
+        ListaFile.insert(contentsOf:  (try! fileManager.contentsOfDirectory(atPath: filePath!)), at: 0)
         for element in ListaFile {
             if element.contains("txt") == true{
-                ListaFileTxt.append(element)
+                ListaFileTxt.insert(element, at: 0)
             }
         }
-        print(ListaFileTxt.count)
+        ListaFileTxt.sort()
+        
+        print(ListaFileTxt)
+        print(ListaFile)
         
         //Tito ho modificato qui
         if(ListaFile.count == 0){
@@ -149,8 +162,8 @@ class FilesViewController : UIViewController{
         UserDefaults.standard.set(ListaFileTxt.count, forKey: "numFile")
         cardCollectionView.reloadData()
         cardCollectionKeywords.reloadData()
-        AppUtility.lockOrientation(.portrait)
     }
+    
     
     func setUpConstraintInit(){
         NSLayoutConstraint.activate([
@@ -212,10 +225,12 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         var numberOfreturn : Int = 0
         if collectionView == cardCollectionView {
             numberOfreturn = UserDefaults.standard.integer(forKey: "numFile")
+            print(numberOfreturn)
         }else {
             let arrayString = UserDefaults.standard.stringArray(forKey: "File \(currentPage)")
             numberOfreturn = arrayString?.count ?? 1
         }
+        
         return numberOfreturn
     }
     
@@ -224,8 +239,11 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         
         if collectionView == cardCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! FileCell
-            cell.nameFileLabel.text = "File \(indexName)"
-            indexName += 1
+           
+                cell.nameFileLabel.text = ListaFileTxt[indexPath.item]
+          
+           
+            
             
             return cell
         }else {
