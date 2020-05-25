@@ -53,7 +53,9 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         setupVision();
         pagineCounter = 0;
         imageCenter = imageView.center
-        tempImageView.image = #imageLiteral(resourceName: "OcrNoFile")
+        if(pagine.isEmpty){
+            tempImageView.image = #imageLiteral(resourceName: "OcrNoFile")
+        }
         imagePicker.delegate = self
         
         scanButton = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(PhotoScan))
@@ -98,10 +100,10 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         doubleFingerPan.maximumNumberOfTouches = 2;
         tempImageView.addGestureRecognizer(doubleFingerPan)
         
-//        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
-//            
-//            print(self.bufferString)
-//        })
+        //        Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+        //            
+        //            print(self.bufferString)
+        //        })
         
     }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -533,15 +535,17 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
             alert.addAction(UIAlertAction(title: "Take a photo", style: .default , handler:{ (UIAlertAction)in
                 let scannerViewController = VNDocumentCameraViewController();
                 scannerViewController.delegate = self;
-                self.tempImageView.image = UIImage()
+                
                 self.present(scannerViewController, animated: true);
+                self.tempImageView.image = UIImage()
             }))
             alert.addAction(UIAlertAction(title: "Import from gallery", style: .default , handler:{ (UIAlertAction)in
                 self.imagePicker.sourceType = .photoLibrary
-                self.tempImageView.image = UIImage()
+                
                 self.imagePicker.allowsEditing = false
                 //Quando premo sull'icona della camera voglio presetare il controller della camera (PickerController)
                 self.present(self.imagePicker, animated: true, completion: nil)
+                self.tempImageView.image = UIImage()
             }))
             
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler:{ (UIAlertAction)in
