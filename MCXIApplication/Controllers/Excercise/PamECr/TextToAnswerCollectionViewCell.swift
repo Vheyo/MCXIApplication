@@ -17,6 +17,8 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         containerView.layer.cornerRadius =  15
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.layer.masksToBounds = true
+        containerView.layer.borderColor = #colorLiteral(red: 0.9450980392, green: 0.9294117647, blue: 0.9960784314, alpha: 1)
+        containerView.layer.borderWidth = 2
         return containerView
     }()
     
@@ -47,12 +49,18 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
                     self.transform = CGAffineTransform.identity
                     self.titleLabel.textColor = .white
                     self.containerImage.image = UIImage(named: self.nameImage[self.containerImage.tag])
+                    self.containerView.layer.borderColor = #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1)
+                    self.containerView.layer.borderWidth = 0
+
                 }
             }
             else {
                 UIView.animate(withDuration: 0.1) {
                     self.titleLabel.textColor = #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1)
                     self.containerImage.image = UIImage(named: self.nameImageBianche[self.containerImage.tag])
+                    self.containerView.layer.borderColor = #colorLiteral(red: 0.9450980392, green: 0.9294117647, blue: 0.9960784314, alpha: 1)
+                    self.containerView.layer.borderWidth = 2
+
                 }
             }
         }

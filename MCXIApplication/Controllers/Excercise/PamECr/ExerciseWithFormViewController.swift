@@ -155,12 +155,124 @@ class ExerciseWithFormViewController: UIViewController {
         return radioButtonFourth
     }()
     
+    
+    private var tempoLabel : UILabel = {
+        let tempoLabel = UILabel()
+        tempoLabel.translatesAutoresizingMaskIntoConstraints = false
+        tempoLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
+        tempoLabel.textAlignment = .center
+        tempoLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        tempoLabel.text = "Time"
+        return tempoLabel
+    }()
+    
+    private var pamLabel : UILabel = {
+        let pamLabel = UILabel()
+        pamLabel.translatesAutoresizingMaskIntoConstraints = false
+        pamLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
+        pamLabel.textAlignment = .center
+        pamLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        pamLabel.text = "WPM"
+        return pamLabel
+    }()
+    
+    private var crLabel : UILabel = {
+        let crLabel = UILabel()
+        crLabel.translatesAutoresizingMaskIntoConstraints = false
+        crLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
+        crLabel.textAlignment = .center
+        crLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        crLabel.text = "Comprensione"
+        return crLabel
+    }()
+    
+    private var rendimentoLabel : UILabel = {
+        let rendimentoLabel = UILabel()
+        rendimentoLabel.translatesAutoresizingMaskIntoConstraints = false
+        rendimentoLabel.font = FontKit.roundedFont(ofSize: 24, weight: .bold)
+        rendimentoLabel.textAlignment = .center
+        rendimentoLabel.textColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        rendimentoLabel.text = "Rendimento"
+        return rendimentoLabel
+    }()
+    
+    private var tempoResultLabel : UILabel = {
+        let tempoResultLabel = UILabel()
+        tempoResultLabel.translatesAutoresizingMaskIntoConstraints = false
+        tempoResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
+        tempoResultLabel.textAlignment = .center
+        tempoResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        return tempoResultLabel
+    }()
+    
+    private var pamResultLabel : UILabel = {
+        let pamResultLabel = UILabel()
+        pamResultLabel.translatesAutoresizingMaskIntoConstraints = false
+        pamResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
+        pamResultLabel.textAlignment = .center
+        pamResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        return pamResultLabel
+    }()
+    
+    private var crResultLabel : UILabel = {
+        let crResultLabel = UILabel()
+        crResultLabel.translatesAutoresizingMaskIntoConstraints = false
+        crResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
+        crResultLabel.textAlignment = .center
+        crResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        return crResultLabel
+    }()
+    
+    private var rendimentoResultLabel : UILabel = {
+        let rendimentoResultLabel = UILabel()
+        rendimentoResultLabel.translatesAutoresizingMaskIntoConstraints = false
+        rendimentoResultLabel.font = FontKit.roundedFont(ofSize: 20, weight: .medium)
+        rendimentoResultLabel.textAlignment = .center
+        rendimentoResultLabel.textColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        rendimentoResultLabel.text = "Rendimento"
+        return rendimentoResultLabel
+    }()
+    
+    private let verticalStack1 : UIStackView = {
+        let verticalStack1 = UIStackView()
+        verticalStack1.axis = .vertical
+        verticalStack1.translatesAutoresizingMaskIntoConstraints = false
+        verticalStack1.distribution = .fillEqually
+        return verticalStack1
+    }()
+    
+    private let verticalStack2 : UIStackView = {
+        let verticalStack2 = UIStackView()
+        verticalStack2.axis = .vertical
+        verticalStack2.translatesAutoresizingMaskIntoConstraints = false
+        verticalStack2.distribution = .fillEqually
+        return verticalStack2
+    }()
+    
+    
+    private let verticalStack3 : UIStackView = {
+        let verticalStack3 = UIStackView()
+        verticalStack3.axis = .vertical
+        verticalStack3.translatesAutoresizingMaskIntoConstraints = false
+        verticalStack3.distribution = .fillEqually
+        return verticalStack3
+    }()
+    
+    
+    private let verticalStack4 : UIStackView = {
+        let verticalStack4 = UIStackView()
+        verticalStack4.axis = .vertical
+        verticalStack4.translatesAutoresizingMaskIntoConstraints = false
+        verticalStack4.distribution = .fillEqually
+        return verticalStack4
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpAlternateButton()
         setUpTextToRead()
         radioButtonFirst.onTap = {
-            UIView.animate(withDuration: 0.5) {
+            UIView.animate(withDuration: 0.2) {
                 self.buttonPlay.alpha = 1
                 self.buttonPlay.isEnabled = true
                 if self.shadow == nil {
@@ -407,15 +519,16 @@ class ExerciseWithFormViewController: UIViewController {
             return questionIndex
         }
         else {
-            questionLabel.text = "HAI FINITO L'ESERCIZIO"
-            firstAnswer.isHidden = true
-            secondAnswer.isHidden = true
-            thirdAnswer.isHidden = true
-            fourthAnswer.isHidden = true
-            radioButtonFirst.isHidden = true
-            radioButtonSecond.isHidden = true
-            radioButtonThird.isHidden = true
-            radioButtonFourth.isHidden = true
+            questionLabel.text = "Your Result!"
+            questionLabel.textAlignment = .center
+            firstAnswer.removeFromSuperview()
+            secondAnswer.removeFromSuperview()
+            thirdAnswer.removeFromSuperview()
+            fourthAnswer.removeFromSuperview()
+            radioButtonFirst.removeFromSuperview()
+            radioButtonSecond.removeFromSuperview()
+            radioButtonThird.removeFromSuperview()
+            radioButtonFourth.removeFromSuperview()
             return questionIndex
         }
         
@@ -440,7 +553,6 @@ class ExerciseWithFormViewController: UIViewController {
             buttonPlay.isEnabled = false
             if(checkAnswer() == true){
                 numberOfAnswerTrue+=1
-               /*INCREMENTO DI UNA VARIABILE PER TENER TRACCIA DI QUANTE RISPOSTE ESATTE*/
             }
             if chargeNextQuestion() >= domande_Array.count{
                 buttonPlay.isHidden = true
@@ -451,20 +563,62 @@ class ExerciseWithFormViewController: UIViewController {
                 let pam = ( Double(numeroParole) * 60 )/diff
                 let comprensione : Double = Double((100*numberOfAnswerTrue)/risposteEsatte_Array.count)
                 let rendimento = (pam*comprensione)/100
-//                QUello sotto poi non sara più utile era per vedere la stampa dei valori
-                firstAnswer.isHidden = false
-                secondAnswer.isHidden = false
-                thirdAnswer.isHidden = false
-                fourthAnswer.isHidden = false
-                firstAnswer.text = ("\(diff)")
-                secondAnswer.text = ("\(pam)")
-                thirdAnswer.text = ("\(comprensione)")
-                fourthAnswer.text = ("\(rendimento)")
-
+                
+                
+                tempoResultLabel.text = ("\(diff)")
+                pamResultLabel.text =  ("\(pam)")
+                crResultLabel.text = ("\(comprensione)")
+                rendimentoResultLabel.text = ("\(rendimento)")
+                
+                
+                setUpConstraintsResult()
                 
             }
             
         }
+        
+    }
+    
+    
+    func setUpConstraintsResult(){
+        view.addSubview(verticalStack1)
+        view.addSubview(verticalStack2)
+        view.addSubview(verticalStack3)
+        view.addSubview(verticalStack4)
+        
+        verticalStack1.addArrangedSubview(tempoLabel)
+        verticalStack1.addArrangedSubview(tempoResultLabel)
+        verticalStack2.addArrangedSubview(pamLabel)
+        verticalStack2.addArrangedSubview(pamResultLabel)
+        verticalStack3.addArrangedSubview(crLabel)
+        verticalStack3.addArrangedSubview(crResultLabel)
+        verticalStack4.addArrangedSubview(rendimentoLabel)
+        verticalStack4.addArrangedSubview(rendimentoResultLabel)
+        
+        
+        
+        NSLayoutConstraint.activate([
+        
+            verticalStack1.topAnchor.constraint(equalTo: questionLabel.bottomAnchor),
+            verticalStack1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            verticalStack1.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
+            
+            verticalStack2.topAnchor.constraint(equalTo: verticalStack1.bottomAnchor,constant: 30),
+            verticalStack2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            verticalStack2.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
+            
+            verticalStack3.topAnchor.constraint(equalTo: verticalStack2.bottomAnchor,constant: 30),
+            verticalStack3.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            verticalStack3.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
+            
+            verticalStack4.topAnchor.constraint(equalTo: verticalStack3.bottomAnchor,constant: 30),
+            verticalStack4.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            verticalStack4.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -16),
+            verticalStack4.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            
+        
+        ])
+        
         
     }
     
