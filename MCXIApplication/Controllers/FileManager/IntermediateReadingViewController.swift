@@ -147,15 +147,18 @@ class IntermediateReadingViewController: UIViewController{
     @objc func saveAction(){
       
         let file = "\(nameFile).txt"
+        print("\(nameFile).txt")
         let text = textToRead.text
         if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
             // aggiungiamo il file alla directory
+            removeFile()
+            
             let fileURL = dir.appendingPathComponent(file)
             // Scriviamo il contenuto nel file
             
             do{
                 try text?.write(to: fileURL, atomically: false, encoding: .utf8)
-                UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
+                
             }catch{
                 print("cant write...")
             }
@@ -163,4 +166,19 @@ class IntermediateReadingViewController: UIViewController{
         dismissView()
         
     }
-}
+    
+    
+    
+    func removeFile(){
+        if let dir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first{
+                let removeFile = dir.appendingPathComponent("\(nameFile).txt")
+                let fileManager = FileManager.default
+                do{
+                    try fileManager.removeItem(at: removeFile)
+                }catch{
+                    print("cant remove file...")
+                }
+            }
+        }
+    }
+

@@ -16,7 +16,7 @@ class FilesViewController : UIViewController{
             cardCollectionKeywords.reloadData()
         }
     }
-    
+    private var indexName = 0
     fileprivate var pageSize: CGSize {
         let layout = self.cardCollectionView.collectionViewLayout as! UPCarouselFlowLayout
         var pageSize = layout.itemSize
@@ -224,7 +224,8 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         
         if collectionView == cardCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! FileCell
-            cell.nameFileLabel.text = "File \(currentPage)"
+            cell.nameFileLabel.text = "File \(indexName)"
+            indexName += 1
             
             return cell
         }else {
@@ -277,7 +278,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     func loadReadingDeskFile(Item : Int){
         let vc = IntermediateReadingViewController()
         vc.textToRead.text = obtainTextFromFile(indexPath: Item+1)
-        vc.nameFile = "File \(Item)"
+        vc.nameFile = "File\(Item+1)"
         vc.modalPresentationStyle = .fullScreen
         present(vc,animated: true)
     }

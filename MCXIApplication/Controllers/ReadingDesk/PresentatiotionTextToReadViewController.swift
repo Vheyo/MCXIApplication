@@ -281,13 +281,16 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                     textToShow.append(element)
                     textToShow.append(" ")
                 }
+                
+                
                 let myMutableString = NSMutableAttributedString(string: textToShow as String, attributes: [NSAttributedString.Key.font:FontKit.roundedFont(ofSize: 24, weight: .semibold)])
                 var (startingIndex, lenghtIndex) = String(textToShow).findMiddle()
                 
                 
                 
                 //MARK: FOR VALENTINO <3<3<3<3<3<3
-                var start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2)-1)
+                
+                var start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2))
                 if(lenghtIndex == 0){
                     start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2))
                 }
@@ -297,11 +300,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 let mySubstring = textToShow[index...end]
                 
                 
-                if(mySubstring.contains(" ") || mySubstring.contains(",")){
-                    startingIndex -= 1;
+                if(textToShow.middle.contains(" ") || textToShow.middle.contains(",") || textToShow.middle.contains(".") || textToShow.middle.contains(", ") || textToShow.middle.contains(" ,")){
+                    startingIndex += 1;
                 }
                 print("[\(mySubstring)]")
                 print("[\(textToShow)]")
+                print("[\(textToShow.middle)]")
                 
 
                 //**********************************
@@ -653,6 +657,16 @@ extension String{
             }
         }
         return (start, end)
+    }
+}
+
+extension StringProtocol {
+    var middle: SubSequence {
+        if isEmpty { return "" }
+        if count == 1 { return  self[startIndex...startIndex] }
+        let middleIndex = index(startIndex, offsetBy: count/2)
+        let previous = index(before: middleIndex)
+        return count % 2 == 0 ? self[previous...middleIndex] : self[middleIndex...middleIndex]
     }
 }
 
