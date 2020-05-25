@@ -154,15 +154,15 @@ class ReadingDeskViewController: UIViewController {
             titleTextLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
 
             backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            backgroundImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 50),
+            backgroundImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100),
             backgroundImageView.widthAnchor.constraint(equalToConstant: 70*view.frame.size.width/100),
             backgroundImageView.heightAnchor.constraint(equalToConstant: 48*view.frame.size.height/100),
             
             
            
-            playButton.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 60),
-            playButton.heightAnchor.constraint(equalToConstant: 60),
-            playButton.widthAnchor.constraint(equalToConstant: 270),
+            playButton.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 5.9*view.frame.size.height/100 ),
+            playButton.heightAnchor.constraint(equalToConstant: 6.4*view.frame.size.height/100),
+            playButton.widthAnchor.constraint(equalToConstant: 62*view.frame.size.width/100),
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
   
