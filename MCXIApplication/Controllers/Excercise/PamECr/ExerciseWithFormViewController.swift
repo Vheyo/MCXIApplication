@@ -565,10 +565,10 @@ class ExerciseWithFormViewController: UIViewController {
                 let rendimento = (pam*comprensione)/100
                 
                 
-                tempoResultLabel.text = ("\(diff)")
-                pamResultLabel.text =  ("\(pam)")
-                crResultLabel.text = ("\(comprensione)")
-                rendimentoResultLabel.text = ("\(rendimento)")
+                tempoResultLabel.text = ("\(diff.rounded(.toNearestOrAwayFromZero))s")
+                pamResultLabel.text =  ("\(pam.rounded(.toNearestOrAwayFromZero))")
+                crResultLabel.text = ("\(comprensione.rounded(.toNearestOrAwayFromZero))")
+                rendimentoResultLabel.text = ("\(rendimento.rounded(.toNearestOrAwayFromZero))")
                 
                 
                 setUpConstraintsResult()
