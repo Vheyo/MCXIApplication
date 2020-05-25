@@ -516,12 +516,14 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     @objc func PhotoScan(){
+        
         if(scanButton.title == "Done"){
             if(pagineCounter != pagine.count - 1){
                 wrongEntryAlert(title: "Attenzione:", message: "Non hai completato tutte le pagine")
             }
             else{
                 cropPLS()
+                
             }
         }
         else /*(scanButton.title == "Scan")*/{
@@ -531,11 +533,12 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
             alert.addAction(UIAlertAction(title: "Take a photo", style: .default , handler:{ (UIAlertAction)in
                 let scannerViewController = VNDocumentCameraViewController();
                 scannerViewController.delegate = self;
+                self.tempImageView.image = UIImage()
                 self.present(scannerViewController, animated: true);
             }))
             alert.addAction(UIAlertAction(title: "Import from gallery", style: .default , handler:{ (UIAlertAction)in
                 self.imagePicker.sourceType = .photoLibrary
-                
+                self.tempImageView.image = UIImage()
                 self.imagePicker.allowsEditing = false
                 //Quando premo sull'icona della camera voglio presetare il controller della camera (PickerController)
                 self.present(self.imagePicker, animated: true, completion: nil)
