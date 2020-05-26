@@ -285,7 +285,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
 //                }
                 var range = 0...1
                 
-                if self.endIndex > self.textSplitted.count-1{
+                if self.endIndex >= self.textSplitted.count-1{
                     if self.initialIndex > self.textSplitted.count-1{
                         range = (self.textSplitted.count-2...self.textSplitted.count-1)
                     } else {
@@ -341,6 +341,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 self.textToRead.attributedText = myMutableString
                 self.initialTimer = self.initialTimer+Int(self.dropUpButtonTime.currentTitle!)!
                 self.initialIndex = self.initialIndex+Int(self.dropUpButtonTime.currentTitle!)!
+                self.endIndex = self.endIndex+Int(self.dropUpButtonTime.currentTitle!)!
             })
             
             
