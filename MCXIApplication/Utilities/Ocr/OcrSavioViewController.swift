@@ -272,7 +272,17 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         do {
             try text.write(to: fileUrl, atomically: false, encoding: .utf8)
             UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
-            
+            var stringArray = UserDefaults.standard.stringArray(forKey: "FileName")
+                      
+                      if stringArray == nil{
+                           stringArray = [file]
+                      }
+                      else {
+                          stringArray?.append(file)
+                      }
+                     
+                      print(stringArray)
+                      UserDefaults.standard.set(stringArray, forKey: "FileName")
         } catch {
             print("cant write...")
         }

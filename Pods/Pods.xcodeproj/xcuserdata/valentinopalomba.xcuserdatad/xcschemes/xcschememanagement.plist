@@ -38,7 +38,7 @@
 		<key>Device.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>9</integer>
 		</dict>
 		<key>JGProgressHUD.xcscheme</key>
 		<dict>
