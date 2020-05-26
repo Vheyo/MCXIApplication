@@ -42,10 +42,10 @@ class ReadingDeskViewController: UIViewController {
         someTextLabel.textAlignment = .center
         someTextLabel.numberOfLines = 1
         someTextLabel.translatesAutoresizingMaskIntoConstraints = false
-
+        
         return someTextLabel
     }()
-
+    
     private let circleView : UIView = {
         let circleView = UIView()
         circleView.backgroundColor = .white
@@ -67,13 +67,13 @@ class ReadingDeskViewController: UIViewController {
         return playButton
     }()
     
-//      imagePlay.image = UIImage(named: "ButtonPlay")
-
+    //      imagePlay.image = UIImage(named: "ButtonPlay")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().shadowImage = UIImage()
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
+        //        self.navigationController?.navigationBar.shadowImage = UIImage()
         overrideUserInterfaceStyle = .light
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         AppUtility.lockOrientation(.portrait)
@@ -102,7 +102,7 @@ class ReadingDeskViewController: UIViewController {
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
     }
     
-
+    
     
     
     func obtainTextFromFile(indexPath: Int) -> String {
@@ -131,7 +131,7 @@ class ReadingDeskViewController: UIViewController {
     }
     
     func setUpNavigationBar(){
-//        self.title = "Reading Desk"
+        //        self.title = "Reading Desk"
         let button1 = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addFile(_:)))
         button1.tintColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
         self.navigationItem.rightBarButtonItem  = button1
@@ -151,24 +151,24 @@ class ReadingDeskViewController: UIViewController {
             circleView.widthAnchor.constraint(equalToConstant: 48*view.frame.size.width/100),
             circleView.heightAnchor.constraint(equalToConstant: 48*view.frame.size.width/100),
             
-    
+            
             titleTextLabel.centerXAnchor.constraint(equalTo: circleView.centerXAnchor),
             titleTextLabel.centerYAnchor.constraint(equalTo: circleView.centerYAnchor),
-
+            
             backgroundImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             backgroundImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 90),
             backgroundImageView.widthAnchor.constraint(equalToConstant: 70*view.frame.size.width/100),
             backgroundImageView.heightAnchor.constraint(equalToConstant: 48*view.frame.size.height/100),
             
             
-           
+            
             playButton.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 5.9*view.frame.size.height/100 ),
             playButton.heightAnchor.constraint(equalToConstant: 6.4*view.frame.size.height/100),
             playButton.widthAnchor.constraint(equalToConstant: 62*view.frame.size.width/100),
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-  
-        
+            
+            
         ])
         
         circleView.frame = CGRect(x: 0, y: 0, width: 48*view.frame.size.width/100, height: 48*view.frame.size.width/100)
@@ -186,21 +186,21 @@ class ReadingDeskViewController: UIViewController {
         
         alert.addAction(UIAlertAction(title: "Scan", style: .default , handler:{ (UIAlertAction)in
             print("User click Approve button")
-          self.performSegue(withIdentifier: "navigation", sender: self)
-//            self.present(OcrViewController(),animated: true)
+            self.performSegue(withIdentifier: "navigation", sender: self)
+            //            self.present(OcrViewController(),animated: true)
         }))
         
         alert.addAction(UIAlertAction(title: "Import File", style: .default , handler:{ (UIAlertAction)in
             self.importPdf()
             
         }))
-       alert.addAction(UIAlertAction(title: "Write Text", style: .default , handler:{ (UIAlertAction)in
-                 let vc = PasteAndCopyViewController()
-        vc.view.backgroundColor = .white
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc,animated: true)
-                  
-              }))
+        alert.addAction(UIAlertAction(title: "Write Text", style: .default , handler:{ (UIAlertAction)in
+            let vc = PasteAndCopyViewController()
+            vc.view.backgroundColor = .white
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc,animated: true)
+            
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
             print("User click Dismiss button")
         }))
@@ -215,12 +215,12 @@ class ReadingDeskViewController: UIViewController {
     @objc func playMode(){
         print(someTextLabel.text?.count)
         if someTextLabel.text?.count != 0 {
-       let vc = PresentatiotionTextToReadViewController()
-        vc.text = someTextLabel.text!
-        vc.modalPresentationStyle = .fullScreen
-        vc.nameFile = titleTextLabel.text!
-        vc.view.backgroundColor = .white
-        present(vc,animated: true)
+            let vc = PresentatiotionTextToReadViewController()
+            vc.text = someTextLabel.text!
+            vc.modalPresentationStyle = .fullScreen
+            vc.nameFile = titleTextLabel.text!
+            vc.view.backgroundColor = .white
+            present(vc,animated: true)
         }
         else {
             addPopUp(text: "The file is empty!")
@@ -228,7 +228,7 @@ class ReadingDeskViewController: UIViewController {
     }
     
     
-   
+    
     
     func importPdf(){
         let documentPicker = UIDocumentPickerViewController(documentTypes: [(kUTTypePDF as String)], in: .import)
@@ -323,10 +323,23 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                     
                     do{
                         try text.write(to: fileUrl, atomically: false, encoding: .utf8)
-                            UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
-                           } catch {
-                               print("cant write...")
-                           }
+                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
+                        let lastFilenum = UserDefaults.standard.integer(forKey: "numFile")+1
+                        let file = "File\(lastFilenum).txt"
+                        var stringArray = UserDefaults.standard.stringArray(forKey: "FileName")
+                        
+                        if stringArray == nil{
+                            stringArray = [file]
+                        }
+                        else {
+                            stringArray?.append(file)
+                        }
+                        
+                        print(stringArray)
+                        UserDefaults.standard.set(stringArray, forKey: "FileName")
+                    } catch {
+                        print("cant write...")
+                    }
                 }
                 
             }
@@ -351,22 +364,22 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
     
 }
 extension UserDefaults {
-        // check for is first launch - only true on first invocation after app install, false on all further invocations
-        // Note: Store this value in AppDelegate if you have multiple places where you are checking for this flag
-        static func isFirstLaunch() -> Bool {
-            let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
-            let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
-            if (isFirstLaunch) {
-                UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
-                UserDefaults.standard.synchronize()
-            }
-            return isFirstLaunch
-        }
-        static func FirstLunchSet(_ valore : Bool){
-            let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
-            UserDefaults.standard.set(!valore, forKey: hasBeenLaunchedBeforeFlag)
+    // check for is first launch - only true on first invocation after app install, false on all further invocations
+    // Note: Store this value in AppDelegate if you have multiple places where you are checking for this flag
+    static func isFirstLaunch() -> Bool {
+        let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
+        let isFirstLaunch = !UserDefaults.standard.bool(forKey: hasBeenLaunchedBeforeFlag)
+        if (isFirstLaunch) {
+            UserDefaults.standard.set(true, forKey: hasBeenLaunchedBeforeFlag)
             UserDefaults.standard.synchronize()
         }
+        return isFirstLaunch
+    }
+    static func FirstLunchSet(_ valore : Bool){
+        let hasBeenLaunchedBeforeFlag = "hasBeenLaunchedBeforeFlag"
+        UserDefaults.standard.set(!valore, forKey: hasBeenLaunchedBeforeFlag)
+        UserDefaults.standard.synchronize()
+    }
 }
 
 extension UIView {
