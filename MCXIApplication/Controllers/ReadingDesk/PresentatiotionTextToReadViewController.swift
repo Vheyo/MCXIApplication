@@ -356,6 +356,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func backAction(){
+        shadowKeywordButton.removeFromSuperview()
+        shadowDropDownButtonTime.removeFromSuperview()
+        shadowDropUpButtonTime.removeFromSuperview()
+
         if self.indexWord > 0 {
             indexWord -= 1
         }
@@ -367,9 +371,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.alpha = 1.0
         dropUpButtonTime.alpha = 1.0
         dropDownButtonTime.alpha = 1.0
+        
         self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
         self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
         self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        
+        
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
             self.hidden = false
@@ -378,6 +385,9 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     @objc func forwardAction(){
+        shadowKeywordButton.removeFromSuperview()
+        shadowDropDownButtonTime.removeFromSuperview()
+        shadowDropUpButtonTime.removeFromSuperview()
         if self.indexWord < self.textSplitted.count - 1 {
             indexWord += 1
         }
@@ -389,9 +399,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.alpha = 1.0
         dropUpButtonTime.alpha = 1.0
         dropDownButtonTime.alpha = 1.0
-        self.shadowDropUpButtonTime =  self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        dropDownButtonTime.alpha = 1.0
+        
+        self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
         self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
         self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+        
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
             self.hidden = false
@@ -427,6 +440,11 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         self.view.addGestureRecognizer(tapGesture)
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        print("ciao 2")
+        return !(touch.view is UIButton)
+    }
+    
     @objc func startToRead(gesture:UITapGestureRecognizer){
         view.removeGestureRecognizer(gesture)
         textTitle.alpha = 0
@@ -447,6 +465,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 timer.invalidate()
                 let hideGesture = UITapGestureRecognizer(target: self, action: #selector(self.hideFunction))
                 hideGesture.cancelsTouchesInView = false
+                hideGesture.delegate = self
                 self.view.addGestureRecognizer(hideGesture)
                 self.textToRead.alpha = 1.0
                 self.backButton.isEnabled = true
@@ -480,6 +499,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var shadowDropUpButtonTime : ShadowView!
     var shadowDropDownButtonTime : ShadowView!
     var shadowKeywordButton : ShadowView!
+    
     
     @objc func hideFunction(){
         //        if hidden == false && (!dropDownButtonTime.isOpen && !dropUpButtonTime.isOpen) {
@@ -600,16 +620,6 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         UIDevice.current.setValue(value, forKey: "orientation")
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        
-        if touch.isKind(of: DropUpViewCollectionViewCell.self) {
-            print("ciao bella io ti conosco tu fumi canella")
-            return true
-        }
-        
-        return touch.view == gestureRecognizer.view
     }
     
     
