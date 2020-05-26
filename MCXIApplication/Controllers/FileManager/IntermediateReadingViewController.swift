@@ -201,6 +201,30 @@ class IntermediateReadingViewController: UIViewController{
                 print("cant write...")
             }
         }
+        var nameFileArray = UserDefaults.standard.stringArray(forKey: "FileName")
+        if !userAnswer.isEmpty {
+            if nameFileArray?.isEmpty ?? true {
+                nameFileArray?.append(userAnswer.text!)
+            }
+            else{
+                
+            var i = 0
+            for element in nameFileArray!{
+                if element == "\(nameFile).txt"{
+                    nameFileArray?[i] = userAnswer.text!
+                    print(nameFileArray)
+                    print("cambiato con successo")
+                }
+                i += 1
+            }
+                
+            UserDefaults.standard.set(nameFileArray, forKey: "FileName")
+                
+               
+            }
+        }
+        
+        
         dismissView()
         
     }

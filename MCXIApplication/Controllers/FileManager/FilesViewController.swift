@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+
+
+
 class FilesViewController : UIViewController{
     
     private var currentPage: Int = 0 {
@@ -160,6 +163,7 @@ class FilesViewController : UIViewController{
         }
         //-------------------------
         UserDefaults.standard.set(ListaFileTxt.count, forKey: "numFile")
+        
         cardCollectionView.reloadData()
         cardCollectionKeywords.reloadData()
     }
@@ -239,8 +243,9 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         
         if collectionView == cardCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! FileCell
-           
-                cell.nameFileLabel.text = ListaFileTxt[indexPath.item]
+            let lista = UserDefaults.standard.stringArray(forKey: "FileName")
+            print(lista)
+            cell.nameFileLabel.text = lista![indexPath.item] 
           
            
             
