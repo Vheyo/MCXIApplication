@@ -217,7 +217,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         AppUtility.lockOrientation(.landscape,andRotateTo: .landscapeLeft)
         
     }
-
+    
     
     @objc func addKeyword(){
         let generator = UINotificationFeedbackGenerator()
@@ -225,34 +225,33 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         
         
         var arrayString = UserDefaults.standard.stringArray(forKey: "\(nameFile)")
-        if arrayString == nil {
-            arrayString = ["\(textSplitted[indexWord-1])"]
+        if dropUpButtonTime.currentTitle != "N"{
+            if arrayString == nil {
+                arrayString = ["\(textSplitted[endIndex-1])"]
+            }
+            else{
+                arrayString?.append(textSplitted[endIndex-1])
+                
+            }
+            print(arrayString)
         }
-        else{
-            arrayString?.append(textSplitted[indexWord-1])
-            
+        else {
+            if arrayString == nil {
+                arrayString = ["\(textSplitted[indexWord-1])"]
+            }
+            else{
+                arrayString?.append(textSplitted[indexWord-1])
+                
+            }
         }
+        
         
         UserDefaults.standard.set(arrayString, forKey: "\(nameFile)")
         print(nameFile)
         //        print(UserDefaults.standard.stringArray(forKey: "\(nameFile)"))
         
         
-        backButton.alpha = 1.0
-        keywordButton.alpha = 1.0
-        backButtonView.alpha = 1.0
-        forwardButton.alpha = 1.0
-        playButton.alpha = 1.0
-        dropUpButtonTime.alpha = 1.0
-        dropDownButtonTime.alpha = 1.0
-        self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
         
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
-            self.hidden = false
-        })
         
         
         
@@ -265,24 +264,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             self.initialIndex = indexWord
             self.endIndex = indexWord+Int(dropUpButtonTime.currentTitle!)!
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
-//                var range = 0..<1
-//
-//                if self.initialTimer >= self.textSplitted.count {
-//                    if self.initialIndex >= self.textSplitted.count {
-//                        range = (self.textSplitted.count-self.initialTimer)..<self.textSplitted.count-1
-//                    }
-//                    else{
-//                        range = self.initialIndex..<self.textSplitted.count-1
-//                    }
-//                }
-//                else if self.initialIndex < self.initialTimer{
-//                    range = self.initialIndex..<self.initialTimer
-//                }
-//
-//                if range.endIndex >= self.textSplitted.count-1{
-//                    range = self.textSplitted.count-2..<self.textSplitted.count-1
-//                    print(range)
-//                }
+                
                 var range = 0...1
                 
                 if self.endIndex >= self.textSplitted.count-1{
@@ -300,7 +282,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                     range = self.initialIndex...self.endIndex
                 }
                 
-              
+                
                 let textToShowSlice = self.textSplitted[range]
                 var textToShow = String()
                 for element in textToShowSlice {
@@ -318,10 +300,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 
                 
                 
-                if(textToShow.middle.contains(" ") || textToShow.middle.contains(",") || textToShow.middle.contains(".") || textToShow.middle.contains(", ") || textToShow.middle.contains(" ,")){
+                if(textToShow.middle.contains(" ") || textToShow.middle.contains(",") || textToShow.middle.contains(".") || textToShow.middle.contains(", ") || textToShow.middle.contains(" ,")) {
                     startingIndex += 1;
                 }
-               
+                
                 print("[\(textToShow)]")
                 print("[\(textToShow.middle)]")
                 
@@ -381,18 +363,18 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func backAction(){
-       
-
+        
+        
         if self.indexWord > 0 {
             indexWord -= 1
         }
         self.textToRead.text = textSplitted[indexWord]
-       
-        
-       
         
         
-       
+        
+        
+        
+        
         
     }
     
@@ -404,7 +386,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         self.textToRead.text = textSplitted[indexWord]
         
         
-       
+        
         
         
         
@@ -679,7 +661,7 @@ extension StringProtocol {
 }
 
 extension UILabel{
-
+    
     func alwaysCenterCharacters(subStirng: String, viewToCenter: UIView){
         self.frame.origin = viewToCenter.center
         let range: NSRange = (self.text! as NSString).range(of: String(subStirng))
