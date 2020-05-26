@@ -31,6 +31,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     var bufferString = [String]()
     var saveTxt = false
     var allSelected = false
+    var isDrowingActive = false
     
     var selectAllButton: UIBarButtonItem!
     var resetButton: UIBarButtonItem!
@@ -107,6 +108,11 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
 //                })
 //
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        isDrowingActive = false
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         //prendo l'immagine scattata dall'utente
@@ -122,6 +128,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         self.navigationItem.rightBarButtonItem = nil;
         scanButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(PhotoScan))
         navigationItem.rightBarButtonItems = [scanButton]
+        isDrowingActive = true
     }
     
     
@@ -480,29 +487,30 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
     }
     
     func drawLineFrom(_ fromPoint: CGPoint, toPoint: CGPoint) {
-        
-        // 1
-        UIGraphicsBeginImageContext(tempImageView.frame.size)
-        let context = UIGraphicsGetCurrentContext()
-        tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: tempImageView.frame.size.width, height: tempImageView.frame.size.height))
-        
-        // 2
-        context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
-        context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
-        
-        // 3
-        context?.setLineCap(.round)
-        context?.setLineWidth(brushWidth)
-        context?.setStrokeColor(red: red, green: green, blue: blue, alpha: 0.0)
-        context?.setBlendMode(.normal)
-        
-        // 4
-        context?.strokePath()
-        
-        // 5
-        tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
-        tempImageView.alpha = opacity
-        UIGraphicsEndImageContext()
+        if(isDrowingActive){
+            // 1
+            UIGraphicsBeginImageContext(tempImageView.frame.size)
+            let context = UIGraphicsGetCurrentContext()
+            tempImageView.image?.draw(in: CGRect(x: 0, y: 0, width: tempImageView.frame.size.width, height: tempImageView.frame.size.height))
+            
+            // 2
+            context?.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
+            context?.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
+            
+            // 3
+            context?.setLineCap(.round)
+            context?.setLineWidth(brushWidth)
+            context?.setStrokeColor(red: red, green: green, blue: blue, alpha: 0.0)
+            context?.setBlendMode(.normal)
+            
+            // 4
+            context?.strokePath()
+            
+            // 5
+            tempImageView.image = UIGraphicsGetImageFromCurrentImageContext()
+            tempImageView.alpha = opacity
+            UIGraphicsEndImageContext()
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -807,6 +815,7 @@ extension OcrViewController: AssetsPickerViewControllerDelegate {
         selectAllButton.isEnabled = true
         resetButton.isEnabled = true
         imageView.image = pagine.first
+        isDrowingActive = true
         recognizeTextInImage(imageView.image!)
         self.navigationItem.rightBarButtonItem = nil;
         scanButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(PhotoScan))
