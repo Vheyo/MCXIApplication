@@ -414,7 +414,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     func setUpText(){
-        let myText = text.split(separator: " ")
+        let myText = text.components(separatedBy:  [" ", "\n"])
         
         for element in myText {
             textSplitted.append(String(element))
