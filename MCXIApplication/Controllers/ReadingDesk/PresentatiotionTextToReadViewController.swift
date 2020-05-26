@@ -360,6 +360,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         else if reading == false {
             print(reading)
             startToRead(gesture: UITapGestureRecognizer())
+            hideFunction()
         }
         
     }
