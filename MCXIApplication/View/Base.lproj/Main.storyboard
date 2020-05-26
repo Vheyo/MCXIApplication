@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s6n-DT-Kb2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -10,7 +10,7 @@
         <!--File-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController interfaceStyle="light" id="BYZ-38-t0r" customClass="FilesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController interfaceStyle="light" id="BYZ-38-t0r" customClass="FilesViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -27,7 +27,7 @@
         <!--Intermediate Reading View Controller-->
         <scene sceneID="AgM-xh-idq">
             <objects>
-                <viewController id="mC1-9a-jpa" customClass="IntermediateReadingViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mC1-9a-jpa" customClass="IntermediateReadingViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c6x-1k-M5d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +42,7 @@
         <!--Exercises-->
         <scene sceneID="9CR-ZL-49B">
             <objects>
-                <viewController id="sRn-XZ-clf" customClass="ExcerciesViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="sRn-XZ-clf" customClass="ExcerciesViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V7E-l5-EZd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -79,7 +79,7 @@
         <!--Reading Desk-->
         <scene sceneID="WdV-IS-4CQ">
             <objects>
-                <viewController interfaceStyle="light" id="S23-bu-ZB5" customClass="ReadingDeskViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController interfaceStyle="light" id="S23-bu-ZB5" customClass="ReadingDeskViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9dJ-ei-WRe">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,7 +99,7 @@
         <!--Presentatiotion Text To Read View Controller-->
         <scene sceneID="SHJ-Es-cMD">
             <objects>
-                <viewController id="GzJ-Tk-U2H" customClass="PresentatiotionTextToReadViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GzJ-Tk-U2H" customClass="PresentatiotionTextToReadViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2cS-d3-lDw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,7 +137,7 @@
         <!--Type2 View Controller-->
         <scene sceneID="MG6-0H-heT">
             <objects>
-                <viewController storyboardIdentifier="type2" automaticallyAdjustsScrollViewInsets="NO" id="HRS-mG-wnL" customClass="Type2ViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="type2" automaticallyAdjustsScrollViewInsets="NO" id="HRS-mG-wnL" customClass="Type2ViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Gl3-3T-eoE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -326,12 +326,12 @@
         <!--OCR-->
         <scene sceneID="gO2-Pr-k5l">
             <objects>
-                <viewController id="aeA-dd-f7o" customClass="OcrViewController" customModule="MCXIApplication" sceneMemberID="viewController">
+                <viewController id="aeA-dd-f7o" customClass="OcrViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YB6-z6-NDA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zk-zn-PWb" customClass="BoundingBoxImageView" customModule="MCXIApplication" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Zk-zn-PWb" customClass="BoundingBoxImageView" customModule="Ready" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="140" width="414" height="454"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -408,7 +408,7 @@
         <!--Tutorial View Controller-->
         <scene sceneID="iKA-SY-h6f">
             <objects>
-                <viewController storyboardIdentifier="TUTORIAL" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zBe-WE-WkW" customClass="TutorialViewController" customModule="MCXIApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TUTORIAL" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zBe-WE-WkW" customClass="TutorialViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y7n-JJ-10L">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
