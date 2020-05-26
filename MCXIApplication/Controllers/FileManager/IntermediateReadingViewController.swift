@@ -11,6 +11,9 @@ import UIKit
 class IntermediateReadingViewController: UIViewController{
     var nameFile = String()
     
+    var fakeName = String()
+    
+    
     var textToRead : UITextView = {
         let textToRead = UITextView()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
@@ -210,7 +213,7 @@ class IntermediateReadingViewController: UIViewController{
                 
             var i = 0
             for element in nameFileArray!{
-                if element == "\(nameFile).txt"{
+                if element == "\(fakeName)" || element == "\(nameFile).txt"{
                     nameFileArray?[i] = userAnswer.text!
                     print(nameFileArray)
                     print("cambiato con successo")

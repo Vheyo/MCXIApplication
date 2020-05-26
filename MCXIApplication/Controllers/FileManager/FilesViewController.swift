@@ -300,8 +300,10 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     
     func loadReadingDeskFile(Item : Int){
         let vc = IntermediateReadingViewController()
+        let lista = UserDefaults.standard.stringArray(forKey: "FileName")
         vc.textToRead.text = obtainTextFromFile(indexPath: Item+1)
         vc.nameFile = "File\(Item+1)"
+        vc.fakeName = lista![Item]
         vc.modalPresentationStyle = .fullScreen
         present(vc,animated: true)
     }
