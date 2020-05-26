@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var image : UIImage!
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         UITabBar.appearance().shadowImage = UIImage(named: "blur4")
-        UITabBar.appearance().backgroundImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage(named: "color")
 //        UINavigationBar.appearance().setBackgroundImage(UIImage() , for: UIBarMetrics.default)
         UINavigationBar.appearance().shadowImage = UIImage(named: "blur5")
         
