@@ -291,7 +291,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         var uiEdgeInset : UIEdgeInsets = UIEdgeInsets()
         if collectionView == cardCollectionView {
-            uiEdgeInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 0)
+            uiEdgeInset = UIEdgeInsets(top: 0, left: 12*view.frame.width/100, bottom: 0, right: 12*view.frame.width/100)
         } else{
             uiEdgeInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
