@@ -60,6 +60,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var nameFile = String()
     var initialTimer = 2
     var initialIndex = 0
+    var endIndex = 0
     private var textTitle : UILabel = {
         let textTitle = UILabel()
         textTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -213,8 +214,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        AppUtility.lockOrientation(.landscape)
+        AppUtility.lockOrientation(.landscape,andRotateTo: .landscapeLeft)
+        
     }
+
     
     @objc func addKeyword(){
         let generator = UINotificationFeedbackGenerator()
@@ -260,21 +263,44 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         if dropUpButtonTime.currentTitle != "N"{
             self.initialTimer = indexWord+Int(dropUpButtonTime.currentTitle!)!
             self.initialIndex = indexWord
+            self.endIndex = indexWord+Int(dropUpButtonTime.currentTitle!)!
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
-                var range = 0..<1
+//                var range = 0..<1
+//
+//                if self.initialTimer >= self.textSplitted.count {
+//                    if self.initialIndex >= self.textSplitted.count {
+//                        range = (self.textSplitted.count-self.initialTimer)..<self.textSplitted.count-1
+//                    }
+//                    else{
+//                        range = self.initialIndex..<self.textSplitted.count-1
+//                    }
+//                }
+//                else if self.initialIndex < self.initialTimer{
+//                    range = self.initialIndex..<self.initialTimer
+//                }
+//
+//                if range.endIndex >= self.textSplitted.count-1{
+//                    range = self.textSplitted.count-2..<self.textSplitted.count-1
+//                    print(range)
+//                }
+                var range = 0...1
                 
-                if self.initialTimer >= self.textSplitted.count {
-                    if self.initialIndex >= self.textSplitted.count {
-                        range = (self.textSplitted.count-self.initialTimer)..<self.textSplitted.count-1
-                    }
-                    else{
-                        range = self.initialIndex..<self.textSplitted.count-1
+                if self.endIndex > self.textSplitted.count-1{
+                    if self.initialIndex > self.textSplitted.count-1{
+                        range = (self.textSplitted.count-2...self.textSplitted.count-1)
+                    } else {
+                        range = self.initialIndex...self.textSplitted.count-1
                     }
                 }
-                else if self.initialIndex < self.initialTimer{
-                    range = self.initialIndex..<self.initialTimer
+                else if self.initialIndex == self.endIndex{
+                    print("SONO UGUALI")
+                    range = self.initialIndex-1...self.endIndex
+                }
+                else {
+                    range = self.initialIndex...self.endIndex
                 }
                 
+              
                 let textToShowSlice = self.textSplitted[range]
                 var textToShow = String()
                 for element in textToShowSlice {
@@ -299,7 +325,13 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 print("[\(textToShow)]")
                 print("[\(textToShow.middle)]")
                 
-
+                print(range)
+                print(startingIndex)
+                print(lenghtIndex)
+                if startingIndex >= textToShow.count-1 {
+                    startingIndex = 1
+                    lenghtIndex = -1
+                }
                 //**********************************
                 
                 

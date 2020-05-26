@@ -87,7 +87,7 @@
 		4B7AC8DC24706DF000C59A0C /* FontKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FontKit.swift; sourceTree = "<group>"; };
 		5F1573062471848D00C832B6 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		5F31E0172477194B004617C9 /* KeywordsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeywordsCollectionViewCell.swift; sourceTree = "<group>"; };
-		7509E2D42460B2A60021CA4F /* MCXIApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MCXIApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7509E2D42460B2A60021CA4F /* Ready.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ready.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509E2D72460B2A60021CA4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7509E2D92460B2A60021CA4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7509E2DE2460B2A60021CA4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		7509E2D52460B2A60021CA4F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7509E2D42460B2A60021CA4F /* MCXIApplication.app */,
+				7509E2D42460B2A60021CA4F /* Ready.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -336,7 +336,7 @@
 			);
 			name = MCXIApplication;
 			productName = MCXIApplication;
-			productReference = 7509E2D42460B2A60021CA4F /* MCXIApplication.app */;
+			productReference = 7509E2D42460B2A60021CA4F /* Ready.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -625,7 +625,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Valentino-Palomba.MCXIApplication";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ready;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -646,7 +646,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Valentino-Palomba.MCXIApplication";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Ready;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
