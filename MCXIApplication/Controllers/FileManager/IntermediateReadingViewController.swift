@@ -53,7 +53,20 @@ class IntermediateReadingViewController: UIViewController{
         return backButton
     }()
     
-    
+    private var userAnswer : UITextField = {
+        var userAnswer = UITextField()
+        userAnswer.translatesAutoresizingMaskIntoConstraints = false
+        userAnswer.keyboardType = .default
+        userAnswer.layer.borderColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+        userAnswer.layer.borderWidth = 2
+        userAnswer.layer.cornerRadius = 20
+        userAnswer.isHidden = false
+        userAnswer.textAlignment = .center
+        userAnswer.placeholder = "Rename the File"
+        userAnswer.addTarget(self, action: #selector(userWrite), for: .editingDidBegin)
+        userAnswer.addTarget(self, action: #selector(userFinishWrite), for: .editingDidEnd)
+        return userAnswer
+    }()
     
     
     override func viewDidLoad() {
@@ -72,10 +85,31 @@ class IntermediateReadingViewController: UIViewController{
         textToRead.font = FontKit.roundedFont(ofSize: 18, weight: .regular)
         textToRead.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         textToRead.textAlignment = .center
+        setUpGestureForKeyboard()
     }
     
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
+    }
+    
+    @objc func userWrite(){
+        UIView.animate(withDuration: 0.5) {
+            self.userAnswer.layer.borderColor = #colorLiteral(red: 0.5294117647, green: 0.4431372549, blue: 0.9882352941, alpha: 1)
+        }
+    }
+    
+    @objc func userFinishWrite(){
+        if userAnswer.isEmpty {
+            UIView.animate(withDuration: 0.5) {
+                self.userAnswer.layer.borderColor = #colorLiteral(red: 0.9490196078, green: 0.9490196078, blue: 0.9490196078, alpha: 1)
+            }
+        }
+    }
+    
+    func setUpGestureForKeyboard(){
+        let tap = UITapGestureRecognizer(target : view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
     }
     
     func setUpTextField(){
@@ -94,9 +128,10 @@ class IntermediateReadingViewController: UIViewController{
     
     
     func setUpTextToRead(){
+        self.view.addSubview(backButton)
+        self.view.addSubview(userAnswer)
         self.view.addSubview(textToRead)
         self.view.addSubview(buttonPlay)
-        self.view.addSubview(backButton)
         view.addSubview(saveButton)
         NSLayoutConstraint.activate([
             
@@ -113,9 +148,12 @@ class IntermediateReadingViewController: UIViewController{
             saveButton.centerYAnchor.constraint(equalTo: buttonPlay.centerYAnchor),
             saveButton.widthAnchor.constraint(equalToConstant: 130),
             
+            userAnswer.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            userAnswer.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+            userAnswer.heightAnchor.constraint(equalToConstant: 80),
+            userAnswer.widthAnchor.constraint(equalToConstant: 300),
             
-            
-            textToRead.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 30),
+            textToRead.topAnchor.constraint(equalTo: userAnswer.bottomAnchor, constant: 20),
             textToRead.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20),
             textToRead.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
             textToRead.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -40),
