@@ -336,6 +336,15 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             
             someTextLabel.text = String(text)
             titleTextLabel.text = file
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
+                let vc = IntermediateReadingViewController()
+                vc.textToRead.text = self.someTextLabel.text!
+                vc.nameFile = "File\(UserDefaults.standard.integer(forKey: "numFile"))"
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true)
+                
+            })
         }
         
     }

@@ -332,7 +332,11 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         else {
             timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(Pam), repeats: true, block: { timer in
                 let myMutableString = NSMutableAttributedString(string: self.textSplitted[self.indexWord] as String, attributes: [NSAttributedString.Key.font:FontKit.roundedFont(ofSize: 24, weight: .semibold)])
-                let (startingIndex, lenghtIndex) = String(self.textSplitted[self.indexWord]).findMiddle()
+                var (startingIndex, lenghtIndex) = String(self.textSplitted[self.indexWord]).findMiddle()
+                if startingIndex < 0 {
+                    startingIndex = 1
+                    lenghtIndex = -1
+                              }
                 myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 104/255, green: 72/255, blue: 239/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
                 self.textToRead.attributedText = myMutableString
                 if self.indexWord < self.textSplitted.count - 1 {
@@ -356,6 +360,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         else if reading == false {
             print(reading)
             startToRead(gesture: UITapGestureRecognizer())
+            hideFunction()
         }
         
     }
@@ -606,23 +611,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
 }
 
-import UIKit
 
-class ViewController: UIViewController {
-    
-    var myString:NSString = "Miaooo"
-    var myMutableString = NSMutableAttributedString()
-    
-    @IBOutlet weak var label: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font:UIFont(name: "Georgia", size: 18.0)!])
-        let (startingIndex, lenghtIndex) = String(myString).findMiddle()
-        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: NSRange(location: (startingIndex),length: lenghtIndex+1))
-        label.attributedText = myMutableString
-        
-    }
-}
 
 extension String{
     func findMiddle() -> (Int, Int) {

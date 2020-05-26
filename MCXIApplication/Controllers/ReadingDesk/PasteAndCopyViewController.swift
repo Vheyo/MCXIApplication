@@ -122,6 +122,18 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
             }catch{
                 print("cant write...")
             }
+            
+            var stringArray = UserDefaults.standard.stringArray(forKey: "FileName")
+            
+            if stringArray == nil{
+                 stringArray = [file]
+            }
+            else {
+                stringArray?.append(file)
+            }
+           
+            print(stringArray)
+            UserDefaults.standard.set(stringArray, forKey: "FileName")
         }
         dismissView()
         

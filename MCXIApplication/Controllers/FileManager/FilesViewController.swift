@@ -9,6 +9,9 @@
 import Foundation
 import UIKit
 
+
+
+
 class FilesViewController : UIViewController{
     
     private var currentPage: Int = 0 {
@@ -160,6 +163,7 @@ class FilesViewController : UIViewController{
         }
         //-------------------------
         UserDefaults.standard.set(ListaFileTxt.count, forKey: "numFile")
+        
         cardCollectionView.reloadData()
         cardCollectionKeywords.reloadData()
     }
@@ -239,8 +243,9 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         
         if collectionView == cardCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! FileCell
-           
-                cell.nameFileLabel.text = ListaFileTxt[indexPath.item]
+            let lista = UserDefaults.standard.stringArray(forKey: "FileName")
+            print(lista)
+            cell.nameFileLabel.text = lista![indexPath.item] 
           
            
             
@@ -286,7 +291,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         var uiEdgeInset : UIEdgeInsets = UIEdgeInsets()
         if collectionView == cardCollectionView {
-            uiEdgeInset = UIEdgeInsets(top: 0, left: 25, bottom: 0, right: 0)
+            uiEdgeInset = UIEdgeInsets(top: 0, left: 12*view.frame.width/100, bottom: 0, right: 12*view.frame.width/100)
         } else{
             uiEdgeInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
@@ -295,8 +300,10 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
     
     func loadReadingDeskFile(Item : Int){
         let vc = IntermediateReadingViewController()
+        let lista = UserDefaults.standard.stringArray(forKey: "FileName")
         vc.textToRead.text = obtainTextFromFile(indexPath: Item+1)
         vc.nameFile = "File\(Item+1)"
+        vc.fakeName = lista![Item]
         vc.modalPresentationStyle = .fullScreen
         present(vc,animated: true)
     }

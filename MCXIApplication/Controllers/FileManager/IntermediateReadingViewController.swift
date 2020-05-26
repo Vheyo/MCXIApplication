@@ -11,6 +11,9 @@ import UIKit
 class IntermediateReadingViewController: UIViewController{
     var nameFile = String()
     
+    var fakeName = String()
+    
+    
     var textToRead : UITextView = {
         let textToRead = UITextView()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
@@ -201,6 +204,30 @@ class IntermediateReadingViewController: UIViewController{
                 print("cant write...")
             }
         }
+        var nameFileArray = UserDefaults.standard.stringArray(forKey: "FileName")
+        if !userAnswer.isEmpty {
+            if nameFileArray?.isEmpty ?? true {
+                nameFileArray?.append(userAnswer.text!)
+            }
+            else{
+                
+            var i = 0
+            for element in nameFileArray!{
+                if element == "\(fakeName)" || element == "\(nameFile).txt"{
+                    nameFileArray?[i] = userAnswer.text!
+                    print(nameFileArray)
+                    print("cambiato con successo")
+                }
+                i += 1
+            }
+                
+            UserDefaults.standard.set(nameFileArray, forKey: "FileName")
+                
+               
+            }
+        }
+        
+        
         dismissView()
         
     }
