@@ -22,6 +22,7 @@ class ExcerciesViewController : UIViewController {
         super.viewDidLoad()
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
         overrideUserInterfaceStyle = .light
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         AppUtility.lockOrientation(.portrait)
         view.backgroundColor = .white
         collectionView.dataSource = self
