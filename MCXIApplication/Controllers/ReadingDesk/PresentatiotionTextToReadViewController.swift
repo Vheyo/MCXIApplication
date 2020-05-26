@@ -245,10 +245,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         playButton.alpha = 1.0
         dropUpButtonTime.alpha = 1.0
         dropDownButtonTime.alpha = 1.0
-        self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        
+ 
         
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
             self.hidden = false
