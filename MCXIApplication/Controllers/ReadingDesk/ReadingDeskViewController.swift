@@ -213,12 +213,18 @@ class ReadingDeskViewController: UIViewController {
     }
     
     @objc func playMode(){
+        print(someTextLabel.text?.count)
+        if someTextLabel.text?.count != 0 {
        let vc = PresentatiotionTextToReadViewController()
         vc.text = someTextLabel.text!
         vc.modalPresentationStyle = .fullScreen
         vc.nameFile = titleTextLabel.text!
         vc.view.backgroundColor = .white
         present(vc,animated: true)
+        }
+        else {
+            addPopUp(text: "The file is empty!")
+        }
     }
     
     

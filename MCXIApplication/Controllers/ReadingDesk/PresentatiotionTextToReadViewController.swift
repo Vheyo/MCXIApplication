@@ -290,20 +290,12 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 
                 //MARK: FOR VALENTINO <3<3<3<3<3<3
                 
-                var start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2))
-                if(lenghtIndex == 0){
-                    start = textToShow.index(textToShow.startIndex, offsetBy: ((textToShow.count - 1)/2))
-                }
-                
-                let index = textToShow.index(start, offsetBy: lenghtIndex)
-                let end = textToShow.index(index, offsetBy: 1)
-                let mySubstring = textToShow[index...end]
                 
                 
                 if(textToShow.middle.contains(" ") || textToShow.middle.contains(",") || textToShow.middle.contains(".") || textToShow.middle.contains(", ") || textToShow.middle.contains(" ,")){
                     startingIndex += 1;
                 }
-                print("[\(mySubstring)]")
+               
                 print("[\(textToShow)]")
                 print("[\(textToShow.middle)]")
                 
@@ -356,59 +348,32 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func backAction(){
-        shadowKeywordButton.removeFromSuperview()
-        shadowDropDownButtonTime.removeFromSuperview()
-        shadowDropUpButtonTime.removeFromSuperview()
+       
 
         if self.indexWord > 0 {
             indexWord -= 1
         }
         self.textToRead.text = textSplitted[indexWord]
-        backButton.alpha = 1.0
-        keywordButton.alpha = 1.0
-        backButtonView.alpha = 1.0
-        forwardButton.alpha = 1.0
-        playButton.alpha = 1.0
-        dropUpButtonTime.alpha = 1.0
-        dropDownButtonTime.alpha = 1.0
+       
         
-        self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
+       
         
         
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
-            self.hidden = false
-        })
+       
         
     }
     
     @objc func forwardAction(){
-        shadowKeywordButton.removeFromSuperview()
-        shadowDropDownButtonTime.removeFromSuperview()
-        shadowDropUpButtonTime.removeFromSuperview()
+        
         if self.indexWord < self.textSplitted.count - 1 {
             indexWord += 1
         }
         self.textToRead.text = textSplitted[indexWord]
-        backButton.alpha = 1.0
-        keywordButton.alpha = 1.0
-        backButtonView.alpha = 1.0
-        forwardButton.alpha = 1.0
-        playButton.alpha = 1.0
-        dropUpButtonTime.alpha = 1.0
-        dropDownButtonTime.alpha = 1.0
-        dropDownButtonTime.alpha = 1.0
-        
-        self.shadowDropUpButtonTime = self.dropUpButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowDropDownButtonTime = self.dropDownButtonTime.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
-        self.shadowKeywordButton = self.keywordButton.addShadowViewBest(isShadowPathEnabled: true, shadowColor: #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1), shadowRadius: 3, shadowOpacity: 0.3, offsetY: 3, offsetX: 0)
         
         
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.2, execute: {
-            self.hidden = false
-        })
+       
+        
+        
         
     }
     
@@ -441,8 +406,8 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        print("ciao 2")
-        return !(touch.view is UIButton)
+        print(touch.view == gestureRecognizer.view)
+        return touch.view == gestureRecognizer.view
     }
     
     @objc func startToRead(gesture:UITapGestureRecognizer){
