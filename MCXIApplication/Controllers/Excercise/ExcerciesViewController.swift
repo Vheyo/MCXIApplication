@@ -22,7 +22,7 @@ class ExcerciesViewController : UIViewController {
         super.viewDidLoad()
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
         overrideUserInterfaceStyle = .light
-        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
+        AppUtility.lockOrientation(.portrait)
         view.backgroundColor = .white
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -38,10 +38,12 @@ class ExcerciesViewController : UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let value = UIInterfaceOrientation.portrait.rawValue
+        AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
         UIDevice.current.setValue(value, forKey: "orientation")
     }
     override func viewWillDisappear(_ animated: Bool) {
-        AppUtility.lockOrientation(.all)
+        AppUtility.lockOrientation(.portrait)
+        
     }
 }
 

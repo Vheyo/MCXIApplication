@@ -70,7 +70,6 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         let spaceItemRight = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         
         toolbarItems = [spaceItemLeft, backButton, nextButton, selectAllButton, resetButton, cropButton, spaceItemRight]
-        
         navigationItem.rightBarButtonItems = [scanButton];
         
         backButton.isEnabled = false
