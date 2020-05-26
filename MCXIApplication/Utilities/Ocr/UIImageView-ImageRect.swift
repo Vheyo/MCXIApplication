@@ -1,9 +1,9 @@
 //
 //  UIImageView-ImageSize.swift
-//  ScanningDocuments
+//  Ready
 //
-//  Created by Julian Schiavo on 15/6/2019.
-//  Copyright © 2019 Julian Schiavo. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 
 import UIKit

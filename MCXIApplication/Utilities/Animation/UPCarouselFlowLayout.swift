@@ -1,9 +1,9 @@
 //
 //  UPCarouselFlowLayout.swift
-//  UPCarouselFlowLayoutDemo
+//  Ready
 //
-//  Created by Paul Ulric on 23/06/2016.
-//  Copyright © 2016 Paul Ulric. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 
 import UIKit

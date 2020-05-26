@@ -1,11 +1,10 @@
 //
 //  CheckBox.swift
-//  CopriScopri
+//  Ready
 //
-//  Created by Francesco Tito on 03/05/2020.
-//  Copyright © 2020 Francesco Tito. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
-
 import UIKit
 
 class CheckBox: UIButton {

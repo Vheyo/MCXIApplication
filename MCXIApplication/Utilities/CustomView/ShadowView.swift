@@ -1,9 +1,9 @@
 //
 //  ShadowView.swift
-//  MentalHealth
+//  Ready
 //
-//  Created by Francesco Tito on 15/11/2019.
-//  Copyright © 2019 Power Rangers. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 
 import UIKit

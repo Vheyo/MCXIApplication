@@ -1,9 +1,9 @@
 //
 //  Type2CollectionViewCell.swift
-//  AppStoreTransitionAnimation
+//  Ready
 //
-//  Created by Razvan Chelemen on 15/05/2019.
-//  Copyright © 2019 appssemble. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 
 import UIKit

@@ -1,9 +1,9 @@
 //
 //  KeywordsCollectionViewCell.swift
-//  provaCelleDinamiche
+//  Ready
 //
-//  Created by Francesco Tito on 21/05/2020.
-//  Copyright © 2020 Francesco Tito. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 
 import UIKit

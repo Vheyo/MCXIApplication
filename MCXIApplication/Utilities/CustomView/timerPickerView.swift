@@ -1,8 +1,8 @@
 //
 //  timerPickerView.swift
-//  MCXIApplication
+//  Ready
 //
-//  Created by Francesco Tito on 12/05/2020.
+//  Created by Astroworld on 04/05/2020.
 //  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 

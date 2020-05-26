@@ -1,9 +1,9 @@
 //
 //  DetectedViewController.swift
-//  OCR
+//  Ready
 //
-//  Created by Gabriele Iannace on 15/05/2020.
-//  Copyright © 2020 Gabriele Iannace. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 
 import UIKit

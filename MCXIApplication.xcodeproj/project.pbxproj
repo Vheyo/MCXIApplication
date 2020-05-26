@@ -319,9 +319,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7509E2D32460B2A60021CA4F /* MCXIApplication */ = {
+		7509E2D32460B2A60021CA4F /* Ready */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7509E2E82460B2A70021CA4F /* Build configuration list for PBXNativeTarget "MCXIApplication" */;
+			buildConfigurationList = 7509E2E82460B2A70021CA4F /* Build configuration list for PBXNativeTarget "Ready" */;
 			buildPhases = (
 				5316635C91B38F05E48F4ED8 /* [CP] Check Pods Manifest.lock */,
 				7509E2D02460B2A60021CA4F /* Sources */,
@@ -334,7 +334,7 @@
 			);
 			dependencies = (
 			);
-			name = MCXIApplication;
+			name = Ready;
 			productName = MCXIApplication;
 			productReference = 7509E2D42460B2A60021CA4F /* Ready.app */;
 			productType = "com.apple.product-type.application";
@@ -367,7 +367,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7509E2D32460B2A60021CA4F /* MCXIApplication */,
+				7509E2D32460B2A60021CA4F /* Ready */,
 			);
 		};
 /* End PBXProject section */
@@ -664,7 +664,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7509E2E82460B2A70021CA4F /* Build configuration list for PBXNativeTarget "MCXIApplication" */ = {
+		7509E2E82460B2A70021CA4F /* Build configuration list for PBXNativeTarget "Ready" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7509E2E92460B2A70021CA4F /* Debug */,

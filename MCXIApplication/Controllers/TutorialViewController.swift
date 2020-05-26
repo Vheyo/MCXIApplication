@@ -1,11 +1,9 @@
-
-
 //
 //  ViewController.swift
-//  AnimatedPageView
+//  Ready
 //
-//  Created by Alex K. on 12/04/16.
-//  Copyright © 2016 Alex K. All rights reserved.
+//  Created by Astroworld on 04/05/2020.
+//  Copyright © 2020 Valentino Palomba. All rights reserved.
 //
 
 import UIKit
