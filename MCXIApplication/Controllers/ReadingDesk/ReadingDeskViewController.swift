@@ -235,6 +235,17 @@ class ReadingDeskViewController: UIViewController {
         documentPicker.delegate = self
         documentPicker.allowsMultipleSelection = false
         present(documentPicker, animated: true)
+        let hud = JGProgressHUD(style: .light)
+        DispatchQueue.global(qos: .background).sync{
+            let indicator = JGProgressHUDRingIndicatorView()
+            hud.textLabel.text = "Processing data";
+            hud.indicatorView = indicator
+            hud.show(in: self.view)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)){
+                self.incrementHUD(hud, progress: 0)
+            }
+        }
     }
     
     
@@ -296,17 +307,7 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             
             
         else {
-            let hud = JGProgressHUD(style: .light)
-            DispatchQueue.global(qos: .background).sync{
-                let indicator = JGProgressHUDRingIndicatorView()
-                hud.textLabel.text = "Processing data";
-                hud.indicatorView = indicator
-                hud.show(in: self.view)
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)){
-                    self.incrementHUD(hud, progress: 0)
-                }
-            }
+           
             do {
                 if let pdf = PDFDocument(url: selectedFileURL) {
                     let pageCount = pdf.pageCount
@@ -323,20 +324,8 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                     
                     do{
                         try text.write(to: fileUrl, atomically: false, encoding: .utf8)
-                        UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "numFile")+1, forKey: "numFile")
-                        let lastFilenum = UserDefaults.standard.integer(forKey: "numFile")+1
-                        let file = "File\(lastFilenum).txt"
-                        var stringArray = UserDefaults.standard.stringArray(forKey: "FileName")
+                       
                         
-                        if stringArray == nil{
-                            stringArray = [file]
-                        }
-                        else {
-                            stringArray?.append(file)
-                        }
-                        
-                        print(stringArray)
-                        UserDefaults.standard.set(stringArray, forKey: "FileName")
                     } catch {
                         print("cant write...")
                     }
@@ -351,9 +340,8 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             titleTextLabel.text = file
             
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
-                let vc = IntermediateReadingViewController()
+                let vc = PasteAndCopyViewController()
                 vc.textToRead.text = self.someTextLabel.text!
-                vc.nameFile = "File\(UserDefaults.standard.integer(forKey: "numFile"))"
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true)
                 
