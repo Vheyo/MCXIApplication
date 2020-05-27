@@ -61,6 +61,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     var initialTimer = 2
     var initialIndex = 0
     var endIndex = 0
+    var buttonPressed = false
     private var textTitle : UILabel = {
         let textTitle = UILabel()
         textTitle.translatesAutoresizingMaskIntoConstraints = false
@@ -239,10 +240,18 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             if arrayString == nil {
                 arrayString = ["\(textSplitted[indexWord-1])"]
             }
-            else{
-                arrayString?.append(textSplitted[indexWord-1])
-                
+            else if buttonPressed == false{
+                if indexWord > 0 {
+                    arrayString?.append(textSplitted[indexWord-1])
+                }
+                else{
+                    arrayString?.append(textSplitted[indexWord-1])
+                }
             }
+            else {
+                arrayString?.append(textSplitted[indexWord])
+            }
+            
         }
         
         
@@ -252,7 +261,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         
         
         
-        
+        buttonPressed = false
         
         
     }
@@ -336,7 +345,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 if startingIndex < 0 {
                     startingIndex = 1
                     lenghtIndex = -1
-                              }
+                }
                 myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(red: 104/255, green: 72/255, blue: 239/255, alpha: 1.0), range: NSRange(location: (startingIndex),length: lenghtIndex+1))
                 self.textToRead.attributedText = myMutableString
                 if self.indexWord < self.textSplitted.count - 1 {
@@ -368,26 +377,28 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
     
     
     @objc func backAction(){
-        
+        buttonPressed = true
         
         if self.indexWord > 0 {
             indexWord -= 1
         }
+        
+        
+        
+        
+        
         self.textToRead.text = textSplitted[indexWord]
-        
-        
-        
-        
-        
         
         
     }
     
     @objc func forwardAction(){
-        
+        buttonPressed = true
         if self.indexWord < self.textSplitted.count - 1 {
             indexWord += 1
+            
         }
+        
         self.textToRead.text = textSplitted[indexWord]
         
         
