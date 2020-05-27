@@ -13,7 +13,7 @@ class IntermediateReadingViewController: UIViewController{
     
     var fakeName = String()
     
-    
+    var lastName = String()
     var textToRead : UITextView = {
         let textToRead = UITextView()
         textToRead.translatesAutoresizingMaskIntoConstraints = false
@@ -180,7 +180,13 @@ class IntermediateReadingViewController: UIViewController{
         let vc = PresentatiotionTextToReadViewController()
         vc.text = textToRead.text
         vc.view.backgroundColor = .white
-        vc.nameFile = nameFile
+       
+       
+        print(lastName)
+        
+        
+        
+        vc.nameFile = lastName
         present(vc,animated: true)
     }
     

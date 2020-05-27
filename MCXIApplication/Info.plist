@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>“Ready” would like to access your media library</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -26,6 +24,8 @@
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>“Ready” would like to access your camera</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>“Ready” would like to access your media library</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

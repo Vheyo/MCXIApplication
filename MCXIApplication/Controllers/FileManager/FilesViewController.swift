@@ -304,6 +304,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         vc.textToRead.text = obtainTextFromFile(indexPath: Item+1)
         vc.nameFile = "File\(Item+1)"
         vc.fakeName = lista![Item]
+        vc.lastName = "File \(Item)"
         vc.modalPresentationStyle = .fullScreen
         present(vc,animated: true)
     }

@@ -96,7 +96,7 @@ class ReadingDeskViewController: UIViewController {
             someTextLabel.text = "Use the + Button to add new File!"
         }
         if UserDefaults.standard.integer(forKey: "numFile") > 0{
-            titleTextLabel.text = "File \((UserDefaults.standard.integer(forKey: "numFile")-1))"
+            titleTextLabel.text = "\((UserDefaults.standard.stringArray(forKey: "FileName")!.last ?? "File"))"
             someTextLabel.text = obtainTextFromFile(indexPath: UserDefaults.standard.integer(forKey: "numFile"))
         }
         AppUtility.lockOrientation(.portrait, andRotateTo: .portrait)
@@ -218,7 +218,7 @@ class ReadingDeskViewController: UIViewController {
             let vc = PresentatiotionTextToReadViewController()
             vc.text = someTextLabel.text!
             vc.modalPresentationStyle = .fullScreen
-            vc.nameFile = titleTextLabel.text!
+            vc.nameFile = "File \(UserDefaults.standard.integer(forKey: "numFile")-1)"
             vc.view.backgroundColor = .white
             present(vc,animated: true)
         }
