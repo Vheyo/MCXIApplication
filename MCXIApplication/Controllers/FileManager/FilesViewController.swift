@@ -243,9 +243,16 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         
         if collectionView == cardCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! FileCell
-            let lista = UserDefaults.standard.stringArray(forKey: "FileName")
+            var lista = UserDefaults.standard.stringArray(forKey: "FileName")
             print(lista)
-            cell.nameFileLabel.text = lista![indexPath.item] 
+            if indexPath.item < lista!.count{
+                 cell.nameFileLabel.text = lista![indexPath.item]
+            }
+            else{
+                cell.nameFileLabel.text = "NameFile.pdf"
+                lista?.append("NameFile.pdf")
+                UserDefaults.standard.set(lista, forKey: "FileName")
+            }
           
            
             
@@ -303,6 +310,7 @@ extension FilesViewController : UICollectionViewDataSource, UICollectionViewDele
         let lista = UserDefaults.standard.stringArray(forKey: "FileName")
         vc.textToRead.text = obtainTextFromFile(indexPath: Item+1)
         vc.nameFile = "File\(Item+1)"
+       
         vc.fakeName = lista![Item]
         vc.lastName = "File \(Item)"
         vc.modalPresentationStyle = .fullScreen

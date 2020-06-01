@@ -323,8 +323,14 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                     fileUrl = dir.appendingPathComponent(file)
                     
                     do{
-                        try text.write(to: fileUrl, atomically: false, encoding: .utf8)
-                       
+                        
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2.0, execute: {
+                                      let vc = PasteAndCopyViewController()
+                                      vc.textToRead.text = self.someTextLabel.text!
+                                      vc.modalPresentationStyle = .fullScreen
+                                      self.present(vc, animated: true)
+                                      
+                                  })
                         
                     } catch {
                         print("cant write...")
@@ -339,13 +345,7 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
             someTextLabel.text = String(text)
             titleTextLabel.text = file
             
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
-                let vc = PasteAndCopyViewController()
-                vc.textToRead.text = self.someTextLabel.text!
-                vc.modalPresentationStyle = .fullScreen
-                self.present(vc, animated: true)
-                
-            })
+           
         }
         
     }
