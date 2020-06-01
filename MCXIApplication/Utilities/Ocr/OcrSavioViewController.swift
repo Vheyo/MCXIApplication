@@ -272,9 +272,12 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
         vc.textToRead.text = String(text)
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(dismissOCR), name: NSNotification.Name(rawValue: "ready2Dismiss"), object: nil)
     }
     
+    @objc func dismissOCR(){
+        self.dismiss(animated: true, completion: nil)
+    }
     
     
     

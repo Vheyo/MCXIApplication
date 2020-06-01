@@ -145,7 +145,9 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
     
     
     @objc func dismissView(){
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ready2Dismiss"), object: nil)
+        })
     }
 }
 
