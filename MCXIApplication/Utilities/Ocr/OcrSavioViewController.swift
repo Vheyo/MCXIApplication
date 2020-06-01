@@ -274,7 +274,7 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
 
             fileUrl = dir.appendingPathComponent(file)
             
-            do{
+          
                 
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2.0, execute: {
                     let vc = PasteAndCopyViewController()
@@ -283,14 +283,13 @@ class OcrViewController : UIViewController, VNDocumentCameraViewControllerDelega
                     self.present(vc, animated: true)
                     
                 })
-            } catch {
-                print("cant write...")
-            }
             
-            dismiss(animated: true, completion: {
-                print("dismissed")
-            })
+            
+           
         }
+        dismiss(animated: true, completion: {
+                       print("dismissed")
+                   })
     }
     
         
