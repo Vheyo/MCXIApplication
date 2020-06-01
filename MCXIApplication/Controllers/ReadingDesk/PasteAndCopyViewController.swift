@@ -45,10 +45,13 @@ class PasteAndCopyViewController : UIViewController, UITextViewDelegate {
          }()
          
       func textViewDidBeginEditing(_ textView: UITextView) {
-          if textView.textColor == UIColor.lightGray {
+        if textView.textColor == UIColor.lightGray && textView.text.isEmpty {
               textView.text = nil
               textView.textColor = UIColor.black
           }
+        else{
+            textView.textColor = UIColor.black
+        }
       }
     
     func textViewDidEndEditing(_ textView: UITextView) {
