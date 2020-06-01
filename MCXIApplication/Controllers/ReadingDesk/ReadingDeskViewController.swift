@@ -326,7 +326,7 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                         
                         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2.0, execute: {
                                       let vc = PasteAndCopyViewController()
-                                      vc.textToRead.text = self.someTextLabel.text!
+                                      vc.textToRead.text = String(text)
                                       vc.modalPresentationStyle = .fullScreen
                                       self.present(vc, animated: true)
                                       
@@ -342,8 +342,8 @@ extension ReadingDeskViewController : UIDocumentPickerDelegate {
                 print("Errore nel copiare il file")
             }
             
-            someTextLabel.text = String(text)
-            titleTextLabel.text = file
+//           someTextLabel.text = String(text)
+//            titleTextLabel.text = file
             
            
         }
