@@ -14,7 +14,7 @@
 		<key>AssetsPickerViewController-AssetsPickerViewController.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>5</integer>
 		</dict>
 		<key>AssetsPickerViewController.xcscheme</key>
 		<dict>
@@ -26,7 +26,7 @@
 		<key>AssetsPickerViewController.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>6</integer>
 		</dict>
 		<key>Device.xcscheme</key>
 		<dict>
@@ -38,7 +38,7 @@
 		<key>Device.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>10</integer>
 		</dict>
 		<key>JGProgressHUD.xcscheme</key>
 		<dict>
@@ -69,7 +69,7 @@
 		<key>SnapKit.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 		<key>WeScan.xcscheme</key>
 		<dict>
