@@ -9,12 +9,13 @@
 import UIKit
 
 protocol dropUpProtocol : class {
-    func dropUpPressed(string : String)
+    func dropUpPressed(string : String, isAltro : Bool)
 }
 
 class DropUpView : UIView{
     
     var timeToStart : [String] = ["1","2","3","4","5"]
+    var WPM : [String] = ["250","500","750","1250","1500","1750","Altro"]
     weak var delegate : dropUpProtocol?
     
     var cardCollectionView : UICollectionView =  {
@@ -75,13 +76,31 @@ extension DropUpView : UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return timeToStart.count
+        var numberOfItem = 0;
+        switch self.tag {
+        case 1:
+            numberOfItem = timeToStart.count
+        case 2:
+            numberOfItem = WPM.count
+        default :
+            print("Case Default")
+        }
+        return numberOfItem
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CellId", for: indexPath) as! DropUpViewCollectionViewCell
-        cell.configure(text: timeToStart[indexPath.item])
+        
+        switch self.tag {
+        case 1:
+            cell.configure(text: timeToStart[indexPath.item])
+        case 2:
+            cell.configure(text: WPM[indexPath.item])
+        default :
+            print("Case Default")
+        }
+        
         
         return cell
     }
@@ -96,7 +115,18 @@ extension DropUpView : UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
         
-        self.delegate?.dropUpPressed(string: timeToStart[indexPath.item])
+        switch self.tag {
+              case 1:
+                self.delegate?.dropUpPressed(string: timeToStart[indexPath.item],isAltro: false)
+              case 2:
+                if WPM[indexPath.item] == "Altro"{
+                    self.delegate?.dropUpPressed(string: WPM[indexPath.item],isAltro: true)
+                }else {
+                    self.delegate?.dropUpPressed(string: WPM[indexPath.item],isAltro: false)
+                }
+              default :
+                  print("Case Default")
+              }
         
     }
     

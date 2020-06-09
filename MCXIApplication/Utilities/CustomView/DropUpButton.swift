@@ -11,10 +11,10 @@ import UIKit
 class DropUpButton: UIButton, dropUpProtocol{
     
     
-    func dropUpPressed(string: String) {
+    func dropUpPressed(string: String, isAltro : Bool) {
         self.setTitle(string, for: .normal)
         self.dropDownAfterPressed()
-        self.delegate?.dropUpPressed(tagButton: tag)
+        self.delegate?.dropUpPressed(tagButton: tag, isAltro : isAltro)
     }
     
     
@@ -31,6 +31,7 @@ class DropUpButton: UIButton, dropUpProtocol{
     override init(frame: CGRect) {
         super.init(frame : frame)
         dropView.delegate = self
+        
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +46,7 @@ class DropUpButton: UIButton, dropUpProtocol{
     }
     
     func setUpConstraints(){
+        dropView.tag = self.tag
         NSLayoutConstraint.activate([
             dropView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             dropView.widthAnchor.constraint(equalTo: self.widthAnchor)

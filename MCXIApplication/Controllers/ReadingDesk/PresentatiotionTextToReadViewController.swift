@@ -9,13 +9,13 @@
 import UIKit
 
 protocol dropUpProtocolChangeVal : class {
-    func dropUpPressed(tagButton : Int)
+    func dropUpPressed(tagButton : Int, isAltro : Bool)
 }
 
 class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecognizerDelegate, dropUpProtocolChangeVal {
     
     
-    func dropUpPressed(tagButton: Int) {
+    func dropUpPressed(tagButton: Int, isAltro : Bool) {
         
         switch tagButton {
         case 1:
@@ -26,16 +26,46 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             startToRead(gesture: UITapGestureRecognizer())
         case 2:
             
-            deleteTimer()
-            let value = Int(dropDownButtonTime.currentTitle!)
-            if dropUpButtonTime.currentTitle != "N"{
-                Pam = (60/Float(value!*100))*Float(Int(dropUpButtonTime.currentTitle!)!)
+            if isAltro {
+                let dialogMessage = UIAlertController(title: "Alert", message: "Are you sure you want to delete this?", preferredStyle: .alert)
+                // Add text field
+                dialogMessage.addTextField(configurationHandler: { textField in
+                    textField.placeholder = "Type in the WPM"
+                })
+                let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+                    self.dropDownButtonTime.setTitle("\(dialogMessage.textFields?.first?.text ?? "")", for: .normal)
+                    self.deleteTimer()
+                    let value = Int(self.dropDownButtonTime.currentTitle!)
+                    if self.dropUpButtonTime.currentTitle != "N"{
+                        self.Pam = (60/Float(value!*100))*Float(Int(self.dropUpButtonTime.currentTitle!)!)
+                    }
+                    else{
+                        self.Pam = 60/Float(value!*100)
+                    }
+                    self.hideFunction()
+                    self.startToRead(gesture: UITapGestureRecognizer())
+                })
+                
+                let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+                    self.dropDownButtonTime.setTitle("WPM", for: .normal)
+                }
+                
+                dialogMessage.addAction(ok)
+                dialogMessage.addAction(cancel)
+                self.present(dialogMessage, animated: true, completion: nil)
+            }else {
+                deleteTimer()
+                let value = Int(dropDownButtonTime.currentTitle!)
+                if dropUpButtonTime.currentTitle != "N"{
+                    Pam = (60/Float(value!*100))*Float(Int(dropUpButtonTime.currentTitle!)!)
+                }
+                else{
+                    Pam = 60/Float(value!*100)
+                }
+                hideFunction()
+                startToRead(gesture: UITapGestureRecognizer())
             }
-            else{
-                Pam = 60/Float(value!*100)
-            }
-            hideFunction()
-            startToRead(gesture: UITapGestureRecognizer())
+            
         default:
             print("No one selected")
             
