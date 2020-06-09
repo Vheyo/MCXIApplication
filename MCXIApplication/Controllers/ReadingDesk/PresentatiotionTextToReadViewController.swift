@@ -27,7 +27,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
         case 2:
             print(indexWord)
             if isAltro {
-                let dialogMessage = UIAlertController(title: "Alert", message: "Are you sure you want to delete this?", preferredStyle: .alert)
+                let dialogMessage = UIAlertController(title: "Custom WPM", message: "Insert a customised WPM", preferredStyle: .alert)
                 // Add text field
                 dialogMessage.addTextField(configurationHandler: { textField in
                     textField.placeholder = "Type in the WPM"

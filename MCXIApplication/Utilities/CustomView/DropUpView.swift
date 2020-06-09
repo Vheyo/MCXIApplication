@@ -15,7 +15,7 @@ protocol dropUpProtocol : class {
 class DropUpView : UIView{
     
     var timeToStart : [String] = ["1","2","3","4","5"]
-    var WPM : [String] = ["250","500","750","1250","1500","1750","Altro"]
+    var WPM : [String] = ["250","500","750","1250","1500","1750","Custom"]
     weak var delegate : dropUpProtocol?
     
     var cardCollectionView : UICollectionView =  {
