@@ -25,7 +25,7 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
             hideFunction()
             startToRead(gesture: UITapGestureRecognizer())
         case 2:
-            
+            print(indexWord)
             if isAltro {
                 let dialogMessage = UIAlertController(title: "Alert", message: "Are you sure you want to delete this?", preferredStyle: .alert)
                 // Add text field
@@ -37,10 +37,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                     self.deleteTimer()
                     let value = Int(self.dropDownButtonTime.currentTitle!)
                     if self.dropUpButtonTime.currentTitle != "N"{
-                        self.Pam = (60/Float(value!*100))*Float(Int(self.dropUpButtonTime.currentTitle!)!)
+                        self.Pam = (60/Float(value!))*Float(Int(self.dropUpButtonTime.currentTitle!)!)
                     }
                     else{
-                        self.Pam = 60/Float(value!*100)
+                        self.Pam = 60/Float(value!)
                     }
                     self.hideFunction()
                     self.startToRead(gesture: UITapGestureRecognizer())
@@ -57,10 +57,10 @@ class PresentatiotionTextToReadViewController: UIViewController, UIGestureRecogn
                 deleteTimer()
                 let value = Int(dropDownButtonTime.currentTitle!)
                 if dropUpButtonTime.currentTitle != "N"{
-                    Pam = (60/Float(value!*100))*Float(Int(dropUpButtonTime.currentTitle!)!)
+                    Pam = (60/Float(value!))*Float(Int(dropUpButtonTime.currentTitle!)!)
                 }
                 else{
-                    Pam = 60/Float(value!*100)
+                    Pam = 60/Float(value!)
                 }
                 hideFunction()
                 startToRead(gesture: UITapGestureRecognizer())
