@@ -25,6 +25,7 @@ Test it on testFlight: https://testflight.apple.com/join/8VoR8wYM
 Developed By:
 
 * Giuseppe Giaquinto
+* [Salvatore Guerrisi](http://daringfireball.net/projects/markdown/)<br/>
 * Salvatore Guerrisi      @sguerrisi
 * Gabriele Iannace
 * Valentino Palomba       @Vhevo
