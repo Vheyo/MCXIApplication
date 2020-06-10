@@ -17,4 +17,4 @@ Thanks to OCR technology you can scan anything you need to read as fast as possi
 
 Now you are ready to read!
 
-<img src="src_img/ready.gif" width = "500">
+<img src="src_img/ready2read.gif" width = "500">
