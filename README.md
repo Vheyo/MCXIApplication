@@ -18,3 +18,15 @@ Thanks to OCR technology you can scan anything you need to read as fast as possi
 Now you are ready to read!
 
 <img src="src_img/ready2read.gif" width = "500">
+
+Test it on testFlight: https://testflight.apple.com/join/8VoR8wYM
+
+# Credits
+Developed By:
+
+* Giuseppe Giaquinto
+* Salvatore Guerrisi
+* Gabriele Iannace
+* Valentino Palomba
+* Francesco Tito
+* Antonio Virgilio
