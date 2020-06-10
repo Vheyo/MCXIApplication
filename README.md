@@ -13,3 +13,8 @@ Do not miss any reading with the "file" section: a data archive always at your f
 Thanks to OCR technology you can scan anything you need to read as fast as possible, easy isn't it?
 
 <img src="src_img/OCR.gif" width = "300">
+
+
+Now you are ready to read!
+
+<img src="src_img/ready.gif" width = "500">
