@@ -25,8 +25,8 @@ Test it on testFlight: https://testflight.apple.com/join/8VoR8wYM
 Developed By:
 
 * Giuseppe Giaquinto
-* Salvatore Guerrisi
+* Salvatore Guerrisi      @sguerrisi
 * Gabriele Iannace
-* Valentino Palomba
+* Valentino Palomba       @Vhevo
 * Francesco Tito
 * Antonio Virgilio
