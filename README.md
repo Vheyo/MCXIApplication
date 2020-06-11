@@ -24,7 +24,7 @@ Test it on testFlight: https://testflight.apple.com/join/8VoR8wYM
 # Credits
 Developed By:
 
-* Giuseppe Giaquinto
+* [Giuseppe Giaquinto](http://linkedin.com/in/giuseppe-giaquinto-54241718a)<br/>
 * [Salvatore Guerrisi](https://github.com/sguerrisi)<br/>
 * [Gabriele Iannace](https://github.com/gabrieleiannace)<br/>
 * [Valentino Palomba](https://github.com/Vheyo)<br/>
