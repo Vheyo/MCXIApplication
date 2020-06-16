@@ -23,9 +23,9 @@
 	<key>LSSupportsOpeningDocumentsInPlace</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>“Ready” would like to access your camera</string>
+	<string>“Ready” would like to access your camera for scanning your document</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>“Ready” would like to access your media library</string>
+	<string>“Ready” would like to access your media library for scanning your document</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

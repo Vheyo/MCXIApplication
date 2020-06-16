@@ -30,6 +30,7 @@ class ExerciseWithFormViewController: UIViewController {
         let formQA = UIView()
         formQA.translatesAutoresizingMaskIntoConstraints = false
         formQA.backgroundColor = .white
+       
         return formQA
     }()
     
@@ -75,6 +76,7 @@ class ExerciseWithFormViewController: UIViewController {
         questionLabel.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         questionLabel.textAlignment = .left
         questionLabel.numberOfLines = 0
+        questionLabel.isAccessibilityElement = false
         return questionLabel
     }()
     
@@ -86,6 +88,7 @@ class ExerciseWithFormViewController: UIViewController {
         firstAnswer.textColor = #colorLiteral(red: 0.3019607843, green: 0.3019607843, blue: 0.3019607843, alpha: 1)
         firstAnswer.textAlignment = .left
         firstAnswer.numberOfLines = 0
+        firstAnswer.isAccessibilityElement = false
         return firstAnswer
     }()
     
@@ -432,6 +435,7 @@ class ExerciseWithFormViewController: UIViewController {
     
     func setUpConstraints(){
         self.view.addSubview(formQA)
+        let deviceName = UIDevice.modelName
         formQA.addSubview(questionLabel)
         formQA.addSubview(firstAnswer)
         formQA.addSubview(secondAnswer)
@@ -441,7 +445,8 @@ class ExerciseWithFormViewController: UIViewController {
         formQA.addSubview(radioButtonSecond)
         formQA.addSubview(radioButtonThird)
         formQA.addSubview(radioButtonFourth)
-
+        print(deviceName )
+        if deviceName != "Simulator iPhone12,8" && deviceName != "iPhone 8" && deviceName != "iPhone 7" && deviceName != "iPhone 6s" {
         NSLayoutConstraint.activate([
             
             
@@ -494,6 +499,63 @@ class ExerciseWithFormViewController: UIViewController {
             fourthAnswer.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
             
         ])
+        }
+        else {
+            questionLabel.font = FontKit.roundedFont(ofSize: 26, weight: .black)
+            NSLayoutConstraint.activate([
+                
+                
+                formQA.topAnchor.constraint(equalTo: backButton.bottomAnchor,constant: 10),
+                formQA.bottomAnchor.constraint(equalTo: buttonPlay.topAnchor, constant: -20),
+                formQA.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+                formQA.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+                
+                
+                questionLabel.topAnchor.constraint(equalTo: formQA.topAnchor,constant: 10 ),
+                questionLabel.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 30),
+                questionLabel.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -30),
+                questionLabel.heightAnchor.constraint(equalToConstant: 100),
+                
+                
+                radioButtonFirst.topAnchor.constraint(equalTo: questionLabel.bottomAnchor,constant: 30),
+                radioButtonFirst.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
+                radioButtonFirst.heightAnchor.constraint(equalToConstant: 40),
+                radioButtonFirst.widthAnchor.constraint(equalToConstant: 40),
+                
+                radioButtonSecond.topAnchor.constraint(equalTo: radioButtonFirst.bottomAnchor,constant: 30),
+                radioButtonSecond.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
+                radioButtonSecond.heightAnchor.constraint(equalToConstant: 40),
+                radioButtonSecond.widthAnchor.constraint(equalToConstant: 40),
+                
+                radioButtonThird.topAnchor.constraint(equalTo: radioButtonSecond.bottomAnchor,constant: 30),
+                radioButtonThird.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
+                radioButtonThird.heightAnchor.constraint(equalToConstant: 40),
+                radioButtonThird.widthAnchor.constraint(equalToConstant: 40),
+                
+                radioButtonFourth.topAnchor.constraint(equalTo: radioButtonThird.bottomAnchor,constant: 30),
+                radioButtonFourth.leadingAnchor.constraint(equalTo: formQA.leadingAnchor,constant: 40),
+                radioButtonFourth.heightAnchor.constraint(equalToConstant: 40),
+                radioButtonFourth.widthAnchor.constraint(equalToConstant: 40),
+                
+                firstAnswer.centerYAnchor.constraint(equalTo: radioButtonFirst.centerYAnchor),
+                firstAnswer.leadingAnchor.constraint(equalTo: radioButtonFirst.trailingAnchor,constant:  10),
+                firstAnswer.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
+                
+                secondAnswer.centerYAnchor.constraint(equalTo: radioButtonSecond.centerYAnchor),
+                secondAnswer.leadingAnchor.constraint(equalTo: radioButtonSecond.trailingAnchor,constant:  10),
+                secondAnswer.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
+                
+                thirdAnswer.centerYAnchor.constraint(equalTo: radioButtonThird.centerYAnchor),
+                thirdAnswer.leadingAnchor.constraint(equalTo: radioButtonThird.trailingAnchor,constant:  10),
+                thirdAnswer.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
+                
+                fourthAnswer.centerYAnchor.constraint(equalTo: radioButtonFourth.centerYAnchor),
+                fourthAnswer.leadingAnchor.constraint(equalTo: radioButtonFourth.trailingAnchor,constant:  10),
+                fourthAnswer.trailingAnchor.constraint(equalTo: formQA.trailingAnchor,constant: -16),
+                
+            ])
+            
+        }
     }
     func checkAnswer() -> Bool{
         if radioButtonFirst.radioButton.oneSelected().0 {

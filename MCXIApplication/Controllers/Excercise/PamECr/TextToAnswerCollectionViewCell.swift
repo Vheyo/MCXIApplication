@@ -21,6 +21,7 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         containerView.layer.masksToBounds = true
         containerView.layer.borderColor = #colorLiteral(red: 0.9450980392, green: 0.9294117647, blue: 0.9960784314, alpha: 1)
         containerView.layer.borderWidth = 2
+        containerView.isAccessibilityElement = false
         return containerView
     }()
     
@@ -40,6 +41,7 @@ class TextToAnswerCollectionViewCell: UICollectionViewCell {
         titleLabel.textAlignment = .center
         titleLabel.font = FontKit.roundedFont(ofSize: 22, weight: .semibold)
         titleLabel.textColor = #colorLiteral(red: 0.5568627451, green: 0.4156862745, blue: 1, alpha: 1)
+        titleLabel.isAccessibilityElement = false
         return titleLabel
     }()
     
