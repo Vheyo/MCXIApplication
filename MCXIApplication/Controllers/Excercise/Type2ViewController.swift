@@ -104,7 +104,7 @@ class Type2ViewController: UIViewController {
         headerView.addSubview(backButton)
         NSLayoutConstraint.activate([
             
-            backButton.topAnchor.constraint(equalTo: headerView.topAnchor,constant: 40),
+            backButton.topAnchor.constraint(equalTo: self.view.topAnchor,constant: 40),
             backButton.trailingAnchor.constraint(equalTo: headerView.trailingAnchor, constant: -16),
             backButton.heightAnchor.constraint(equalToConstant: 25),
             backButton.widthAnchor.constraint(equalToConstant: 25),
