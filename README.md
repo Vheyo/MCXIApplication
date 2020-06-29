@@ -19,7 +19,7 @@ Now you are ready to read!
 
 <img src="src_img/ready2read.gif" width = "500">
 
-Test it on testFlight: https://testflight.apple.com/join/8VoR8wYM
+Download it on App Store!: https://apps.apple.com/it/app/ready/id1513703863
 
 # Credits
 Developed By:
